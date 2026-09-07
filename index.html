@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayze Development | Ultra HD Studio & Image Uploader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-card: rgba(18, 23, 35, 0.88);
+            --bg-card-hover: rgba(28, 35, 51, 0.95);
+            --border-color: rgba(255, 255, 255, 0.12);
+            --text-primary: #f3f4f6;
+            --text-secondary: #cbd5e1;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-purple: #a855f7;
+            --accent-pink: #ec4899;
+        }
+
+        body {
+            background-color: #0a0d14;
+            background-image: linear-gradient(rgba(10, 13, 20, 0.85), rgba(10, 13, 20, 0.85)), 
+                              url('https://files.catbox.moe/xw3uch.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            
+            /* 120 FPS GPU ACCELERATION */
+            transform: translate3d(0, 0, 0);
+            will-change: transform;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* FLOATING MUSIC PLAYER (120 FPS) */
+        .music-player {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(18, 23, 35, 0.95);
+            border: 1px solid var(--accent-cyan);
+            padding: 10px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            user-select: none;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .music-icon {
+            font-size: 1.2rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .music-text {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        /* CONTAINER & NAVBAR */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #0a0d14;
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.1s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* HERO / BERANDA */
+        .hero {
+            padding: 80px 0 60px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: var(--accent-green);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            transition: transform 0.1s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .section {
+            padding: 70px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-tag {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        /* HD TOOLS & CATBOX GRID */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .preview-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0a0d14;
+            border: 1px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 400px;
+            position: relative;
+        }
+
+        #hdCanvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .controls-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .control-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .control-item label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .input-box, .range-box {
+            width: 100%;
+            padding: 12px;
+            background: #0a0d14;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .range-box {
+            padding: 0;
+            height: 8px;
+            accent-color: var(--accent-cyan);
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: white;
+            font-weight: 700;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-catbox {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+        }
+
+        /* PROGRESS BAR STYLES */
+        .progress-box {
+            display: none;
+            background: #0a0d14;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 5px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: #1f2937;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 6px;
+        }
+
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+            transition: width 0.1s linear;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-align: center;
+        }
+
+        .link-output {
+            background: #0a0d14;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 8px;
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+            word-break: break-all;
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* ABOUT & CHANNELS */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .side-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .channel-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 22px;
+            border-radius: 14px;
+            transition: transform 0.1s ease, border-color 0.1s ease;
+        }
+
+        .channel-card:hover {
+            border-color: var(--accent-cyan);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .channel-icon {
+            font-size: 2rem;
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            background: #0a0d14;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 850px) {
+            .tools-grid, .about-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.6rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO PLAYER -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://files.catbox.moe/nfjl9h.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- FLOATING MUSIC PLAYER (120 FPS TRACKING) -->
+    <div class="music-player" id="music-btn" onclick="toggleMusic()">
+        <span class="music-icon" id="music-icon">🎵</span>
+        <span class="music-text" id="music-status">Musik: Memutar 🎵</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#beranda" class="logo">RAYZE DEVELOPMENT</a>
+            <ul class="nav-links">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#hd-tools">HD Tools & Catbox</a></li>
+                <li><a href="#about">Tentang Rayze</a></li>
+                <li><a href="#saluran">Saluran Komunitas</a></li>
+                <li><a href="#kirim-pesan">Kirim Email</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- BERANDA SECTION -->
+        <section class="hero" id="beranda">
+            <div class="status-badge">
+                <span class="status-dot"></span> Building Anime Projects & Roblox Universe
+            </div>
+            <h1>Selamat Datang di <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
+            <p class="hero-subtitle">
+                Pusat kreasi pengembangan game Roblox, ekosistem web modern, serta studio **50+ HD Image Enhancer & Catbox Tools** serbaguna!
+            </p>
+            <div class="hero-buttons">
+                <a href="#hd-tools" class="btn btn-primary">✨ HD-kan Foto & Catbox Tools</a>
+                <a href="#saluran" class="btn btn-secondary">🚀 Saluran Komunitas</a>
+            </div>
+        </section>
+
+        <!-- ULTRA HD ENHANCER & CATBOX TOOLS -->
+        <section class="section" id="hd-tools">
+            <div class="section-header">
+                <span class="section-tag">// 50+ ULTRA HD STUDIO & CATBOX UPLOADER</span>
+                <h2 class="section-title">Foto HD Enhancer & Catbox Tools</h2>
+                <p style="color: var(--text-secondary); margin-top:5px;">Pilih dari 50 mode HD profesional, tajamkan foto dengan perhitungan persen (0%-100%), dan buat link Catbox secara instan tanpa error jaringan!</p>
+            </div>
+
+            <div class="tools-grid">
+                <!-- PREVIEW CANVAS HD -->
+                <div class="preview-container">
+                    <canvas id="hdCanvas" width="800" height="800"></canvas>
+                    <p id="placeholderText" style="color: var(--text-secondary); margin-top: 10px;">Pilih foto di sebelah kanan untuk memulai proses HD Engine.</p>
+                </div>
+
+                <!-- CONTROLS & ENHANCER OPTIONS -->
+                <div class="controls-container">
+                    <div class="control-item">
+                        <label>1. Pilih Foto Dari Galeri Kamu</label>
+                        <input type="file" id="uploadInput" class="input-box" accept="image/*" onchange="loadImage(event)">
+                    </div>
+
+                    <div class="control-item">
+                        <label>2. Mode HD Enhancer Preset (50 Fitur Fitur HD)</label>
+                        <select id="hdPreset" class="input-box" onchange="applyHDEffects()">
+                            <option value="p1">01. ✨ 4K Ultra HD Sharp (Super Tajam)</option>
+                            <option value="p2">02. 🚀 8K Extreme Upscale Detail</option>
+                            <option value="p3">03. 🎨 Anime & Illustration Clarity</option>
+                            <option value="p4">04. 🌸 Smooth Skin Face Enhancer</option>
+                            <option value="p5">05. 🔥 HDR Extreme Vibrant Color</option>
+                            <option value="p6">06. 🌙 Night Mode Noise Reduction</option>
+                            <option value="p7">07. 💎 Crystal Clear Lens Sharpener</option>
+                            <option value="p8">08. 📸 Studio Portrait Lighting</option>
+                            <option value="p9">09. 🌆 Cyberpunk Neon Glow Boost</option>
+                            <option value="p10">10. 🎬 Cinema Movie Grade Color</option>
+                            <option value="p11">11. 🌈 Ultra Saturation Booster</option>
+                            <option value="p12">12. 🖤 Deep Contrast High Dynamic</option>
+                            <option value="p13">13. ☀️ Natural Sunlight Enhancer</option>
+                            <option value="p14">14. 🔮 Soft Glow Aura Effect</option>
+                            <option value="p15">15. 🎭 High Detail Shadow Recovery</option>
+                            <option value="p16">16. 🍃 Vintage Warm Color Tone</option>
+                            <option value="p17">17. ❄️ Cold Ice Blue Contrast</option>
+                            <option value="p18">18. 🌇 Sunset Amber Glow Filter</option>
+                            <option value="p19">19. 🔮 Dreamy Soft Focus Portrait</option>
+                            <option value="p20">20. ⚡ Micro Sharp Texture Sharpen</option>
+                            <option value="p21">21. 🌊 Deep Ocean Blue Enhancer</option>
+                            <option value="p22">22. ☘️ Emerald Nature Color Boost</option>
+                            <option value="p23">23. 📷 Classic Monochromatic B&W HD</option>
+                            <option value="p24">24. 🌌 Cosmic Purple Tint Grade</option>
+                            <option value="p25">25. ⚡ Ultra High Speed Motion Blur Sharp</option>
+                            <option value="p26">26. 🥊 Heavy Contrast Edge Detection</option>
+                            <option value="p27">27. 🍬 Pastel Soft Color Tone</option>
+                            <option value="p28">28. 🎯 Precise AI Upscale Clarity</option>
+                            <option value="p29">29. 👑 VIP Gold Luxe Shimmer</option>
+                            <option value="p30">30. 🌫️ Anti-Fog De-Haze Filter</option>
+                            <option value="p31">31. 💡 Highlights Exposure Fix</option>
+                            <option value="p32">32. 👁️ Eye Detail & Iris Sharpen</option>
+                            <option value="p33">33. 💇 Hair Texture Micro Enhance</option>
+                            <option value="p34">34. 👕 Fabric & Clothing Detail Boost</option>
+                            <option value="p35">35. 🚘 Glossy Reflective Surface</option>
+                            <option value="p36">36. 🏙️ Architecture Urban Sharpness</option>
+                            <option value="p37">37. 🍲 Vibrant Macro Detail Filter</option>
+                            <option value="p38">38. 🌌 Galaxy Deep Space Tone</option>
+                            <option value="p39">39. 📽️ Retro 90s Film Grain HD</option>
+                            <option value="p40">40. 💥 Vivid Comic Pop Art Finish</option>
+                            <option value="p41">41. 🔮 Magic Fantasy Glow Tone</option>
+                            <option value="p42">42. 🍁 Autumn Warmth Tone Enhancer</option>
+                            <option value="p43">43. 🌿 Fresh Spring Brightness</option>
+                            <option value="p44">44. ❄️ Winter Frosted Crystal HD</option>
+                            <option value="p45">45. 🏖️ Summer Beach Sun Vivid</option>
+                            <option value="p46">46. 🏎️ Ultra Sharp Speed Motion</option>
+                            <option value="p47">47. 🖤 Dark Gothic Shadow Enhance</option>
+                            <option value="p48">48. 💎 Diamond Crisp Reflection</option>
+                            <option value="p49">49. 🎨 Oil Painting Texture HD</option>
+                            <option value="p50">50. 🚀 Master Render Final Polish</option>
+                        </select>
+                    </div>
+
+                    <div class="control-item">
+                        <label>3. Tingkat Ketajaman (Sharpen Intensity)</label>
+                        <input type="range" id="sharpRange" class="range-box" min="1" max="5" value="3" onchange="applyHDEffects()">
+                    </div>
+
+                    <button class="btn-action" onclick="exportPhotoHD()">
+                        📥 Export Foto HD (Dengan Hitungan % Persen)
+                    </button>
+
+                    <!-- PROGRESS BAR EXPORT -->
+                    <div id="exportProgressBox" class="progress-box">
+                        <div class="progress-bar-bg">
+                            <div id="exportProgressBar" class="progress-bar-fill"></div>
+                        </div>
+                        <div id="exportProgressText" class="progress-text">Proses Export: 0%</div>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 5px 0;">
+
+                    <div class="control-item">
+                        <label>4. Convert Foto Jadi URL Link (Catbox Tools)</label>
+                        <button class="btn-action btn-catbox" id="btnUploadCatbox" onclick="uploadToCatbox()">
+                            🚀 Upload Ke Catbox.moe (% Hitungan Persen)
+                        </button>
+                    </div>
+
+                    <!-- PROGRESS BAR CATBOX -->
+                    <div id="catboxProgressBox" class="progress-box">
+                        <div class="progress-bar-bg">
+                            <div id="catboxProgressBar" class="progress-bar-fill"></div>
+                        </div>
+                        <div id="catboxProgressText" class="progress-text">Mengunggah Catbox: 0%</div>
+                    </div>
+
+                    <div id="catboxOutput" class="link-output"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TENTANG RAYZE -->
+        <section class="section" id="about">
+            <div class="section-header">
+                <span class="section-tag">// PERKENALAN LENGKAP</span>
+                <h2 class="section-title">Siapa Rayze Development?</h2>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Nama gue **Rayze**, pendiri dari **Rayze Development**. Gue adalah seorang kreator digital dan pengembang yang sangat terdorong oleh kreativitas di dunia virtual, pemrograman, dan ekosistem visual. Fokus utama ada di dunia **Roblox Development** (pengembangan skrip Luau, peta interaktif, sistem UI), kodingan **Web Frontend**, hingga pembuatan proyek berbasis **Anime**.
+                    </p>
+                    <p>
+                        Bagi gue, mengombinasikan logika algoritma dengan estetika dunia anime adalah kombinasi yang sangat seru. Rayze Development selalu berusaha menciptakan karya yang bukan cuma keren secara visual, tapi juga responsif, stabil, dan menyenangkan saat dimainkan atau diakses oleh banyak orang.
+                    </p>
+                </div>
+
+                <div class="side-card">
+                    <h3>⚡ Profile Overview</h3>
+                    <ul class="info-list">
+                        <li><span>Nama Studio</span> <span>Rayze Development</span></li>
+                        <li><span>Roblox User</span> <span>RayzeSayonara</span></li>
+                        <li><span>TikTok</span> <span>@xxlrayze</span></li>
+                        <li><span>Telegram</span> <span>@RayzeAnime</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SALURAN RESMI -->
+        <section class="section" id="saluran">
+            <div class="section-header">
+                <span class="section-tag">// SALURAN RESMI</span>
+                <h2 class="section-title">Klik Untuk Masuk Ke Saluran Rayze</h2>
+            </div>
+
+            <div class="channels-grid">
+                <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" class="channel-card">
+                    <div class="channel-icon">📢</div>
+                    <div>
+                        <h4>Saluran WhatsApp</h4>
+                        <p style="font-size:0.85rem; color: var(--text-secondary);">Update penting & kabar proyek</p>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/6283152561195" target="_blank" class="channel-card">
+                    <div class="channel-icon">💬</div>
+                    <div>
+                        <h4>WhatsApp Personal</h4>
+                        <p style="font-size:0.85rem; color: var(--text-secondary);">+62 831-5256-**** (Privat)</p>
+                    </div>
+                </a>
+
+                <a href="https://t.me/RayzeAnime" target="_blank" class="channel-card">
+                    <div class="channel-icon">✈️</div>
+                    <div>
+                        <h4>Telegram Rayze</h4>
+                        <p style="font-size:0.85rem; color: var(--text-secondary);">@RayzeAnime</p>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/@xxlrayze" target="_blank" class="channel-card">
+                    <div class="channel-icon">🎵</div>
+                    <div>
+                        <h4>TikTok Official</h4>
+                        <p style="font-size:0.85rem; color: var(--text-secondary);">@xxlrayze</p>
+                    </div>
+                </a>
+
+                <a href="https://www.roblox.com/users/search?keyword=RayzeSayonara" target="_blank" class="channel-card">
+                    <div class="channel-icon">🎮</div>
+                    <div>
+                        <h4>Profil Roblox</h4>
+                        <p style="font-size:0.85rem; color: var(--text-secondary);">RayzeSayonara</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- FORM KIRIM EMAIL KE RAYZE -->
+        <section class="section" id="kirim-pesan">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">// FORMULIR KONTAK AMAN</span>
+                <h2 class="section-title">Kirim Pesan Langsung Ke Email Rayze</h2>
+            </div>
+
+            <div class="contact-box">
+                <form id="contactForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label>Nama Kamu</label>
+                        <input type="text" name="name" class="form-control" placeholder="Masukkan nama..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Kamu</label>
+                        <input type="email" name="email" class="form-control" placeholder="namakamu@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Isi Pesan</label>
+                        <textarea name="message" class="form-control" placeholder="Tuliskan pesan..." required></textarea>
+                    </div>
+                    <button type="submit" id="btnSubmitForm" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        📨 Kirim Pesan Ke Rayze Development
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 <strong>Rayze Development</strong>. Built with 120 FPS speed, 50+ Ultra HD Engine & Catbox Tools.</p>
+        </footer>
+    </div>
+
+    <!-- SCRIPT HD ENGINE, FIX CATBOX CORS & PROGRESS PERCENTAGE -->
+    <script>
+        const audio = document.getElementById('bg-music');
+        const musicStatus = document.getElementById('music-status');
+        const musicBtn = document.getElementById('music-btn');
+        let isPlaying = false;
+
+        window.addEventListener('load', () => {
+            initDefaultCanvas();
+            audio.play().then(() => {
+                isPlaying = true;
+                musicStatus.innerText = "Musik: Memutar 🎵";
+            }).catch(() => {
+                document.addEventListener('click', () => { audio.play(); isPlaying = true; musicStatus.innerText = "Musik: Memutar 🎵"; }, { once: true });
+                document.addEventListener('touchstart', () => { audio.play(); isPlaying = true; musicStatus.innerText = "Musik: Memutar 🎵"; }, { once: true });
+            });
+        });
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                musicStatus.innerText = "Musik: Mati 🔇";
+            } else {
+                audio.play();
+                isPlaying = true;
+                musicStatus.innerText = "Musik: Memutar 🎵";
+            }
+        }
+
+        /* 120 FPS SCROLL ENGINE */
+        let latestScrollY = 0;
+        let ticking = false;
+
+        function updatePosition() {
+            musicBtn.style.transform = `translate3d(0, ${latestScrollY * 0.12}px, 0)`;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            latestScrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(updatePosition);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        /* CANVAS HD ENGINE LOGIC */
+        const canvas = document.getElementById('hdCanvas');
+        const ctx = canvas.getContext('2d');
+        let rawImage = null;
+
+        function initDefaultCanvas() {
+            ctx.fillStyle = '#0a0d14';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function loadImage(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('placeholderText').style.display = 'none';
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    rawImage = new Image();
+                    rawImage.onload = function() {
+                        applyHDEffects();
+                    }
+                    rawImage.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function applyHDEffects() {
+            if (!rawImage) return;
+
+            canvas.width = rawImage.width;
+            canvas.height = rawImage.height;
+
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const preset = document.getElementById('hdPreset').value;
+            const sharpLevel = parseInt(document.getElementById('sharpRange').value);
+
+            let contrastVal = 100 + (sharpLevel * 8);
+            let saturateVal = 100 + (sharpLevel * 6);
+            let brightnessVal = 100;
+            let blurVal = 0;
+
+            if (preset.startsWith('p1') || preset.startsWith('p2')) {
+                contrastVal += 20; saturateVal += 15;
+            } else if (preset.startsWith('p3')) {
+                saturateVal += 30; contrastVal += 10;
+            } else if (preset.startsWith('p4')) {
+                blurVal = 0.3; brightnessVal += 3;
+            } else if (preset.startsWith('p5') || preset.startsWith('p11')) {
+                saturateVal += 45; contrastVal += 25;
+            } else if (preset.startsWith('p9')) {
+                saturateVal += 50; contrastVal += 30;
+            } else if (preset.startsWith('p23')) {
+                saturateVal = 0; contrastVal += 30;
+            } else {
+                contrastVal += 10; saturateVal += 10;
+            }
+
+            ctx.filter = `contrast(${contrastVal}%) saturate(${saturateVal}%) brightness(${brightnessVal}%) blur(${blurVal}px)`;
+            ctx.drawImage(rawImage, 0, 0);
+            ctx.filter = 'none';
+        }
+
+        /* FUNGSI EXPORT FOTO HD DENGAN DUKUNGAN PERSEN (%) */
+        function exportPhotoHD() {
+            if (!rawImage) {
+                alert("Silakan unggah foto terlebih dahulu!");
+                return;
+            }
+
+            const pBox = document.getElementById('exportProgressBox');
+            const pBar = document.getElementById('exportProgressBar');
+            const pText = document.getElementById('exportProgressText');
+
+            pBox.style.display = 'block';
+            let percent = 0;
+
+            const interval = setInterval(() => {
+                percent += 10;
+                pBar.style.width = percent + '%';
+                pText.innerText = `Proses Rendering Export: ${percent}%`;
+
+                if (percent >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        const link = document.createElement('a');
+                        link.download = 'Rayze_HD_Export.png';
+                        link.href = canvas.toDataURL('image/png', 1.0);
+                        link.click();
+                        pText.innerText = "✅ Export Selesai 100%!";
+                    }, 200);
+                }
+            }, 100);
+        }
+
+        /* FUNGSI FIX UPLOAD CATBOX MOE DENGAN CORS PROXY & MULTI FALLBACK SERVER */
+        function uploadToCatbox() {
+            const fileInput = document.getElementById('uploadInput');
+            const pBox = document.getElementById('catboxProgressBox');
+            const pBar = document.getElementById('catboxProgressBar');
+            const pText = document.getElementById('catboxProgressText');
+            const outputBox = document.getElementById('catboxOutput');
+            const btn = document.getElementById('btnUploadCatbox');
+
+            if (!fileInput.files[0]) {
+                alert("Pilih foto di langkah 1 terlebih dahulu!");
+                return;
+            }
+
+            pBox.style.display = 'block';
+            outputBox.style.display = 'none';
+            pBar.style.width = '0%';
+            pText.innerText = 'Mengunggah ke Server: 0%';
+            btn.disabled = true;
+
+            // Animasi Hitungan Persen Smooth 0% -> 100%
+            let progressPercent = 0;
+            const progressTimer = setInterval(() => {
+                if (progressPercent < 90) {
+                    progressPercent += Math.floor(Math.random() * 8) + 5;
+                    if (progressPercent > 90) progressPercent = 90;
+                    pBar.style.width = progressPercent + '%';
+                    pText.innerText = `Mengunggah ke Server: ${progressPercent}%`;
+                }
+            }, 150);
+
+            // Menyiapkan Data Upload
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Menggunakan Server High-Speed Direct Image Uploader (Anti-CORS Block)
+            fetch('https://tmpfiles.org/api/v1/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                clearInterval(progressTimer);
+                pBar.style.width = '100%';
+                pText.innerText = 'Mengunggah ke Server: 100%';
+
+                if (data && data.data && data.data.url) {
+                    // Merubah format URL agar menjadi direct link gambar
+                    const directUrl = data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+                    outputBox.style.display = 'block';
+                    outputBox.innerHTML = `✅ Link Foto Gambar Kamu Berhasil Dibuat:<br><a href="${directUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${directUrl}</a>`;
+                } else {
+                    fallbackCatboxUpload(file, progressTimer, pBar, pText, outputBox);
+                }
+                btn.disabled = false;
+            })
+            .catch(() => {
+                fallbackCatboxUpload(file, progressTimer, pBar, pText, outputBox);
+            });
+        }
+
+        /* FALLBACK SERVER CATBOX VIA CORS PROXY */
+        function fallbackCatboxUpload(file, timer, pBar, pText, outputBox) {
+            const formData = new FormData();
+            formData.append('reqtype', 'fileupload');
+            formData.append('fileToUpload', file);
+
+            // Proxy CORS khusus Catbox
+            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.text())
+            .then(url => {
+                clearInterval(timer);
+                pBar.style.width = '100%';
+                pText.innerText = 'Mengunggah ke Catbox: 100%';
+
+                if (url && url.startsWith('http')) {
+                    outputBox.style.display = 'block';
+                    outputBox.innerHTML = `✅ Link Foto Catbox Kamu:<br><a href="${url.trim()}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${url.trim()}</a>`;
+                } else {
+                    outputBox.style.display = 'block';
+                    outputBox.innerText = "❌ Gagal membuat link. Silakan coba lagi.";
+                }
+                document.getElementById('btnUploadCatbox').disabled = false;
+            })
+            .catch(() => {
+                clearInterval(timer);
+                pBar.style.width = '100%';
+                pText.innerText = 'Gagal Upload!';
+                outputBox.style.display = 'block';
+                outputBox.innerText = "❌ Terjadi masalah koneksi ke server upload. Silakan coba beberapa saat lagi.";
+                document.getElementById('btnUploadCatbox').disabled = false;
+            });
+        }
+
+        /* AJAX FORM SUBMIT */
+        function submitForm(event) {
+            event.preventDefault();
+            const btn = document.getElementById('btnSubmitForm');
+            const form = document.getElementById('contactForm');
+            btn.innerText = "Mengirim...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch("https://formspree.io/f/mjyvapwq", {
+                method: "POST",
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    alert("Pesan kamu berhasil terkirim ke Gmail Rayze!");
+                    form.reset();
+                } else {
+                    alert("Gagal mengirim pesan. Silakan coba lagi.");
+                }
+                btn.innerText = "📨 Kirim Pesan Ke Rayze Development";
+                btn.disabled = false;
+            }).catch(() => {
+                alert("Terjadi kesalahan koneksi.");
+                btn.innerText = "📨 Kirim Pesan Ke Rayze Development";
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+  </html>
