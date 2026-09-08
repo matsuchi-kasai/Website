@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | 150x Ultra HD Studio & Utilities</title>
+    <title>Rayze Development | Ultra HD Studio & Universal Suite</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -52,16 +52,15 @@
             color: inherit;
         }
 
-        /* BANNER WARNING TOP */
+        /* BANNER PERINGATAN TOP */
         .top-warning-banner {
             background: linear-gradient(90deg, #dc2626, #b91c1c, #dc2626);
             color: #ffffff;
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             text-align: center;
             padding: 10px 15px;
             letter-spacing: 0.5px;
-            box-shadow: 0 2px 10px rgba(220, 38, 38, 0.5);
             position: relative;
             z-index: 10001;
             text-transform: uppercase;
@@ -447,6 +446,15 @@
             width: 100%;
         }
 
+        /* TIKTOK DOWNLOADER BOX */
+        .tiktok-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 14px;
+            margin-top: 10px;
+        }
+
         /* ABOUT & CHANNELS */
         .about-content {
             display: grid;
@@ -572,15 +580,13 @@
         ⚠️ PERHATIAN: KALAU NGELEG GA BISA DI SENTUH, TUNGGU AJA ITU LAGI PROSES YA JADI SABAR AJA
     </div>
 
-    <!-- AUDIO PLAYER -->
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://files.catbox.moe/nfjl9h.mp3" type="audio/mpeg">
-    </audio>
+    <!-- AUDIO PLAYER WITH AUTOMATIC PLAYLIST -->
+    <audio id="bg-music" preload="auto" onended="playNextTrack()"></audio>
 
     <!-- FLOATING MUSIC PLAYER -->
     <div class="music-player" id="music-btn" onclick="toggleMusic()">
         <span class="music-icon" id="music-icon">🎵</span>
-        <span class="music-text" id="music-status">Music: Playing 🎵</span>
+        <span class="music-text" id="music-status">Music: Playing Track #1 🎵</span>
     </div>
 
     <!-- NAVBAR -->
@@ -589,7 +595,8 @@
             <a href="#home" class="logo">RAYZE DEVELOPMENT</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#hd-tools">150x HD Studio</a></li>
+                <li><a href="#hd-tools">100x HD Studio</a></li>
+                <li><a href="#tiktok-tools">TikTok Downloader</a></li>
                 <li><a href="#about">About Rayze</a></li>
                 <li><a href="#channels">Channels</a></li>
                 <li><a href="#send-email">Contact Email</a></li>
@@ -601,24 +608,24 @@
         <!-- HERO / HOME SECTION -->
         <section class="hero" id="home">
             <div class="status-badge">
-                <span class="status-dot"></span> 150x Ultra HD Processing & Rayze Suite
+                <span class="status-dot"></span> 100x Ultra HD Engine & TikTok Utilities
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Official digital engine for 150x extreme image sharpening, 100 presets, 15K resolution scaling, micro watermark, and Catbox.moe direct link tools.
+                Official digital engine for 100x image sharpening, 15K resolution scaling (no-crop bug fix), micro watermark, TikTok link to MP4 video downloader, and Catbox.moe tools.
             </p>
             <div class="hero-buttons">
-                <a href="#hd-tools" class="btn btn-primary">⚡ Open 150x HD Studio</a>
-                <a href="#channels" class="btn btn-secondary">🚀 Community Channels</a>
+                <a href="#hd-tools" class="btn btn-primary">⚡ Open 100x HD Studio</a>
+                <a href="#tiktok-tools" class="btn btn-secondary">🎵 TikTok Downloader</a>
             </div>
         </section>
 
         <!-- ULTRA HD ENHANCER & MULTI-TOOL STUDIO -->
         <section class="section" id="hd-tools">
             <div class="section-header">
-                <span class="section-tag">// 150X ULTRA HD ENGINE & 100 PRESETS</span>
-                <h2 class="section-title">150x Ultra HD Studio & Catbox Uploader</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process your images with 150x extreme sharpness, 100 HD presets, 15K scaling without black screen bug, micro Rayze watermark, and direct Catbox links!</p>
+                <span class="section-tag">// 100X ULTRA HD ENGINE & 100 PRESETS</span>
+                <h2 class="section-title">100x Ultra HD Studio & Catbox Uploader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process your images with 100x extreme sharpness, 15K scaling without image cropping/black screen bugs, micro Rayze watermark, and direct Catbox links!</p>
             </div>
 
             <div class="tools-grid">
@@ -651,12 +658,12 @@
                     <!-- STEPPER SLIDER CONTROLS -->
                     <div class="control-item">
                         <label>
-                            <span>3. Sharpen Intensity Boost (1x - 150x)</span>
+                            <span>3. Sharpen Intensity Boost (1x - 100x)</span>
                             <span id="valSharp">10x</span>
                         </label>
                         <div class="slider-plus-minus">
                             <button class="btn-step" onclick="adjustSlider('sharpRange', -5)">-</button>
-                            <input type="range" id="sharpRange" class="range-box" min="1" max="150" value="10" oninput="updateRangeLabels(); applyHDEffects();">
+                            <input type="range" id="sharpRange" class="range-box" min="1" max="100" value="10" oninput="updateRangeLabels(); applyHDEffects();">
                             <button class="btn-step" onclick="adjustSlider('sharpRange', 5)">+</button>
                         </div>
                     </div>
@@ -698,7 +705,7 @@
                     </div>
 
                     <div class="control-item">
-                        <label>7. Output Resolution Scale (Smooth Scaling)</label>
+                        <label>7. Output Resolution Scale (No-Crop Fix)</label>
                         <select id="scaleOption" class="input-box" onchange="applyHDEffects()">
                             <option value="1">100% Original Resolution</option>
                             <option value="1.5">150% HD Upscale</option>
@@ -724,7 +731,7 @@
                     </div>
 
                     <button class="btn-action" onclick="exportPhotoHD()">
-                        📥 Export 150x Ultra HD Image (Progress %)
+                        📥 Export 100x Ultra HD Image (Progress %)
                     </button>
 
                     <!-- PROGRESS BAR EXPORT -->
@@ -754,6 +761,27 @@
 
                     <div id="catboxOutput" class="link-output"></div>
                 </div>
+            </div>
+        </section>
+
+        <!-- TIKTOK VIDEO DOWNLOADER MODULE -->
+        <section class="section" id="tiktok-tools">
+            <div class="section-header">
+                <span class="section-tag">// TIKTOK MEDIA UTILITY</span>
+                <h2 class="section-title">TikTok Link To Video Converter</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Convert and download TikTok video links directly to High Quality MP4 Video without watermark!</p>
+            </div>
+
+            <div class="tiktok-box">
+                <div class="control-item">
+                    <label>Paste TikTok Video URL Link Below:</label>
+                    <input type="text" id="tiktokUrlInput" class="input-box" placeholder="https://www.tiktok.com/@user/video/123456789... or https://vt.tiktok.com/..." style="padding: 14px;">
+                </div>
+                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="convertTikTokLink()">
+                    🎵 Convert & Download TikTok Video MP4
+                </button>
+
+                <div id="tiktokResultBox" class="link-output" style="margin-top: 15px;"></div>
             </div>
         </section>
 
@@ -865,28 +893,60 @@
         </section>
 
         <footer>
-            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, 150x Ultra HD Engine & Catbox Tools.</p>
+            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, 100x Ultra HD Engine & Media Tools.</p>
         </footer>
     </div>
 
-    <!-- JAVASCRIPT HD ENGINE & OPTIMIZED NO-BLACK-SCREEN LOGIC -->
+    <!-- JAVASCRIPT HD ENGINE, AUDIO PLAYLIST & TIKTOK DOWNLOADER -->
     <script>
+        /* 8 TRACK MUSIC PLAYLIST ENGINE */
+        const musicPlaylist = [
+            "https://files.catbox.moe/2qmoer.mp3",
+            "https://files.catbox.moe/dr8iiu.mp3",
+            "https://files.catbox.moe/ibo83k.mp3",
+            "https://files.catbox.moe/67fynb.mp3",
+            "https://files.catbox.moe/gr480o.mp3",
+            "https://files.catbox.moe/8mjg52.mp3",
+            "https://files.catbox.moe/5zf2zk.mp3",
+            "https://files.catbox.moe/cnh3k0.mp3"
+        ];
+        let currentTrackIndex = 0;
         const audio = document.getElementById('bg-music');
         const musicStatus = document.getElementById('music-status');
-        const musicBtn = document.getElementById('music-btn');
         let isPlaying = false;
 
         window.addEventListener('load', () => {
             initDefaultCanvas();
             generate100Presets();
+            loadTrack(currentTrackIndex);
+            
+            // Auto Play trigger
             audio.play().then(() => {
                 isPlaying = true;
-                musicStatus.innerText = "Music: Playing 🎵";
+                musicStatus.innerText = `Music: Playing Track #${currentTrackIndex + 1} 🎵`;
             }).catch(() => {
-                document.addEventListener('click', () => { audio.play(); isPlaying = true; musicStatus.innerText = "Music: Playing 🎵"; }, { once: true });
-                document.addEventListener('touchstart', () => { audio.play(); isPlaying = true; musicStatus.innerText = "Music: Playing 🎵"; }, { once: true });
+                document.addEventListener('click', () => { if(!isPlaying) playMusic(); }, { once: true });
+                document.addEventListener('touchstart', () => { if(!isPlaying) playMusic(); }, { once: true });
             });
         });
+
+        function loadTrack(index) {
+            audio.src = musicPlaylist[index];
+            audio.load();
+        }
+
+        function playMusic() {
+            audio.play().then(() => {
+                isPlaying = true;
+                musicStatus.innerText = `Music: Playing Track #${currentTrackIndex + 1} 🎵`;
+            }).catch(() => {});
+        }
+
+        function playNextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % musicPlaylist.length;
+            loadTrack(currentTrackIndex);
+            playMusic();
+        }
 
         function toggleMusic() {
             if (isPlaying) {
@@ -894,9 +954,7 @@
                 isPlaying = false;
                 musicStatus.innerText = "Music: Muted 🔇";
             } else {
-                audio.play();
-                isPlaying = true;
-                musicStatus.innerText = "Music: Playing 🎵";
+                playMusic();
             }
         }
 
@@ -904,7 +962,7 @@
         function generate100Presets() {
             const select = document.getElementById('hdPreset');
             const categories = [
-                '✨ 150x Ultra HD Extreme', '🚀 15K Supreme Upscale Mode', '🎨 Anime Line & Sketch Sharpener',
+                '✨ 100x Ultra HD Extreme', '🚀 15K Supreme Upscale Mode', '🎨 Anime Line & Sketch Sharpener',
                 '🌸 Soft Portrait Skin Smooth', '🔥 HDR Extreme Vibrant Tone', '🌙 Dark Noise Elimination',
                 '💎 Crystal Clear Lens Focus', '📸 Studio Pro Portrait Grade', '🌆 Cyberpunk Neon Glow',
                 '🎬 Cinema Movie Matte Tone'
@@ -937,7 +995,7 @@
             document.getElementById('valSat').innerText = document.getElementById('satRange').value + '%';
         }
 
-        /* CANVAS ENGINE (SAFE MEMORY BUFFER TO PREVENT BLACK SCREEN) */
+        /* CANVAS ENGINE (FIXED NO-CROP NO-BLACK SCREEN) */
         const canvas = document.getElementById('hdCanvas');
         const ctx = canvas.getContext('2d');
         let rawImage = null;
@@ -981,11 +1039,14 @@
             const scaleVal = parseFloat(document.getElementById('scaleOption').value);
             const isRotated90 = (rotationAngle / 90) % 2 !== 0;
 
-            // Safe Maximum Dimensions to prevent black screen (4096px limit per side)
-            let calcW = (isRotated90 ? rawImage.height : rawImage.width) * scaleVal;
-            let calcH = (isRotated90 ? rawImage.width : rawImage.height) * scaleVal;
+            let origW = isRotated90 ? rawImage.height : rawImage.width;
+            let origH = isRotated90 ? rawImage.width : rawImage.height;
 
-            const maxDim = 4096;
+            let calcW = origW * scaleVal;
+            let calcH = origH * scaleVal;
+
+            // Safe Maximum Dimensions to prevent black screen & maintain full aspect ratio without cropping
+            const maxDim = 3840;
             if (calcW > maxDim || calcH > maxDim) {
                 const ratio = Math.min(maxDim / calcW, maxDim / calcH);
                 calcW *= ratio;
@@ -1007,8 +1068,8 @@
 
             const sharpLevel = parseInt(document.getElementById('sharpRange').value);
             const brightVal = parseInt(document.getElementById('brightRange').value);
-            let contrastVal = parseInt(document.getElementById('contrastRange').value) + (sharpLevel * 0.8);
-            let satVal = parseInt(document.getElementById('satRange').value) + (sharpLevel * 0.5);
+            let contrastVal = parseInt(document.getElementById('contrastRange').value) + (sharpLevel * 0.5);
+            let satVal = parseInt(document.getElementById('satRange').value) + (sharpLevel * 0.3);
 
             let filterStr = `contrast(${contrastVal}%) saturate(${satVal}%) brightness(${brightVal}%)`;
             if (isInverted) filterStr += ' invert(100%)';
@@ -1023,7 +1084,7 @@
             ctx.restore();
             ctx.filter = 'none';
 
-            // Micro Rayze Watermark (Sangat Kecil & Estetik)
+            // Micro Rayze Watermark
             if (showWatermark) {
                 ctx.save();
                 const fontSize = Math.max(8, Math.round(canvas.width * 0.015));
@@ -1075,16 +1136,16 @@
                     clearInterval(interval);
                     setTimeout(() => {
                         const link = document.createElement('a');
-                        link.download = 'Rayze_150x_Ultra_HD.png';
+                        link.download = 'Rayze_100x_Ultra_HD.png';
                         link.href = canvas.toDataURL('image/png', 1.0);
                         link.click();
                         pText.innerText = "✅ Export Finished 100%!";
                     }, 200);
                 }
-            }, 60);
+            }, 50);
         }
 
-        /* UPLOAD FILTERED IMAGE TO CATBOX NORMAL */
+        /* CATBOX NORMAL DIRECT UPLOADER */
         function uploadToCatboxNormal() {
             if (!rawImage) { alert("Please select an image file first!"); return; }
 
@@ -1097,7 +1158,7 @@
             pBox.style.display = 'block';
             outputBox.style.display = 'none';
             pBar.style.width = '0%';
-            pText.innerText = 'Uploading Filtered HD Image to Catbox: 0%';
+            pText.innerText = 'Uploading Filtered HD Image: 0%';
             btn.disabled = true;
 
             let progressPercent = 0;
@@ -1106,30 +1167,28 @@
                     progressPercent += Math.floor(Math.random() * 8) + 6;
                     if (progressPercent > 90) progressPercent = 90;
                     pBar.style.width = progressPercent + '%';
-                    pText.innerText = `Uploading Filtered HD Image to Catbox: ${progressPercent}%`;
+                    pText.innerText = `Uploading Filtered HD Image: ${progressPercent}%`;
                 }
-            }, 100);
+            }, 80);
 
-            // Convert processed canvas image to blob file
             canvas.toBlob(function(blob) {
                 const formData = new FormData();
-                formData.append('reqtype', 'fileupload');
-                formData.append('fileToUpload', blob, 'Rayze_Filtered_HD.png');
+                formData.append('file', blob, 'Rayze_Filtered_HD.png');
 
-                fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), { 
+                fetch('https://tmpfiles.org/api/v1/upload', { 
                     method: 'POST', 
                     body: formData 
                 })
-                .then(res => res.text())
-                .then(url => {
+                .then(res => res.json())
+                .then(data => {
                     clearInterval(progressTimer);
                     pBar.style.width = '100%';
-                    pText.innerText = 'Uploading to Catbox.moe: 100%';
+                    pText.innerText = 'Uploading Finished: 100%';
 
-                    if (url && url.trim().startsWith('http')) {
-                        const cleanUrl = url.trim();
+                    if (data && data.data && data.data.url) {
+                        const directUrl = data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
                         outputBox.style.display = 'block';
-                        outputBox.innerHTML = `✅ Direct Catbox Link (Filtered HD Image):<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${cleanUrl}</a>`;
+                        outputBox.innerHTML = `✅ Direct Image URL Link Created:<br><a href="${directUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${directUrl}</a>`;
                     } else {
                         outputBox.style.display = 'block';
                         outputBox.innerText = "❌ Upload failed. Please try again.";
@@ -1141,10 +1200,55 @@
                     pBar.style.width = '100%';
                     pText.innerText = 'Upload Error!';
                     outputBox.style.display = 'block';
-                    outputBox.innerText = "❌ Network error connecting to Catbox server.";
+                    outputBox.innerText = "❌ Network error connecting to upload server.";
                     btn.disabled = false;
                 });
             }, 'image/png', 1.0);
+        }
+
+        /* TIKTOK DOWNLOADER LOGIC */
+        function convertTikTokLink() {
+            const input = document.getElementById('tiktokUrlInput').value.trim();
+            const outputBox = document.getElementById('tiktokResultBox');
+
+            if (!input) {
+                alert("Please paste a valid TikTok link first!");
+                return;
+            }
+
+            outputBox.style.display = 'block';
+            outputBox.innerText = "⏳ Processing TikTok Video Link...";
+
+            fetch(`https://api.tiklydown.eu.org/api/download?url=${encodeURIComponent(input)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.video && data.video.noWatermark) {
+                    outputBox.innerHTML = `✅ TikTok Video Ready to Download:<br><br>
+                    <a href="${data.video.noWatermark}" target="_blank" class="btn btn-primary" style="font-size:0.85rem;">📥 Download MP4 (No Watermark)</a>`;
+                } else {
+                    fallbackTikTokApi(input, outputBox);
+                }
+            })
+            .catch(() => {
+                fallbackTikTokApi(input, outputBox);
+            });
+        }
+
+        function fallbackTikTokApi(url, outputBox) {
+            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.data && data.data.play) {
+                    const videoUrl = data.data.play;
+                    outputBox.innerHTML = `✅ TikTok Video Ready:<br><br>
+                    <a href="${videoUrl}" target="_blank" class="btn btn-primary" style="font-size:0.85rem;">📥 Download MP4 Video</a>`;
+                } else {
+                    outputBox.innerText = "❌ Could not retrieve TikTok video. Please check the URL link and try again.";
+                }
+            })
+            .catch(() => {
+                outputBox.innerText = "❌ Network error. Please try again later.";
+            });
         }
 
         /* AJAX FORM SUBMIT */
