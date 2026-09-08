@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | 15K Ultra HD Studio & Universal Suite</title>
+    <title>Rayze Development | Ultra HD Studio & Utilities</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -44,9 +44,6 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
-            
-            /* 120 FPS NO-LAG ULTRA SMOOTH PERFORMANCE */
-            transform: translate3d(0, 0, 0);
             -webkit-font-smoothing: antialiased;
         }
 
@@ -90,7 +87,7 @@
             color: var(--accent-cyan);
         }
 
-        /* CONTAINER & NAVBAR COMPACT */
+        /* CONTAINER & NAVBAR */
         .container {
             width: 92%;
             max-width: 1200px;
@@ -242,7 +239,7 @@
             font-weight: 700;
         }
 
-        /* HD TOOLS & COMPACT STUDIO GRID */
+        /* HD TOOLS STUDIO GRID */
         .tools-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -271,7 +268,6 @@
             height: auto;
             border-radius: 6px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            cursor: crosshair;
         }
 
         .controls-container {
@@ -306,7 +302,7 @@
             outline: none;
         }
 
-        /* PLUS MINUS CONTROL SLIDER ROW */
+        /* STEPPER SLIDER CONTROLS */
         .slider-plus-minus {
             display: flex;
             align-items: center;
@@ -574,7 +570,7 @@
             <a href="#home" class="logo">RAYZE DEVELOPMENT</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#hd-tools">15K Studio & 50+ Tools</a></li>
+                <li><a href="#hd-tools">HD Studio Tools</a></li>
                 <li><a href="#about">About Rayze</a></li>
                 <li><a href="#channels">Channels</a></li>
                 <li><a href="#send-email">Contact Email</a></li>
@@ -586,14 +582,14 @@
         <!-- HERO / HOME SECTION -->
         <section class="hero" id="home">
             <div class="status-badge">
-                <span class="status-dot"></span> Building Web Ecosystems & Media Engines
+                <span class="status-dot"></span> Web Ecosystems & Media Processing Engine
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Official digital hub for high-performance web tools, 15K Ultra HD image processing, 300 HD presets, precision controls, and direct Rayze Catbox URL generator!
+                High-performance digital tools, Ultra HD image processing, live filters, precision controls, and Catbox.moe image link uploader.
             </p>
             <div class="hero-buttons">
-                <a href="#hd-tools" class="btn btn-primary">⚡ Open 15K HD Studio</a>
+                <a href="#hd-tools" class="btn btn-primary">⚡ Open HD Studio Tools</a>
                 <a href="#channels" class="btn btn-secondary">🚀 Community Channels</a>
             </div>
         </section>
@@ -601,19 +597,19 @@
         <!-- ULTRA HD ENHANCER & MULTI-TOOL STUDIO -->
         <section class="section" id="hd-tools">
             <div class="section-header">
-                <span class="section-tag">// 15K ULTRA HD ENGINE & 50+ ADVANCED TOOLS</span>
-                <h2 class="section-title">15K Ultra HD Studio & Rayze Catbox Tools</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process images with 15K Ultra HD resolution, 300 Presets, +/- step sliders, watermark creator, image compressor, and Rayze Catbox link generation!</p>
+                <span class="section-tag">// ULTRA HD ENGINE & MEDIA TOOLS</span>
+                <h2 class="section-title">Ultra HD Studio & Catbox Uploader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process your images with crisp HD clarity, fine-tune sliders with +/- step buttons, apply mini Rayze watermark, and upload to Catbox.moe!</p>
             </div>
 
             <div class="tools-grid">
                 <!-- PREVIEW CANVAS HD -->
                 <div class="preview-container">
                     <canvas id="hdCanvas" width="800" height="800"></canvas>
-                    <p id="placeholderText" style="color: var(--text-secondary); margin-top: 8px; font-size:0.85rem;">Select an image on the right panel to begin 15K HD processing.</p>
+                    <p id="placeholderText" style="color: var(--text-secondary); margin-top: 8px; font-size:0.85rem;">Select an image file on the right panel to start.</p>
                     
                     <div id="fileInfoPanel" class="info-panel" style="display:none;">
-                        <strong>📷 File Analytics & Metadata:</strong><br>
+                        <strong>📷 File Analytics & Information:</strong><br>
                         <span id="infoFileName">Name: -</span> | <span id="infoFileSize">Size: -</span><br>
                         <span id="infoFileType">Type: -</span> | <span id="infoFileDim">Dimension: -</span>
                     </div>
@@ -627,106 +623,93 @@
                     </div>
 
                     <div class="control-item">
-                        <label>2. Ultra HD Enhancer Preset Mode (300 Presets)</label>
+                        <label>2. Ultra HD Enhancer Preset</label>
                         <select id="hdPreset" class="input-box" onchange="applyHDEffects()">
-                            <!-- DYNAMICALLY GENERATED 300 HD PRESETS -->
+                            <option value="none">Normal (Original Image)</option>
+                            <option value="ultra_sharp">✨ Ultra HD Sharp Clarity</option>
+                            <option value="anime_line">🎨 Anime & Illustration Line Sharpener</option>
+                            <option value="hdr_vibrant">🔥 HDR High Vibrant Color</option>
+                            <option value="soft_portrait">🌸 Soft Portrait Smooth Skin</option>
+                            <option value="cyberpunk">🌆 Cyberpunk Neon Glow</option>
+                            <option value="bw_contrast">📷 Monochromatic B&W Contrast</option>
                         </select>
                     </div>
 
                     <!-- STEPPER SLIDER CONTROLS (+ AND - BUTTONS) -->
                     <div class="control-item">
                         <label>
-                            <span>3. Sharpen Intensity Boost</span>
-                            <span id="valSharp">5x</span>
+                            <span>3. Sharpen & Line Enhancement</span>
+                            <span id="valSharp">1x</span>
                         </label>
                         <div class="slider-plus-minus">
                             <button class="btn-step" onclick="adjustSlider('sharpRange', -1)">-</button>
-                            <input type="range" id="sharpRange" class="range-box" min="1" max="50" value="5" oninput="updateRangeLabels(); applyHDEffects();">
+                            <input type="range" id="sharpRange" class="range-box" min="1" max="15" value="1" oninput="updateRangeLabels(); applyHDEffects();">
                             <button class="btn-step" onclick="adjustSlider('sharpRange', 1)">+</button>
                         </div>
                     </div>
 
                     <div class="control-item">
                         <label>
-                            <span>4. Ultra HD Line & Edge Thickness</span>
-                            <span id="valThick">5px</span>
-                        </label>
-                        <div class="slider-plus-minus">
-                            <button class="btn-step" onclick="adjustSlider('thickRange', -1)">-</button>
-                            <input type="range" id="thickRange" class="range-box" min="0" max="30" value="5" oninput="updateRangeLabels(); applyHDEffects();">
-                            <button class="btn-step" onclick="adjustSlider('thickRange', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <div class="control-item">
-                        <label>
-                            <span>5. Brightness Adjust</span>
+                            <span>4. Brightness Level</span>
                             <span id="valBright">100%</span>
                         </label>
                         <div class="slider-plus-minus">
                             <button class="btn-step" onclick="adjustSlider('brightRange', -5)">-</button>
-                            <input type="range" id="brightRange" class="range-box" min="20" max="250" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                            <input type="range" id="brightRange" class="range-box" min="30" max="200" value="100" oninput="updateRangeLabels(); applyHDEffects();">
                             <button class="btn-step" onclick="adjustSlider('brightRange', 5)">+</button>
                         </div>
                     </div>
 
                     <div class="control-item">
                         <label>
-                            <span>6. Contrast Adjust</span>
+                            <span>5. Contrast Level</span>
                             <span id="valContrast">100%</span>
                         </label>
                         <div class="slider-plus-minus">
                             <button class="btn-step" onclick="adjustSlider('contrastRange', -5)">-</button>
-                            <input type="range" id="contrastRange" class="range-box" min="20" max="250" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                            <input type="range" id="contrastRange" class="range-box" min="30" max="200" value="100" oninput="updateRangeLabels(); applyHDEffects();">
                             <button class="btn-step" onclick="adjustSlider('contrastRange', 5)">+</button>
                         </div>
                     </div>
 
                     <div class="control-item">
                         <label>
-                            <span>7. Saturation Color Boost</span>
+                            <span>6. Saturation Level</span>
                             <span id="valSat">100%</span>
                         </label>
                         <div class="slider-plus-minus">
                             <button class="btn-step" onclick="adjustSlider('satRange', -5)">-</button>
-                            <input type="range" id="satRange" class="range-box" min="0" max="300" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                            <input type="range" id="satRange" class="range-box" min="0" max="250" value="100" oninput="updateRangeLabels(); applyHDEffects();">
                             <button class="btn-step" onclick="adjustSlider('satRange', 5)">+</button>
                         </div>
                     </div>
 
                     <div class="control-item">
-                        <label>8. Canvas Upscale Resolution Scaler</label>
+                        <label>7. Output Resolution Scale</label>
                         <select id="scaleOption" class="input-box" onchange="applyHDEffects()">
-                            <option value="1">Original Resolution</option>
-                            <option value="1.5">1.5x HD Upscale</option>
-                            <option value="2">2K Ultra HD Upscale</option>
-                            <option value="3">4K Cinema HD Upscale</option>
-                            <option value="4">8K Master HD Upscale</option>
-                            <option value="6">12K Extreme Ultra HD</option>
-                            <option value="8">15K Supreme Ultra HD Resolution</option>
+                            <option value="1">100% Original Resolution (Fastest)</option>
+                            <option value="1.5">150% HD Upscale</option>
+                            <option value="2">200% 2K Ultra HD Upscale</option>
+                            <option value="3">300% 4K Ultra HD Upscale</option>
                         </select>
                     </div>
 
-                    <!-- 50+ NEW FUNCTIONAL TOOLS PANEL -->
+                    <!-- UTILITY TOOLS PANEL -->
                     <div class="control-item">
-                        <label>9. 50+ Instant Utility Tools & FX Filters</label>
+                        <label>8. Quick Utility Tools</label>
                         <div class="btn-grid">
-                            <button class="btn-small" onclick="applyWatermark()">🏷️ Add Rayze Watermark</button>
-                            <button class="btn-small" onclick="cropAspect(1, 1)">1:1 Square Crop</button>
-                            <button class="btn-small" onclick="cropAspect(16, 9)">16:9 Cinema</button>
-                            <button class="btn-small" onclick="cropAspect(9, 16)">9:16 Story</button>
+                            <button class="btn-small" onclick="toggleWatermark()">🏷️ Rayze Watermark</button>
                             <button class="btn-small" onclick="rotateImage(90)">🔄 Rotate 90°</button>
                             <button class="btn-small" onclick="flipHorizontal()">🪞 Flip Horiz</button>
                             <button class="btn-small" onclick="flipVertical()">🔃 Flip Vert</button>
                             <button class="btn-small" onclick="invertColors()">🌓 Invert FX</button>
                             <button class="btn-small" onclick="toggleGrayscale()">📷 Grayscale</button>
-                            <button class="btn-small" onclick="applyVignette()">🌑 Vignette FX</button>
                             <button class="btn-small" onclick="resetTransforms()">↺ Reset All</button>
                         </div>
                     </div>
 
                     <button class="btn-action" onclick="exportPhotoHD()">
-                        📥 Export 15K Ultra HD Image (Progress %)
+                        📥 Export Ultra HD Image (Progress %)
                     </button>
 
                     <!-- PROGRESS BAR EXPORT -->
@@ -740,9 +723,9 @@
                     <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 4px 0;">
 
                     <div class="control-item">
-                        <label>10. Convert To Rayze Direct URL Link</label>
-                        <button class="btn-action btn-catbox" id="btnUploadCatbox" onclick="uploadToRayzeCatbox()">
-                            🚀 Upload & Create Rayze Link (% Progress)
+                        <label>9. Convert Image to Catbox.moe Link</label>
+                        <button class="btn-action btn-catbox" id="btnUploadCatbox" onclick="uploadToCatboxNormal()">
+                            🚀 Upload to Catbox.moe (% Progress)
                         </button>
                     </div>
 
@@ -751,7 +734,7 @@
                         <div class="progress-bar-bg">
                             <div id="catboxProgressBar" class="progress-bar-fill"></div>
                         </div>
-                        <div id="catboxProgressText" class="progress-text">Uploading to Server: 0%</div>
+                        <div id="catboxProgressText" class="progress-text">Uploading to Catbox: 0%</div>
                     </div>
 
                     <div id="catboxOutput" class="link-output"></div>
@@ -867,11 +850,11 @@
         </section>
 
         <footer>
-            <p>© 2026 <strong>Rayze Development</strong>. Built with 120 FPS speed, 15K Ultra HD Engine & Rayze Tools.</p>
+            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, Ultra HD Engine & Catbox Tools.</p>
         </footer>
     </div>
 
-    <!-- JAVASCRIPT HD ENGINE & OPTIMIZED NO-LAG ENGINE -->
+    <!-- JAVASCRIPT HD ENGINE & OPTIMIZED ENGINE -->
     <script>
         const audio = document.getElementById('bg-music');
         const musicStatus = document.getElementById('music-status');
@@ -880,7 +863,6 @@
 
         window.addEventListener('load', () => {
             initDefaultCanvas();
-            generate300Presets();
             audio.play().then(() => {
                 isPlaying = true;
                 musicStatus.innerText = "Music: Playing 🎵";
@@ -902,25 +884,6 @@
             }
         }
 
-        /* 300 PRESETS DYNAMIC ENGINE */
-        function generate300Presets() {
-            const select = document.getElementById('hdPreset');
-            const categories = [
-                '✨ 15K Supreme Ultra HD', '🚀 8K Cinema Master Sharp', '🎨 Anime Line Clarity Boost',
-                '🌸 Soft Skin Face Retouch', '🔥 Extreme HDR Vibrant Tone', '🌙 Dark Noise Removal Engine',
-                '💎 Crystal Clear Sharp Lens', '📸 Studio Portrait Pro Lighting', '🌆 Cyberpunk Neon Glow',
-                '🎬 Movie Color Grading FX', '🌈 Color Saturation Booster', '🖤 High Dynamic Contrast'
-            ];
-
-            let html = '';
-            for (let i = 1; i <= 300; i++) {
-                const cat = categories[(i - 1) % categories.length];
-                const num = i < 10 ? '00' + i : (i < 100 ? '0' + i : i);
-                html += `<option value="preset_${i}">${num}. ${cat} - Style Variant #${i}</option>`;
-            }
-            select.innerHTML = html;
-        }
-
         /* STEPPER CONTROL BUTTONS (+ and -) */
         function adjustSlider(id, step) {
             const slider = document.getElementById(id);
@@ -934,13 +897,12 @@
 
         function updateRangeLabels() {
             document.getElementById('valSharp').innerText = document.getElementById('sharpRange').value + 'x';
-            document.getElementById('valThick').innerText = document.getElementById('thickRange').value + 'px';
             document.getElementById('valBright').innerText = document.getElementById('brightRange').value + '%';
             document.getElementById('valContrast').innerText = document.getElementById('contrastRange').value + '%';
             document.getElementById('valSat').innerText = document.getElementById('satRange').value + '%';
         }
 
-        /* CANVAS ENGINE & NO-LAG HIGH PERFORMANCE RENDER */
+        /* CANVAS ENGINE & NO-LAG RENDER LOGIC */
         const canvas = document.getElementById('hdCanvas');
         const ctx = canvas.getContext('2d');
         let rawImage = null;
@@ -949,6 +911,7 @@
         let isFlippedV = false;
         let isInverted = false;
         let isGrayscale = false;
+        let showWatermark = false;
 
         function initDefaultCanvas() {
             ctx.fillStyle = '#0a0d14';
@@ -1000,10 +963,24 @@
             ctx.scale(isFlippedH ? -1 : 1, isFlippedV ? -1 : 1);
 
             const sharpLevel = parseInt(document.getElementById('sharpRange').value);
-            const thickLevel = parseInt(document.getElementById('thickRange').value);
             const brightVal = parseInt(document.getElementById('brightRange').value);
-            const contrastVal = parseInt(document.getElementById('contrastRange').value) + (sharpLevel * 0.4);
-            const satVal = parseInt(document.getElementById('satRange').value) + (sharpLevel * 0.3);
+            let contrastVal = parseInt(document.getElementById('contrastRange').value);
+            let satVal = parseInt(document.getElementById('satRange').value);
+            const preset = document.getElementById('hdPreset').value;
+
+            // Apply Presets Effects
+            if (preset === 'ultra_sharp') { contrastVal += 25; satVal += 15; }
+            else if (preset === 'anime_line') { contrastVal += 35; satVal += 20; }
+            else if (preset === 'hdr_vibrant') { satVal += 45; contrastVal += 20; }
+            else if (preset === 'soft_portrait') { contrastVal += 5; }
+            else if (preset === 'cyberpunk') { satVal += 50; contrastVal += 30; }
+            else if (preset === 'bw_contrast') { satVal = 0; contrastVal += 30; }
+
+            // Sharpness enhancement boost mapping
+            if (sharpLevel > 1) {
+                contrastVal += (sharpLevel * 3);
+                satVal += (sharpLevel * 2);
+            }
 
             let filterStr = `contrast(${contrastVal}%) saturate(${satVal}%) brightness(${brightVal}%)`;
             if (isInverted) filterStr += ' invert(100%)';
@@ -1015,62 +992,26 @@
             const drawH = Math.round(rawImage.height * scaleVal);
             ctx.drawImage(rawImage, -drawW / 2, -drawH / 2, drawW, drawH);
 
-            if (thickLevel > 0) {
-                ctx.filter = `brightness(130%) contrast(180%) blur(${thickLevel * 0.2}px)`;
-                ctx.globalAlpha = Math.min(0.6, thickLevel * 0.03);
-                ctx.drawImage(rawImage, -drawW / 2, -drawH / 2, drawW, drawH);
-                ctx.globalAlpha = 1.0;
-            }
-
             ctx.restore();
             ctx.filter = 'none';
-        }
 
-        /* 50+ UTILITY TOOLS FUNCTIONS */
-        function applyWatermark() {
-            if (!rawImage) return;
-            ctx.save();
-            ctx.font = 'bold 24px Plus Jakarta Sans';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-            ctx.shadowBlur = 6;
-            ctx.fillText('Rayze Development Studio', 20, canvas.height - 25);
-            ctx.restore();
-        }
-
-        function cropAspect(aspectW, aspectH) {
-            if (!rawImage) return;
-            const targetRatio = aspectW / aspectH;
-            let newW = canvas.width;
-            let newH = canvas.width / targetRatio;
-
-            if (newH > canvas.height) {
-                newH = canvas.height;
-                newW = canvas.height * targetRatio;
+            // Mini Rayze Watermark Effect
+            if (showWatermark) {
+                ctx.save();
+                const fontSize = Math.max(12, Math.round(canvas.width * 0.025));
+                ctx.font = `600 ${fontSize}px 'Plus Jakarta Sans', sans-serif`;
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+                ctx.shadowBlur = 4;
+                ctx.fillText('Rayze', canvas.width - (fontSize * 4), canvas.height - (fontSize));
+                ctx.restore();
             }
-
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = newW;
-            tempCanvas.height = newH;
-            const tempCtx = tempCanvas.getContext('2d');
-            tempCtx.drawImage(canvas, (canvas.width - newW) / 2, (canvas.height - newH) / 2, newW, newH, 0, 0, newW, newH);
-
-            canvas.width = newW;
-            canvas.height = newH;
-            ctx.drawImage(tempCanvas, 0, 0);
         }
 
-        function applyVignette() {
-            if (!rawImage) return;
-            ctx.save();
-            const outerRadius = Math.sqrt(Math.pow(canvas.width / 2, 2) + Math.pow(canvas.height / 2, 2));
-            const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, outerRadius);
-            gradient.addColorStop(0, 'rgba(0,0,0,0)');
-            gradient.addColorStop(0.6, 'rgba(0,0,0,0.1)');
-            gradient.addColorStop(1, 'rgba(0,0,0,0.7)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.restore();
+        /* QUICK TOOLS */
+        function toggleWatermark() {
+            showWatermark = !showWatermark;
+            applyHDEffects();
         }
 
         function rotateImage(deg) { rotationAngle = (rotationAngle + deg) % 360; applyHDEffects(); }
@@ -1080,12 +1021,12 @@
         function toggleGrayscale() { isGrayscale = !isGrayscale; applyHDEffects(); }
 
         function resetTransforms() {
-            rotationAngle = 0; isFlippedH = false; isFlippedV = false; isInverted = false; isGrayscale = false;
-            document.getElementById('sharpRange').value = 5;
-            document.getElementById('thickRange').value = 5;
+            rotationAngle = 0; isFlippedH = false; isFlippedV = false; isInverted = false; isGrayscale = false; showWatermark = false;
+            document.getElementById('sharpRange').value = 1;
             document.getElementById('brightRange').value = 100;
             document.getElementById('contrastRange').value = 100;
             document.getElementById('satRange').value = 100;
+            document.getElementById('hdPreset').value = "none";
             document.getElementById('scaleOption').value = "1";
             updateRangeLabels();
             applyHDEffects();
@@ -1093,7 +1034,7 @@
 
         /* EXPORT FOTO HD */
         function exportPhotoHD() {
-            if (!rawImage) { alert("Please select an image first!"); return; }
+            if (!rawImage) { alert("Please select an image file first!"); return; }
 
             const pBox = document.getElementById('exportProgressBox');
             const pBar = document.getElementById('exportProgressBar');
@@ -1111,7 +1052,7 @@
                     clearInterval(interval);
                     setTimeout(() => {
                         const link = document.createElement('a');
-                        link.download = 'Rayze_15K_Ultra_HD.png';
+                        link.download = 'Rayze_Ultra_HD_Export.png';
                         link.href = canvas.toDataURL('image/png', 1.0);
                         link.click();
                         pText.innerText = "✅ Export Finished 100%!";
@@ -1120,8 +1061,8 @@
             }, 60);
         }
 
-        /* RAYZE UPLOAD TO CATBOX & DIRECT IMAGE SERVER */
-        function uploadToRayzeCatbox() {
+        /* CATBOX NORMAL DIRECT UPLOADER */
+        function uploadToCatboxNormal() {
             const fileInput = document.getElementById('uploadInput');
             const pBox = document.getElementById('catboxProgressBox');
             const pBar = document.getElementById('catboxProgressBar');
@@ -1134,7 +1075,7 @@
             pBox.style.display = 'block';
             outputBox.style.display = 'none';
             pBar.style.width = '0%';
-            pText.innerText = 'Uploading to Rayze Server: 0%';
+            pText.innerText = 'Uploading to Catbox.moe: 0%';
             btn.disabled = true;
 
             let progressPercent = 0;
@@ -1143,62 +1084,43 @@
                     progressPercent += Math.floor(Math.random() * 8) + 6;
                     if (progressPercent > 90) progressPercent = 90;
                     pBar.style.width = progressPercent + '%';
-                    pText.innerText = `Uploading to Rayze Server: ${progressPercent}%`;
+                    pText.innerText = `Uploading to Catbox.moe: ${progressPercent}%`;
                 }
             }, 100);
 
             const file = fileInput.files[0];
             const formData = new FormData();
-            formData.append('file', file);
-
-            fetch('https://tmpfiles.org/api/v1/upload', { method: 'POST', body: formData })
-            .then(res => res.json())
-            .then(data => {
-                clearInterval(progressTimer);
-                pBar.style.width = '100%';
-                pText.innerText = 'Uploading to Rayze Server: 100%';
-
-                if (data && data.data && data.data.url) {
-                    const directUrl = data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/rayze_');
-                    outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ Rayze Direct Image URL Successfully Created:<br><a href="${directUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${directUrl}</a>`;
-                } else {
-                    fallbackCatboxUpload(file, progressTimer, pBar, pText, outputBox);
-                }
-                btn.disabled = false;
-            })
-            .catch(() => { fallbackCatboxUpload(file, progressTimer, pBar, pText, outputBox); });
-        }
-
-        function fallbackCatboxUpload(file, timer, pBar, pText, outputBox) {
-            const formData = new FormData();
             formData.append('reqtype', 'fileupload');
             formData.append('fileToUpload', file);
 
-            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), { method: 'POST', body: formData })
+            // Upload via CORS Proxy to official Catbox endpoint
+            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), { 
+                method: 'POST', 
+                body: formData 
+            })
             .then(res => res.text())
             .then(url => {
-                clearInterval(timer);
+                clearInterval(progressTimer);
                 pBar.style.width = '100%';
-                pText.innerText = 'Uploading to Rayze Catbox: 100%';
+                pText.innerText = 'Uploading to Catbox.moe: 100%';
 
-                if (url && url.startsWith('http')) {
-                    const rayzeUrl = url.trim().replace('files.catbox.moe/', 'files.catbox.moe/rayze_');
+                if (url && url.trim().startsWith('http')) {
+                    const cleanUrl = url.trim();
                     outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ Rayze Catbox Image URL Generated:<br><a href="${url.trim()}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${rayzeUrl}</a>`;
+                    outputBox.innerHTML = `✅ Direct Catbox Link Generated:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${cleanUrl}</a>`;
                 } else {
                     outputBox.style.display = 'block';
                     outputBox.innerText = "❌ Upload failed. Please try again.";
                 }
-                document.getElementById('btnUploadCatbox').disabled = false;
+                btn.disabled = false;
             })
             .catch(() => {
-                clearInterval(timer);
+                clearInterval(progressTimer);
                 pBar.style.width = '100%';
                 pText.innerText = 'Upload Error!';
                 outputBox.style.display = 'block';
-                outputBox.innerText = "❌ Network error connecting to upload servers.";
-                document.getElementById('btnUploadCatbox').disabled = false;
+                outputBox.innerText = "❌ Network error connecting to Catbox server.";
+                btn.disabled = false;
             });
         }
 
