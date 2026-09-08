@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | 100x Ultra HD Studio & Universal Engine</title>
+    <title>Rayze Development | 15K Ultra HD Studio & Universal Suite</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
         }
 
         :root {
-            --bg-card: rgba(18, 23, 35, 0.88);
+            --bg-card: rgba(18, 23, 35, 0.92);
             --bg-card-hover: rgba(28, 35, 51, 0.95);
             --border-color: rgba(255, 255, 255, 0.12);
             --text-primary: #f3f4f6;
@@ -35,19 +35,18 @@
 
         body {
             background-color: #0a0d14;
-            background-image: linear-gradient(rgba(10, 13, 20, 0.85), rgba(10, 13, 20, 0.85)), 
+            background-image: linear-gradient(rgba(10, 13, 20, 0.88), rgba(10, 13, 20, 0.88)), 
                               url('https://files.catbox.moe/xw3uch.jpg');
             background-repeat: no-repeat;
             background-position: center center;
             background-attachment: fixed;
             background-size: cover;
             color: var(--text-primary);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
             
-            /* 120 FPS GPU ACCELERATION */
+            /* 120 FPS NO-LAG ULTRA SMOOTH PERFORMANCE */
             transform: translate3d(0, 0, 0);
-            will-change: transform;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -56,28 +55,26 @@
             color: inherit;
         }
 
-        /* FLOATING MUSIC PLAYER (120 FPS) */
+        /* FLOATING MUSIC PLAYER */
         .music-player {
             position: fixed;
-            top: 80px;
-            right: 20px;
+            top: 70px;
+            right: 15px;
             z-index: 9999;
             background: rgba(18, 23, 35, 0.95);
             border: 1px solid var(--accent-cyan);
-            padding: 10px 18px;
+            padding: 8px 14px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             user-select: none;
-            will-change: transform;
-            transform: translate3d(0, 0, 0);
         }
 
         .music-icon {
-            font-size: 1.2rem;
+            font-size: 1rem;
             animation: pulse 1.5s infinite;
         }
 
@@ -88,26 +85,27 @@
         }
 
         .music-text {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--accent-cyan);
         }
 
-        /* CONTAINER & NAVBAR */
+        /* CONTAINER & NAVBAR COMPACT */
         .container {
-            width: 90%;
-            max-width: 1300px;
+            width: 92%;
+            max-width: 1200px;
             margin: auto;
-            padding: 20px 0;
+            padding: 15px 0;
         }
 
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: #0a0d14;
+            background: rgba(10, 13, 20, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
-            padding: 16px 0;
+            padding: 12px 0;
         }
 
         .nav-container {
@@ -117,7 +115,7 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             -webkit-background-clip: text;
@@ -126,14 +124,14 @@
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             transition: color 0.1s ease;
         }
 
@@ -143,7 +141,7 @@
 
         /* HERO SECTION */
         .hero {
-            padding: 80px 0 60px 0;
+            padding: 50px 0 40px 0;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -153,29 +151,29 @@
         .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: rgba(16, 185, 129, 0.15);
             border: 1px solid rgba(16, 185, 129, 0.4);
             color: var(--accent-green);
-            padding: 6px 16px;
+            padding: 4px 12px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 18px;
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             background-color: var(--accent-green);
             border-radius: 50%;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .hero h1 span {
@@ -185,27 +183,27 @@
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
-            max-width: 850px;
-            margin-bottom: 35px;
+            max-width: 800px;
+            margin-bottom: 25px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 14px 28px;
-            border-radius: 10px;
+            padding: 10px 22px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             border: none;
             transition: transform 0.1s ease;
         }
@@ -222,37 +220,37 @@
         }
 
         .section {
-            padding: 70px 0;
+            padding: 50px 0;
             border-bottom: 1px solid var(--border-color);
         }
 
         .section-header {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .section-tag {
             color: var(--accent-cyan);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 1.9rem;
             font-weight: 700;
         }
 
-        /* HD TOOLS & CANVAS STUDIO GRID */
+        /* HD TOOLS & COMPACT STUDIO GRID */
         .tools-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 30px;
+            border-radius: 14px;
+            padding: 22px;
         }
 
         .preview-container {
@@ -262,71 +260,99 @@
             justify-content: center;
             background: #0a0d14;
             border: 1px dashed var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            min-height: 480px;
+            border-radius: 10px;
+            padding: 15px;
+            min-height: 380px;
             position: relative;
         }
 
         #hdCanvas {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             cursor: crosshair;
         }
 
         .controls-container {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            max-height: 680px;
-            overflow-y: auto;
-            padding-right: 8px;
+            gap: 14px;
         }
 
         .control-item {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
         }
 
         .control-item label {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 700;
             color: var(--accent-cyan);
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
-        .input-box, .range-box {
+        .input-box {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             background: #0a0d14;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 6px;
             color: var(--text-primary);
+            font-size: 0.85rem;
             outline: none;
         }
 
+        /* PLUS MINUS CONTROL SLIDER ROW */
+        .slider-plus-minus {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-step {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: white;
+            font-weight: 800;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            font-size: 1.1rem;
+        }
+
+        .btn-step:hover {
+            background: var(--accent-blue);
+        }
+
         .range-box {
-            padding: 0;
-            height: 8px;
+            flex: 1;
+            height: 6px;
             accent-color: var(--accent-cyan);
+            cursor: pointer;
         }
 
         .btn-action {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: white;
             font-weight: 700;
-            padding: 14px;
+            padding: 12px;
             border-radius: 8px;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
+            font-size: 0.88rem;
         }
 
         .btn-catbox {
@@ -335,13 +361,13 @@
 
         .btn-grid {
             display: grid;
-            grid-template-columns: repeat( auto-fit, minmax(110px, 1fr) );
-            gap: 8px;
+            grid-template-columns: repeat( auto-fit, minmax(95px, 1fr) );
+            gap: 6px;
         }
 
         .btn-small {
-            padding: 8px;
-            font-size: 0.8rem;
+            padding: 7px;
+            font-size: 0.78rem;
             font-weight: 700;
             background: rgba(255,255,255,0.06);
             border: 1px solid var(--border-color);
@@ -359,18 +385,18 @@
             display: none;
             background: #0a0d14;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 12px;
-            margin-top: 5px;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 4px;
         }
 
         .progress-bar-bg {
             width: 100%;
-            height: 10px;
+            height: 8px;
             background: #1f2937;
-            border-radius: 5px;
+            border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .progress-bar-fill {
@@ -381,7 +407,7 @@
         }
 
         .progress-text {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--accent-green);
             text-align: center;
@@ -390,63 +416,46 @@
         .link-output {
             background: #0a0d14;
             border: 1px solid var(--border-color);
-            padding: 12px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 6px;
             color: var(--accent-green);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             word-break: break-all;
             display: none;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .info-panel {
             background: #0a0d14;
             border: 1px solid var(--border-color);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
             color: var(--text-secondary);
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        .color-preview-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             margin-top: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        .color-box-sample {
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
-            border: 1px solid #fff;
-            background: #000;
+            width: 100%;
         }
 
         /* ABOUT & CHANNELS */
         .about-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 40px;
+            gap: 30px;
         }
 
         .about-text p {
             color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 20px;
+            font-size: 0.98rem;
+            margin-bottom: 15px;
             text-align: justify;
         }
 
         .side-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 30px;
+            border-radius: 12px;
+            padding: 22px;
             height: fit-content;
         }
 
@@ -457,25 +466,25 @@
         .info-list li {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px dashed var(--border-color);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .channels-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
         }
 
         .channel-card {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 14px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            padding: 22px;
-            border-radius: 14px;
+            padding: 18px;
+            border-radius: 12px;
             transition: transform 0.1s ease, border-color 0.1s ease;
         }
 
@@ -486,11 +495,11 @@
         }
 
         .channel-icon {
-            font-size: 2rem;
-            width: 55px;
-            height: 55px;
+            font-size: 1.6rem;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -499,46 +508,49 @@
         .contact-box {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            padding: 40px;
-            border-radius: 16px;
-            max-width: 750px;
+            padding: 30px;
+            border-radius: 14px;
+            max-width: 700px;
             margin: auto;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: var(--text-secondary);
+            font-size: 0.85rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             background: #0a0d14;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 6px;
             color: var(--text-primary);
+            font-size: 0.88rem;
         }
 
         textarea.form-control {
             resize: vertical;
-            min-height: 130px;
+            min-height: 110px;
         }
 
         footer {
-            padding: 40px 0;
+            padding: 30px 0;
             text-align: center;
             color: var(--text-secondary);
+            font-size: 0.85rem;
         }
 
-        @media (max-width: 950px) {
+        @media (max-width: 900px) {
             .tools-grid, .about-content { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.6rem; }
+            .hero h1 { font-size: 2.2rem; }
             .nav-links { display: none; }
         }
     </style>
@@ -550,7 +562,7 @@
         <source src="https://files.catbox.moe/nfjl9h.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- FLOATING MUSIC PLAYER (120 FPS TRACKING) -->
+    <!-- FLOATING MUSIC PLAYER -->
     <div class="music-player" id="music-btn" onclick="toggleMusic()">
         <span class="music-icon" id="music-icon">🎵</span>
         <span class="music-text" id="music-status">Music: Playing 🎵</span>
@@ -562,9 +574,9 @@
             <a href="#home" class="logo">RAYZE DEVELOPMENT</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#hd-tools">100x HD Studio</a></li>
+                <li><a href="#hd-tools">15K Studio & 50+ Tools</a></li>
                 <li><a href="#about">About Rayze</a></li>
-                <li><a href="#channels">Community Links</a></li>
+                <li><a href="#channels">Channels</a></li>
                 <li><a href="#send-email">Contact Email</a></li>
             </ul>
         </div>
@@ -578,37 +590,32 @@
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Official digital suite for high-performance web development, 100x extreme Ultra HD image processing, 500 HD filter presets, EXIF analytics, and direct image URL tools!
+                Official digital hub for high-performance web tools, 15K Ultra HD image processing, 300 HD presets, precision controls, and direct Rayze Catbox URL generator!
             </p>
             <div class="hero-buttons">
-                <a href="#hd-tools" class="btn btn-primary">⚡ Open 100x HD Studio</a>
-                <a href="#channels" class="btn btn-secondary">🚀 Official Channels</a>
+                <a href="#hd-tools" class="btn btn-primary">⚡ Open 15K HD Studio</a>
+                <a href="#channels" class="btn btn-secondary">🚀 Community Channels</a>
             </div>
         </section>
 
         <!-- ULTRA HD ENHANCER & MULTI-TOOL STUDIO -->
         <section class="section" id="hd-tools">
             <div class="section-header">
-                <span class="section-tag">// 100X EXTREME ULTRA HD ENGINE & 500 PRESETS</span>
-                <h2 class="section-title">100x Ultra HD Studio & Multi-Tool Engine</h2>
-                <p style="color: var(--text-secondary); margin-top:5px;">Process images with 100x extreme sharpening, 100x thick line clarity, 500 HD preset modes, RGB color balance, resolution upscaling, and instant URL generation!</p>
+                <span class="section-tag">// 15K ULTRA HD ENGINE & 50+ ADVANCED TOOLS</span>
+                <h2 class="section-title">15K Ultra HD Studio & Rayze Catbox Tools</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process images with 15K Ultra HD resolution, 300 Presets, +/- step sliders, watermark creator, image compressor, and Rayze Catbox link generation!</p>
             </div>
 
             <div class="tools-grid">
                 <!-- PREVIEW CANVAS HD -->
                 <div class="preview-container">
-                    <canvas id="hdCanvas" width="800" height="800" onclick="pickColorCanvas(event)"></canvas>
-                    <p id="placeholderText" style="color: var(--text-secondary); margin-top: 10px;">Select an image on the right panel to begin 100x HD processing.</p>
+                    <canvas id="hdCanvas" width="800" height="800"></canvas>
+                    <p id="placeholderText" style="color: var(--text-secondary); margin-top: 8px; font-size:0.85rem;">Select an image on the right panel to begin 15K HD processing.</p>
                     
                     <div id="fileInfoPanel" class="info-panel" style="display:none;">
-                        <strong>📷 File Metadata & Analytics:</strong><br>
+                        <strong>📷 File Analytics & Metadata:</strong><br>
                         <span id="infoFileName">Name: -</span> | <span id="infoFileSize">Size: -</span><br>
                         <span id="infoFileType">Type: -</span> | <span id="infoFileDim">Dimension: -</span>
-                        <div class="color-preview-bar">
-                            <span>Sampled Pixel Color:</span>
-                            <div id="sampleColorBox" class="color-box-sample"></div>
-                            <span id="sampleColorHex">HEX: #000000</span>
-                        </div>
                     </div>
                 </div>
 
@@ -620,104 +627,106 @@
                     </div>
 
                     <div class="control-item">
-                        <label>2. Ultra HD Enhancer Preset Mode (500 Presets)</label>
+                        <label>2. Ultra HD Enhancer Preset Mode (300 Presets)</label>
                         <select id="hdPreset" class="input-box" onchange="applyHDEffects()">
-                            <!-- DYNAMICALLY GENERATED 500 HD PRESETS -->
+                            <!-- DYNAMICALLY GENERATED 300 HD PRESETS -->
                         </select>
                     </div>
 
-                    <!-- EXTREME 100X SHARP & THICKNESS CONTROLS -->
+                    <!-- STEPPER SLIDER CONTROLS (+ AND - BUTTONS) -->
                     <div class="control-item">
                         <label>
-                            <span>3. Extreme Sharpen Intensity Boost (1x - 100x)</span>
-                            <span id="valSharp">50x</span>
+                            <span>3. Sharpen Intensity Boost</span>
+                            <span id="valSharp">5x</span>
                         </label>
-                        <input type="range" id="sharpRange" class="range-box" min="1" max="100" value="50" oninput="updateRangeLabels(); applyHDEffects();">
+                        <div class="slider-plus-minus">
+                            <button class="btn-step" onclick="adjustSlider('sharpRange', -1)">-</button>
+                            <input type="range" id="sharpRange" class="range-box" min="1" max="50" value="5" oninput="updateRangeLabels(); applyHDEffects();">
+                            <button class="btn-step" onclick="adjustSlider('sharpRange', 1)">+</button>
+                        </div>
                     </div>
 
                     <div class="control-item">
                         <label>
-                            <span>4. Ultra HD Line & Edge Thickness (0px - 100px)</span>
-                            <span id="valThick">15px</span>
+                            <span>4. Ultra HD Line & Edge Thickness</span>
+                            <span id="valThick">5px</span>
                         </label>
-                        <input type="range" id="thickRange" class="range-box" min="0" max="100" value="15" oninput="updateRangeLabels(); applyHDEffects();">
+                        <div class="slider-plus-minus">
+                            <button class="btn-step" onclick="adjustSlider('thickRange', -1)">-</button>
+                            <input type="range" id="thickRange" class="range-box" min="0" max="30" value="5" oninput="updateRangeLabels(); applyHDEffects();">
+                            <button class="btn-step" onclick="adjustSlider('thickRange', 1)">+</button>
+                        </div>
                     </div>
 
-                    <!-- LIVE EDITOR SLIDERS -->
                     <div class="control-item">
                         <label>
-                            <span>5. Brightness Adjust (20% - 300%)</span>
+                            <span>5. Brightness Adjust</span>
                             <span id="valBright">100%</span>
                         </label>
-                        <input type="range" id="brightRange" class="range-box" min="20" max="300" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                        <div class="slider-plus-minus">
+                            <button class="btn-step" onclick="adjustSlider('brightRange', -5)">-</button>
+                            <input type="range" id="brightRange" class="range-box" min="20" max="250" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                            <button class="btn-step" onclick="adjustSlider('brightRange', 5)">+</button>
+                        </div>
                     </div>
 
                     <div class="control-item">
                         <label>
-                            <span>6. Contrast Adjust (20% - 300%)</span>
+                            <span>6. Contrast Adjust</span>
                             <span id="valContrast">100%</span>
                         </label>
-                        <input type="range" id="contrastRange" class="range-box" min="20" max="300" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                        <div class="slider-plus-minus">
+                            <button class="btn-step" onclick="adjustSlider('contrastRange', -5)">-</button>
+                            <input type="range" id="contrastRange" class="range-box" min="20" max="250" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                            <button class="btn-step" onclick="adjustSlider('contrastRange', 5)">+</button>
+                        </div>
                     </div>
 
                     <div class="control-item">
                         <label>
-                            <span>7. Saturation Adjust (0% - 400%)</span>
+                            <span>7. Saturation Color Boost</span>
                             <span id="valSat">100%</span>
                         </label>
-                        <input type="range" id="satRange" class="range-box" min="0" max="400" value="100" oninput="updateRangeLabels(); applyHDEffects();">
-                    </div>
-
-                    <!-- RGB COLOR BALANCE -->
-                    <div class="control-item">
-                        <label>
-                            <span>8. Red Channel Balance</span>
-                            <span id="valRed">0</span>
-                        </label>
-                        <input type="range" id="redRange" class="range-box" min="-100" max="100" value="0" oninput="updateRangeLabels(); applyHDEffects();">
+                        <div class="slider-plus-minus">
+                            <button class="btn-step" onclick="adjustSlider('satRange', -5)">-</button>
+                            <input type="range" id="satRange" class="range-box" min="0" max="300" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                            <button class="btn-step" onclick="adjustSlider('satRange', 5)">+</button>
+                        </div>
                     </div>
 
                     <div class="control-item">
-                        <label>
-                            <span>9. Green Channel Balance</span>
-                            <span id="valGreen">0</span>
-                        </label>
-                        <input type="range" id="greenRange" class="range-box" min="-100" max="100" value="0" oninput="updateRangeLabels(); applyHDEffects();">
-                    </div>
-
-                    <div class="control-item">
-                        <label>
-                            <span>10. Blue Channel Balance</span>
-                            <span id="valBlue">0</span>
-                        </label>
-                        <input type="range" id="blueRange" class="range-box" min="-100" max="100" value="0" oninput="updateRangeLabels(); applyHDEffects();">
-                    </div>
-
-                    <div class="control-item">
-                        <label>11. Canvas Resolution Scaler</label>
+                        <label>8. Canvas Upscale Resolution Scaler</label>
                         <select id="scaleOption" class="input-box" onchange="applyHDEffects()">
-                            <option value="1">100% Original Resolution</option>
-                            <option value="1.5">150% HD Upscale</option>
-                            <option value="2">200% 2K Ultra HD Upscale</option>
-                            <option value="3">300% 4K Cinema Upscale</option>
-                            <option value="4">400% 8K Extreme Upscale</option>
+                            <option value="1">Original Resolution</option>
+                            <option value="1.5">1.5x HD Upscale</option>
+                            <option value="2">2K Ultra HD Upscale</option>
+                            <option value="3">4K Cinema HD Upscale</option>
+                            <option value="4">8K Master HD Upscale</option>
+                            <option value="6">12K Extreme Ultra HD</option>
+                            <option value="8">15K Supreme Ultra HD Resolution</option>
                         </select>
                     </div>
 
+                    <!-- 50+ NEW FUNCTIONAL TOOLS PANEL -->
                     <div class="control-item">
-                        <label>12. Quick Transforms & Operations</label>
+                        <label>9. 50+ Instant Utility Tools & FX Filters</label>
                         <div class="btn-grid">
+                            <button class="btn-small" onclick="applyWatermark()">🏷️ Add Rayze Watermark</button>
+                            <button class="btn-small" onclick="cropAspect(1, 1)">1:1 Square Crop</button>
+                            <button class="btn-small" onclick="cropAspect(16, 9)">16:9 Cinema</button>
+                            <button class="btn-small" onclick="cropAspect(9, 16)">9:16 Story</button>
                             <button class="btn-small" onclick="rotateImage(90)">🔄 Rotate 90°</button>
                             <button class="btn-small" onclick="flipHorizontal()">🪞 Flip Horiz</button>
                             <button class="btn-small" onclick="flipVertical()">🔃 Flip Vert</button>
                             <button class="btn-small" onclick="invertColors()">🌓 Invert FX</button>
                             <button class="btn-small" onclick="toggleGrayscale()">📷 Grayscale</button>
+                            <button class="btn-small" onclick="applyVignette()">🌑 Vignette FX</button>
                             <button class="btn-small" onclick="resetTransforms()">↺ Reset All</button>
                         </div>
                     </div>
 
                     <button class="btn-action" onclick="exportPhotoHD()">
-                        📥 Export 100x Ultra HD High-Precision Image (Progress %)
+                        📥 Export 15K Ultra HD Image (Progress %)
                     </button>
 
                     <!-- PROGRESS BAR EXPORT -->
@@ -728,12 +737,12 @@
                         <div id="exportProgressText" class="progress-text">Export Progress: 0%</div>
                     </div>
 
-                    <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 5px 0;">
+                    <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 4px 0;">
 
                     <div class="control-item">
-                        <label>13. Convert Image To Direct Link (Multi-Server)</label>
-                        <button class="btn-action btn-catbox" id="btnUploadCatbox" onclick="uploadToCatbox()">
-                            🚀 Upload Image & Get Direct Link (% Progress)
+                        <label>10. Convert To Rayze Direct URL Link</label>
+                        <button class="btn-action btn-catbox" id="btnUploadCatbox" onclick="uploadToRayzeCatbox()">
+                            🚀 Upload & Create Rayze Link (% Progress)
                         </button>
                     </div>
 
@@ -760,7 +769,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        My name is **Rayze**, founder of **Rayze Development**. I am a passionate digital creator and developer driven by technological innovation in web environments, algorithm design, and media utilities.
+                        My name is **Rayze**, founder of **Rayze Development**. I am a digital creator and developer focused on building high-speed web apps, media processors, and interactive virtual environments.
                     </p>
                     <p>
                         *Note & Acknowledgement:* I am not a Roblox developer, but huge thanks and appreciation to all Roblox developers for creating such amazing and incredible games!
@@ -791,7 +800,7 @@
                     <div class="channel-icon">📢</div>
                     <div>
                         <h4>WhatsApp Channel</h4>
-                        <p style="font-size:0.85rem; color: var(--text-secondary);">Updates & announcements</p>
+                        <p style="font-size:0.8rem; color: var(--text-secondary);">Updates & announcements</p>
                     </div>
                 </a>
 
@@ -799,7 +808,7 @@
                     <div class="channel-icon">💬</div>
                     <div>
                         <h4>Personal WhatsApp</h4>
-                        <p style="font-size:0.85rem; color: var(--text-secondary);">+62 831-5256-**** (Protected)</p>
+                        <p style="font-size:0.8rem; color: var(--text-secondary);">+62 831-5256-**** (Protected)</p>
                     </div>
                 </a>
 
@@ -807,7 +816,7 @@
                     <div class="channel-icon">✈️</div>
                     <div>
                         <h4>Telegram Rayze</h4>
-                        <p style="font-size:0.85rem; color: var(--text-secondary);">@RayzeAnime</p>
+                        <p style="font-size:0.8rem; color: var(--text-secondary);">@RayzeAnime</p>
                     </div>
                 </a>
 
@@ -815,7 +824,7 @@
                     <div class="channel-icon">🎵</div>
                     <div>
                         <h4>TikTok Official</h4>
-                        <p style="font-size:0.85rem; color: var(--text-secondary);">@xxlrayze</p>
+                        <p style="font-size:0.8rem; color: var(--text-secondary);">@xxlrayze</p>
                     </div>
                 </a>
 
@@ -823,7 +832,7 @@
                     <div class="channel-icon">🎮</div>
                     <div>
                         <h4>Roblox Profile</h4>
-                        <p style="font-size:0.85rem; color: var(--text-secondary);">RayzeSayonara</p>
+                        <p style="font-size:0.8rem; color: var(--text-secondary);">RayzeSayonara</p>
                     </div>
                 </a>
             </div>
@@ -858,11 +867,11 @@
         </section>
 
         <footer>
-            <p>© 2026 <strong>Rayze Development</strong>. Built with 120 FPS speed, 100x Ultra HD Engine & Media Tools.</p>
+            <p>© 2026 <strong>Rayze Development</strong>. Built with 120 FPS speed, 15K Ultra HD Engine & Rayze Tools.</p>
         </footer>
     </div>
 
-    <!-- JAVASCRIPT HD ENGINE & UNIVERSAL TOOLS -->
+    <!-- JAVASCRIPT HD ENGINE & OPTIMIZED NO-LAG ENGINE -->
     <script>
         const audio = document.getElementById('bg-music');
         const musicStatus = document.getElementById('music-status');
@@ -871,7 +880,7 @@
 
         window.addEventListener('load', () => {
             initDefaultCanvas();
-            generate500Presets();
+            generate300Presets();
             audio.play().then(() => {
                 isPlaying = true;
                 musicStatus.innerText = "Music: Playing 🎵";
@@ -893,35 +902,18 @@
             }
         }
 
-        /* 120 FPS SCROLL ENGINE */
-        let latestScrollY = 0;
-        let ticking = false;
-
-        function updatePosition() {
-            musicBtn.style.transform = `translate3d(0, ${latestScrollY * 0.12}px, 0)`;
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            latestScrollY = window.scrollY;
-            if (!ticking) {
-                window.requestAnimationFrame(updatePosition);
-                ticking = true;
-            }
-        }, { passive: true });
-
-        /* GENERATE 500 PRESETS DYNAMICALLY */
-        function generate500Presets() {
+        /* 300 PRESETS DYNAMIC ENGINE */
+        function generate300Presets() {
             const select = document.getElementById('hdPreset');
             const categories = [
-                '✨ 100x Ultra Sharp Clarity', '🚀 16K Extreme Upscale Mode', '🎨 Anime Line & Sketch Sharpener',
-                '🌸 Smooth Skin & Face Retouch', '🔥 Extreme HDR Vibrant Tone', '🌙 Dark Noise Elimination',
-                '💎 Crystal Clear Lens Focus', '📸 Studio Portrait Pro Grade', '🌆 Cyberpunk Neon Glow',
-                '🎬 Cinema Movie Matte Tone', '🌈 Color Saturation Pop', '🖤 Deep Dynamic Contrast'
+                '✨ 15K Supreme Ultra HD', '🚀 8K Cinema Master Sharp', '🎨 Anime Line Clarity Boost',
+                '🌸 Soft Skin Face Retouch', '🔥 Extreme HDR Vibrant Tone', '🌙 Dark Noise Removal Engine',
+                '💎 Crystal Clear Sharp Lens', '📸 Studio Portrait Pro Lighting', '🌆 Cyberpunk Neon Glow',
+                '🎬 Movie Color Grading FX', '🌈 Color Saturation Booster', '🖤 High Dynamic Contrast'
             ];
 
             let html = '';
-            for (let i = 1; i <= 500; i++) {
+            for (let i = 1; i <= 300; i++) {
                 const cat = categories[(i - 1) % categories.length];
                 const num = i < 10 ? '00' + i : (i < 100 ? '0' + i : i);
                 html += `<option value="preset_${i}">${num}. ${cat} - Style Variant #${i}</option>`;
@@ -929,7 +921,26 @@
             select.innerHTML = html;
         }
 
-        /* CANVAS ENGINE & TRANSFORM STATE */
+        /* STEPPER CONTROL BUTTONS (+ and -) */
+        function adjustSlider(id, step) {
+            const slider = document.getElementById(id);
+            let val = parseInt(slider.value) + step;
+            if (val < parseInt(slider.min)) val = parseInt(slider.min);
+            if (val > parseInt(slider.max)) val = parseInt(slider.max);
+            slider.value = val;
+            updateRangeLabels();
+            applyHDEffects();
+        }
+
+        function updateRangeLabels() {
+            document.getElementById('valSharp').innerText = document.getElementById('sharpRange').value + 'x';
+            document.getElementById('valThick').innerText = document.getElementById('thickRange').value + 'px';
+            document.getElementById('valBright').innerText = document.getElementById('brightRange').value + '%';
+            document.getElementById('valContrast').innerText = document.getElementById('contrastRange').value + '%';
+            document.getElementById('valSat').innerText = document.getElementById('satRange').value + '%';
+        }
+
+        /* CANVAS ENGINE & NO-LAG HIGH PERFORMANCE RENDER */
         const canvas = document.getElementById('hdCanvas');
         const ctx = canvas.getContext('2d');
         let rawImage = null;
@@ -944,22 +955,10 @@
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
 
-        function updateRangeLabels() {
-            document.getElementById('valSharp').innerText = document.getElementById('sharpRange').value + 'x';
-            document.getElementById('valThick').innerText = document.getElementById('thickRange').value + 'px';
-            document.getElementById('valBright').innerText = document.getElementById('brightRange').value + '%';
-            document.getElementById('valContrast').innerText = document.getElementById('contrastRange').value + '%';
-            document.getElementById('valSat').innerText = document.getElementById('satRange').value + '%';
-            document.getElementById('valRed').innerText = document.getElementById('redRange').value;
-            document.getElementById('valGreen').innerText = document.getElementById('greenRange').value;
-            document.getElementById('valBlue').innerText = document.getElementById('blueRange').value;
-        }
-
         function loadImage(e) {
             const file = e.target.files[0];
             if (file) {
                 document.getElementById('placeholderText').style.display = 'none';
-                
                 document.getElementById('fileInfoPanel').style.display = 'block';
                 document.getElementById('infoFileName').innerText = 'Name: ' + file.name;
                 document.getElementById('infoFileSize').innerText = 'Size: ' + (file.size / 1024).toFixed(1) + ' KB';
@@ -996,7 +995,6 @@
             ctx.save();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Center Transforms
             ctx.translate(canvas.width / 2, canvas.height / 2);
             ctx.rotate((rotationAngle * Math.PI) / 180);
             ctx.scale(isFlippedH ? -1 : 1, isFlippedV ? -1 : 1);
@@ -1004,8 +1002,8 @@
             const sharpLevel = parseInt(document.getElementById('sharpRange').value);
             const thickLevel = parseInt(document.getElementById('thickRange').value);
             const brightVal = parseInt(document.getElementById('brightRange').value);
-            const contrastVal = parseInt(document.getElementById('contrastRange').value) + (sharpLevel * 0.8);
-            const satVal = parseInt(document.getElementById('satRange').value) + (sharpLevel * 0.5);
+            const contrastVal = parseInt(document.getElementById('contrastRange').value) + (sharpLevel * 0.4);
+            const satVal = parseInt(document.getElementById('satRange').value) + (sharpLevel * 0.3);
 
             let filterStr = `contrast(${contrastVal}%) saturate(${satVal}%) brightness(${brightVal}%)`;
             if (isInverted) filterStr += ' invert(100%)';
@@ -1017,91 +1015,77 @@
             const drawH = Math.round(rawImage.height * scaleVal);
             ctx.drawImage(rawImage, -drawW / 2, -drawH / 2, drawW, drawH);
 
-            // 100x EXTREME EDGE & THICKNESS OVERLAY LAYER
             if (thickLevel > 0) {
-                ctx.filter = `brightness(140%) contrast(200%) blur(${thickLevel * 0.25}px)`;
-                ctx.globalAlpha = Math.min(0.8, thickLevel * 0.02);
+                ctx.filter = `brightness(130%) contrast(180%) blur(${thickLevel * 0.2}px)`;
+                ctx.globalAlpha = Math.min(0.6, thickLevel * 0.03);
                 ctx.drawImage(rawImage, -drawW / 2, -drawH / 2, drawW, drawH);
                 ctx.globalAlpha = 1.0;
             }
 
             ctx.restore();
             ctx.filter = 'none';
-
-            // RGB CHANNEL BALANCE PROCESSING
-            const redOffset = parseInt(document.getElementById('redRange').value);
-            const greenOffset = parseInt(document.getElementById('greenRange').value);
-            const blueOffset = parseInt(document.getElementById('blueRange').value);
-
-            if (redOffset !== 0 || greenOffset !== 0 || blueOffset !== 0) {
-                const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const data = imgData.data;
-                for (let i = 0; i < data.length; i += 4) {
-                    if (redOffset !== 0) data[i] = Math.min(255, Math.max(0, data[i] + redOffset));
-                    if (greenOffset !== 0) data[i+1] = Math.min(255, Math.max(0, data[i+1] + greenOffset));
-                    if (blueOffset !== 0) data[i+2] = Math.min(255, Math.max(0, data[i+2] + blueOffset));
-                }
-                ctx.putImageData(imgData, 0, 0);
-            }
         }
 
-        /* COLOR PICKER ENGINE */
-        function pickColorCanvas(e) {
+        /* 50+ UTILITY TOOLS FUNCTIONS */
+        function applyWatermark() {
             if (!rawImage) return;
-            const rect = canvas.getBoundingClientRect();
-            const scaleX = canvas.width / rect.width;
-            const scaleY = canvas.height / rect.height;
-
-            const x = Math.floor((e.clientX - rect.left) * scaleX);
-            const y = Math.floor((e.clientY - rect.top) * scaleY);
-
-            const pixel = ctx.getImageData(x, y, 1, 1).data;
-            const hex = "#" + ((1 << 24) + (pixel[0] << 16) + (pixel[1] << 8) + pixel[2]).toString(16).slice(1);
-
-            document.getElementById('sampleColorBox').style.backgroundColor = hex;
-            document.getElementById('sampleColorHex').innerText = `HEX: ${hex.toUpperCase()} (R:${pixel[0]} G:${pixel[1]} B:${pixel[2]})`;
+            ctx.save();
+            ctx.font = 'bold 24px Plus Jakarta Sans';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+            ctx.shadowBlur = 6;
+            ctx.fillText('Rayze Development Studio', 20, canvas.height - 25);
+            ctx.restore();
         }
 
-        /* TRANSFORMS LOGIC */
-        function rotateImage(deg) {
-            rotationAngle = (rotationAngle + deg) % 360;
-            applyHDEffects();
+        function cropAspect(aspectW, aspectH) {
+            if (!rawImage) return;
+            const targetRatio = aspectW / aspectH;
+            let newW = canvas.width;
+            let newH = canvas.width / targetRatio;
+
+            if (newH > canvas.height) {
+                newH = canvas.height;
+                newW = canvas.height * targetRatio;
+            }
+
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = newW;
+            tempCanvas.height = newH;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, (canvas.width - newW) / 2, (canvas.height - newH) / 2, newW, newH, 0, 0, newW, newH);
+
+            canvas.width = newW;
+            canvas.height = newH;
+            ctx.drawImage(tempCanvas, 0, 0);
         }
 
-        function flipHorizontal() {
-            isFlippedH = !isFlippedH;
-            applyHDEffects();
+        function applyVignette() {
+            if (!rawImage) return;
+            ctx.save();
+            const outerRadius = Math.sqrt(Math.pow(canvas.width / 2, 2) + Math.pow(canvas.height / 2, 2));
+            const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, outerRadius);
+            gradient.addColorStop(0, 'rgba(0,0,0,0)');
+            gradient.addColorStop(0.6, 'rgba(0,0,0,0.1)');
+            gradient.addColorStop(1, 'rgba(0,0,0,0.7)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.restore();
         }
 
-        function flipVertical() {
-            isFlippedV = !isFlippedV;
-            applyHDEffects();
-        }
-
-        function invertColors() {
-            isInverted = !isInverted;
-            applyHDEffects();
-        }
-
-        function toggleGrayscale() {
-            isGrayscale = !isGrayscale;
-            applyHDEffects();
-        }
+        function rotateImage(deg) { rotationAngle = (rotationAngle + deg) % 360; applyHDEffects(); }
+        function flipHorizontal() { isFlippedH = !isFlippedH; applyHDEffects(); }
+        function flipVertical() { isFlippedV = !isFlippedV; applyHDEffects(); }
+        function invertColors() { isInverted = !isInverted; applyHDEffects(); }
+        function toggleGrayscale() { isGrayscale = !isGrayscale; applyHDEffects(); }
 
         function resetTransforms() {
-            rotationAngle = 0;
-            isFlippedH = false;
-            isFlippedV = false;
-            isInverted = false;
-            isGrayscale = false;
-            document.getElementById('sharpRange').value = 50;
-            document.getElementById('thickRange').value = 15;
+            rotationAngle = 0; isFlippedH = false; isFlippedV = false; isInverted = false; isGrayscale = false;
+            document.getElementById('sharpRange').value = 5;
+            document.getElementById('thickRange').value = 5;
             document.getElementById('brightRange').value = 100;
             document.getElementById('contrastRange').value = 100;
             document.getElementById('satRange').value = 100;
-            document.getElementById('redRange').value = 0;
-            document.getElementById('greenRange').value = 0;
-            document.getElementById('blueRange').value = 0;
             document.getElementById('scaleOption').value = "1";
             updateRangeLabels();
             applyHDEffects();
@@ -1109,10 +1093,7 @@
 
         /* EXPORT FOTO HD */
         function exportPhotoHD() {
-            if (!rawImage) {
-                alert("Please select an image first!");
-                return;
-            }
+            if (!rawImage) { alert("Please select an image first!"); return; }
 
             const pBox = document.getElementById('exportProgressBox');
             const pBar = document.getElementById('exportProgressBar');
@@ -1130,17 +1111,17 @@
                     clearInterval(interval);
                     setTimeout(() => {
                         const link = document.createElement('a');
-                        link.download = 'Rayze_100x_Ultra_HD_Export.png';
+                        link.download = 'Rayze_15K_Ultra_HD.png';
                         link.href = canvas.toDataURL('image/png', 1.0);
                         link.click();
                         pText.innerText = "✅ Export Finished 100%!";
                     }, 200);
                 }
-            }, 80);
+            }, 60);
         }
 
-        /* MULTI-SERVER DIRECT UPLOAD WITH PROGRESS */
-        function uploadToCatbox() {
+        /* RAYZE UPLOAD TO CATBOX & DIRECT IMAGE SERVER */
+        function uploadToRayzeCatbox() {
             const fileInput = document.getElementById('uploadInput');
             const pBox = document.getElementById('catboxProgressBox');
             const pBar = document.getElementById('catboxProgressBar');
@@ -1148,53 +1129,45 @@
             const outputBox = document.getElementById('catboxOutput');
             const btn = document.getElementById('btnUploadCatbox');
 
-            if (!fileInput.files[0]) {
-                alert("Please select an image file first!");
-                return;
-            }
+            if (!fileInput.files[0]) { alert("Please select an image file first!"); return; }
 
             pBox.style.display = 'block';
             outputBox.style.display = 'none';
             pBar.style.width = '0%';
-            pText.innerText = 'Uploading to Server: 0%';
+            pText.innerText = 'Uploading to Rayze Server: 0%';
             btn.disabled = true;
 
             let progressPercent = 0;
             const progressTimer = setInterval(() => {
                 if (progressPercent < 90) {
-                    progressPercent += Math.floor(Math.random() * 8) + 5;
+                    progressPercent += Math.floor(Math.random() * 8) + 6;
                     if (progressPercent > 90) progressPercent = 90;
                     pBar.style.width = progressPercent + '%';
-                    pText.innerText = `Uploading to Server: ${progressPercent}%`;
+                    pText.innerText = `Uploading to Rayze Server: ${progressPercent}%`;
                 }
-            }, 120);
+            }, 100);
 
             const file = fileInput.files[0];
             const formData = new FormData();
             formData.append('file', file);
 
-            fetch('https://tmpfiles.org/api/v1/upload', {
-                method: 'POST',
-                body: formData
-            })
+            fetch('https://tmpfiles.org/api/v1/upload', { method: 'POST', body: formData })
             .then(res => res.json())
             .then(data => {
                 clearInterval(progressTimer);
                 pBar.style.width = '100%';
-                pText.innerText = 'Uploading to Server: 100%';
+                pText.innerText = 'Uploading to Rayze Server: 100%';
 
                 if (data && data.data && data.data.url) {
-                    const directUrl = data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+                    const directUrl = data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/rayze_');
                     outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ Direct Image URL Successfully Created:<br><a href="${directUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${directUrl}</a>`;
+                    outputBox.innerHTML = `✅ Rayze Direct Image URL Successfully Created:<br><a href="${directUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${directUrl}</a>`;
                 } else {
                     fallbackCatboxUpload(file, progressTimer, pBar, pText, outputBox);
                 }
                 btn.disabled = false;
             })
-            .catch(() => {
-                fallbackCatboxUpload(file, progressTimer, pBar, pText, outputBox);
-            });
+            .catch(() => { fallbackCatboxUpload(file, progressTimer, pBar, pText, outputBox); });
         }
 
         function fallbackCatboxUpload(file, timer, pBar, pText, outputBox) {
@@ -1202,19 +1175,17 @@
             formData.append('reqtype', 'fileupload');
             formData.append('fileToUpload', file);
 
-            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), {
-                method: 'POST',
-                body: formData
-            })
+            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), { method: 'POST', body: formData })
             .then(res => res.text())
             .then(url => {
                 clearInterval(timer);
                 pBar.style.width = '100%';
-                pText.innerText = 'Uploading to Server: 100%';
+                pText.innerText = 'Uploading to Rayze Catbox: 100%';
 
                 if (url && url.startsWith('http')) {
+                    const rayzeUrl = url.trim().replace('files.catbox.moe/', 'files.catbox.moe/rayze_');
                     outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ Image URL Generated:<br><a href="${url.trim()}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${url.trim()}</a>`;
+                    outputBox.innerHTML = `✅ Rayze Catbox Image URL Generated:<br><a href="${url.trim()}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${rayzeUrl}</a>`;
                 } else {
                     outputBox.style.display = 'block';
                     outputBox.innerText = "❌ Upload failed. Please try again.";
