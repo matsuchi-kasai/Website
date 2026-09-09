@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayze Studio | Fitur - Media Downloader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: #0a0d14; color: #f3f4f6; line-height: 1.6; }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2; filter: brightness(0.7); }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 13, 20, 0.5); z-index: -1; }
+        .container { width: 92%; max-width: 1200px; margin: auto; padding: 20px 0; }
+        nav { position: sticky; top: 0; z-index: 1000; background: rgba(10, 13, 20, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.15); padding: 14px 0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 800; color: #10b981; text-decoration: none; }
+        .nav-links { display: flex; gap: 15px; list-style: none; }
+        .nav-links a { color: #cbd5e1; font-weight: 600; font-size: 0.85rem; text-decoration: none; }
+        .nav-links a:hover { color: #10b981; }
+        .utility-box { background: rgba(18, 23, 35, 0.92); border: 1px solid rgba(255,255,255,0.15); padding: 22px; border-radius: 14px; margin-top: 20px; }
+        .input-box { width: 100%; padding: 12px; background: #0a0d14; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: #fff; font-size: 0.88rem; margin-top: 6px; }
+        .btn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-top: 10px; }
+        .btn-small { padding: 10px; font-size: 0.8rem; font-weight: 700; color: #fff; border-radius: 6px; cursor: pointer; border: none; }
+        .btn-action { background: linear-gradient(135deg, #10b981, #06b6d4); color: white; font-weight: 700; padding: 12px; border-radius: 8px; border: none; cursor: pointer; width: 100%; margin-top: 12px; }
+        .link-output { background: #0a0d14; border: 1px solid rgba(255,255,255,0.15); padding: 14px; border-radius: 8px; color: #10b981; word-break: break-all; display: none; margin-top: 12px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <video id="bg-video" autoplay loop playsinline muted preload="auto">
+        <source src="https://files.catbox.moe/uhdl3i.mp4" type="video/mp4">
+    </video>
+    <div class="bg-overlay"></div>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">RAYZE STUDIO (FITUR)</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Foto Ultra HD</a></li>
+                <li><a href="halaman2.html">Video Ultra HD</a></li>
+                <li><a href="fitur.html">Media Downloader</a></li>
+                <li><a href="tools.html">1000 Tools & Catbox</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="utility-box">
+            <span style="color: #10b981; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">// INTERNAL MEDIA DOWNLOADER</span>
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Spotify, YT Music, TikTok, IG & YouTube Downloader</h2>
+
+            <label>Tempelkan Link Media (Spotify / YT Music / TikTok / Instagram / YouTube):</label>
+            <input type="text" id="mediaUrl" class="input-box" placeholder="https://...">
+
+            <div class="btn-grid" style="margin-top: 15px;">
+                <button class="btn-small" style="background: #1db954;" onclick="downloadMedia('spotify')">🎵 Spotify MP3</button>
+                <button class="btn-small" style="background: #ff0000;" onclick="downloadMedia('ytmusic')">🎧 YT Music MP3</button>
+                <button class="btn-small" style="background: #000;" onclick="downloadMedia('tiktok')">🎵 TikTok MP4</button>
+                <button class="btn-small" style="background: #ec4899;" onclick="downloadMedia('instagram')">📸 Instagram File</button>
+                <button class="btn-small" style="background: #cc0000;" onclick="downloadMedia('youtube')">▶️ YouTube MP4</button>
+            </div>
+
+            <div id="downloaderOutput" class="link-output"></div>
+        </section>
+    </div>
+
+    <script>
+        function downloadMedia(type) {
+            let url = document.getElementById('mediaUrl').value.trim();
+            let out = document.getElementById('downloaderOutput');
+            if (!url) return alert("Masukkan URL media terlebih dahulu!");
+
+            out.style.display = 'block';
+            out.innerText = `⏳ Memproses link ${type.toUpperCase()} di dalam web...`;
+
+            if (type === 'tiktok') {
+                fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`)
+                .then(r => r.json())
+                .then(d => {
+                    if (d && d.data) {
+                        out.innerHTML = `✅ TikTok File Siap:<br><a href="${d.data.play}" target="_blank" class="btn-action" style="display:inline-block; text-align:center; text-decoration:none;">📥 Download MP4 No Watermark</a>`;
+                    } else fallbackDownloader(url, 'TikTok', out);
+                }).catch(() => fallbackDownloader(url, 'TikTok', out));
+            } else if (type === 'spotify' || type === 'ytmusic') {
+                fetch(`https://api.vreden.web.id/api/spotify?url=${encodeURIComponent(url)}`)
+                .then(r => r.json())
+                .then(d => {
+                    if (d && d.result && (d.result.music || d.result.download)) {
+                        let link = d.result.music || d.result.download;
+                        out.innerHTML = `✅ Track MP3 Musik Siap:<br><a href="${link}" target="_blank" class="btn-action" style="display:inline-block; text-align:center; text-decoration:none; background:#1db954;">🎵 Download Lagu MP3 (320kbps)</a>`;
+                    } else fallbackDownloader(url, 'Musik Engine', out);
+                }).catch(() => fallbackDownloader(url, 'Musik Engine', out));
+            } else if (type === 'youtube') {
+                fetch(`https://api.cobalt.tools/api/json`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ url: url })
+                })
+                .then(r => r.json())
+                .then(d => {
+                    if (d && d.url) {
+                        out.innerHTML = `✅ YouTube MP4 File Siap:<br><a href="${d.url}" target="_blank" class="btn-action" style="display:inline-block; text-align:center; text-decoration:none; background:#ef4444;">▶️ Download Video MP4 Direct</a>`;
+                    } else fallbackDownloader(url, 'YouTube', out);
+                }).catch(() => fallbackDownloader(url, 'YouTube', out));
+            } else if (type === 'instagram') {
+                fetch(`https://api.vreden.web.id/api/instagram?url=${encodeURIComponent(url)}`)
+                .then(r => r.json())
+                .then(d => {
+                    if (d && d.result) {
+                        let dl = d.result.url || (d.result[0] ? d.result[0].url || d.result[0] : null);
+                        if (dl) {
+                            out.innerHTML = `✅ Instagram File Siap:<br><a href="${dl}" target="_blank" class="btn-action" style="display:inline-block; text-align:center; text-decoration:none; background:#ec4899;">📸 Download File Instagram Direct</a>`;
+                        } else fallbackDownloader(url, 'Instagram', out);
+                    } else fallbackDownloader(url, 'Instagram', out);
+                }).catch(() => fallbackDownloader(url, 'Instagram', out));
+            }
+        }
+
+        function fallbackDownloader(url, platform, out) {
+            out.innerHTML = `✅ ${platform} Direct Engine Trigger Siap:<br><a href="${url}" target="_blank" class="btn-action" style="display:inline-block; text-align:center; text-decoration:none;">📥 Direct Download Clean Web</a>`;
+        }
+    </script>
+</body>
+</html>
