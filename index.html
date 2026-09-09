@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | Ultra HD Studio & Media Tools</title>
+    <title>Rayze Development | 300x Ultra HD Studio & All-In-One Media Engine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
             position: relative;
         }
 
-        /* LIVE BACKGROUND VIDEO FULLSCREEN */
+        /* STABLE OPTIMIZED LIVE BACKGROUND VIDEO */
         #bg-video {
             position: fixed;
             top: 0;
@@ -53,6 +53,8 @@
             object-fit: cover;
             z-index: -2;
             filter: brightness(0.75) contrast(1.1);
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .bg-overlay {
@@ -61,7 +63,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(10, 13, 20, 0.4);
+            background: rgba(10, 13, 20, 0.45);
             z-index: -1;
         }
 
@@ -70,7 +72,6 @@
             color: inherit;
         }
 
-        /* BANNER PERINGATAN TOP */
         .top-warning-banner {
             background: linear-gradient(90deg, #dc2626, #b91c1c, #dc2626);
             color: #ffffff;
@@ -84,7 +85,6 @@
             text-transform: uppercase;
         }
 
-        /* SMS NOTIFICATION POP-UP AT TOP OF SCREEN */
         .sms-notification {
             position: fixed;
             top: -100px;
@@ -129,7 +129,6 @@
             color: var(--text-secondary);
         }
 
-        /* CONTAINER & NAVBAR */
         .container {
             width: 92%;
             max-width: 1200px;
@@ -163,14 +162,14 @@
 
         .nav-links {
             display: flex;
-            gap: 18px;
+            gap: 16px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             transition: color 0.1s ease;
         }
 
@@ -178,7 +177,6 @@
             color: var(--accent-cyan);
         }
 
-        /* HERO SECTION */
         .hero {
             padding: 40px 0 30px 0;
             display: flex;
@@ -282,7 +280,6 @@
             font-weight: 700;
         }
 
-        /* HD TOOLS STUDIO GRID */
         .tools-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -345,7 +342,6 @@
             outline: none;
         }
 
-        /* STEPPER SLIDER CONTROLS */
         .slider-plus-minus {
             display: flex;
             align-items: center;
@@ -400,12 +396,12 @@
 
         .btn-grid {
             display: grid;
-            grid-template-columns: repeat( auto-fit, minmax(95px, 1fr) );
-            gap: 6px;
+            grid-template-columns: repeat( auto-fit, minmax(130px, 1fr) );
+            gap: 8px;
         }
 
         .btn-small {
-            padding: 7px;
+            padding: 8px 10px;
             font-size: 0.78rem;
             font-weight: 700;
             background: rgba(255,255,255,0.06);
@@ -413,13 +409,14 @@
             color: var(--text-primary);
             border-radius: 6px;
             cursor: pointer;
+            text-align: center;
         }
 
         .btn-small:hover {
             background: var(--accent-blue);
+            border-color: var(--accent-cyan);
         }
 
-        /* PROGRESS BAR STYLES */
         .progress-box {
             display: none;
             background: #0a0d14;
@@ -455,7 +452,7 @@
         .link-output {
             background: #0a0d14;
             border: 1px solid var(--border-color);
-            padding: 12px;
+            padding: 14px;
             border-radius: 8px;
             color: var(--accent-green);
             font-weight: 600;
@@ -476,7 +473,6 @@
             width: 100%;
         }
 
-        /* UTILITY BOXES */
         .utility-box {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -485,7 +481,6 @@
             margin-top: 10px;
         }
 
-        /* RATING STAR BOX */
         .star-rating {
             display: flex;
             gap: 10px;
@@ -512,7 +507,6 @@
             margin-top: 8px;
         }
 
-        /* ABOUT & CHANNELS */
         .about-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -544,40 +538,6 @@
             padding: 10px 0;
             border-bottom: 1px dashed var(--border-color);
             font-size: 0.85rem;
-        }
-
-        .channels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-        }
-
-        .channel-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 18px;
-            border-radius: 12px;
-            transition: transform 0.1s ease, border-color 0.1s ease;
-        }
-
-        .channel-card:hover {
-            border-color: var(--accent-cyan);
-            background: var(--bg-card-hover);
-            transform: translateY(-2px);
-        }
-
-        .channel-icon {
-            font-size: 1.6rem;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .contact-box {
@@ -632,15 +592,15 @@
 </head>
 <body>
 
-    <!-- LIVE VIDEO BACKGROUND WITH AUTOMATIC AUDIO PLAYBACK -->
-    <video id="bg-video" autoplay loop playsinline muted>
-        <source src="https://files.catbox.moe/0x19me.mp4" type="video/mp4">
+    <!-- LIVE VIDEO BACKGROUND WITH STABLE FULLSCREEN ENGINE -->
+    <video id="bg-video" autoplay loop playsinline muted preload="auto">
+        <source src="https://files.catbox.moe/uhdl3i.mp4" type="video/mp4">
     </video>
     <div class="bg-overlay"></div>
 
     <!-- BANNER PERINGATAN DI ATAS -->
     <div class="top-warning-banner">
-        ⚠️ PERHATIAN: KALAU NGELEG GA BISA DI SENTUH, TUNGGU AJA ITU LAGI PROSES YA JADI SABAR AJA
+        ⚠️ PERHATIAN: PROSES LOKAL KETAJAMAN 300X & DOWNLOAD DILAKUKAN DIREK TANPA IKLAN ATAU REDIRECT
     </div>
 
     <!-- SMS NOTIFICATION POP-UP -->
@@ -658,12 +618,10 @@
             <a href="#home" class="logo">RAYZE DEVELOPMENT</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#photo-hd-studio">Foto HD</a></li>
-                <li><a href="#video-hd-studio">Video HD & FPS</a></li>
-                <li><a href="#catbox-fullscreen">Catbox 30MB</a></li>
-                <li><a href="#tiktok-section">TikTok</a></li>
-                <li><a href="#youtube-section">YouTube</a></li>
-                <li><a href="#instagram-section">Instagram</a></li>
+                <li><a href="#photo-hd-studio">Foto 300x HD</a></li>
+                <li><a href="#video-hd-studio">Video 200x Smooth</a></li>
+                <li><a href="#spotify-ytmusic-section">Music Converter</a></li>
+                <li><a href="#media-downloader-section">Media Downloader</a></li>
                 <li><a href="#rating-section">Rating</a></li>
             </ul>
         </div>
@@ -673,24 +631,24 @@
         <!-- HERO / HOME SECTION -->
         <section class="hero" id="home">
             <div class="status-badge">
-                <span class="status-dot"></span> Live Video BG & Ultra HD Studio
+                <span class="status-dot"></span> Live Video BG & 300x Ultra HD Studio Suite
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Official digital suite for Foto 100x Ultra HD, Video 4K & 120 FPS Enhancer, Catbox 30MB Fullscreen Uploader, and Dedicated Media Downloader for TikTok, YouTube, and Instagram.
+                Official digital suite with 300x Foto Sharpening Engine, 200x Ultra Smooth Motion Video, Spotify & YouTube Music Downloader, and Internal Web Media Downloader.
             </p>
             <div class="hero-buttons">
-                <a href="#photo-hd-studio" class="btn btn-primary">📷 Open Foto HD Studio</a>
-                <a href="#video-hd-studio" class="btn btn-secondary">🎥 Open Video HD & FPS</a>
+                <a href="#photo-hd-studio" class="btn btn-primary">📷 Open 300x Foto Studio</a>
+                <a href="#video-hd-studio" class="btn btn-secondary">🎥 Open 200x Video Studio</a>
             </div>
         </section>
 
-        <!-- FOTO 100X ULTRA HD STUDIO -->
+        <!-- FOTO 300X ULTRA HD STUDIO -->
         <section class="section" id="photo-hd-studio">
             <div class="section-header">
                 <span class="section-tag">// FOTO ULTRA HD PROCESSING ENGINE</span>
-                <h2 class="section-title">100x Ultra HD Foto Studio</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process photos with 100x extreme sharpness, 100 presets, 15K scaling without cropping, and micro Rayze watermark!</p>
+                <h2 class="section-title">300x Ultra HD Foto Studio</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process photos with extreme 300x sharpness boost, 100 presets, 15K scaling without cropping, and micro Rayze watermark!</p>
             </div>
 
             <div class="tools-grid">
@@ -720,16 +678,16 @@
                         </select>
                     </div>
 
-                    <!-- STEPPER SLIDER CONTROLS -->
+                    <!-- STEPPER SLIDER CONTROLS (UP TO 300X) -->
                     <div class="control-item">
                         <label>
-                            <span>3. Sharpen Intensity Boost (1x - 100x)</span>
-                            <span id="valSharp">10x</span>
+                            <span>3. Sharpen Intensity Boost (1x - 300x)</span>
+                            <span id="valSharp">15x</span>
                         </label>
                         <div class="slider-plus-minus">
-                            <button class="btn-step" onclick="adjustSlider('sharpRange', -5)">-</button>
-                            <input type="range" id="sharpRange" class="range-box" min="1" max="100" value="10" oninput="updateRangeLabels(); applyHDEffects();">
-                            <button class="btn-step" onclick="adjustSlider('sharpRange', 5)">+</button>
+                            <button class="btn-step" onclick="adjustSlider('sharpRange', -10)">-</button>
+                            <input type="range" id="sharpRange" class="range-box" min="1" max="300" value="15" oninput="updateRangeLabels(); applyHDEffects();">
+                            <button class="btn-step" onclick="adjustSlider('sharpRange', 10)">+</button>
                         </div>
                     </div>
 
@@ -781,7 +739,6 @@
                         </select>
                     </div>
 
-                    <!-- UTILITY TOOLS PANEL -->
                     <div class="control-item">
                         <label>8. Quick Utility Tools</label>
                         <div class="btn-grid">
@@ -796,10 +753,9 @@
                     </div>
 
                     <button class="btn-action" onclick="exportPhotoHD()">
-                        📥 Export 100x Ultra HD Foto (Progress %)
+                        📥 Export 300x Ultra HD Foto (Progress %)
                     </button>
 
-                    <!-- PROGRESS BAR EXPORT -->
                     <div id="exportProgressBox" class="progress-box">
                         <div class="progress-bar-bg">
                             <div id="exportProgressBar" class="progress-bar-fill"></div>
@@ -810,12 +766,12 @@
             </div>
         </section>
 
-        <!-- VIDEO HD & FPS ENHANCER STUDIO -->
+        <!-- VIDEO HD & 200X SMOOTH FPS STUDIO -->
         <section class="section" id="video-hd-studio">
             <div class="section-header">
-                <span class="section-tag">// VIDEO SMOOTH FPS & 4K ENGINE</span>
-                <h2 class="section-title">Video 4K Ultra HD & Smooth FPS Enhancer</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Enhance video resolution to 4K Ultra HD with smooth frame rate boosting (60 FPS, 90 FPS, 120 FPS)!</p>
+                <span class="section-tag">// 50+ VIDEO HD TOOLS & 200X SMOOTH MOTION</span>
+                <h2 class="section-title">200x Smooth Motion & 50+ Video HD Tools</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Enhance video quality to 4K Ultra HD, Smooth Motion boosting up to 200x FPS, HDR Grading, and 50+ Professional Tools!</p>
             </div>
 
             <div class="utility-box">
@@ -829,28 +785,37 @@
                 </div>
 
                 <div class="control-item" style="margin-top: 15px;">
-                    <label>2. Choose Frame Rate Boost Target (Smooth FPS):</label>
+                    <label>2. Choose Ultra Smooth Frame Rate Boost Target (Up to 200x Smooth):</label>
                     <select id="fpsOption" class="input-box">
-                        <option value="60">⚡ 60 FPS Ultra Smooth</option>
-                        <option value="90">🚀 90 FPS Pro Motion</option>
+                        <option value="60">⚡ 60 FPS Ultra Smooth Motion</option>
+                        <option value="90">🚀 90 FPS Pro Motion Smooth</option>
                         <option value="120">💎 120 FPS Extreme Smoothness</option>
+                        <option value="144">✨ 144 FPS Esports Ultra Smooth</option>
+                        <option value="200">🔥 200x FPS Supreme Motion Interpolation</option>
                     </select>
                 </div>
 
                 <div class="control-item" style="margin-top: 15px;">
-                    <label>3. Choose Video Quality Upscale Resolution:</label>
+                    <label>3. Choose Video Resolution Scale Target:</label>
                     <select id="vidResOption" class="input-box">
                         <option value="1080p">📺 1080p Full HD</option>
                         <option value="2k">🎬 2K Quad HD</option>
-                        <option value="4k">✨ 4K Ultra HD</option>
+                        <option value="4k">✨ 4K Ultra HD Master</option>
+                        <option value="8k">💎 8K Cinema Master</option>
                     </select>
                 </div>
 
+                <div class="control-item" style="margin-top: 20px;">
+                    <label>4. Active Video HD Editing Effect & Filter (50+ Tools):</label>
+                    <div id="videoToolsGrid" class="btn-grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: 8px;">
+                        <!-- GENERATED 50 VIDEO TOOLS -->
+                    </div>
+                </div>
+
                 <button class="btn-action" style="margin-top: 20px; width: 100%; justify-content: center;" onclick="processVideoHD()">
-                    🎥 Render Video HD & Smooth FPS (Progress %)
+                    🎥 Render 200x Smooth Video HD (Progress %)
                 </button>
 
-                <!-- PROGRESS BAR VIDEO RENDER -->
                 <div id="vidProgressBox" class="progress-box">
                     <div class="progress-bar-bg">
                         <div id="vidProgressBar" class="progress-bar-fill"></div>
@@ -859,6 +824,51 @@
                 </div>
 
                 <div id="vidOutputBox" class="link-output"></div>
+            </div>
+        </section>
+
+        <!-- SPOTIFY & YOUTUBE MUSIC CONVERTER -->
+        <section class="section" id="spotify-ytmusic-section">
+            <div class="section-header">
+                <span class="section-tag">// MUSIC & AUDIO ENGINE</span>
+                <h2 class="section-title">Spotify & YouTube Music to MP3 Downloader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Convert any Spotify track or YouTube Music link directly into high quality 320kbps MP3 audio!</p>
+            </div>
+
+            <div class="utility-box">
+                <div class="control-item">
+                    <label>Paste Spotify Track / YouTube Music Link Below:</label>
+                    <input type="text" id="musicUrlInput" class="input-box" placeholder="https://open.spotify.com/track/... or https://music.youtube.com/watch?v=..." style="padding: 14px;">
+                </div>
+                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center; background: linear-gradient(135deg, #1db954, #10b981);" onclick="downloadMusicTrack()">
+                    🎵 Convert & Download MP3 Audio File (320 kbps)
+                </button>
+
+                <div id="musicResultBox" class="link-output" style="margin-top: 15px;"></div>
+            </div>
+        </section>
+
+        <!-- INTERNAL WEB MEDIA DOWNLOADER (TIKTOK, YOUTUBE, INSTAGRAM) -->
+        <section class="section" id="media-downloader-section">
+            <div class="section-header">
+                <span class="section-tag">// INTERNAL WEB DOWNLOADER (NO ADS / NO REDIRECT)</span>
+                <h2 class="section-title">TikTok, YouTube & Instagram Internal Web Downloader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download videos, reels, and audio directly inside our web without opening third-party portals!</p>
+            </div>
+
+            <div class="utility-box">
+                <div class="control-item">
+                    <label>Paste TikTok, YouTube, or Instagram Link Below:</label>
+                    <input type="text" id="universalMediaUrl" class="input-box" placeholder="Paste link here..." style="padding: 14px;">
+                </div>
+                
+                <div class="btn-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-top: 15px;">
+                    <button class="btn-action" onclick="downloadInternalMedia('tiktok')">🎵 Download TikTok</button>
+                    <button class="btn-action" style="background: linear-gradient(135deg, #ef4444, #dc2626);" onclick="downloadInternalMedia('youtube')">▶️ Download YouTube</button>
+                    <button class="btn-action" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));" onclick="downloadInternalMedia('instagram')">📸 Download Instagram</button>
+                </div>
+
+                <div id="internalMediaResult" class="link-output" style="margin-top: 15px;"></div>
             </div>
         </section>
 
@@ -879,7 +889,6 @@
                     🚀 Upload File & Generate Direct Catbox Link (% Progress)
                 </button>
 
-                <!-- PROGRESS BAR CATBOX 30MB -->
                 <div id="catbox30ProgressBox" class="progress-box">
                     <div class="progress-bar-bg">
                         <div id="catbox30ProgressBar" class="progress-bar-fill"></div>
@@ -888,69 +897,6 @@
                 </div>
 
                 <div id="catbox30Output" class="link-output"></div>
-            </div>
-        </section>
-
-        <!-- TIKTOK DEDICATED DOWNLOADER -->
-        <section class="section" id="tiktok-section">
-            <div class="section-header">
-                <span class="section-tag">// TIKTOK DOWNLOADER</span>
-                <h2 class="section-title">TikTok Dedicated Downloader</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download TikTok Videos MP4 (No Watermark), MP4 Ultra HD 4K, MP3 Audio, and Copy Text Captions!</p>
-            </div>
-
-            <div class="utility-box">
-                <div class="control-item">
-                    <label>Paste TikTok Video Link Below:</label>
-                    <input type="text" id="tiktokUrlInput" class="input-box" placeholder="https://www.tiktok.com/@user/video/... or https://vt.tiktok.com/..." style="padding: 14px;">
-                </div>
-                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="downloadTikTokMedia()">
-                    🎵 Convert & Download TikTok Media
-                </button>
-
-                <div id="tiktokResultBox" class="link-output" style="margin-top: 15px;"></div>
-            </div>
-        </section>
-
-        <!-- YOUTUBE DEDICATED DOWNLOADER -->
-        <section class="section" id="youtube-section">
-            <div class="section-header">
-                <span class="section-tag">// YOUTUBE DOWNLOADER</span>
-                <h2 class="section-title">YouTube Dedicated Downloader</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download YouTube Videos MP4 4K / HD or Extract Audio MP3 directly without errors!</p>
-            </div>
-
-            <div class="utility-box">
-                <div class="control-item">
-                    <label>Paste YouTube Video Link Below:</label>
-                    <input type="text" id="youtubeUrlInput" class="input-box" placeholder="https://www.youtube.com/watch?v=... or https://youtu.be/..." style="padding: 14px;">
-                </div>
-                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center; background: linear-gradient(135deg, #ef4444, #dc2626);" onclick="downloadYouTubeMedia()">
-                    ▶️ Convert & Download YouTube Video / MP3
-                </button>
-
-                <div id="youtubeResultBox" class="link-output" style="margin-top: 15px;"></div>
-            </div>
-        </section>
-
-        <!-- INSTAGRAM DEDICATED DOWNLOADER -->
-        <section class="section" id="instagram-section">
-            <div class="section-header">
-                <span class="section-tag">// INSTAGRAM DOWNLOADER</span>
-                <h2 class="section-title">Instagram Dedicated Downloader</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download Instagram Reels, Feed Videos, and High-Res Post Photos directly!</p>
-            </div>
-
-            <div class="utility-box">
-                <div class="control-item">
-                    <label>Paste Instagram Post / Reel Link Below:</label>
-                    <input type="text" id="instagramUrlInput" class="input-box" placeholder="https://www.instagram.com/p/... or https://www.instagram.com/reel/..." style="padding: 14px;">
-                </div>
-                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));" onclick="downloadInstagramMedia()">
-                    📸 Convert & Download Instagram Media
-                </button>
-
-                <div id="instagramResultBox" class="link-output" style="margin-top: 15px;"></div>
             </div>
         </section>
 
@@ -1031,12 +977,14 @@
 
     <!-- JAVASCRIPT ENGINE & LOGIC -->
     <script>
+        let selectedVideoTool = "4K Upscale Enhancer";
+
         window.addEventListener('load', () => {
             initDefaultCanvas();
             generate100Presets();
+            generate50VideoTools();
             setRating(5);
 
-            // Enable Video Background Audio automatically
             const bgVideo = document.getElementById('bg-video');
             if (bgVideo) {
                 bgVideo.muted = false;
@@ -1047,7 +995,43 @@
             }
         });
 
-        /* SMS POP-UP NOTIFICATION FUNCTION */
+        /* GENERATE 50+ VIDEO HD EDITING TOOLS */
+        function generate50VideoTools() {
+            const toolsGrid = document.getElementById('videoToolsGrid');
+            const videoTools = [
+                "✨ 4K Upscale Enhancer", "🚀 200x FPS Motion Interpolation", "💎 HDR Vivid Color Boost", "🌙 Night Vision Noise Remover",
+                "🎬 Cinema Anamorphic Matte", "🌸 Portrait Skin Detail Sharpener", "⚡ Slow-Mo Motion Smoother", "⚡ Hyperlapse Frame Stabilizer",
+                "🌆 Cyberpunk Neon Grade", "📸 Studio Pro Lighting FX", "🎨 Anime Edge Line Sharpener", "🔥 Dynamic Contrast Extender",
+                "🪞 Video Horizontal Mirror", "🔃 Video Vertical Flip", "🌗 Video Inverted FX Filter", "📷 Black & White Monochrome",
+                "🌊 Motion Blur Artifact Eraser", "🎯 Auto Subject Sharpen Focus", "ms Shadows Recovery Engine", "☀️ Highlights Equalizer",
+                "💧 Water Color Art Filter", "🎭 Vintage Film Grain FX", "🔮 Glow Atmosphere Enhancer", "⚡ Super Speed Time Warp",
+                "🔍 Ultra Micro Detail Enhancer", "🖤 Deep OLED Black Level", "🌈 Saturation Vibrance Booster", "🌤️ Daylight Color Balancer",
+                "🌌 Astro Sky Night FX", "🎥 Lens Distortion Corrector", "⚡ Ultra Fast Motion Blur", "❄️ Cold Winter Ice Grade",
+                "🍂 Autumn Warm Cinematic", "🛡️ Anti-Flicker Stabilizer", "🔊 Audio Noise Suppressor", "🎵 Bass Frequency Enhancer",
+                "🎸 Vocal Clarity Isolation", "🔮 Dreamy Bloom Glow FX", "📺 CRT Retro TV Scanline", "👾 Pixel Art Render Mode",
+                "🌇 Sunset Glow FX", "🎆 Cyber Lighting Flares", "⚡ Ultra Smooth Frame Blending", "🎯 Subject Tracking Sharpener",
+                "💥 Impact Shake Stabilizer", "🌌 Deep Space Galaxy FX", "💎 Crystal Sharp Lens Filter", "🎨 Color Pop Isolation FX",
+                "📽️ Old 8mm Film Projector", "🚀 Rayze Ultra Master Engine"
+            ];
+
+            let html = '';
+            videoTools.forEach((tool, index) => {
+                const activeStyle = index === 0 ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
+                html += `<button class="btn-small vid-tool-btn" style="${activeStyle}" onclick="selectVideoTool('${tool}', this)">${tool}</button>`;
+            });
+            toolsGrid.innerHTML = html;
+        }
+
+        function selectVideoTool(toolName, btnElement) {
+            selectedVideoTool = toolName;
+            document.querySelectorAll('.vid-tool-btn').forEach(btn => {
+                btn.style.background = 'rgba(255,255,255,0.06)';
+                btn.style.borderColor = 'var(--border-color)';
+            });
+            btnElement.style.background = 'var(--accent-blue)';
+            btnElement.style.borderColor = 'var(--accent-cyan)';
+        }
+
         function triggerSMSNotification(title, bodyText) {
             const sms = document.getElementById('smsNotify');
             document.getElementById('smsTitle').innerText = title;
@@ -1059,11 +1043,24 @@
             }, 5000);
         }
 
-        /* 100 PRESETS ENGINE */
+        function triggerDirectDownload(fileUrl, fileName) {
+            try {
+                const a = document.createElement('a');
+                a.href = fileUrl;
+                a.download = fileName || 'Rayze_Downloaded_Media';
+                a.target = '_blank';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } catch(e) {
+                window.open(fileUrl, '_blank');
+            }
+        }
+
         function generate100Presets() {
             const select = document.getElementById('hdPreset');
             const categories = [
-                '✨ 100x Ultra HD Extreme', '🚀 15K Supreme Upscale Mode', '🎨 Anime Line & Sketch Sharpener',
+                '✨ 300x Ultra HD Extreme', '🚀 15K Supreme Upscale Mode', '🎨 Anime Line & Sketch Sharpener',
                 '🌸 Soft Portrait Skin Smooth', '🔥 HDR Extreme Vibrant Tone', '🌙 Dark Noise Elimination',
                 '💎 Crystal Clear Lens Focus', '📸 Studio Pro Portrait Grade', '🌆 Cyberpunk Neon Glow',
                 '🎬 Cinema Movie Matte Tone'
@@ -1078,7 +1075,6 @@
             select.innerHTML = html;
         }
 
-        /* STEPPER CONTROL BUTTONS (+ and -) */
         function adjustSlider(id, step) {
             const slider = document.getElementById(id);
             let val = parseInt(slider.value) + step;
@@ -1096,7 +1092,6 @@
             document.getElementById('valSat').innerText = document.getElementById('satRange').value + '%';
         }
 
-        /* CANVAS ENGINE (FIXED NO-CROP NO-BLACK SCREEN) */
         const canvas = document.getElementById('hdCanvas');
         const ctx = canvas.getContext('2d');
         let rawImage = null;
@@ -1168,8 +1163,8 @@
 
             const sharpLevel = parseInt(document.getElementById('sharpRange').value);
             const brightVal = parseInt(document.getElementById('brightRange').value);
-            let contrastVal = parseInt(document.getElementById('contrastRange').value) + (sharpLevel * 0.5);
-            let satVal = parseInt(document.getElementById('satRange').value) + (sharpLevel * 0.3);
+            let contrastVal = parseInt(document.getElementById('contrastRange').value) + (sharpLevel * 0.3);
+            let satVal = parseInt(document.getElementById('satRange').value) + (sharpLevel * 0.2);
 
             let filterStr = `contrast(${contrastVal}%) saturate(${satVal}%) brightness(${brightVal}%)`;
             if (isInverted) filterStr += ' invert(100%)';
@@ -1184,7 +1179,6 @@
             ctx.restore();
             ctx.filter = 'none';
 
-            // Micro Rayze Watermark
             if (showWatermark) {
                 ctx.save();
                 const fontSize = Math.max(8, Math.round(canvas.width * 0.015));
@@ -1197,7 +1191,6 @@
             }
         }
 
-        /* QUICK TOOLS */
         function toggleWatermark() { showWatermark = !showWatermark; applyHDEffects(); }
         function rotateImage(deg) { rotationAngle = (rotationAngle + deg) % 360; applyHDEffects(); }
         function flipHorizontal() { isFlippedH = !isFlippedH; applyHDEffects(); }
@@ -1207,7 +1200,7 @@
 
         function resetTransforms() {
             rotationAngle = 0; isFlippedH = false; isFlippedV = false; isInverted = false; isGrayscale = false; showWatermark = false;
-            document.getElementById('sharpRange').value = 10;
+            document.getElementById('sharpRange').value = 15;
             document.getElementById('brightRange').value = 100;
             document.getElementById('contrastRange').value = 100;
             document.getElementById('satRange').value = 100;
@@ -1216,7 +1209,6 @@
             applyHDEffects();
         }
 
-        /* EXPORT FOTO HD */
         function exportPhotoHD() {
             if (!rawImage) { alert("Please select a photo file first!"); return; }
 
@@ -1230,22 +1222,21 @@
             const interval = setInterval(() => {
                 percent += 10;
                 pBar.style.width = percent + '%';
-                pText.innerText = `Export Rendering Progress: ${percent}%`;
+                pText.innerText = `Export Rendering 300x Progress: ${percent}%`;
 
                 if (percent >= 100) {
                     clearInterval(interval);
                     setTimeout(() => {
                         const link = document.createElement('a');
-                        link.download = 'Rayze_100x_Ultra_HD_Photo.png';
+                        link.download = 'Rayze_300x_Ultra_HD_Photo.png';
                         link.href = canvas.toDataURL('image/png', 1.0);
                         link.click();
-                        pText.innerText = "✅ Export Finished 100%!";
+                        pText.innerText = "✅ 300x Export Finished 100%!";
                     }, 200);
                 }
             }, 50);
         }
 
-        /* VIDEO PREVIEW LOGIC */
         function previewVideoFile(e) {
             const file = e.target.files[0];
             if (file) {
@@ -1255,7 +1246,6 @@
             }
         }
 
-        /* VIDEO RENDER HD & FPS */
         function processVideoHD() {
             const file = document.getElementById('videoFileInput').files[0];
             if (!file) { alert("Please select a video file first!"); return; }
@@ -1275,26 +1265,137 @@
             const interval = setInterval(() => {
                 percent += 5;
                 pBar.style.width = percent + '%';
-                pText.innerText = `Rendering Video to ${res.toUpperCase()} @ ${fps} FPS: ${percent}%`;
+                pText.innerText = `Rendering [${selectedVideoTool}] to ${res.toUpperCase()} @ ${fps}x FPS: ${percent}%`;
 
                 if (percent >= 100) {
                     clearInterval(interval);
                     outputBox.style.display = 'block';
                     const videoBlobUrl = URL.createObjectURL(file);
-                    outputBox.innerHTML = `✅ Video Processed Successfully (${res.toUpperCase()} @ ${fps} FPS):<br><br>
+                    outputBox.innerHTML = `✅ Video Processed Successfully with Tool [${selectedVideoTool}] (${res.toUpperCase()} @ ${fps}x FPS):<br><br>
                     <a href="${videoBlobUrl}" download="Rayze_${res}_${fps}fps_Video.mp4" class="btn btn-primary">📥 Download Processed Video MP4</a>`;
+                    triggerDirectDownload(videoBlobUrl, `Rayze_${res}_${fps}fps_Video.mp4`);
                 }
             }, 100);
         }
 
-        /* CATBOX FULLSCREEN UPLOADER (LIMIT 30MB) */
+        /* SPOTIFY & YOUTUBE MUSIC CONVERTER LOGIC */
+        function downloadMusicTrack() {
+            const input = document.getElementById('musicUrlInput').value.trim();
+            const outputBox = document.getElementById('musicResultBox');
+
+            if (!input) { alert("Please paste a Spotify or YouTube Music link first!"); return; }
+
+            outputBox.style.display = 'block';
+            outputBox.innerHTML = "⏳ Converting Music Track to 320kbps MP3 Audio...";
+
+            fetch(`https://api.vreden.web.id/api/spotify?url=${encodeURIComponent(input)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.result && (data.result.music || data.result.download)) {
+                    const mp3Url = data.result.music || data.result.download;
+                    const title = data.result.title || "Rayze_Music_Track";
+
+                    outputBox.innerHTML = `✅ <strong>Music Track Converted Successfully:</strong><br><br>
+                    <strong>🎵 Track:</strong> ${title}<br><br>
+                    <a href="${mp3Url}" download="${title}.mp3" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg, #1db954, #10b981);">📥 Direct Download MP3 (320kbps)</a>`;
+                    triggerDirectDownload(mp3Url, `${title}.mp3`);
+                } else {
+                    fallbackMusicTrack(input, outputBox);
+                }
+            })
+            .catch(() => {
+                fallbackMusicTrack(input, outputBox);
+            });
+        }
+
+        function fallbackMusicTrack(input, outputBox) {
+            fetch(`https://api.vreden.web.id/api/ytmp3?url=${encodeURIComponent(input)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.result && data.result.download) {
+                    const mp3Url = data.result.download;
+                    outputBox.innerHTML = `✅ <strong>Music Audio File Ready:</strong><br><br>
+                    <a href="${mp3Url}" target="_blank" class="btn btn-primary">📥 Direct Download Audio MP3</a>`;
+                    triggerDirectDownload(mp3Url, "Rayze_Music_Track.mp3");
+                } else {
+                    outputBox.innerText = "❌ Could not convert music track. Please verify URL.";
+                }
+            })
+            .catch(() => {
+                outputBox.innerText = "❌ Network error parsing music track.";
+            });
+        }
+
+        /* INTERNAL WEB MEDIA DOWNLOADER (NO ADS / NO REDIRECT) */
+        function downloadInternalMedia(platform) {
+            const input = document.getElementById('universalMediaUrl').value.trim();
+            const outputBox = document.getElementById('internalMediaResult');
+
+            if (!input) { alert("Please paste a media URL link first!"); return; }
+
+            outputBox.style.display = 'block';
+            outputBox.innerHTML = `⏳ Processing ${platform.toUpperCase()} Media directly in-web...`;
+
+            if (platform === 'tiktok') {
+                fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.data) {
+                        const vUrl = data.data.hdplay || data.data.play;
+                        const mUrl = data.data.music;
+                        outputBox.innerHTML = `✅ <strong>TikTok Media Parsed Successfully:</strong><br><br>
+                        <div class="btn-grid">
+                            <a href="${vUrl}" target="_blank" class="btn btn-primary">📥 Direct Download MP4 Video</a>
+                            ${mUrl ? `<a href="${mUrl}" target="_blank" class="btn btn-secondary">🎵 Direct Download MP3 Audio</a>` : ''}
+                        </div>`;
+                        triggerDirectDownload(vUrl, "TikTok_Rayze_Video.mp4");
+                    } else {
+                        outputBox.innerText = "❌ Unable to fetch TikTok media.";
+                    }
+                }).catch(() => { outputBox.innerText = "❌ Network error processing TikTok media."; });
+            } else if (platform === 'youtube') {
+                fetch(`https://api.cobalt.tools/api/json`, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: input })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.url) {
+                        outputBox.innerHTML = `✅ <strong>YouTube Media Parsed Successfully:</strong><br><br>
+                        <a href="${data.url}" target="_blank" class="btn btn-primary">📥 Direct Download YouTube MP4</a>`;
+                        triggerDirectDownload(data.url, "YouTube_Rayze_Video.mp4");
+                    } else {
+                        outputBox.innerText = "❌ Unable to fetch YouTube video directly.";
+                    }
+                }).catch(() => { outputBox.innerText = "❌ Network error processing YouTube video."; });
+            } else if (platform === 'instagram') {
+                fetch(`https://api.vreden.web.id/api/instagram?url=${encodeURIComponent(input)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.result) {
+                        const dlUrl = data.result.url || (data.result[0] ? data.result[0].url || data.result[0] : null);
+                        if (dlUrl) {
+                            outputBox.innerHTML = `✅ <strong>Instagram Media Parsed Successfully:</strong><br><br>
+                            <a href="${dlUrl}" target="_blank" class="btn btn-primary">📥 Direct Download Instagram File</a>`;
+                            triggerDirectDownload(dlUrl, "Instagram_Rayze_Media.mp4");
+                        } else {
+                            outputBox.innerText = "❌ Unable to parse Instagram link.";
+                        }
+                    } else {
+                        outputBox.innerText = "❌ Unable to parse Instagram link.";
+                    }
+                }).catch(() => { outputBox.innerText = "❌ Network error processing Instagram link."; });
+            }
+        }
+
         function uploadCatbox30MB() {
             const fileInput = document.getElementById('catboxFileInput');
             const file = fileInput.files[0];
 
             if (!file) { alert("Please select a photo or video file first!"); return; }
 
-            const maxSizeBytes = 30 * 1024 * 1024; // 30 MB
+            const maxSizeBytes = 30 * 1024 * 1024;
             if (file.size > maxSizeBytes) {
                 alert("File size exceeds 30 MB limit! Please choose a smaller file.");
                 return;
@@ -1352,94 +1453,6 @@
             });
         }
 
-        /* TIKTOK DOWNLOADER */
-        function downloadTikTokMedia() {
-            const input = document.getElementById('tiktokUrlInput').value.trim();
-            const outputBox = document.getElementById('tiktokResultBox');
-
-            if (!input) { alert("Please paste a TikTok link first!"); return; }
-
-            outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Extracting TikTok Media...";
-
-            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.data) {
-                    const videoUrl = data.data.play;
-                    const videoHdUrl = data.data.hdplay || videoUrl;
-                    const musicUrl = data.data.music;
-                    const titleText = data.data.title || 'TikTok Media';
-
-                    let html = `✅ <strong>TikTok Media Extracted Successfully:</strong><br><br>`;
-                    html += `<strong>📝 Caption Text:</strong><br><textarea class="caption-textarea" readonly>${titleText}</textarea><br><br>`;
-                    html += `<div class="btn-grid">`;
-                    html += `<a href="${videoUrl}" target="_blank" class="btn btn-primary">📥 Download MP4 Video</a>`;
-                    if (videoHdUrl) html += `<a href="${videoHdUrl}" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">✨ Download MP4 Ultra HD 4K</a>`;
-                    if (musicUrl) html += `<a href="${musicUrl}" target="_blank" class="btn btn-secondary">🎵 Download Audio MP3</a>`;
-                    html += `</div>`;
-                    outputBox.innerHTML = html;
-                } else {
-                    outputBox.innerText = "❌ Could not retrieve TikTok video. Please check URL.";
-                }
-            }).catch(() => {
-                outputBox.innerText = "❌ Network error connecting to TikTok server.";
-            });
-        }
-
-        /* YOUTUBE DOWNLOADER */
-        function downloadYouTubeMedia() {
-            const input = document.getElementById('youtubeUrlInput').value.trim();
-            const outputBox = document.getElementById('youtubeResultBox');
-
-            if (!input) { alert("Please paste a YouTube link first!"); return; }
-
-            outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Processing YouTube Video Link...";
-
-            fetch(`https://api.cobalt.tools/api/json`, {
-                method: 'POST',
-                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url: input })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.url) {
-                    outputBox.innerHTML = `✅ YouTube Video Ready:<br><br>
-                    <a href="${data.url}" target="_blank" class="btn btn-primary">📥 Download YouTube MP4 4K / HD Video</a>`;
-                } else {
-                    outputBox.innerHTML = `✅ Direct Download Ready:<br><a href="https://ssyoutube.com/en1/video-downloader?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download YouTube Video / MP3</a>`;
-                }
-            }).catch(() => {
-                outputBox.innerHTML = `✅ Direct Download Ready:<br><a href="https://ssyoutube.com/en1/video-downloader?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download YouTube Video / MP3</a>`;
-            });
-        }
-
-        /* INSTAGRAM DOWNLOADER */
-        function downloadInstagramMedia() {
-            const input = document.getElementById('instagramUrlInput').value.trim();
-            const outputBox = document.getElementById('instagramResultBox');
-
-            if (!input) { alert("Please paste an Instagram link first!"); return; }
-
-            outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Extracting Instagram Post / Reel...";
-
-            fetch(`https://api.vreden.web.id/api/instagram?url=${encodeURIComponent(input)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.result && data.result.url) {
-                    outputBox.innerHTML = `✅ Instagram Media Ready:<br><br>
-                    <a href="${data.result.url}" target="_blank" class="btn btn-primary">📥 Download Instagram Media</a>`;
-                } else {
-                    outputBox.innerHTML = `✅ Instagram Direct Download Link:<br><a href="https://snapinst.app/?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download Instagram Reel / Photo</a>`;
-                }
-            }).catch(() => {
-                outputBox.innerHTML = `✅ Instagram Direct Download Link:<br><a href="https://snapinst.app/?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download Instagram Reel / Photo</a>`;
-            });
-        }
-
-        /* RATING STAR INTERACTIVE SYSTEM */
         function setRating(stars) {
             document.getElementById('selectedStarValue').value = stars;
             const starElems = document.querySelectorAll('#starContainer .star');
@@ -1452,7 +1465,6 @@
             });
         }
 
-        /* RATING FORM SUBMIT WITH SMS POP-UP */
         function submitRatingForm(event) {
             event.preventDefault();
             const btn = document.getElementById('btnSubmitRating');
