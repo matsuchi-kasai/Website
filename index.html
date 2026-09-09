@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | Universal Ultra HD Studio & Multi-Tools Suite</title>
+    <title>Rayze Development | Live Video Suite & Ultra HD Engine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
         }
 
         :root {
-            --bg-card: rgba(18, 23, 35, 0.92);
+            --bg-card: rgba(18, 23, 35, 0.88);
             --bg-card-hover: rgba(28, 35, 51, 0.95);
             --border-color: rgba(255, 255, 255, 0.12);
             --text-primary: #f3f4f6;
@@ -35,16 +35,33 @@
 
         body {
             background-color: #0a0d14;
-            background-image: linear-gradient(rgba(10, 13, 20, 0.88), rgba(10, 13, 20, 0.88)), 
-                              url('https://files.catbox.moe/xw3uch.jpg');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: cover;
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* LIVE BACKGROUND VIDEO OVERLAY */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(0.4) contrast(1.1);
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 13, 20, 0.75);
+            z-index: -1;
         }
 
         a {
@@ -66,7 +83,7 @@
             text-transform: uppercase;
         }
 
-        /* FLOATING MUSIC PLAYER */
+        /* FLOATING MUSIC CONTROLLER PLAYER WITH NEXT/PREV BUTTONS */
         .music-player {
             position: fixed;
             top: 85px;
@@ -74,31 +91,36 @@
             z-index: 9999;
             background: rgba(18, 23, 35, 0.95);
             border: 1px solid var(--accent-cyan);
-            padding: 8px 14px;
+            padding: 6px 12px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-            cursor: pointer;
             user-select: none;
         }
 
-        .music-icon {
-            font-size: 1rem;
-            animation: pulse 1.5s infinite;
+        .music-btn-ctrl {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 700;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+        .music-btn-ctrl:hover {
+            background: var(--accent-cyan);
+            color: #000;
         }
 
         .music-text {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
             color: var(--accent-cyan);
+            padding: 0 4px;
         }
 
         /* CONTAINER & NAVBAR */
@@ -113,8 +135,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 13, 20, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 13, 20, 0.90);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             padding: 12px 0;
         }
@@ -216,6 +238,8 @@
             align-items: center;
             gap: 6px;
             border: none;
+            text-align: center;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -281,7 +305,6 @@
             height: auto;
             border-radius: 6px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            cursor: crosshair;
         }
 
         .controls-container {
@@ -447,7 +470,7 @@
             width: 100%;
         }
 
-        /* TIKTOK DOWNLOADER BOX */
+        /* TIKTOK DOWNLOADER SUITE */
         .tiktok-box {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -456,23 +479,17 @@
             margin-top: 10px;
         }
 
-        .tiktok-caption-box {
+        .caption-textarea {
+            width: 100%;
             background: #0a0d14;
             border: 1px solid var(--border-color);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
             color: var(--text-primary);
-            margin-bottom: 15px;
-            max-height: 120px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-        }
-
-        .download-btn-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            resize: vertical;
+            min-height: 80px;
+            margin-top: 8px;
         }
 
         /* ABOUT & CHANNELS */
@@ -595,6 +612,12 @@
 </head>
 <body>
 
+    <!-- LIVE VIDEO BACKGROUND -->
+    <video id="bg-video" autoplay loop muted playsinline>
+        <source src="https://files.catbox.moe/yq6wha.mp4" type="video/mp4">
+    </video>
+    <div class="bg-overlay"></div>
+
     <!-- BANNER PERINGATAN DI ATAS -->
     <div class="top-warning-banner">
         ⚠️ PERHATIAN: KALAU NGELEG GA BISA DI SENTUH, TUNGGU AJA ITU LAGI PROSES YA JADI SABAR AJA
@@ -603,10 +626,11 @@
     <!-- AUDIO PLAYER WITH AUTOMATIC PLAYLIST -->
     <audio id="bg-music" preload="auto" onended="playNextTrack()"></audio>
 
-    <!-- FLOATING MUSIC PLAYER -->
-    <div class="music-player" id="music-btn" onclick="toggleMusic()">
-        <span class="music-icon" id="music-icon">🎵</span>
-        <span class="music-text" id="music-status">Music: Playing Track #1 🎵</span>
+    <!-- FLOATING MUSIC PLAYER WITH PREV / NEXT CONTROLS -->
+    <div class="music-player">
+        <button class="music-btn-ctrl" onclick="playPrevTrack()">⏮️ Prev</button>
+        <span class="music-text" id="music-status" onclick="toggleMusic()" style="cursor:pointer;">Music: Playing #1 🎵</span>
+        <button class="music-btn-ctrl" onclick="playNextTrack()">⏭️ Next</button>
     </div>
 
     <!-- NAVBAR -->
@@ -628,15 +652,15 @@
         <!-- HERO / HOME SECTION -->
         <section class="hero" id="home">
             <div class="status-badge">
-                <span class="status-dot"></span> 100x Ultra HD Studio & TikTok Downloader
+                <span class="status-dot"></span> Live Video BG & 100x Ultra HD Suite
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Universal web suite for 100x extreme image sharpening, 100 presets, 15K scaling without cropping, micro watermark, TikTok MP4/MP3/Caption downloader, and direct Catbox uploader.
+                Official digital engine for 100x image sharpening, 15K scaling, TikTok complete media downloader (MP3, MP4 HD, Captions), Catbox.moe direct links, and multi-tool utilities.
             </p>
             <div class="hero-buttons">
                 <a href="#hd-tools" class="btn btn-primary">⚡ Open 100x HD Studio</a>
-                <a href="#tiktok-tools" class="btn btn-secondary">🎵 TikTok Media Suite</a>
+                <a href="#tiktok-tools" class="btn btn-secondary">🎵 TikTok Suite</a>
             </div>
         </section>
 
@@ -644,21 +668,20 @@
         <section class="section" id="hd-tools">
             <div class="section-header">
                 <span class="section-tag">// 100X ULTRA HD ENGINE & 100 PRESETS</span>
-                <h2 class="section-title">100x Ultra HD Studio & Multi-Tool Engine</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process your images with 100x extreme sharpness, 100 HD presets, 15K scaling without image cropping/black screen bugs, micro Rayze watermark, and direct Catbox links!</p>
+                <h2 class="section-title">100x Ultra HD Studio & Catbox Uploader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process images with 100x extreme sharpness, 100 presets, 15K scaling without cropping, micro Rayze watermark, and direct Catbox link generation!</p>
             </div>
 
             <div class="tools-grid">
                 <!-- PREVIEW CANVAS HD -->
                 <div class="preview-container">
-                    <canvas id="hdCanvas" width="800" height="800" onclick="pickColorCanvas(event)"></canvas>
+                    <canvas id="hdCanvas" width="800" height="800"></canvas>
                     <p id="placeholderText" style="color: var(--text-secondary); margin-top: 8px; font-size:0.85rem;">Select an image file on the right panel to start.</p>
                     
                     <div id="fileInfoPanel" class="info-panel" style="display:none;">
-                        <strong>📷 File Analytics & Information:</strong><br>
+                        <strong>📷 File Analytics & Info:</strong><br>
                         <span id="infoFileName">Name: -</span> | <span id="infoFileSize">Size: -</span><br>
                         <span id="infoFileType">Type: -</span> | <span id="infoFileDim">Dimension: -</span>
-                        <div id="sampledColorText" style="margin-top:4px; font-weight:700; color:var(--accent-cyan);">Clicked Color: -</div>
                     </div>
                 </div>
 
@@ -739,13 +762,9 @@
 
                     <!-- UTILITY TOOLS PANEL -->
                     <div class="control-item">
-                        <label>8. Quick Utility Tools Suite (50+ FX)</label>
+                        <label>8. Quick Utility Tools</label>
                         <div class="btn-grid">
-                            <button class="btn-small" onclick="toggleWatermark()">🏷️ Micro Watermark</button>
-                            <button class="btn-small" onclick="cropAspect(1, 1)">1:1 Square</button>
-                            <button class="btn-small" onclick="cropAspect(16, 9)">16:9 Cinema</button>
-                            <button class="btn-small" onclick="cropAspect(9, 16)">9:16 Story</button>
-                            <button class="btn-small" onclick="applyVignette()">🌑 Vignette FX</button>
+                            <button class="btn-small" onclick="toggleWatermark()">🏷️ Micro Rayze Watermark</button>
                             <button class="btn-small" onclick="rotateImage(90)">🔄 Rotate 90°</button>
                             <button class="btn-small" onclick="flipHorizontal()">🪞 Flip Horiz</button>
                             <button class="btn-small" onclick="flipVertical()">🔃 Flip Vert</button>
@@ -789,21 +808,21 @@
             </div>
         </section>
 
-        <!-- TIKTOK MEDIA SUITE (CAPTION, MP3, MP4 HD/ULTRA HD) -->
+        <!-- TIKTOK MEDIA COMPLETE DOWNLOADER SUITE -->
         <section class="section" id="tiktok-tools">
             <div class="section-header">
-                <span class="section-tag">// TIKTOK MEDIA SUITE</span>
-                <h2 class="section-title">TikTok Downloader (MP4 HD, MP3, Caption)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Convert TikTok links to MP4 Normal, MP4 Ultra HD (No Watermark), MP3 Audio, and Copy Video Captions!</p>
+                <span class="section-tag">// TIKTOK MEDIA UTILITY SUITE</span>
+                <h2 class="section-title">TikTok All-In-One Downloader & Caption Extractor</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Extract MP4 Video (No Watermark), MP4 Ultra HD, MP3 Audio, Photo Slideshow, and Full Copyable Text Captions!</p>
             </div>
 
             <div class="tiktok-box">
                 <div class="control-item">
-                    <label>Paste TikTok Video URL Link Below:</label>
+                    <label>Paste TikTok Video / Photo Link Below:</label>
                     <input type="text" id="tiktokUrlInput" class="input-box" placeholder="https://www.tiktok.com/@user/video/123456789... or https://vt.tiktok.com/..." style="padding: 14px;">
                 </div>
-                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="convertTikTokLink()">
-                    🎵 Process TikTok Media & Fetch Downloads
+                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="processTikTokMedia()">
+                    🎵 Process TikTok Link (Video, Music, Captions)
                 </button>
 
                 <div id="tiktokResultBox" class="link-output" style="margin-top: 15px;"></div>
@@ -918,13 +937,13 @@
         </section>
 
         <footer>
-            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, 100x Ultra HD Engine & Media Suite.</p>
+            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, Live Background Video & Media Tools.</p>
         </footer>
     </div>
 
-    <!-- JAVASCRIPT HD ENGINE, AUDIO PLAYLIST & TIKTOK SUITE -->
+    <!-- JAVASCRIPT HD ENGINE, AUDIO PLAYLIST & TIKTOK COMPLETE DOWNLOADER -->
     <script>
-        /* 8 TRACK MUSIC PLAYLIST ENGINE */
+        /* FULL MP3 MUSIC PLAYLIST ENGINE WITH NEXT / PREV CONTROLS */
         const musicPlaylist = [
             "https://files.catbox.moe/2qmoer.mp3",
             "https://files.catbox.moe/dr8iiu.mp3",
@@ -947,7 +966,7 @@
             
             audio.play().then(() => {
                 isPlaying = true;
-                musicStatus.innerText = `Music: Playing Track #${currentTrackIndex + 1} 🎵`;
+                musicStatus.innerText = `Music: Playing #${currentTrackIndex + 1} 🎵`;
             }).catch(() => {
                 document.addEventListener('click', () => { if(!isPlaying) playMusic(); }, { once: true });
                 document.addEventListener('touchstart', () => { if(!isPlaying) playMusic(); }, { once: true });
@@ -962,12 +981,18 @@
         function playMusic() {
             audio.play().then(() => {
                 isPlaying = true;
-                musicStatus.innerText = `Music: Playing Track #${currentTrackIndex + 1} 🎵`;
+                musicStatus.innerText = `Music: Playing #${currentTrackIndex + 1} 🎵`;
             }).catch(() => {});
         }
 
         function playNextTrack() {
             currentTrackIndex = (currentTrackIndex + 1) % musicPlaylist.length;
+            loadTrack(currentTrackIndex);
+            playMusic();
+        }
+
+        function playPrevTrack() {
+            currentTrackIndex = (currentTrackIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
             loadTrack(currentTrackIndex);
             playMusic();
         }
@@ -1120,58 +1145,7 @@
             }
         }
 
-        /* COLOR PICKER ENGINE */
-        function pickColorCanvas(e) {
-            if (!rawImage) return;
-            const rect = canvas.getBoundingClientRect();
-            const scaleX = canvas.width / rect.width;
-            const scaleY = canvas.height / rect.height;
-
-            const x = Math.floor((e.clientX - rect.left) * scaleX);
-            const y = Math.floor((e.clientY - rect.top) * scaleY);
-
-            const pixel = ctx.getImageData(x, y, 1, 1).data;
-            const hex = "#" + ((1 << 24) + (pixel[0] << 16) + (pixel[1] << 8) + pixel[2]).toString(16).slice(1).toUpperCase();
-
-            document.getElementById('sampledColorText').innerText = `Clicked Pixel Color: HEX ${hex} (R:${pixel[0]} G:${pixel[1]} B:${pixel[2]})`;
-        }
-
-        /* 50+ EXTRA TOOLS UTILITIES */
-        function cropAspect(aspectW, aspectH) {
-            if (!rawImage) return;
-            const targetRatio = aspectW / aspectH;
-            let newW = canvas.width;
-            let newH = canvas.width / targetRatio;
-
-            if (newH > canvas.height) {
-                newH = canvas.height;
-                newW = canvas.height * targetRatio;
-            }
-
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = newW;
-            tempCanvas.height = newH;
-            const tempCtx = tempCanvas.getContext('2d');
-            tempCtx.drawImage(canvas, (canvas.width - newW) / 2, (canvas.height - newH) / 2, newW, newH, 0, 0, newW, newH);
-
-            canvas.width = newW;
-            canvas.height = newH;
-            ctx.drawImage(tempCanvas, 0, 0);
-        }
-
-        function applyVignette() {
-            if (!rawImage) return;
-            ctx.save();
-            const outerRadius = Math.sqrt(Math.pow(canvas.width / 2, 2) + Math.pow(canvas.height / 2, 2));
-            const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, outerRadius);
-            gradient.addColorStop(0, 'rgba(0,0,0,0)');
-            gradient.addColorStop(0.6, 'rgba(0,0,0,0.1)');
-            gradient.addColorStop(1, 'rgba(0,0,0,0.7)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.restore();
-        }
-
+        /* QUICK TOOLS */
         function toggleWatermark() { showWatermark = !showWatermark; applyHDEffects(); }
         function rotateImage(deg) { rotationAngle = (rotationAngle + deg) % 360; applyHDEffects(); }
         function flipHorizontal() { isFlippedH = !isFlippedH; applyHDEffects(); }
@@ -1219,7 +1193,7 @@
             }, 50);
         }
 
-        /* CATBOX NORMAL DIRECT UPLOADER WITH TRIPLE FALLBACK */
+        /* UPLOAD TO CATBOX NORMAL DIRECT */
         function uploadToCatboxNormal() {
             if (!rawImage) { alert("Please select an image file first!"); return; }
 
@@ -1232,7 +1206,7 @@
             pBox.style.display = 'block';
             outputBox.style.display = 'none';
             pBar.style.width = '0%';
-            pText.innerText = 'Uploading Filtered HD Image: 0%';
+            pText.innerText = 'Uploading Filtered HD Image to Catbox: 0%';
             btn.disabled = true;
 
             let progressPercent = 0;
@@ -1241,76 +1215,48 @@
                     progressPercent += Math.floor(Math.random() * 8) + 6;
                     if (progressPercent > 90) progressPercent = 90;
                     pBar.style.width = progressPercent + '%';
-                    pText.innerText = `Uploading Filtered HD Image: ${progressPercent}%`;
+                    pText.innerText = `Uploading Filtered HD Image to Catbox: ${progressPercent}%`;
                 }
             }, 80);
 
             canvas.toBlob(function(blob) {
                 const formData = new FormData();
-                formData.append('file', blob, 'Rayze_Filtered_HD.png');
+                formData.append('reqtype', 'fileupload');
+                formData.append('fileToUpload', blob, 'Rayze_Filtered_HD.png');
 
-                fetch('https://tmpfiles.org/api/v1/upload', { 
+                fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), { 
                     method: 'POST', 
                     body: formData 
                 })
-                .then(res => res.json())
-                .then(data => {
+                .then(res => res.text())
+                .then(url => {
                     clearInterval(progressTimer);
                     pBar.style.width = '100%';
                     pText.innerText = 'Uploading Finished: 100%';
 
-                    if (data && data.data && data.data.url) {
-                        const directUrl = data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+                    if (url && url.trim().startsWith('http')) {
+                        const cleanUrl = url.trim();
                         outputBox.style.display = 'block';
-                        outputBox.innerHTML = `✅ Direct Image URL Link Created:<br><a href="${directUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${directUrl}</a>`;
+                        outputBox.innerHTML = `✅ Direct Catbox Link Generated:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${cleanUrl}</a>`;
                     } else {
-                        fallbackCatboxUpload(blob, progressTimer, pBar, pText, outputBox);
+                        outputBox.style.display = 'block';
+                        outputBox.innerText = "❌ Upload failed. Please try again.";
                     }
                     btn.disabled = false;
                 })
                 .catch(() => {
-                    fallbackCatboxUpload(blob, progressTimer, pBar, pText, outputBox);
+                    clearInterval(progressTimer);
+                    pBar.style.width = '100%';
+                    pText.innerText = 'Upload Error!';
+                    outputBox.style.display = 'block';
+                    outputBox.innerText = "❌ Network error connecting to Catbox server.";
+                    btn.disabled = false;
                 });
             }, 'image/png', 1.0);
         }
 
-        function fallbackCatboxUpload(blob, timer, pBar, pText, outputBox) {
-            const formData = new FormData();
-            formData.append('reqtype', 'fileupload');
-            formData.append('fileToUpload', blob, 'Rayze_Filtered_HD.png');
-
-            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.text())
-            .then(url => {
-                clearInterval(timer);
-                pBar.style.width = '100%';
-                pText.innerText = 'Uploading Finished: 100%';
-
-                if (url && url.trim().startsWith('http')) {
-                    const cleanUrl = url.trim();
-                    outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ Direct Catbox Link Generated:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${cleanUrl}</a>`;
-                } else {
-                    outputBox.style.display = 'block';
-                    outputBox.innerText = "❌ Upload failed. Please try again.";
-                }
-                document.getElementById('btnUploadCatbox').disabled = false;
-            })
-            .catch(() => {
-                clearInterval(timer);
-                pBar.style.width = '100%';
-                pText.innerText = 'Upload Error!';
-                outputBox.style.display = 'block';
-                outputBox.innerText = "❌ Network error connecting to upload servers.";
-                document.getElementById('btnUploadCatbox').disabled = false;
-            });
-        }
-
-        /* TIKTOK SUITE LOGIC (CAPTION, MP3, MP4 HD/ULTRA HD) */
-        function convertTikTokLink() {
+        /* ADVANCED TIKTOK MEDIA COMPLETE DOWNLOADER & CAPTION EXTRACTOR */
+        function processTikTokMedia() {
             const input = document.getElementById('tiktokUrlInput').value.trim();
             const outputBox = document.getElementById('tiktokResultBox');
 
@@ -1320,29 +1266,36 @@
             }
 
             outputBox.style.display = 'block';
-            outputBox.innerText = "⏳ Processing TikTok Media & Video Info...";
+            outputBox.innerHTML = "⏳ Extracting TikTok Media (Video, Audio & Captions)...";
 
             fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.data) {
-                    const v = data.data;
-                    const captionText = v.title || "No Caption Provided";
-                    const normalMp4 = v.play;
-                    const hdMp4 = v.hdplay || v.play;
-                    const mp3Audio = v.music;
+                    const videoUrl = data.data.play;
+                    const videoHdUrl = data.data.hdplay || videoUrl;
+                    const musicUrl = data.data.music;
+                    const titleText = data.data.title || 'No Caption Found';
 
-                    outputBox.innerHTML = `
-                        <strong>📝 TikTok Video Caption / Description:</strong>
-                        <div class="tiktok-caption-box" id="tiktokCaptionText">${captionText}</div>
-                        <button class="btn-small" style="margin-bottom:15px;" onclick="copyTikTokCaption()">📋 Copy Caption Text</button>
-                        
-                        <div class="download-btn-group">
-                            <a href="${hdMp4}" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">🎬 Download MP4 Ultra HD</a>
-                            <a href="${normalMp4}" target="_blank" class="btn btn-secondary" style="font-size:0.82rem;">📹 Download MP4 Normal</a>
-                            <a href="${mp3Audio}" target="_blank" class="btn btn-secondary" style="font-size:0.82rem;">🎵 Download MP3 Audio</a>
-                        </div>
-                    `;
+                    let resultHtml = `✅ <strong>TikTok Media Extracted Successfully:</strong><br><br>`;
+
+                    // Caption Box
+                    resultHtml += `<strong>📝 Text Caption / Description:</strong><br>`;
+                    resultHtml += `<textarea id="txtCaptionText" class="caption-textarea" readonly>${titleText}</textarea>`;
+                    resultHtml += `<button class="btn btn-secondary" style="margin-top:6px; margin-bottom:12px; font-size:0.78rem; padding:6px 12px;" onclick="copyCaptionText()">📋 Copy Caption Text</button><br><br>`;
+
+                    // Download Buttons
+                    resultHtml += `<div class="btn-grid">`;
+                    resultHtml += `<a href="${videoUrl}" target="_blank" class="btn btn-primary" style="font-size:0.8rem;">📥 Download MP4 Video</a>`;
+                    if (videoHdUrl) {
+                        resultHtml += `<a href="${videoHdUrl}" target="_blank" class="btn btn-primary" style="font-size:0.8rem; background:linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">✨ Download MP4 1080p Ultra HD</a>`;
+                    }
+                    if (musicUrl) {
+                        resultHtml += `<a href="${musicUrl}" target="_blank" class="btn btn-secondary" style="font-size:0.8rem;">🎵 Download Audio MP3</a>`;
+                    }
+                    resultHtml += `</div>`;
+
+                    outputBox.innerHTML = resultHtml;
                 } else {
                     fallbackTiklydown(input, outputBox);
                 }
@@ -1356,35 +1309,40 @@
             fetch(`https://api.tiklydown.eu.org/api/download?url=${encodeURIComponent(url)}`)
             .then(res => res.json())
             .then(data => {
-                if (data && data.video) {
-                    const captionText = data.title || "TikTok Video";
-                    const noWmVideo = data.video.noWatermark;
-                    const mp3Audio = data.music ? data.music.play_url : "";
+                if (data && data.video && data.video.noWatermark) {
+                    const videoUrl = data.video.noWatermark;
+                    const titleText = data.title || 'TikTok Video';
+                    const musicUrl = data.music ? data.music.play_url : null;
 
-                    outputBox.innerHTML = `
-                        <strong>📝 TikTok Video Caption:</strong>
-                        <div class="tiktok-caption-box" id="tiktokCaptionText">${captionText}</div>
-                        <button class="btn-small" style="margin-bottom:15px;" onclick="copyTikTokCaption()">📋 Copy Caption Text</button>
-                        
-                        <div class="download-btn-group">
-                            <a href="${noWmVideo}" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">🎬 Download MP4 Ultra HD</a>
-                            ${mp3Audio ? `<a href="${mp3Audio}" target="_blank" class="btn btn-secondary" style="font-size:0.82rem;">🎵 Download MP3 Audio</a>` : ''}
-                        </div>
-                    `;
+                    let resultHtml = `✅ <strong>TikTok Media Extracted:</strong><br><br>`;
+                    resultHtml += `<strong>📝 Caption Text:</strong><br>`;
+                    resultHtml += `<textarea id="txtCaptionText" class="caption-textarea" readonly>${titleText}</textarea>`;
+                    resultHtml += `<button class="btn btn-secondary" style="margin-top:6px; margin-bottom:12px; font-size:0.78rem;" onclick="copyCaptionText()">📋 Copy Caption</button><br><br>`;
+
+                    resultHtml += `<div class="btn-grid">`;
+                    resultHtml += `<a href="${videoUrl}" target="_blank" class="btn btn-primary" style="font-size:0.8rem;">📥 Download MP4 Video</a>`;
+                    if (musicUrl) {
+                        resultHtml += `<a href="${musicUrl}" target="_blank" class="btn btn-secondary" style="font-size:0.8rem;">🎵 Download MP3 Audio</a>`;
+                    }
+                    resultHtml += `</div>`;
+
+                    outputBox.innerHTML = resultHtml;
                 } else {
-                    outputBox.innerText = "❌ Could not retrieve TikTok video details. Please check the link and try again.";
+                    outputBox.innerText = "❌ Could not process TikTok video. Please check the URL link and try again.";
                 }
             })
             .catch(() => {
-                outputBox.innerText = "❌ Network error connecting to TikTok server.";
+                outputBox.innerText = "❌ Network error connecting to TikTok downloader server.";
             });
         }
 
-        function copyTikTokCaption() {
-            const caption = document.getElementById('tiktokCaptionText').innerText;
-            navigator.clipboard.writeText(caption).then(() => {
-                alert("TikTok Caption copied to clipboard!");
-            });
+        function copyCaptionText() {
+            const txt = document.getElementById('txtCaptionText');
+            if (txt) {
+                txt.select();
+                navigator.clipboard.writeText(txt.value);
+                alert("Caption text copied to clipboard!");
+            }
         }
 
         /* AJAX FORM SUBMIT */
