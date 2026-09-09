@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | Live Video Suite & Ultra HD Engine</title>
+    <title>Rayze Development | Universal Media & HD Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -21,9 +21,9 @@
         }
 
         :root {
-            --bg-card: rgba(18, 23, 35, 0.88);
-            --bg-card-hover: rgba(28, 35, 51, 0.95);
-            --border-color: rgba(255, 255, 255, 0.12);
+            --bg-card: rgba(18, 23, 35, 0.82);
+            --bg-card-hover: rgba(28, 35, 51, 0.92);
+            --border-color: rgba(255, 255, 255, 0.15);
             --text-primary: #f3f4f6;
             --text-secondary: #cbd5e1;
             --accent-blue: #3b82f6;
@@ -31,6 +31,7 @@
             --accent-green: #10b981;
             --accent-purple: #a855f7;
             --accent-pink: #ec4899;
+            --accent-gold: #f59e0b;
         }
 
         body {
@@ -42,7 +43,7 @@
             position: relative;
         }
 
-        /* LIVE BACKGROUND VIDEO OVERLAY */
+        /* LIVE BACKGROUND VIDEO OVERLAY (LEBIH KELIHATAN) */
         #bg-video {
             position: fixed;
             top: 0;
@@ -51,7 +52,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: -2;
-            filter: brightness(0.4) contrast(1.1);
+            filter: brightness(0.7) contrast(1.1);
         }
 
         .bg-overlay {
@@ -60,7 +61,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(10, 13, 20, 0.75);
+            background: rgba(10, 13, 20, 0.45);
             z-index: -1;
         }
 
@@ -83,7 +84,7 @@
             text-transform: uppercase;
         }
 
-        /* FLOATING MUSIC CONTROLLER PLAYER WITH NEXT/PREV BUTTONS */
+        /* FLOATING MUSIC CONTROLLER PLAYER */
         .music-player {
             position: fixed;
             top: 85px;
@@ -135,7 +136,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 13, 20, 0.90);
+            background: rgba(10, 13, 20, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             padding: 12px 0;
@@ -470,13 +471,27 @@
             width: 100%;
         }
 
-        /* TIKTOK DOWNLOADER SUITE */
-        .tiktok-box {
+        /* UTILITY BOXES */
+        .utility-box {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             padding: 25px;
             border-radius: 14px;
             margin-top: 10px;
+        }
+
+        /* RATING STAR BOX */
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #4b5563;
+        }
+
+        .star-rating .star.active {
+            color: var(--accent-gold);
         }
 
         .caption-textarea {
@@ -629,7 +644,7 @@
     <!-- FLOATING MUSIC PLAYER WITH PREV / NEXT CONTROLS -->
     <div class="music-player">
         <button class="music-btn-ctrl" onclick="playPrevTrack()">⏮️ Prev</button>
-        <span class="music-text" id="music-status" onclick="toggleMusic()" style="cursor:pointer;">Music: Playing #1 🎵</span>
+        <span class="music-text" id="music-status" onclick="toggleMusic()" style="cursor:pointer;">Music: Track #1 🎵</span>
         <button class="music-btn-ctrl" onclick="playNextTrack()">⏭️ Next</button>
     </div>
 
@@ -640,10 +655,10 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#hd-tools">100x HD Studio</a></li>
-                <li><a href="#tiktok-tools">TikTok Suite</a></li>
-                <li><a href="#about">About Rayze</a></li>
-                <li><a href="#channels">Channels</a></li>
-                <li><a href="#send-email">Contact Email</a></li>
+                <li><a href="#catbox-standalone">Catbox Uploader</a></li>
+                <li><a href="#downloader-suite">Media Downloader</a></li>
+                <li><a href="#rating-section">Rating & Review</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
         </div>
     </nav>
@@ -652,24 +667,24 @@
         <!-- HERO / HOME SECTION -->
         <section class="hero" id="home">
             <div class="status-badge">
-                <span class="status-dot"></span> Live Video BG & 100x Ultra HD Suite
+                <span class="status-dot"></span> Live Video BG & 100x Ultra HD Engine
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Official digital engine for 100x image sharpening, 15K scaling, TikTok complete media downloader (MP3, MP4 HD, Captions), Catbox.moe direct links, and multi-tool utilities.
+                Official digital suite for 100x image sharpening, Standalone Catbox Uploader, YouTube/TikTok/Instagram Media Downloader, 50-Track Playlist, and Google Mail Rating System.
             </p>
             <div class="hero-buttons">
                 <a href="#hd-tools" class="btn btn-primary">⚡ Open 100x HD Studio</a>
-                <a href="#tiktok-tools" class="btn btn-secondary">🎵 TikTok Suite</a>
+                <a href="#catbox-standalone" class="btn btn-secondary">🚀 Catbox Uploader</a>
             </div>
         </section>
 
-        <!-- ULTRA HD ENHANCER & MULTI-TOOL STUDIO -->
+        <!-- ULTRA HD ENHANCER STUDIO -->
         <section class="section" id="hd-tools">
             <div class="section-header">
-                <span class="section-tag">// 100X ULTRA HD ENGINE & 100 PRESETS</span>
-                <h2 class="section-title">100x Ultra HD Studio & Catbox Uploader</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process images with 100x extreme sharpness, 100 presets, 15K scaling without cropping, micro Rayze watermark, and direct Catbox link generation!</p>
+                <span class="section-tag">// 100X ULTRA HD ENGINE & PRESETS</span>
+                <h2 class="section-title">100x Ultra HD Image Studio</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process images with 100x extreme sharpness, 100 presets, 15K scaling without cropping, and micro Rayze watermark!</p>
             </div>
 
             <div class="tools-grid">
@@ -785,47 +800,99 @@
                         </div>
                         <div id="exportProgressText" class="progress-text">Export Progress: 0%</div>
                     </div>
-
-                    <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 4px 0;">
-
-                    <div class="control-item">
-                        <label>9. Convert Filtered Image to Catbox.moe Link</label>
-                        <button class="btn-action btn-catbox" id="btnUploadCatbox" onclick="uploadToCatboxNormal()">
-                            🚀 Upload to Catbox.moe (% Progress)
-                        </button>
-                    </div>
-
-                    <!-- PROGRESS BAR UPLOAD -->
-                    <div id="catboxProgressBox" class="progress-box">
-                        <div class="progress-bar-bg">
-                            <div id="catboxProgressBar" class="progress-bar-fill"></div>
-                        </div>
-                        <div id="catboxProgressText" class="progress-text">Uploading to Catbox: 0%</div>
-                    </div>
-
-                    <div id="catboxOutput" class="link-output"></div>
                 </div>
             </div>
         </section>
 
-        <!-- TIKTOK MEDIA COMPLETE DOWNLOADER SUITE -->
-        <section class="section" id="tiktok-tools">
+        <!-- STANDALONE CATBOX UPLOADER SECTION (DIPISAH) -->
+        <section class="section" id="catbox-standalone">
             <div class="section-header">
-                <span class="section-tag">// TIKTOK MEDIA UTILITY SUITE</span>
-                <h2 class="section-title">TikTok All-In-One Downloader & Caption Extractor</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Extract MP4 Video (No Watermark), MP4 Ultra HD, MP3 Audio, Photo Slideshow, and Full Copyable Text Captions!</p>
+                <span class="section-tag">// STANDALONE FILE UTILITY</span>
+                <h2 class="section-title">Direct Catbox.moe File Uploader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Upload any image or file directly to Catbox.moe server to get instant shareable links!</p>
             </div>
 
-            <div class="tiktok-box">
+            <div class="utility-box">
                 <div class="control-item">
-                    <label>Paste TikTok Video / Photo Link Below:</label>
-                    <input type="text" id="tiktokUrlInput" class="input-box" placeholder="https://www.tiktok.com/@user/video/123456789... or https://vt.tiktok.com/..." style="padding: 14px;">
+                    <label>Select Any Image File To Convert to Catbox Link:</label>
+                    <input type="file" id="catboxFileInput" class="input-box" accept="image/*" style="padding: 12px;">
                 </div>
-                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="processTikTokMedia()">
-                    🎵 Process TikTok Link (Video, Music, Captions)
+                <button class="btn-action btn-catbox" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="uploadStandaloneCatbox()">
+                    🚀 Upload File & Generate Catbox Link (% Progress)
                 </button>
 
-                <div id="tiktokResultBox" class="link-output" style="margin-top: 15px;"></div>
+                <!-- PROGRESS BAR CATBOX STANDALONE -->
+                <div id="catboxStandaloneProgressBox" class="progress-box">
+                    <div class="progress-bar-bg">
+                        <div id="catboxStandaloneProgressBar" class="progress-bar-fill"></div>
+                    </div>
+                    <div id="catboxStandaloneProgressText" class="progress-text">Uploading to Catbox: 0%</div>
+                </div>
+
+                <div id="catboxStandaloneOutput" class="link-output"></div>
+            </div>
+        </section>
+
+        <!-- UNIVERSAL DOWNLOADER SUITE (YOUTUBE, TIKTOK, INSTAGRAM) -->
+        <section class="section" id="downloader-suite">
+            <div class="section-header">
+                <span class="section-tag">// MULTI-PLATFORM MEDIA DOWNLOADER</span>
+                <h2 class="section-title">YouTube, TikTok & Instagram Downloader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download MP4 Videos, Ultra HD Videos, Photos, and MP3 Audio from YouTube, TikTok, or Instagram!</p>
+            </div>
+
+            <div class="utility-box">
+                <div class="control-item">
+                    <label>Paste Link URL (YouTube, TikTok, or Instagram):</label>
+                    <input type="text" id="universalUrlInput" class="input-box" placeholder="Paste YouTube / TikTok / Instagram URL link here..." style="padding: 14px;">
+                </div>
+                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="processUniversalMedia()">
+                    📥 Process & Convert Link (MP4, MP3, Photo)
+                </button>
+
+                <div id="universalResultBox" class="link-output" style="margin-top: 15px;"></div>
+            </div>
+        </section>
+
+        <!-- RATING BINTANG & ULASAN SECTION -->
+        <section class="section" id="rating-section">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">// USER FEEDBACK & RATING SYSTEM</span>
+                <h2 class="section-title">Rate & Send Feedback to Rayze</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Your ratings & messages are sent directly to email: <strong>rayzekagenou@gmail.com</strong></p>
+            </div>
+
+            <div class="contact-box">
+                <form id="ratingForm" onsubmit="submitRatingForm(event)">
+                    <div class="form-group" style="text-align: center;">
+                        <label style="font-size: 1rem;">Select Rating Stars (1 to 5 Stars):</label>
+                        <div class="star-rating" id="starContainer" style="justify-content: center;">
+                            <span class="star" onclick="setRating(1)">★</span>
+                            <span class="star" onclick="setRating(2)">★</span>
+                            <span class="star" onclick="setRating(3)">★</span>
+                            <span class="star" onclick="setRating(4)">★</span>
+                            <span class="star" onclick="setRating(5)">★</span>
+                        </div>
+                        <input type="hidden" name="rating_stars" id="selectedStarValue" value="5">
+                        <input type="hidden" name="_to" value="rayzekagenou@gmail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Enter your name..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Email Address</label>
+                        <input type="email" name="email" class="form-control" placeholder="yourname@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Message / Review</label>
+                        <textarea name="message" class="form-control" placeholder="Write your review or feedback here..." required></textarea>
+                    </div>
+                    <button type="submit" id="btnSubmitRating" class="btn btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent-gold), #d97706);">
+                        ⭐ Send Rating & Review to rayzekagenou@gmail.com
+                    </button>
+                </form>
             </div>
         </section>
 
@@ -858,102 +925,26 @@
             </div>
         </section>
 
-        <!-- OFFICIAL CHANNELS -->
-        <section class="section" id="channels">
-            <div class="section-header">
-                <span class="section-tag">// OFFICIAL CHANNELS</span>
-                <h2 class="section-title">Connect With Rayze Communities</h2>
-            </div>
-
-            <div class="channels-grid">
-                <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" class="channel-card">
-                    <div class="channel-icon">📢</div>
-                    <div>
-                        <h4>WhatsApp Channel</h4>
-                        <p style="font-size:0.8rem; color: var(--text-secondary);">Updates & announcements</p>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/6283152561195" target="_blank" class="channel-card">
-                    <div class="channel-icon">💬</div>
-                    <div>
-                        <h4>Personal WhatsApp</h4>
-                        <p style="font-size:0.8rem; color: var(--text-secondary);">+62 831-5256-**** (Protected)</p>
-                    </div>
-                </a>
-
-                <a href="https://t.me/RayzeAnime" target="_blank" class="channel-card">
-                    <div class="channel-icon">✈️</div>
-                    <div>
-                        <h4>Telegram Rayze</h4>
-                        <p style="font-size:0.8rem; color: var(--text-secondary);">@RayzeAnime</p>
-                    </div>
-                </a>
-
-                <a href="https://www.tiktok.com/@xxlrayze" target="_blank" class="channel-card">
-                    <div class="channel-icon">🎵</div>
-                    <div>
-                        <h4>TikTok Official</h4>
-                        <p style="font-size:0.8rem; color: var(--text-secondary);">@xxlrayze</p>
-                    </div>
-                </a>
-
-                <a href="https://www.roblox.com/users/search?keyword=RayzeSayonara" target="_blank" class="channel-card">
-                    <div class="channel-icon">🎮</div>
-                    <div>
-                        <h4>Roblox Profile</h4>
-                        <p style="font-size:0.8rem; color: var(--text-secondary);">RayzeSayonara</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- EMAIL FORM -->
-        <section class="section" id="send-email">
-            <div class="section-header" style="text-align: center;">
-                <span class="section-tag">// SECURE CONTACT FORM</span>
-                <h2 class="section-title">Send a Direct Email to Rayze</h2>
-            </div>
-
-            <div class="contact-box">
-                <form id="contactForm" onsubmit="submitForm(event)">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Enter your name..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="yourname@gmail.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Message</label>
-                        <textarea name="message" class="form-control" placeholder="Write your message..." required></textarea>
-                    </div>
-                    <button type="submit" id="btnSubmitForm" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                        📨 Send Email to Rayze Development
-                    </button>
-                </form>
-            </div>
-        </section>
-
         <footer>
-            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, Live Background Video & Media Tools.</p>
+            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, 100x Ultra HD Engine & Catbox Tools.</p>
         </footer>
     </div>
 
-    <!-- JAVASCRIPT HD ENGINE, AUDIO PLAYLIST & TIKTOK COMPLETE DOWNLOADER -->
+    <!-- JAVASCRIPT ENGINE & LOGIC -->
     <script>
-        /* FULL MP3 MUSIC PLAYLIST ENGINE WITH NEXT / PREV CONTROLS */
-        const musicPlaylist = [
-            "https://files.catbox.moe/2qmoer.mp3",
-            "https://files.catbox.moe/dr8iiu.mp3",
-            "https://files.catbox.moe/ibo83k.mp3",
-            "https://files.catbox.moe/67fynb.mp3",
-            "https://files.catbox.moe/gr480o.mp3",
+        /* 50 TRACKS PLAYLIST GENERATED EXCLUSIVELY FROM YOUR 3 MP3 SONGS */
+        const baseTracks = [
             "https://files.catbox.moe/8mjg52.mp3",
             "https://files.catbox.moe/5zf2zk.mp3",
             "https://files.catbox.moe/cnh3k0.mp3"
         ];
+
+        // Fill array exact 50 songs
+        const musicPlaylist = [];
+        for (let i = 0; i < 50; i++) {
+            musicPlaylist.push(baseTracks[i % baseTracks.length]);
+        }
+
         let currentTrackIndex = 0;
         const audio = document.getElementById('bg-music');
         const musicStatus = document.getElementById('music-status');
@@ -962,11 +953,12 @@
         window.addEventListener('load', () => {
             initDefaultCanvas();
             generate100Presets();
+            setRating(5); // Default 5 stars
             loadTrack(currentTrackIndex);
             
             audio.play().then(() => {
                 isPlaying = true;
-                musicStatus.innerText = `Music: Playing #${currentTrackIndex + 1} 🎵`;
+                musicStatus.innerText = `Music: Track #${currentTrackIndex + 1}/50 🎵`;
             }).catch(() => {
                 document.addEventListener('click', () => { if(!isPlaying) playMusic(); }, { once: true });
                 document.addEventListener('touchstart', () => { if(!isPlaying) playMusic(); }, { once: true });
@@ -981,7 +973,7 @@
         function playMusic() {
             audio.play().then(() => {
                 isPlaying = true;
-                musicStatus.innerText = `Music: Playing #${currentTrackIndex + 1} 🎵`;
+                musicStatus.innerText = `Music: Track #${currentTrackIndex + 1}/50 🎵`;
             }).catch(() => {});
         }
 
@@ -1193,21 +1185,21 @@
             }, 50);
         }
 
-        /* UPLOAD TO CATBOX NORMAL DIRECT */
-        function uploadToCatboxNormal() {
-            if (!rawImage) { alert("Please select an image file first!"); return; }
+        /* STANDALONE CATBOX UPLOADER FUNCTION */
+        function uploadStandaloneCatbox() {
+            const fileInput = document.getElementById('catboxFileInput');
+            const file = fileInput.files[0];
+            if (!file) { alert("Please select a file to upload!"); return; }
 
-            const pBox = document.getElementById('catboxProgressBox');
-            const pBar = document.getElementById('catboxProgressBar');
-            const pText = document.getElementById('catboxProgressText');
-            const outputBox = document.getElementById('catboxOutput');
-            const btn = document.getElementById('btnUploadCatbox');
+            const pBox = document.getElementById('catboxStandaloneProgressBox');
+            const pBar = document.getElementById('catboxStandaloneProgressBar');
+            const pText = document.getElementById('catboxStandaloneProgressText');
+            const outputBox = document.getElementById('catboxStandaloneOutput');
 
             pBox.style.display = 'block';
             outputBox.style.display = 'none';
             pBar.style.width = '0%';
-            pText.innerText = 'Uploading Filtered HD Image to Catbox: 0%';
-            btn.disabled = true;
+            pText.innerText = 'Uploading File to Catbox: 0%';
 
             let progressPercent = 0;
             const progressTimer = setInterval(() => {
@@ -1215,142 +1207,129 @@
                     progressPercent += Math.floor(Math.random() * 8) + 6;
                     if (progressPercent > 90) progressPercent = 90;
                     pBar.style.width = progressPercent + '%';
-                    pText.innerText = `Uploading Filtered HD Image to Catbox: ${progressPercent}%`;
+                    pText.innerText = `Uploading File to Catbox: ${progressPercent}%`;
                 }
             }, 80);
 
-            canvas.toBlob(function(blob) {
-                const formData = new FormData();
-                formData.append('reqtype', 'fileupload');
-                formData.append('fileToUpload', blob, 'Rayze_Filtered_HD.png');
+            const formData = new FormData();
+            formData.append('reqtype', 'fileupload');
+            formData.append('fileToUpload', file);
 
-                fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), { 
-                    method: 'POST', 
-                    body: formData 
-                })
-                .then(res => res.text())
-                .then(url => {
-                    clearInterval(progressTimer);
-                    pBar.style.width = '100%';
-                    pText.innerText = 'Uploading Finished: 100%';
+            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), { 
+                method: 'POST', 
+                body: formData 
+            })
+            .then(res => res.text())
+            .then(url => {
+                clearInterval(progressTimer);
+                pBar.style.width = '100%';
+                pText.innerText = 'Uploading Finished: 100%';
 
-                    if (url && url.trim().startsWith('http')) {
-                        const cleanUrl = url.trim();
-                        outputBox.style.display = 'block';
-                        outputBox.innerHTML = `✅ Direct Catbox Link Generated:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${cleanUrl}</a>`;
-                    } else {
-                        outputBox.style.display = 'block';
-                        outputBox.innerText = "❌ Upload failed. Please try again.";
-                    }
-                    btn.disabled = false;
-                })
-                .catch(() => {
-                    clearInterval(progressTimer);
-                    pBar.style.width = '100%';
-                    pText.innerText = 'Upload Error!';
+                if (url && url.trim().startsWith('http')) {
+                    const cleanUrl = url.trim();
                     outputBox.style.display = 'block';
-                    outputBox.innerText = "❌ Network error connecting to Catbox server.";
-                    btn.disabled = false;
-                });
-            }, 'image/png', 1.0);
+                    outputBox.innerHTML = `✅ Direct Catbox Shareable Link Generated:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${cleanUrl}</a>`;
+                } else {
+                    outputBox.style.display = 'block';
+                    outputBox.innerText = "❌ Upload failed. Please try again.";
+                }
+            })
+            .catch(() => {
+                clearInterval(progressTimer);
+                pBar.style.width = '100%';
+                pText.innerText = 'Upload Error!';
+                outputBox.style.display = 'block';
+                outputBox.innerText = "❌ Network error connecting to Catbox server.";
+            });
         }
 
-        /* ADVANCED TIKTOK MEDIA COMPLETE DOWNLOADER & CAPTION EXTRACTOR */
-        function processTikTokMedia() {
-            const input = document.getElementById('tiktokUrlInput').value.trim();
-            const outputBox = document.getElementById('tiktokResultBox');
+        /* UNIVERSAL DOWNLOADER (YOUTUBE, TIKTOK, INSTAGRAM) */
+        function processUniversalMedia() {
+            const input = document.getElementById('universalUrlInput').value.trim();
+            const outputBox = document.getElementById('universalResultBox');
 
-            if (!input) {
-                alert("Please paste a valid TikTok link first!");
-                return;
-            }
+            if (!input) { alert("Please paste a URL link first!"); return; }
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Extracting TikTok Media (Video, Audio & Captions)...";
+            outputBox.innerHTML = "⏳ Processing Link (Checking YouTube / TikTok / Instagram)...";
 
-            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.data) {
-                    const videoUrl = data.data.play;
-                    const videoHdUrl = data.data.hdplay || videoUrl;
-                    const musicUrl = data.data.music;
-                    const titleText = data.data.title || 'No Caption Found';
-
-                    let resultHtml = `✅ <strong>TikTok Media Extracted Successfully:</strong><br><br>`;
-
-                    // Caption Box
-                    resultHtml += `<strong>📝 Text Caption / Description:</strong><br>`;
-                    resultHtml += `<textarea id="txtCaptionText" class="caption-textarea" readonly>${titleText}</textarea>`;
-                    resultHtml += `<button class="btn btn-secondary" style="margin-top:6px; margin-bottom:12px; font-size:0.78rem; padding:6px 12px;" onclick="copyCaptionText()">📋 Copy Caption Text</button><br><br>`;
-
-                    // Download Buttons
-                    resultHtml += `<div class="btn-grid">`;
-                    resultHtml += `<a href="${videoUrl}" target="_blank" class="btn btn-primary" style="font-size:0.8rem;">📥 Download MP4 Video</a>`;
-                    if (videoHdUrl) {
-                        resultHtml += `<a href="${videoHdUrl}" target="_blank" class="btn btn-primary" style="font-size:0.8rem; background:linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">✨ Download MP4 1080p Ultra HD</a>`;
+            if (input.includes('youtube.com') || input.includes('youtu.be')) {
+                fetch(`https://api.cobalt.tools/api/json`, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: input })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.url) {
+                        outputBox.innerHTML = `✅ YouTube Video Ready to Download:<br><br>
+                        <a href="${data.url}" target="_blank" class="btn btn-primary">📥 Download YouTube Video MP4</a>`;
+                    } else {
+                        outputBox.innerHTML = `✅ Direct Link Prepared:<br><a href="https://ssyoutube.com/en1/video-downloader?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download YouTube MP4 / MP3</a>`;
                     }
-                    if (musicUrl) {
-                        resultHtml += `<a href="${musicUrl}" target="_blank" class="btn btn-secondary" style="font-size:0.8rem;">🎵 Download Audio MP3</a>`;
+                }).catch(() => {
+                    outputBox.innerHTML = `✅ Direct Link Prepared:<br><a href="https://ssyoutube.com/en1/video-downloader?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download YouTube MP4 / MP3</a>`;
+                });
+            } else if (input.includes('instagram.com')) {
+                fetch(`https://api.vreden.web.id/api/instagram?url=${encodeURIComponent(input)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.result && data.result.url) {
+                        outputBox.innerHTML = `✅ Instagram Media Ready:<br><br>
+                        <a href="${data.result.url}" target="_blank" class="btn btn-primary">📥 Download Instagram Video / Photo</a>`;
+                    } else {
+                        outputBox.innerHTML = `✅ Instagram Direct Download Option:<br><a href="https://snapinst.app/?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download Instagram Media</a>`;
                     }
-                    resultHtml += `</div>`;
+                }).catch(() => {
+                    outputBox.innerHTML = `✅ Instagram Direct Download Option:<br><a href="https://snapinst.app/?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download Instagram Media</a>`;
+                });
+            } else {
+                // TikTok Standard Fallback
+                fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.data) {
+                        const videoUrl = data.data.play;
+                        const musicUrl = data.data.music;
+                        const titleText = data.data.title || 'TikTok Media';
 
-                    outputBox.innerHTML = resultHtml;
-                } else {
-                    fallbackTiklydown(input, outputBox);
-                }
-            })
-            .catch(() => {
-                fallbackTiklydown(input, outputBox);
-            });
-        }
-
-        function fallbackTiklydown(url, outputBox) {
-            fetch(`https://api.tiklydown.eu.org/api/download?url=${encodeURIComponent(url)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.video && data.video.noWatermark) {
-                    const videoUrl = data.video.noWatermark;
-                    const titleText = data.title || 'TikTok Video';
-                    const musicUrl = data.music ? data.music.play_url : null;
-
-                    let resultHtml = `✅ <strong>TikTok Media Extracted:</strong><br><br>`;
-                    resultHtml += `<strong>📝 Caption Text:</strong><br>`;
-                    resultHtml += `<textarea id="txtCaptionText" class="caption-textarea" readonly>${titleText}</textarea>`;
-                    resultHtml += `<button class="btn btn-secondary" style="margin-top:6px; margin-bottom:12px; font-size:0.78rem;" onclick="copyCaptionText()">📋 Copy Caption</button><br><br>`;
-
-                    resultHtml += `<div class="btn-grid">`;
-                    resultHtml += `<a href="${videoUrl}" target="_blank" class="btn btn-primary" style="font-size:0.8rem;">📥 Download MP4 Video</a>`;
-                    if (musicUrl) {
-                        resultHtml += `<a href="${musicUrl}" target="_blank" class="btn btn-secondary" style="font-size:0.8rem;">🎵 Download MP3 Audio</a>`;
+                        let html = `✅ <strong>TikTok Media Extracted:</strong><br><br>`;
+                        html += `<strong>📝 Caption:</strong><br><textarea class="caption-textarea" readonly>${titleText}</textarea><br><br>`;
+                        html += `<div class="btn-grid">`;
+                        html += `<a href="${videoUrl}" target="_blank" class="btn btn-primary">📥 Download MP4 Video</a>`;
+                        if (musicUrl) html += `<a href="${musicUrl}" target="_blank" class="btn btn-secondary">🎵 Download MP3 Audio</a>`;
+                        html += `</div>`;
+                        outputBox.innerHTML = html;
+                    } else {
+                        outputBox.innerText = "❌ Unable to parse link. Please check URL and try again.";
                     }
-                    resultHtml += `</div>`;
-
-                    outputBox.innerHTML = resultHtml;
-                } else {
-                    outputBox.innerText = "❌ Could not process TikTok video. Please check the URL link and try again.";
-                }
-            })
-            .catch(() => {
-                outputBox.innerText = "❌ Network error connecting to TikTok downloader server.";
-            });
-        }
-
-        function copyCaptionText() {
-            const txt = document.getElementById('txtCaptionText');
-            if (txt) {
-                txt.select();
-                navigator.clipboard.writeText(txt.value);
-                alert("Caption text copied to clipboard!");
+                }).catch(() => {
+                    outputBox.innerText = "❌ Network error parsing link.";
+                });
             }
         }
 
-        /* AJAX FORM SUBMIT */
-        function submitForm(event) {
+        /* RATING STAR INTERACTIVE SYSTEM */
+        function setRating(stars) {
+            document.getElementById('selectedStarValue').value = stars;
+            const starElems = document.querySelectorAll('#starContainer .star');
+            starElems.forEach((star, idx) => {
+                if (idx < stars) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        /* AJAX RATING FORM SUBMIT TO EMAIL */
+        function submitRatingForm(event) {
             event.preventDefault();
-            const btn = document.getElementById('btnSubmitForm');
-            const form = document.getElementById('contactForm');
-            btn.innerText = "Sending...";
+            const btn = document.getElementById('btnSubmitRating');
+            const form = document.getElementById('ratingForm');
+            const stars = document.getElementById('selectedStarValue').value;
+
+            btn.innerText = "Sending Rating...";
             btn.disabled = true;
 
             const formData = new FormData(form);
@@ -1361,16 +1340,17 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    alert("Your message has been sent successfully to Rayze!");
+                    alert(`Thank you! Your ${stars}-Star Rating & Review has been sent successfully to rayzekagenou@gmail.com!`);
                     form.reset();
+                    setRating(5);
                 } else {
-                    alert("Failed to send message. Please try again.");
+                    alert("Failed to send rating. Please try again.");
                 }
-                btn.innerText = "📨 Send Email to Rayze Development";
+                btn.innerText = "⭐ Send Rating & Review to rayzekagenou@gmail.com";
                 btn.disabled = false;
             }).catch(() => {
-                alert("Network error occurred.");
-                btn.innerText = "📨 Send Email to Rayze Development";
+                alert("Network error occurred while sending rating.");
+                btn.innerText = "⭐ Send Rating & Review to rayzekagenou@gmail.com";
                 btn.disabled = false;
             });
         }
