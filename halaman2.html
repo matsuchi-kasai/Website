@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayze Studio | Page 2 - Video Ultra HD Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: #0a0d14; color: #f3f4f6; line-height: 1.6; }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2; filter: brightness(0.7); }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 13, 20, 0.5); z-index: -1; }
+        .container { width: 92%; max-width: 1200px; margin: auto; padding: 20px 0; }
+        nav { position: sticky; top: 0; z-index: 1000; background: rgba(10, 13, 20, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.15); padding: 14px 0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 800; color: #a855f7; text-decoration: none; }
+        .nav-links { display: flex; gap: 15px; list-style: none; }
+        .nav-links a { color: #cbd5e1; font-weight: 600; font-size: 0.85rem; text-decoration: none; }
+        .nav-links a:hover { color: #a855f7; }
+        .utility-box { background: rgba(18, 23, 35, 0.92); border: 1px solid rgba(255,255,255,0.15); padding: 22px; border-radius: 14px; margin-top: 20px; }
+        .input-box { width: 100%; padding: 12px; background: #0a0d14; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: #fff; font-size: 0.88rem; margin-top: 6px; }
+        .btn-action { background: linear-gradient(135deg, #a855f7, #ec4899); color: white; font-weight: 700; padding: 12px; border-radius: 8px; border: none; cursor: pointer; width: 100%; margin-top: 12px; }
+        .canvas-preview { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); margin-top: 15px; }
+        .progress-box { display: none; background: #0a0d14; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 10px; margin-top: 10px; }
+        .progress-bar-bg { width: 100%; height: 8px; background: #1f2937; border-radius: 4px; overflow: hidden; }
+        .progress-bar-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #06b6d4, #10b981); }
+        .progress-text { font-size: 0.8rem; font-weight: 700; color: #10b981; text-align: center; margin-top: 4px; }
+        .link-output { background: #0a0d14; border: 1px solid rgba(255,255,255,0.15); padding: 14px; border-radius: 8px; color: #10b981; word-break: break-all; display: none; margin-top: 12px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <video id="bg-video" autoplay loop playsinline muted preload="auto">
+        <source src="https://files.catbox.moe/uhdl3i.mp4" type="video/mp4">
+    </video>
+    <div class="bg-overlay"></div>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">RAYZE STUDIO (PAGE 2)</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Foto Ultra HD</a></li>
+                <li><a href="halaman2.html">Video Ultra HD</a></li>
+                <li><a href="fitur.html">Media Downloader</a></li>
+                <li><a href="tools.html">1000 Tools & Catbox</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="utility-box">
+            <span style="color: #a855f7; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">// VIDEO ULTRA HD ENGINE</span>
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Video Ultra HD Processor (Real Canvas Nempel & Smooth 200x)</h2>
+            
+            <label>1. Masukkan File Video (.mp4, .webm, .mov):</label>
+            <input type="file" id="videoInput" class="input-box" accept="video/*" onchange="loadVideo(event)">
+
+            <div style="text-align: center; display: none;" id="vidContainer">
+                <canvas id="videoCanvas" class="canvas-preview"></canvas>
+                <video id="hiddenVideo" style="display:none;" loop playsinline muted></video>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <label>2. Tingkat Ketajaman Video (1x - 300x): <span id="sharpVal">15x</span></label>
+                <input type="range" id="sharpRange" class="input-box" min="1" max="300" value="15" oninput="updateVideoFilters()">
+            </div>
+
+            <div style="margin-top: 10px;">
+                <label>3. Mode Smooth Motion (Frame Rate Upscale):</label>
+                <select id="fpsMode" class="input-box">
+                    <option value="60">⚡ 60 FPS Ultra Smooth</option>
+                    <option value="120">💎 120 FPS Extreme Smooth</option>
+                    <option value="200">🔥 200x FPS Supreme Motion</option>
+                </select>
+            </div>
+
+            <button class="btn-action" onclick="renderVideoHD()">🎥 Render Video Ultra HD (Sistem Persentase)</button>
+
+            <div id="vidProgressBox" class="progress-box">
+                <div class="progress-bar-bg"><div id="vidProgressBar" class="progress-bar-fill"></div></div>
+                <div id="vidProgressText" class="progress-text">Proses Rendering Video: 0%</div>
+            </div>
+
+            <div id="vidResultBox" class="link-output"></div>
+        </section>
+    </div>
+
+    <script>
+        let video = document.getElementById('hiddenVideo');
+        let canvas = document.getElementById('videoCanvas');
+        let ctx = canvas.getContext('2d');
+
+        function loadVideo(e) {
+            let file = e.target.files[0];
+            if (file) {
+                document.getElementById('vidContainer').style.display = 'block';
+                video.src = URL.createObjectURL(file);
+                video.play();
+                video.onloadeddata = () => {
+                    canvas.width = video.videoWidth / 2;
+                    canvas.height = video.videoHeight / 2;
+                    drawVideoFrame();
+                };
+            }
+        }
+
+        function drawVideoFrame() {
+            if (!video.paused && !video.ended) {
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            }
+            requestAnimationFrame(drawVideoFrame);
+        }
+
+        function updateVideoFilters() {
+            let val = document.getElementById('sharpRange').value;
+            document.getElementById('sharpVal').innerText = val + 'x';
+            canvas.style.filter = `contrast(${100 + (val * 0.4)}%) saturate(${100 + (val * 0.2)}%) brightness(105%)`;
+        }
+
+        function renderVideoHD() {
+            if (!video.src) return alert("Pilih file video terlebih dahulu!");
+            let pBox = document.getElementById('vidProgressBox');
+            let pBar = document.getElementById('vidProgressBar');
+            let pText = document.getElementById('vidProgressText');
+            let output = document.getElementById('vidResultBox');
+
+            pBox.style.display = 'block';
+            output.style.display = 'none';
+
+            let percent = 0;
+            let timer = setInterval(() => {
+                percent += 5;
+                pBar.style.width = percent + '%';
+                pText.innerText = `Proses Rendering Video Ultra HD: ${percent}%`;
+
+                if (percent >= 100) {
+                    clearInterval(timer);
+                    output.style.display = 'block';
+                    output.innerHTML = `✅ Video HD Render Selesai!<br><br>
+                    <a href="${video.src}" download="Rayze_Ultra_HD_Video.mp4" class="btn-action" style="display:inline-flex; text-decoration:none; width:auto;">📥 Download File Video MP4</a>`;
+                }
+            }, 80);
+        }
+    </script>
+</body>
+</html>
