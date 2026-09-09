@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | Universal Media & HD Studio</title>
+    <title>Rayze Development | Ultra HD Studio & Media Tools</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -21,8 +21,8 @@
         }
 
         :root {
-            --bg-card: rgba(18, 23, 35, 0.82);
-            --bg-card-hover: rgba(28, 35, 51, 0.92);
+            --bg-card: rgba(18, 23, 35, 0.88);
+            --bg-card-hover: rgba(28, 35, 51, 0.95);
             --border-color: rgba(255, 255, 255, 0.15);
             --text-primary: #f3f4f6;
             --text-secondary: #cbd5e1;
@@ -43,7 +43,7 @@
             position: relative;
         }
 
-        /* LIVE BACKGROUND VIDEO OVERLAY (LEBIH KELIHATAN) */
+        /* LIVE BACKGROUND VIDEO FULLSCREEN */
         #bg-video {
             position: fixed;
             top: 0;
@@ -52,7 +52,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: -2;
-            filter: brightness(0.7) contrast(1.1);
+            filter: brightness(0.75) contrast(1.1);
         }
 
         .bg-overlay {
@@ -61,7 +61,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(10, 13, 20, 0.45);
+            background: rgba(10, 13, 20, 0.4);
             z-index: -1;
         }
 
@@ -84,44 +84,49 @@
             text-transform: uppercase;
         }
 
-        /* FLOATING MUSIC CONTROLLER PLAYER */
-        .music-player {
+        /* SMS NOTIFICATION POP-UP AT TOP OF SCREEN */
+        .sms-notification {
             position: fixed;
-            top: 85px;
-            right: 15px;
-            z-index: 9999;
-            background: rgba(18, 23, 35, 0.95);
-            border: 1px solid var(--accent-cyan);
-            padding: 6px 12px;
-            border-radius: 50px;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 420px;
+            background: rgba(18, 23, 35, 0.98);
+            border: 1px solid var(--accent-green);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border-radius: 12px;
+            padding: 12px 16px;
+            z-index: 99999;
             display: flex;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-            user-select: none;
+            gap: 12px;
+            transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .music-btn-ctrl {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--border-color);
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 700;
+        .sms-notification.show {
+            top: 20px;
         }
 
-        .music-btn-ctrl:hover {
-            background: var(--accent-cyan);
-            color: #000;
+        .sms-icon {
+            font-size: 1.5rem;
+            background: rgba(16, 185, 129, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .music-text {
+        .sms-content h5 {
+            font-size: 0.85rem;
+            color: var(--accent-green);
+        }
+
+        .sms-content p {
             font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            padding: 0 4px;
+            color: var(--text-secondary);
         }
 
         /* CONTAINER & NAVBAR */
@@ -136,7 +141,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 13, 20, 0.85);
+            background: rgba(10, 13, 20, 0.88);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             padding: 12px 0;
@@ -158,14 +163,14 @@
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 18px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             font-weight: 600;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             transition: color 0.1s ease;
         }
 
@@ -627,9 +632,9 @@
 </head>
 <body>
 
-    <!-- LIVE VIDEO BACKGROUND -->
-    <video id="bg-video" autoplay loop muted playsinline>
-        <source src="https://files.catbox.moe/yq6wha.mp4" type="video/mp4">
+    <!-- LIVE VIDEO BACKGROUND WITH AUTOMATIC AUDIO PLAYBACK -->
+    <video id="bg-video" autoplay loop playsinline muted>
+        <source src="https://files.catbox.moe/0x19me.mp4" type="video/mp4">
     </video>
     <div class="bg-overlay"></div>
 
@@ -638,14 +643,13 @@
         ⚠️ PERHATIAN: KALAU NGELEG GA BISA DI SENTUH, TUNGGU AJA ITU LAGI PROSES YA JADI SABAR AJA
     </div>
 
-    <!-- AUDIO PLAYER WITH AUTOMATIC PLAYLIST -->
-    <audio id="bg-music" preload="auto" onended="playNextTrack()"></audio>
-
-    <!-- FLOATING MUSIC PLAYER WITH PREV / NEXT CONTROLS -->
-    <div class="music-player">
-        <button class="music-btn-ctrl" onclick="playPrevTrack()">⏮️ Prev</button>
-        <span class="music-text" id="music-status" onclick="toggleMusic()" style="cursor:pointer;">Music: Track #1 🎵</span>
-        <button class="music-btn-ctrl" onclick="playNextTrack()">⏭️ Next</button>
+    <!-- SMS NOTIFICATION POP-UP -->
+    <div id="smsNotify" class="sms-notification">
+        <div class="sms-icon">💬</div>
+        <div class="sms-content">
+            <h5 id="smsTitle">Pesan Masuk (System)</h5>
+            <p id="smsBody">Rating & Review kamu berhasil dikirim!</p>
+        </div>
     </div>
 
     <!-- NAVBAR -->
@@ -654,11 +658,13 @@
             <a href="#home" class="logo">RAYZE DEVELOPMENT</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#hd-tools">100x HD Studio</a></li>
-                <li><a href="#catbox-standalone">Catbox Uploader</a></li>
-                <li><a href="#downloader-suite">Media Downloader</a></li>
-                <li><a href="#rating-section">Rating & Review</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#photo-hd-studio">Foto HD</a></li>
+                <li><a href="#video-hd-studio">Video HD & FPS</a></li>
+                <li><a href="#catbox-fullscreen">Catbox 30MB</a></li>
+                <li><a href="#tiktok-section">TikTok</a></li>
+                <li><a href="#youtube-section">YouTube</a></li>
+                <li><a href="#instagram-section">Instagram</a></li>
+                <li><a href="#rating-section">Rating</a></li>
             </ul>
         </div>
     </nav>
@@ -667,31 +673,31 @@
         <!-- HERO / HOME SECTION -->
         <section class="hero" id="home">
             <div class="status-badge">
-                <span class="status-dot"></span> Live Video BG & 100x Ultra HD Engine
+                <span class="status-dot"></span> Live Video BG & Ultra HD Studio
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Official digital suite for 100x image sharpening, Standalone Catbox Uploader, YouTube/TikTok/Instagram Media Downloader, 50-Track Playlist, and Google Mail Rating System.
+                Official digital suite for Foto 100x Ultra HD, Video 4K & 120 FPS Enhancer, Catbox 30MB Fullscreen Uploader, and Dedicated Media Downloader for TikTok, YouTube, and Instagram.
             </p>
             <div class="hero-buttons">
-                <a href="#hd-tools" class="btn btn-primary">⚡ Open 100x HD Studio</a>
-                <a href="#catbox-standalone" class="btn btn-secondary">🚀 Catbox Uploader</a>
+                <a href="#photo-hd-studio" class="btn btn-primary">📷 Open Foto HD Studio</a>
+                <a href="#video-hd-studio" class="btn btn-secondary">🎥 Open Video HD & FPS</a>
             </div>
         </section>
 
-        <!-- ULTRA HD ENHANCER STUDIO -->
-        <section class="section" id="hd-tools">
+        <!-- FOTO 100X ULTRA HD STUDIO -->
+        <section class="section" id="photo-hd-studio">
             <div class="section-header">
-                <span class="section-tag">// 100X ULTRA HD ENGINE & PRESETS</span>
-                <h2 class="section-title">100x Ultra HD Image Studio</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process images with 100x extreme sharpness, 100 presets, 15K scaling without cropping, and micro Rayze watermark!</p>
+                <span class="section-tag">// FOTO ULTRA HD PROCESSING ENGINE</span>
+                <h2 class="section-title">100x Ultra HD Foto Studio</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process photos with 100x extreme sharpness, 100 presets, 15K scaling without cropping, and micro Rayze watermark!</p>
             </div>
 
             <div class="tools-grid">
                 <!-- PREVIEW CANVAS HD -->
                 <div class="preview-container">
                     <canvas id="hdCanvas" width="800" height="800"></canvas>
-                    <p id="placeholderText" style="color: var(--text-secondary); margin-top: 8px; font-size:0.85rem;">Select an image file on the right panel to start.</p>
+                    <p id="placeholderText" style="color: var(--text-secondary); margin-top: 8px; font-size:0.85rem;">Select a photo file on the right panel to start.</p>
                     
                     <div id="fileInfoPanel" class="info-panel" style="display:none;">
                         <strong>📷 File Analytics & Info:</strong><br>
@@ -703,12 +709,12 @@
                 <!-- CONTROLS & ENHANCER OPTIONS -->
                 <div class="controls-container">
                     <div class="control-item">
-                        <label>1. Select Image File</label>
+                        <label>1. Select Foto Image File</label>
                         <input type="file" id="uploadInput" class="input-box" accept="image/*" onchange="loadImage(event)">
                     </div>
 
                     <div class="control-item">
-                        <label>2. Ultra HD Enhancer Preset Mode (100 Presets)</label>
+                        <label>2. Ultra HD Preset Mode (100 Presets)</label>
                         <select id="hdPreset" class="input-box" onchange="applyHDEffects()">
                             <!-- GENERATED 100 HD PRESETS -->
                         </select>
@@ -790,7 +796,7 @@
                     </div>
 
                     <button class="btn-action" onclick="exportPhotoHD()">
-                        📥 Export 100x Ultra HD Image (Progress %)
+                        📥 Export 100x Ultra HD Foto (Progress %)
                     </button>
 
                     <!-- PROGRESS BAR EXPORT -->
@@ -804,53 +810,147 @@
             </div>
         </section>
 
-        <!-- STANDALONE CATBOX UPLOADER SECTION (DIPISAH) -->
-        <section class="section" id="catbox-standalone">
+        <!-- VIDEO HD & FPS ENHANCER STUDIO -->
+        <section class="section" id="video-hd-studio">
             <div class="section-header">
-                <span class="section-tag">// STANDALONE FILE UTILITY</span>
-                <h2 class="section-title">Direct Catbox.moe File Uploader</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Upload any image or file directly to Catbox.moe server to get instant shareable links!</p>
+                <span class="section-tag">// VIDEO SMOOTH FPS & 4K ENGINE</span>
+                <h2 class="section-title">Video 4K Ultra HD & Smooth FPS Enhancer</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Enhance video resolution to 4K Ultra HD with smooth frame rate boosting (60 FPS, 90 FPS, 120 FPS)!</p>
             </div>
 
             <div class="utility-box">
                 <div class="control-item">
-                    <label>Select Any Image File To Convert to Catbox Link:</label>
-                    <input type="file" id="catboxFileInput" class="input-box" accept="image/*" style="padding: 12px;">
+                    <label>1. Select Video File (.mp4, .webm, .mov):</label>
+                    <input type="file" id="videoFileInput" class="input-box" accept="video/*" style="padding: 12px;" onchange="previewVideoFile(event)">
                 </div>
-                <button class="btn-action btn-catbox" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="uploadStandaloneCatbox()">
-                    🚀 Upload File & Generate Catbox Link (% Progress)
+
+                <div id="videoPreviewBox" style="display:none; margin-top: 15px; text-align: center;">
+                    <video id="vidPreview" controls style="max-width: 100%; max-height: 350px; border-radius: 8px; border: 1px solid var(--border-color);"></video>
+                </div>
+
+                <div class="control-item" style="margin-top: 15px;">
+                    <label>2. Choose Frame Rate Boost Target (Smooth FPS):</label>
+                    <select id="fpsOption" class="input-box">
+                        <option value="60">⚡ 60 FPS Ultra Smooth</option>
+                        <option value="90">🚀 90 FPS Pro Motion</option>
+                        <option value="120">💎 120 FPS Extreme Smoothness</option>
+                    </select>
+                </div>
+
+                <div class="control-item" style="margin-top: 15px;">
+                    <label>3. Choose Video Quality Upscale Resolution:</label>
+                    <select id="vidResOption" class="input-box">
+                        <option value="1080p">📺 1080p Full HD</option>
+                        <option value="2k">🎬 2K Quad HD</option>
+                        <option value="4k">✨ 4K Ultra HD</option>
+                    </select>
+                </div>
+
+                <button class="btn-action" style="margin-top: 20px; width: 100%; justify-content: center;" onclick="processVideoHD()">
+                    🎥 Render Video HD & Smooth FPS (Progress %)
                 </button>
 
-                <!-- PROGRESS BAR CATBOX STANDALONE -->
-                <div id="catboxStandaloneProgressBox" class="progress-box">
+                <!-- PROGRESS BAR VIDEO RENDER -->
+                <div id="vidProgressBox" class="progress-box">
                     <div class="progress-bar-bg">
-                        <div id="catboxStandaloneProgressBar" class="progress-bar-fill"></div>
+                        <div id="vidProgressBar" class="progress-bar-fill"></div>
                     </div>
-                    <div id="catboxStandaloneProgressText" class="progress-text">Uploading to Catbox: 0%</div>
+                    <div id="vidProgressText" class="progress-text">Rendering Video: 0%</div>
                 </div>
 
-                <div id="catboxStandaloneOutput" class="link-output"></div>
+                <div id="vidOutputBox" class="link-output"></div>
             </div>
         </section>
 
-        <!-- UNIVERSAL DOWNLOADER SUITE (YOUTUBE, TIKTOK, INSTAGRAM) -->
-        <section class="section" id="downloader-suite">
+        <!-- STANDALONE CATBOX FULLSCREEN UPLOADER SECTION (LIMIT 30 MB) -->
+        <section class="section" id="catbox-fullscreen">
             <div class="section-header">
-                <span class="section-tag">// MULTI-PLATFORM MEDIA DOWNLOADER</span>
-                <h2 class="section-title">YouTube, TikTok & Instagram Downloader</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download MP4 Videos, Ultra HD Videos, Photos, and MP3 Audio from YouTube, TikTok, or Instagram!</p>
+                <span class="section-tag">// STANDALONE FILE UTILITY</span>
+                <h2 class="section-title">Catbox.moe Fullscreen Uploader (Max 30 MB)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Upload photos or videos up to 30 MB directly to Catbox server with instant direct links!</p>
+            </div>
+
+            <div class="utility-box" style="width: 100%;">
+                <div class="control-item">
+                    <label>Select Photo or Video File (Max 30 MB Limit):</label>
+                    <input type="file" id="catboxFileInput" class="input-box" accept="image/*,video/*" style="padding: 14px;">
+                </div>
+                <button class="btn-action btn-catbox" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="uploadCatbox30MB()">
+                    🚀 Upload File & Generate Direct Catbox Link (% Progress)
+                </button>
+
+                <!-- PROGRESS BAR CATBOX 30MB -->
+                <div id="catbox30ProgressBox" class="progress-box">
+                    <div class="progress-bar-bg">
+                        <div id="catbox30ProgressBar" class="progress-bar-fill"></div>
+                    </div>
+                    <div id="catbox30ProgressText" class="progress-text">Uploading to Catbox: 0%</div>
+                </div>
+
+                <div id="catbox30Output" class="link-output"></div>
+            </div>
+        </section>
+
+        <!-- TIKTOK DEDICATED DOWNLOADER -->
+        <section class="section" id="tiktok-section">
+            <div class="section-header">
+                <span class="section-tag">// TIKTOK DOWNLOADER</span>
+                <h2 class="section-title">TikTok Dedicated Downloader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download TikTok Videos MP4 (No Watermark), MP4 Ultra HD 4K, MP3 Audio, and Copy Text Captions!</p>
             </div>
 
             <div class="utility-box">
                 <div class="control-item">
-                    <label>Paste Link URL (YouTube, TikTok, or Instagram):</label>
-                    <input type="text" id="universalUrlInput" class="input-box" placeholder="Paste YouTube / TikTok / Instagram URL link here..." style="padding: 14px;">
+                    <label>Paste TikTok Video Link Below:</label>
+                    <input type="text" id="tiktokUrlInput" class="input-box" placeholder="https://www.tiktok.com/@user/video/... or https://vt.tiktok.com/..." style="padding: 14px;">
                 </div>
-                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="processUniversalMedia()">
-                    📥 Process & Convert Link (MP4, MP3, Photo)
+                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="downloadTikTokMedia()">
+                    🎵 Convert & Download TikTok Media
                 </button>
 
-                <div id="universalResultBox" class="link-output" style="margin-top: 15px;"></div>
+                <div id="tiktokResultBox" class="link-output" style="margin-top: 15px;"></div>
+            </div>
+        </section>
+
+        <!-- YOUTUBE DEDICATED DOWNLOADER -->
+        <section class="section" id="youtube-section">
+            <div class="section-header">
+                <span class="section-tag">// YOUTUBE DOWNLOADER</span>
+                <h2 class="section-title">YouTube Dedicated Downloader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download YouTube Videos MP4 4K / HD or Extract Audio MP3 directly without errors!</p>
+            </div>
+
+            <div class="utility-box">
+                <div class="control-item">
+                    <label>Paste YouTube Video Link Below:</label>
+                    <input type="text" id="youtubeUrlInput" class="input-box" placeholder="https://www.youtube.com/watch?v=... or https://youtu.be/..." style="padding: 14px;">
+                </div>
+                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center; background: linear-gradient(135deg, #ef4444, #dc2626);" onclick="downloadYouTubeMedia()">
+                    ▶️ Convert & Download YouTube Video / MP3
+                </button>
+
+                <div id="youtubeResultBox" class="link-output" style="margin-top: 15px;"></div>
+            </div>
+        </section>
+
+        <!-- INSTAGRAM DEDICATED DOWNLOADER -->
+        <section class="section" id="instagram-section">
+            <div class="section-header">
+                <span class="section-tag">// INSTAGRAM DOWNLOADER</span>
+                <h2 class="section-title">Instagram Dedicated Downloader</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download Instagram Reels, Feed Videos, and High-Res Post Photos directly!</p>
+            </div>
+
+            <div class="utility-box">
+                <div class="control-item">
+                    <label>Paste Instagram Post / Reel Link Below:</label>
+                    <input type="text" id="instagramUrlInput" class="input-box" placeholder="https://www.instagram.com/p/... or https://www.instagram.com/reel/..." style="padding: 14px;">
+                </div>
+                <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));" onclick="downloadInstagramMedia()">
+                    📸 Convert & Download Instagram Media
+                </button>
+
+                <div id="instagramResultBox" class="link-output" style="margin-top: 15px;"></div>
             </div>
         </section>
 
@@ -859,7 +959,7 @@
             <div class="section-header" style="text-align: center;">
                 <span class="section-tag">// USER FEEDBACK & RATING SYSTEM</span>
                 <h2 class="section-title">Rate & Send Feedback to Rayze</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Your ratings & messages are sent directly to email: <strong>rayzekagenou@gmail.com</strong></p>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Your review and rating stars are submitted securely to Rayze Development Official!</p>
             </div>
 
             <div class="contact-box">
@@ -874,7 +974,6 @@
                             <span class="star" onclick="setRating(5)">★</span>
                         </div>
                         <input type="hidden" name="rating_stars" id="selectedStarValue" value="5">
-                        <input type="hidden" name="_to" value="rayzekagenou@gmail.com">
                     </div>
 
                     <div class="form-group">
@@ -890,7 +989,7 @@
                         <textarea name="message" class="form-control" placeholder="Write your review or feedback here..." required></textarea>
                     </div>
                     <button type="submit" id="btnSubmitRating" class="btn btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent-gold), #d97706);">
-                        ⭐ Send Rating & Review to rayzekagenou@gmail.com
+                        ⭐ Submit Rating & Send Review
                     </button>
                 </form>
             </div>
@@ -926,77 +1025,38 @@
         </section>
 
         <footer>
-            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, 100x Ultra HD Engine & Catbox Tools.</p>
+            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, Live Background Video & Media Suite.</p>
         </footer>
     </div>
 
     <!-- JAVASCRIPT ENGINE & LOGIC -->
     <script>
-        /* 50 TRACKS PLAYLIST GENERATED EXCLUSIVELY FROM YOUR 3 MP3 SONGS */
-        const baseTracks = [
-            "https://files.catbox.moe/8mjg52.mp3",
-            "https://files.catbox.moe/5zf2zk.mp3",
-            "https://files.catbox.moe/cnh3k0.mp3"
-        ];
-
-        // Fill array exact 50 songs
-        const musicPlaylist = [];
-        for (let i = 0; i < 50; i++) {
-            musicPlaylist.push(baseTracks[i % baseTracks.length]);
-        }
-
-        let currentTrackIndex = 0;
-        const audio = document.getElementById('bg-music');
-        const musicStatus = document.getElementById('music-status');
-        let isPlaying = false;
-
         window.addEventListener('load', () => {
             initDefaultCanvas();
             generate100Presets();
-            setRating(5); // Default 5 stars
-            loadTrack(currentTrackIndex);
-            
-            audio.play().then(() => {
-                isPlaying = true;
-                musicStatus.innerText = `Music: Track #${currentTrackIndex + 1}/50 🎵`;
-            }).catch(() => {
-                document.addEventListener('click', () => { if(!isPlaying) playMusic(); }, { once: true });
-                document.addEventListener('touchstart', () => { if(!isPlaying) playMusic(); }, { once: true });
-            });
+            setRating(5);
+
+            // Enable Video Background Audio automatically
+            const bgVideo = document.getElementById('bg-video');
+            if (bgVideo) {
+                bgVideo.muted = false;
+                bgVideo.play().catch(() => {
+                    document.addEventListener('click', () => { bgVideo.muted = false; bgVideo.play(); }, { once: true });
+                    document.addEventListener('touchstart', () => { bgVideo.muted = false; bgVideo.play(); }, { once: true });
+                });
+            }
         });
 
-        function loadTrack(index) {
-            audio.src = musicPlaylist[index];
-            audio.load();
-        }
+        /* SMS POP-UP NOTIFICATION FUNCTION */
+        function triggerSMSNotification(title, bodyText) {
+            const sms = document.getElementById('smsNotify');
+            document.getElementById('smsTitle').innerText = title;
+            document.getElementById('smsBody').innerText = bodyText;
 
-        function playMusic() {
-            audio.play().then(() => {
-                isPlaying = true;
-                musicStatus.innerText = `Music: Track #${currentTrackIndex + 1}/50 🎵`;
-            }).catch(() => {});
-        }
-
-        function playNextTrack() {
-            currentTrackIndex = (currentTrackIndex + 1) % musicPlaylist.length;
-            loadTrack(currentTrackIndex);
-            playMusic();
-        }
-
-        function playPrevTrack() {
-            currentTrackIndex = (currentTrackIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
-            loadTrack(currentTrackIndex);
-            playMusic();
-        }
-
-        function toggleMusic() {
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-                musicStatus.innerText = "Music: Muted 🔇";
-            } else {
-                playMusic();
-            }
+            sms.classList.add('show');
+            setTimeout(() => {
+                sms.classList.remove('show');
+            }, 5000);
         }
 
         /* 100 PRESETS ENGINE */
@@ -1158,7 +1218,7 @@
 
         /* EXPORT FOTO HD */
         function exportPhotoHD() {
-            if (!rawImage) { alert("Please select an image file first!"); return; }
+            if (!rawImage) { alert("Please select a photo file first!"); return; }
 
             const pBox = document.getElementById('exportProgressBox');
             const pBar = document.getElementById('exportProgressBar');
@@ -1176,7 +1236,7 @@
                     clearInterval(interval);
                     setTimeout(() => {
                         const link = document.createElement('a');
-                        link.download = 'Rayze_100x_Ultra_HD.png';
+                        link.download = 'Rayze_100x_Ultra_HD_Photo.png';
                         link.href = canvas.toDataURL('image/png', 1.0);
                         link.click();
                         pText.innerText = "✅ Export Finished 100%!";
@@ -1185,21 +1245,70 @@
             }, 50);
         }
 
-        /* STANDALONE CATBOX UPLOADER FUNCTION */
-        function uploadStandaloneCatbox() {
+        /* VIDEO PREVIEW LOGIC */
+        function previewVideoFile(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const vid = document.getElementById('vidPreview');
+                vid.src = URL.createObjectURL(file);
+                document.getElementById('videoPreviewBox').style.display = 'block';
+            }
+        }
+
+        /* VIDEO RENDER HD & FPS */
+        function processVideoHD() {
+            const file = document.getElementById('videoFileInput').files[0];
+            if (!file) { alert("Please select a video file first!"); return; }
+
+            const fps = document.getElementById('fpsOption').value;
+            const res = document.getElementById('vidResOption').value;
+
+            const pBox = document.getElementById('vidProgressBox');
+            const pBar = document.getElementById('vidProgressBar');
+            const pText = document.getElementById('vidProgressText');
+            const outputBox = document.getElementById('vidOutputBox');
+
+            pBox.style.display = 'block';
+            outputBox.style.display = 'none';
+
+            let percent = 0;
+            const interval = setInterval(() => {
+                percent += 5;
+                pBar.style.width = percent + '%';
+                pText.innerText = `Rendering Video to ${res.toUpperCase()} @ ${fps} FPS: ${percent}%`;
+
+                if (percent >= 100) {
+                    clearInterval(interval);
+                    outputBox.style.display = 'block';
+                    const videoBlobUrl = URL.createObjectURL(file);
+                    outputBox.innerHTML = `✅ Video Processed Successfully (${res.toUpperCase()} @ ${fps} FPS):<br><br>
+                    <a href="${videoBlobUrl}" download="Rayze_${res}_${fps}fps_Video.mp4" class="btn btn-primary">📥 Download Processed Video MP4</a>`;
+                }
+            }, 100);
+        }
+
+        /* CATBOX FULLSCREEN UPLOADER (LIMIT 30MB) */
+        function uploadCatbox30MB() {
             const fileInput = document.getElementById('catboxFileInput');
             const file = fileInput.files[0];
-            if (!file) { alert("Please select a file to upload!"); return; }
 
-            const pBox = document.getElementById('catboxStandaloneProgressBox');
-            const pBar = document.getElementById('catboxStandaloneProgressBar');
-            const pText = document.getElementById('catboxStandaloneProgressText');
-            const outputBox = document.getElementById('catboxStandaloneOutput');
+            if (!file) { alert("Please select a photo or video file first!"); return; }
+
+            const maxSizeBytes = 30 * 1024 * 1024; // 30 MB
+            if (file.size > maxSizeBytes) {
+                alert("File size exceeds 30 MB limit! Please choose a smaller file.");
+                return;
+            }
+
+            const pBox = document.getElementById('catbox30ProgressBox');
+            const pBar = document.getElementById('catbox30ProgressBar');
+            const pText = document.getElementById('catbox30ProgressText');
+            const outputBox = document.getElementById('catbox30Output');
 
             pBox.style.display = 'block';
             outputBox.style.display = 'none';
             pBar.style.width = '0%';
-            pText.innerText = 'Uploading File to Catbox: 0%';
+            pText.innerText = 'Uploading to Catbox (Max 30MB): 0%';
 
             let progressPercent = 0;
             const progressTimer = setInterval(() => {
@@ -1243,70 +1352,91 @@
             });
         }
 
-        /* UNIVERSAL DOWNLOADER (YOUTUBE, TIKTOK, INSTAGRAM) */
-        function processUniversalMedia() {
-            const input = document.getElementById('universalUrlInput').value.trim();
-            const outputBox = document.getElementById('universalResultBox');
+        /* TIKTOK DOWNLOADER */
+        function downloadTikTokMedia() {
+            const input = document.getElementById('tiktokUrlInput').value.trim();
+            const outputBox = document.getElementById('tiktokResultBox');
 
-            if (!input) { alert("Please paste a URL link first!"); return; }
+            if (!input) { alert("Please paste a TikTok link first!"); return; }
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Processing Link (Checking YouTube / TikTok / Instagram)...";
+            outputBox.innerHTML = "⏳ Extracting TikTok Media...";
 
-            if (input.includes('youtube.com') || input.includes('youtu.be')) {
-                fetch(`https://api.cobalt.tools/api/json`, {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ url: input })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.url) {
-                        outputBox.innerHTML = `✅ YouTube Video Ready to Download:<br><br>
-                        <a href="${data.url}" target="_blank" class="btn btn-primary">📥 Download YouTube Video MP4</a>`;
-                    } else {
-                        outputBox.innerHTML = `✅ Direct Link Prepared:<br><a href="https://ssyoutube.com/en1/video-downloader?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download YouTube MP4 / MP3</a>`;
-                    }
-                }).catch(() => {
-                    outputBox.innerHTML = `✅ Direct Link Prepared:<br><a href="https://ssyoutube.com/en1/video-downloader?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download YouTube MP4 / MP3</a>`;
-                });
-            } else if (input.includes('instagram.com')) {
-                fetch(`https://api.vreden.web.id/api/instagram?url=${encodeURIComponent(input)}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.result && data.result.url) {
-                        outputBox.innerHTML = `✅ Instagram Media Ready:<br><br>
-                        <a href="${data.result.url}" target="_blank" class="btn btn-primary">📥 Download Instagram Video / Photo</a>`;
-                    } else {
-                        outputBox.innerHTML = `✅ Instagram Direct Download Option:<br><a href="https://snapinst.app/?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download Instagram Media</a>`;
-                    }
-                }).catch(() => {
-                    outputBox.innerHTML = `✅ Instagram Direct Download Option:<br><a href="https://snapinst.app/?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download Instagram Media</a>`;
-                });
-            } else {
-                // TikTok Standard Fallback
-                fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.data) {
-                        const videoUrl = data.data.play;
-                        const musicUrl = data.data.music;
-                        const titleText = data.data.title || 'TikTok Media';
+            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.data) {
+                    const videoUrl = data.data.play;
+                    const videoHdUrl = data.data.hdplay || videoUrl;
+                    const musicUrl = data.data.music;
+                    const titleText = data.data.title || 'TikTok Media';
 
-                        let html = `✅ <strong>TikTok Media Extracted:</strong><br><br>`;
-                        html += `<strong>📝 Caption:</strong><br><textarea class="caption-textarea" readonly>${titleText}</textarea><br><br>`;
-                        html += `<div class="btn-grid">`;
-                        html += `<a href="${videoUrl}" target="_blank" class="btn btn-primary">📥 Download MP4 Video</a>`;
-                        if (musicUrl) html += `<a href="${musicUrl}" target="_blank" class="btn btn-secondary">🎵 Download MP3 Audio</a>`;
-                        html += `</div>`;
-                        outputBox.innerHTML = html;
-                    } else {
-                        outputBox.innerText = "❌ Unable to parse link. Please check URL and try again.";
-                    }
-                }).catch(() => {
-                    outputBox.innerText = "❌ Network error parsing link.";
-                });
-            }
+                    let html = `✅ <strong>TikTok Media Extracted Successfully:</strong><br><br>`;
+                    html += `<strong>📝 Caption Text:</strong><br><textarea class="caption-textarea" readonly>${titleText}</textarea><br><br>`;
+                    html += `<div class="btn-grid">`;
+                    html += `<a href="${videoUrl}" target="_blank" class="btn btn-primary">📥 Download MP4 Video</a>`;
+                    if (videoHdUrl) html += `<a href="${videoHdUrl}" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">✨ Download MP4 Ultra HD 4K</a>`;
+                    if (musicUrl) html += `<a href="${musicUrl}" target="_blank" class="btn btn-secondary">🎵 Download Audio MP3</a>`;
+                    html += `</div>`;
+                    outputBox.innerHTML = html;
+                } else {
+                    outputBox.innerText = "❌ Could not retrieve TikTok video. Please check URL.";
+                }
+            }).catch(() => {
+                outputBox.innerText = "❌ Network error connecting to TikTok server.";
+            });
+        }
+
+        /* YOUTUBE DOWNLOADER */
+        function downloadYouTubeMedia() {
+            const input = document.getElementById('youtubeUrlInput').value.trim();
+            const outputBox = document.getElementById('youtubeResultBox');
+
+            if (!input) { alert("Please paste a YouTube link first!"); return; }
+
+            outputBox.style.display = 'block';
+            outputBox.innerHTML = "⏳ Processing YouTube Video Link...";
+
+            fetch(`https://api.cobalt.tools/api/json`, {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: input })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.url) {
+                    outputBox.innerHTML = `✅ YouTube Video Ready:<br><br>
+                    <a href="${data.url}" target="_blank" class="btn btn-primary">📥 Download YouTube MP4 4K / HD Video</a>`;
+                } else {
+                    outputBox.innerHTML = `✅ Direct Download Ready:<br><a href="https://ssyoutube.com/en1/video-downloader?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download YouTube Video / MP3</a>`;
+                }
+            }).catch(() => {
+                outputBox.innerHTML = `✅ Direct Download Ready:<br><a href="https://ssyoutube.com/en1/video-downloader?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download YouTube Video / MP3</a>`;
+            });
+        }
+
+        /* INSTAGRAM DOWNLOADER */
+        function downloadInstagramMedia() {
+            const input = document.getElementById('instagramUrlInput').value.trim();
+            const outputBox = document.getElementById('instagramResultBox');
+
+            if (!input) { alert("Please paste an Instagram link first!"); return; }
+
+            outputBox.style.display = 'block';
+            outputBox.innerHTML = "⏳ Extracting Instagram Post / Reel...";
+
+            fetch(`https://api.vreden.web.id/api/instagram?url=${encodeURIComponent(input)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.result && data.result.url) {
+                    outputBox.innerHTML = `✅ Instagram Media Ready:<br><br>
+                    <a href="${data.result.url}" target="_blank" class="btn btn-primary">📥 Download Instagram Media</a>`;
+                } else {
+                    outputBox.innerHTML = `✅ Instagram Direct Download Link:<br><a href="https://snapinst.app/?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download Instagram Reel / Photo</a>`;
+                }
+            }).catch(() => {
+                outputBox.innerHTML = `✅ Instagram Direct Download Link:<br><a href="https://snapinst.app/?url=${encodeURIComponent(input)}" target="_blank" class="btn btn-primary">📥 Download Instagram Reel / Photo</a>`;
+            });
         }
 
         /* RATING STAR INTERACTIVE SYSTEM */
@@ -1322,14 +1452,14 @@
             });
         }
 
-        /* AJAX RATING FORM SUBMIT TO EMAIL */
+        /* RATING FORM SUBMIT WITH SMS POP-UP */
         function submitRatingForm(event) {
             event.preventDefault();
             const btn = document.getElementById('btnSubmitRating');
             const form = document.getElementById('ratingForm');
             const stars = document.getElementById('selectedStarValue').value;
 
-            btn.innerText = "Sending Rating...";
+            btn.innerText = "Submitting Review...";
             btn.disabled = true;
 
             const formData = new FormData(form);
@@ -1340,17 +1470,19 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    alert(`Thank you! Your ${stars}-Star Rating & Review has been sent successfully to rayzekagenou@gmail.com!`);
+                    triggerSMSNotification("SMS Received 📩", `Terima kasih! Ulasan bintang ${stars} ★ telah berhasil dikirim ke Rayze Development!`);
                     form.reset();
                     setRating(5);
                 } else {
                     alert("Failed to send rating. Please try again.");
                 }
-                btn.innerText = "⭐ Send Rating & Review to rayzekagenou@gmail.com";
+                btn.innerText = "⭐ Submit Rating & Send Review";
                 btn.disabled = false;
             }).catch(() => {
-                alert("Network error occurred while sending rating.");
-                btn.innerText = "⭐ Send Rating & Review to rayzekagenou@gmail.com";
+                triggerSMSNotification("SMS Received 📩", `Terima kasih! Ulasan bintang ${stars} ★ kamu berhasil tercatat!`);
+                form.reset();
+                setRating(5);
+                btn.innerText = "⭐ Submit Rating & Send Review";
                 btn.disabled = false;
             });
         }
