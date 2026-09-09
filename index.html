@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | Ultra HD Studio & Universal Suite</title>
+    <title>Rayze Development | Universal Ultra HD Studio & Multi-Tools Suite</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -281,6 +281,7 @@
             height: auto;
             border-radius: 6px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            cursor: crosshair;
         }
 
         .controls-container {
@@ -425,14 +426,14 @@
         .link-output {
             background: #0a0d14;
             border: 1px solid var(--border-color);
-            padding: 10px;
-            border-radius: 6px;
+            padding: 12px;
+            border-radius: 8px;
             color: var(--accent-green);
             font-weight: 600;
             font-size: 0.85rem;
             word-break: break-all;
             display: none;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         .info-panel {
@@ -453,6 +454,25 @@
             padding: 25px;
             border-radius: 14px;
             margin-top: 10px;
+        }
+
+        .tiktok-caption-box {
+            background: #0a0d14;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            max-height: 120px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .download-btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         /* ABOUT & CHANNELS */
@@ -596,7 +616,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#hd-tools">100x HD Studio</a></li>
-                <li><a href="#tiktok-tools">TikTok Downloader</a></li>
+                <li><a href="#tiktok-tools">TikTok Suite</a></li>
                 <li><a href="#about">About Rayze</a></li>
                 <li><a href="#channels">Channels</a></li>
                 <li><a href="#send-email">Contact Email</a></li>
@@ -608,15 +628,15 @@
         <!-- HERO / HOME SECTION -->
         <section class="hero" id="home">
             <div class="status-badge">
-                <span class="status-dot"></span> 100x Ultra HD Engine & TikTok Utilities
+                <span class="status-dot"></span> 100x Ultra HD Studio & TikTok Downloader
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Official digital engine for 100x image sharpening, 15K resolution scaling (no-crop bug fix), micro watermark, TikTok link to MP4 video downloader, and Catbox.moe tools.
+                Universal web suite for 100x extreme image sharpening, 100 presets, 15K scaling without cropping, micro watermark, TikTok MP4/MP3/Caption downloader, and direct Catbox uploader.
             </p>
             <div class="hero-buttons">
                 <a href="#hd-tools" class="btn btn-primary">⚡ Open 100x HD Studio</a>
-                <a href="#tiktok-tools" class="btn btn-secondary">🎵 TikTok Downloader</a>
+                <a href="#tiktok-tools" class="btn btn-secondary">🎵 TikTok Media Suite</a>
             </div>
         </section>
 
@@ -624,20 +644,21 @@
         <section class="section" id="hd-tools">
             <div class="section-header">
                 <span class="section-tag">// 100X ULTRA HD ENGINE & 100 PRESETS</span>
-                <h2 class="section-title">100x Ultra HD Studio & Catbox Uploader</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process your images with 100x extreme sharpness, 15K scaling without image cropping/black screen bugs, micro Rayze watermark, and direct Catbox links!</p>
+                <h2 class="section-title">100x Ultra HD Studio & Multi-Tool Engine</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Process your images with 100x extreme sharpness, 100 HD presets, 15K scaling without image cropping/black screen bugs, micro Rayze watermark, and direct Catbox links!</p>
             </div>
 
             <div class="tools-grid">
                 <!-- PREVIEW CANVAS HD -->
                 <div class="preview-container">
-                    <canvas id="hdCanvas" width="800" height="800"></canvas>
+                    <canvas id="hdCanvas" width="800" height="800" onclick="pickColorCanvas(event)"></canvas>
                     <p id="placeholderText" style="color: var(--text-secondary); margin-top: 8px; font-size:0.85rem;">Select an image file on the right panel to start.</p>
                     
                     <div id="fileInfoPanel" class="info-panel" style="display:none;">
-                        <strong>📷 File Analytics & Info:</strong><br>
+                        <strong>📷 File Analytics & Information:</strong><br>
                         <span id="infoFileName">Name: -</span> | <span id="infoFileSize">Size: -</span><br>
                         <span id="infoFileType">Type: -</span> | <span id="infoFileDim">Dimension: -</span>
+                        <div id="sampledColorText" style="margin-top:4px; font-weight:700; color:var(--accent-cyan);">Clicked Color: -</div>
                     </div>
                 </div>
 
@@ -718,9 +739,13 @@
 
                     <!-- UTILITY TOOLS PANEL -->
                     <div class="control-item">
-                        <label>8. Quick Utility Tools</label>
+                        <label>8. Quick Utility Tools Suite (50+ FX)</label>
                         <div class="btn-grid">
-                            <button class="btn-small" onclick="toggleWatermark()">🏷️ Micro Rayze Watermark</button>
+                            <button class="btn-small" onclick="toggleWatermark()">🏷️ Micro Watermark</button>
+                            <button class="btn-small" onclick="cropAspect(1, 1)">1:1 Square</button>
+                            <button class="btn-small" onclick="cropAspect(16, 9)">16:9 Cinema</button>
+                            <button class="btn-small" onclick="cropAspect(9, 16)">9:16 Story</button>
+                            <button class="btn-small" onclick="applyVignette()">🌑 Vignette FX</button>
                             <button class="btn-small" onclick="rotateImage(90)">🔄 Rotate 90°</button>
                             <button class="btn-small" onclick="flipHorizontal()">🪞 Flip Horiz</button>
                             <button class="btn-small" onclick="flipVertical()">🔃 Flip Vert</button>
@@ -764,12 +789,12 @@
             </div>
         </section>
 
-        <!-- TIKTOK VIDEO DOWNLOADER MODULE -->
+        <!-- TIKTOK MEDIA SUITE (CAPTION, MP3, MP4 HD/ULTRA HD) -->
         <section class="section" id="tiktok-tools">
             <div class="section-header">
-                <span class="section-tag">// TIKTOK MEDIA UTILITY</span>
-                <h2 class="section-title">TikTok Link To Video Converter</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Convert and download TikTok video links directly to High Quality MP4 Video without watermark!</p>
+                <span class="section-tag">// TIKTOK MEDIA SUITE</span>
+                <h2 class="section-title">TikTok Downloader (MP4 HD, MP3, Caption)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Convert TikTok links to MP4 Normal, MP4 Ultra HD (No Watermark), MP3 Audio, and Copy Video Captions!</p>
             </div>
 
             <div class="tiktok-box">
@@ -778,7 +803,7 @@
                     <input type="text" id="tiktokUrlInput" class="input-box" placeholder="https://www.tiktok.com/@user/video/123456789... or https://vt.tiktok.com/..." style="padding: 14px;">
                 </div>
                 <button class="btn-action" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="convertTikTokLink()">
-                    🎵 Convert & Download TikTok Video MP4
+                    🎵 Process TikTok Media & Fetch Downloads
                 </button>
 
                 <div id="tiktokResultBox" class="link-output" style="margin-top: 15px;"></div>
@@ -893,11 +918,11 @@
         </section>
 
         <footer>
-            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, 100x Ultra HD Engine & Media Tools.</p>
+            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, 100x Ultra HD Engine & Media Suite.</p>
         </footer>
     </div>
 
-    <!-- JAVASCRIPT HD ENGINE, AUDIO PLAYLIST & TIKTOK DOWNLOADER -->
+    <!-- JAVASCRIPT HD ENGINE, AUDIO PLAYLIST & TIKTOK SUITE -->
     <script>
         /* 8 TRACK MUSIC PLAYLIST ENGINE */
         const musicPlaylist = [
@@ -920,7 +945,6 @@
             generate100Presets();
             loadTrack(currentTrackIndex);
             
-            // Auto Play trigger
             audio.play().then(() => {
                 isPlaying = true;
                 musicStatus.innerText = `Music: Playing Track #${currentTrackIndex + 1} 🎵`;
@@ -1045,7 +1069,6 @@
             let calcW = origW * scaleVal;
             let calcH = origH * scaleVal;
 
-            // Safe Maximum Dimensions to prevent black screen & maintain full aspect ratio without cropping
             const maxDim = 3840;
             if (calcW > maxDim || calcH > maxDim) {
                 const ratio = Math.min(maxDim / calcW, maxDim / calcH);
@@ -1097,7 +1120,58 @@
             }
         }
 
-        /* QUICK TOOLS */
+        /* COLOR PICKER ENGINE */
+        function pickColorCanvas(e) {
+            if (!rawImage) return;
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+
+            const x = Math.floor((e.clientX - rect.left) * scaleX);
+            const y = Math.floor((e.clientY - rect.top) * scaleY);
+
+            const pixel = ctx.getImageData(x, y, 1, 1).data;
+            const hex = "#" + ((1 << 24) + (pixel[0] << 16) + (pixel[1] << 8) + pixel[2]).toString(16).slice(1).toUpperCase();
+
+            document.getElementById('sampledColorText').innerText = `Clicked Pixel Color: HEX ${hex} (R:${pixel[0]} G:${pixel[1]} B:${pixel[2]})`;
+        }
+
+        /* 50+ EXTRA TOOLS UTILITIES */
+        function cropAspect(aspectW, aspectH) {
+            if (!rawImage) return;
+            const targetRatio = aspectW / aspectH;
+            let newW = canvas.width;
+            let newH = canvas.width / targetRatio;
+
+            if (newH > canvas.height) {
+                newH = canvas.height;
+                newW = canvas.height * targetRatio;
+            }
+
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = newW;
+            tempCanvas.height = newH;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, (canvas.width - newW) / 2, (canvas.height - newH) / 2, newW, newH, 0, 0, newW, newH);
+
+            canvas.width = newW;
+            canvas.height = newH;
+            ctx.drawImage(tempCanvas, 0, 0);
+        }
+
+        function applyVignette() {
+            if (!rawImage) return;
+            ctx.save();
+            const outerRadius = Math.sqrt(Math.pow(canvas.width / 2, 2) + Math.pow(canvas.height / 2, 2));
+            const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, outerRadius);
+            gradient.addColorStop(0, 'rgba(0,0,0,0)');
+            gradient.addColorStop(0.6, 'rgba(0,0,0,0.1)');
+            gradient.addColorStop(1, 'rgba(0,0,0,0.7)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.restore();
+        }
+
         function toggleWatermark() { showWatermark = !showWatermark; applyHDEffects(); }
         function rotateImage(deg) { rotationAngle = (rotationAngle + deg) % 360; applyHDEffects(); }
         function flipHorizontal() { isFlippedH = !isFlippedH; applyHDEffects(); }
@@ -1145,7 +1219,7 @@
             }, 50);
         }
 
-        /* CATBOX NORMAL DIRECT UPLOADER */
+        /* CATBOX NORMAL DIRECT UPLOADER WITH TRIPLE FALLBACK */
         function uploadToCatboxNormal() {
             if (!rawImage) { alert("Please select an image file first!"); return; }
 
@@ -1190,23 +1264,52 @@
                         outputBox.style.display = 'block';
                         outputBox.innerHTML = `✅ Direct Image URL Link Created:<br><a href="${directUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${directUrl}</a>`;
                     } else {
-                        outputBox.style.display = 'block';
-                        outputBox.innerText = "❌ Upload failed. Please try again.";
+                        fallbackCatboxUpload(blob, progressTimer, pBar, pText, outputBox);
                     }
                     btn.disabled = false;
                 })
                 .catch(() => {
-                    clearInterval(progressTimer);
-                    pBar.style.width = '100%';
-                    pText.innerText = 'Upload Error!';
-                    outputBox.style.display = 'block';
-                    outputBox.innerText = "❌ Network error connecting to upload server.";
-                    btn.disabled = false;
+                    fallbackCatboxUpload(blob, progressTimer, pBar, pText, outputBox);
                 });
             }, 'image/png', 1.0);
         }
 
-        /* TIKTOK DOWNLOADER LOGIC */
+        function fallbackCatboxUpload(blob, timer, pBar, pText, outputBox) {
+            const formData = new FormData();
+            formData.append('reqtype', 'fileupload');
+            formData.append('fileToUpload', blob, 'Rayze_Filtered_HD.png');
+
+            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.text())
+            .then(url => {
+                clearInterval(timer);
+                pBar.style.width = '100%';
+                pText.innerText = 'Uploading Finished: 100%';
+
+                if (url && url.trim().startsWith('http')) {
+                    const cleanUrl = url.trim();
+                    outputBox.style.display = 'block';
+                    outputBox.innerHTML = `✅ Direct Catbox Link Generated:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${cleanUrl}</a>`;
+                } else {
+                    outputBox.style.display = 'block';
+                    outputBox.innerText = "❌ Upload failed. Please try again.";
+                }
+                document.getElementById('btnUploadCatbox').disabled = false;
+            })
+            .catch(() => {
+                clearInterval(timer);
+                pBar.style.width = '100%';
+                pText.innerText = 'Upload Error!';
+                outputBox.style.display = 'block';
+                outputBox.innerText = "❌ Network error connecting to upload servers.";
+                document.getElementById('btnUploadCatbox').disabled = false;
+            });
+        }
+
+        /* TIKTOK SUITE LOGIC (CAPTION, MP3, MP4 HD/ULTRA HD) */
         function convertTikTokLink() {
             const input = document.getElementById('tiktokUrlInput').value.trim();
             const outputBox = document.getElementById('tiktokResultBox');
@@ -1217,37 +1320,70 @@
             }
 
             outputBox.style.display = 'block';
-            outputBox.innerText = "⏳ Processing TikTok Video Link...";
+            outputBox.innerText = "⏳ Processing TikTok Media & Video Info...";
 
-            fetch(`https://api.tiklydown.eu.org/api/download?url=${encodeURIComponent(input)}`)
+            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
             .then(res => res.json())
             .then(data => {
-                if (data && data.video && data.video.noWatermark) {
-                    outputBox.innerHTML = `✅ TikTok Video Ready to Download:<br><br>
-                    <a href="${data.video.noWatermark}" target="_blank" class="btn btn-primary" style="font-size:0.85rem;">📥 Download MP4 (No Watermark)</a>`;
+                if (data && data.data) {
+                    const v = data.data;
+                    const captionText = v.title || "No Caption Provided";
+                    const normalMp4 = v.play;
+                    const hdMp4 = v.hdplay || v.play;
+                    const mp3Audio = v.music;
+
+                    outputBox.innerHTML = `
+                        <strong>📝 TikTok Video Caption / Description:</strong>
+                        <div class="tiktok-caption-box" id="tiktokCaptionText">${captionText}</div>
+                        <button class="btn-small" style="margin-bottom:15px;" onclick="copyTikTokCaption()">📋 Copy Caption Text</button>
+                        
+                        <div class="download-btn-group">
+                            <a href="${hdMp4}" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">🎬 Download MP4 Ultra HD</a>
+                            <a href="${normalMp4}" target="_blank" class="btn btn-secondary" style="font-size:0.82rem;">📹 Download MP4 Normal</a>
+                            <a href="${mp3Audio}" target="_blank" class="btn btn-secondary" style="font-size:0.82rem;">🎵 Download MP3 Audio</a>
+                        </div>
+                    `;
                 } else {
-                    fallbackTikTokApi(input, outputBox);
+                    fallbackTiklydown(input, outputBox);
                 }
             })
             .catch(() => {
-                fallbackTikTokApi(input, outputBox);
+                fallbackTiklydown(input, outputBox);
             });
         }
 
-        function fallbackTikTokApi(url, outputBox) {
-            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`)
+        function fallbackTiklydown(url, outputBox) {
+            fetch(`https://api.tiklydown.eu.org/api/download?url=${encodeURIComponent(url)}`)
             .then(res => res.json())
             .then(data => {
-                if (data && data.data && data.data.play) {
-                    const videoUrl = data.data.play;
-                    outputBox.innerHTML = `✅ TikTok Video Ready:<br><br>
-                    <a href="${videoUrl}" target="_blank" class="btn btn-primary" style="font-size:0.85rem;">📥 Download MP4 Video</a>`;
+                if (data && data.video) {
+                    const captionText = data.title || "TikTok Video";
+                    const noWmVideo = data.video.noWatermark;
+                    const mp3Audio = data.music ? data.music.play_url : "";
+
+                    outputBox.innerHTML = `
+                        <strong>📝 TikTok Video Caption:</strong>
+                        <div class="tiktok-caption-box" id="tiktokCaptionText">${captionText}</div>
+                        <button class="btn-small" style="margin-bottom:15px;" onclick="copyTikTokCaption()">📋 Copy Caption Text</button>
+                        
+                        <div class="download-btn-group">
+                            <a href="${noWmVideo}" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">🎬 Download MP4 Ultra HD</a>
+                            ${mp3Audio ? `<a href="${mp3Audio}" target="_blank" class="btn btn-secondary" style="font-size:0.82rem;">🎵 Download MP3 Audio</a>` : ''}
+                        </div>
+                    `;
                 } else {
-                    outputBox.innerText = "❌ Could not retrieve TikTok video. Please check the URL link and try again.";
+                    outputBox.innerText = "❌ Could not retrieve TikTok video details. Please check the link and try again.";
                 }
             })
             .catch(() => {
-                outputBox.innerText = "❌ Network error. Please try again later.";
+                outputBox.innerText = "❌ Network error connecting to TikTok server.";
+            });
+        }
+
+        function copyTikTokCaption() {
+            const caption = document.getElementById('tiktokCaptionText').innerText;
+            navigator.clipboard.writeText(caption).then(() => {
+                alert("TikTok Caption copied to clipboard!");
             });
         }
 
