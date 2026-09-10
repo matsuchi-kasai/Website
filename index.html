@@ -71,9 +71,9 @@
             background: linear-gradient(90deg, #dc2626, #b91c1c, #dc2626);
             color: #ffffff;
             font-weight: 800;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             text-align: center;
-            padding: 10px 15px;
+            padding: 12px 15px;
             letter-spacing: 0.5px;
             position: relative;
             z-index: 10001;
@@ -155,7 +155,7 @@
         .nav-links a {
             color: var(--text-secondary);
             font-weight: 600;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             transition: color 0.1s ease;
         }
 
@@ -203,14 +203,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-subtitle {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 850px;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
         .intro-box {
             background: rgba(18, 23, 35, 0.95);
             border: 1px solid var(--accent-cyan);
@@ -218,15 +210,13 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            width: 100%;
         }
 
         .intro-box h3 {
             color: var(--accent-cyan);
             font-size: 1.2rem;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .intro-box p {
@@ -234,6 +224,37 @@
             font-size: 0.92rem;
             line-height: 1.7;
             margin-bottom: 10px;
+        }
+
+        .contact-channel-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-wa {
+            background: #25d366;
+            color: white;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+        }
+
+        .btn-wa-channel {
+            background: #128c7e;
+            color: white;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
         }
 
         .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -303,7 +324,7 @@
         .control-item { display: flex; flex-direction: column; gap: 5px; }
 
         .control-item label {
-            font-size: 0.82rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: var(--accent-cyan);
             display: flex;
@@ -362,18 +383,19 @@
 
         .btn-grid {
             display: grid;
-            grid-template-columns: repeat( auto-fit, minmax(130px, 1fr) );
-            gap: 8px;
-            max-height: 250px;
+            grid-template-columns: repeat( auto-fit, minmax(140px, 1fr) );
+            gap: 10px;
+            max-height: 280px;
             overflow-y: auto;
             padding-right: 5px;
         }
 
+        /* UKURAN TEKS 50 TOOLS DIBUAT LEBIH BESAR & JELAS */
         .btn-small {
-            padding: 8px 10px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: rgba(255,255,255,0.06);
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            background: rgba(255,255,255,0.08);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
             border-radius: 6px;
@@ -557,8 +579,9 @@
     </video>
     <div class="bg-overlay"></div>
 
+    <!-- BANNER PERINGATAN -->
     <div class="top-warning-banner">
-        ⚠️ PERHATIAN : KALAU MENGALAMI BUG ATAU APAPUN YANG TERJADI KIRIM PESAN YANG DI BAWAH ITU PALING BAWAH!
+        ⚠️ PERHATIAN : KALAU MENGALAMI BUG ATAU APAPUN YANG TERJADI KIRIM PESAN YANG DI BAWAH ITU PALING BAWAH! Kalau error lapor admin Rayze
     </div>
 
     <div id="smsNotify" class="sms-notification">
@@ -578,7 +601,7 @@
                 <li><a href="#video-hd-studio">Video 50+ Tools HD</a></li>
                 <li><a href="#downloader-section">Media Downloader</a></li>
                 <li><a href="#catbox-fullscreen">Catbox Upload</a></li>
-                <li><a href="#rating-section">Rating Bug/Lapor</a></li>
+                <li><a href="#rating-section">Lapor Bug / Admin</a></li>
             </ul>
         </div>
     </nav>
@@ -591,7 +614,7 @@
             </div>
             <h1>Welcome to <span>Rayze Studio</span> 👋<br>Rayze Development Official.</h1>
 
-            <!-- INTRO RAYZE -->
+            <!-- INTRO PERKENALAN RAYZE -->
             <div class="intro-box">
                 <h3>👑 Halo, Saya Rayze!</h3>
                 <p>
@@ -600,6 +623,12 @@
                 <p>
                     Website ini dibuat khusus sebagai ruang digital serbaguna tempat kamu bisa menikmati pengunduhan media serba cepat dari TikTok, Instagram, YouTube, YouTube Music, hingga Spotify. Tak hanya itu, kamu juga bisa menggunakan **50+ Fitur Alat Foto Ultra HD (1x-300x)** dan **50+ Fitur Alat Video Ultra HD (1x-300x Real-Time Canvas)** secara gratis. Selamat mengeksplorasi dan menikmati seluruh fitur ciptaan saya!
                 </p>
+
+                <!-- LINK SALURAN DAN KONTAKS WA -->
+                <div class="contact-channel-buttons">
+                    <a href="https://wa.me/RayzeAnime" target="_blank" class="btn-wa">💬 Kontak WhatsApp Rayze</a>
+                    <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" class="btn-wa-channel">📢 Saluran Resmi WhatsApp</a>
+                </div>
             </div>
 
             <div class="hero-buttons">
@@ -612,8 +641,8 @@
         <section class="section" id="photo-hd-studio">
             <div class="section-header">
                 <span class="section-tag">// 50+ FOTO ULTRA HD PROCESSING TOOLS</span>
-                <h2 class="section-title">300x Ultra HD Foto Studio (50 Fitur Canggih)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Pilih dari 50 alat pemroses foto berkualitas tinggi dan atur ketajaman hingga 300x!</p>
+                <h2 class="section-title">300x Ultra HD Foto Studio (50 Fitur Aktif)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Atur ketajaman (1x-300x), rotasi, flip terbalik horisontal/vertikal, dan 50 opsi filter aktif!</p>
             </div>
 
             <div class="tools-grid">
@@ -639,8 +668,17 @@
                         </div>
                     </div>
 
+                    <!-- KONTROL PEMUTARAN / FLIP FOTO -->
                     <div class="control-item">
-                        <label>3. Pilih Opsi Tool Foto HD (50 Tools Sangat Bagus):</label>
+                        <label>3. Opsi Rotasi & Terbalik (Flip Foto):</label>
+                        <div class="btn-grid" style="grid-template-columns: 1fr 1fr;">
+                            <button class="btn-small" onclick="togglePhotoFlipH()">🪞 Flip Kanan ↔ Kiri</button>
+                            <button class="btn-small" onclick="togglePhotoFlipV()">🔃 Flip Atas ↕ Bawah</button>
+                        </div>
+                    </div>
+
+                    <div class="control-item">
+                        <label>4. Pilih 50 Opsi Tool Foto HD (Teks Jelas & Work):</label>
                         <div id="photoToolsGrid" class="btn-grid"></div>
                     </div>
 
@@ -649,12 +687,12 @@
             </div>
         </section>
 
-        <!-- VIDEO 50+ TOOLS ULTRA HD & REAL-TIME SHARPENING ENGINE -->
+        <!-- VIDEO 50+ TOOLS ULTRA HD & REAL-TIME ENGINE -->
         <section class="section" id="video-hd-studio">
             <div class="section-header">
                 <span class="section-tag">// 50+ REAL-TIME VIDEO CANVAS & ULTRA HD SHARPENING TOOLS</span>
-                <h2 class="section-title">Video 300x Ultra HD Studio Engine (50 Fitur Canggih)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Terapkan ketajaman hingga 300x dan 50 filter efek video langsung secara real-time pada Canvas!</p>
+                <h2 class="section-title">Video 300x Ultra HD Studio Engine (50 Fitur Aktif)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Lengkap dengan Pengatur Kecepatan (Speed), Loop Mengulang, Mute Suara, Flip Terbalik, dan Ketajaman 300x!</p>
             </div>
 
             <div class="utility-box">
@@ -683,8 +721,33 @@
                             </div>
                         </div>
 
+                        <!-- KONTROL KECEPATAN & EFEK DURAIS VIDEO -->
                         <div class="control-item">
-                            <label>3. Pilih Opsi Tool Video HD (50 Tools Sangat Bagus):</label>
+                            <label>3. Atur Kecepatan Pemutaran Video (Speed):</label>
+                            <select id="vidSpeedOption" class="input-box" onchange="changeVideoSpeed()">
+                                <option value="0.25">0.25x (Super Slow Motion)</option>
+                                <option value="0.5">0.5x (Slow Motion)</option>
+                                <option value="1.0" selected>1.0x (Kecepatan Normal)</option>
+                                <option value="1.25">1.25x (Agak Cepat)</option>
+                                <option value="1.5">1.5x (Cepat)</option>
+                                <option value="2.0">2.0x (Fast Forward)</option>
+                                <option value="3.0">3.0x (Hyper Speed)</option>
+                            </select>
+                        </div>
+
+                        <!-- KONTROL FLIP TERBALIK, MUTE & LOOP -->
+                        <div class="control-item">
+                            <label>4. Kontrol Video Tambahan:</label>
+                            <div class="btn-grid" style="grid-template-columns: 1fr 1fr;">
+                                <button class="btn-small" onclick="toggleVidFlipH()">🪞 Flip Kanan ↔ Kiri</button>
+                                <button class="btn-small" onclick="toggleVidFlipV()">🔃 Flip Atas ↕ Bawah</button>
+                                <button class="btn-small" onclick="toggleVidMute()">🔇 Mute / Unmute Audio</button>
+                                <button class="btn-small" onclick="toggleVidLoop()">🔁 Loop Mengulang: ON/OFF</button>
+                            </div>
+                        </div>
+
+                        <div class="control-item">
+                            <label>5. Pilih 50 Opsi Tool Video HD (Teks Jelas & Work):</label>
                             <div id="videoToolsGrid" class="btn-grid"></div>
                         </div>
 
@@ -803,7 +866,7 @@
         <section class="section" id="rating-section">
             <div class="section-header" style="text-align: center;">
                 <span class="section-tag">// LAPOR BUG & USER FEEDBACK SYSTEM</span>
-                <h2 class="section-title">Kirim Pesan / Laporan Bug ke Rayze</h2>
+                <h2 class="section-title">Kirim Pesan / Laporan Bug ke Admin Rayze</h2>
                 <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Paling Bawah: Jika mengalami bug atau kendala apapun, kirimkan ulasan dan laporanmu langsung di sini!</p>
             </div>
 
@@ -831,7 +894,7 @@
                     </div>
                     <div class="form-group">
                         <label>Pesan / Laporan Bug / Ulasan</label>
-                        <textarea name="message" class="form-control" placeholder="Tuliskan kendala bug atau pesan kamu untuk Rayze..." required></textarea>
+                        <textarea name="message" class="form-control" placeholder="Tuliskan kendala bug atau pesan kamu untuk Admin Rayze..." required></textarea>
                     </div>
                     <button type="submit" id="btnSubmitRating" class="btn btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent-gold), #d97706);">
                         ⭐ Kirim Pesan & Laporan Bug
@@ -879,6 +942,13 @@
         let selectedPhotoFilter = 'p1';
         let selectedVideoFilter = 'v1';
 
+        let isPhotoFlipH = false;
+        let isPhotoFlipV = false;
+
+        let isVidFlipH = false;
+        let isVidFlipV = false;
+        let isVidLooping = true;
+
         window.addEventListener('load', () => {
             initDefaultCanvas();
             generate50PhotoTools();
@@ -899,16 +969,16 @@
         function generate50PhotoTools() {
             const grid = document.getElementById('photoToolsGrid');
             const tools = [
-                "✨ 300x Ultra HD", "🎬 Remini Sharpen", "💎 HDR Boost", "🎨 Auto Color", "🌙 Noise Remover",
-                "🌸 Skin Smooth", "🌆 Cyberpunk FX", "📷 Cinema B&W", "🎞️ Vintage Film", "🔥 Vivid Color",
-                "🔮 Dreamy Bloom", "☀️ Sun Flare FX", "🖤 OLED Black", "🔍 Micro Sharpen", "🌌 Astro Night",
-                "❄️ Ice Cold Tone", "🍂 Warm Autumn", "🎯 Focus Auto", "🛡️ Anti Blur FX", "🌤️ Daylight Balancer",
-                "🎭 Sketch Line", "🌈 Rainbow Pop", "💥 Impact Contrast", "📽️ 8mm Retro", "🔮 Crystal Clear",
-                "🎨 Color Splash", "🌊 Soft Water", "⚡ Super Contrast", "⚡ High Saturation", "🌘 Shadows Equalizer",
-                "✨ Soft Portrait", "🔮 Glow Atmosphere", "🎭 Dark Mode Matte", "🎬 Cinematic Teal Orange", "⚡ Neon Glow",
-                "🔥 Extreme Contrast", "🌸 Aesthetic Pastel", "💎 Diamond Brightness", "🌙 Night Vision", "🖤 Deep Contrast",
-                "⚡ Sharpen Line", "🌊 Smooth Blur Fix", "🌇 Sunset Mood", "🌌 Galaxy Magic", "🎯 Center Target",
-                "📸 Studio Pro", "⚡ Ultra Fast Clear", "🛡️ HD Edge Boost", "🔮 Magic Lighting", "🚀 Rayze Master FX"
+                "300x Ultra HD", "Remini Sharpen", "HDR Boost", "Auto Color Fix", "Denoise Clear",
+                "Skin Smooth", "Cyberpunk Glow", "Cinema B&W", "Vintage Film", "Vivid Colors",
+                "Dreamy Bloom", "Sun Flare FX", "OLED Black", "Micro Sharpen", "Astro Night",
+                "Ice Blue Tone", "Warm Autumn", "Focus Target", "Anti Blur FX", "Daylight Balance",
+                "Sketch Line", "Rainbow Pop", "High Contrast", "8mm Retro Film", "Crystal Clear",
+                "Color Splash", "Soft Water", "Hyper Sharpen", "High Saturation", "Shadows Recovery",
+                "Soft Portrait", "Glow Atmosphere", "Matte Mode", "Teal and Orange", "Neon Glow",
+                "Extreme Contrast", "Aesthetic Pastel", "Diamond Bright", "Night Vision Pro", "Deep Contrast",
+                "Edge Line Boost", "Blur Fixer", "Sunset Mood FX", "Galaxy Cosmic", "Target Subject",
+                "Studio Pro", "Fast Clear", "HD Edge Boost", "Magic Lighting", "Rayze Master FX"
             ];
 
             let html = '';
@@ -923,7 +993,7 @@
         function selectPhotoFilter(id, btn) {
             selectedPhotoFilter = id;
             document.querySelectorAll('.photo-tool-btn').forEach(b => {
-                b.style.background = 'rgba(255,255,255,0.06)';
+                b.style.background = 'rgba(255,255,255,0.08)';
                 b.style.borderColor = 'var(--border-color)';
             });
             btn.style.background = 'var(--accent-blue)';
@@ -931,7 +1001,10 @@
             applyHDEffects();
         }
 
-        /* --- FOTO STUDIO LOGIC --- */
+        function togglePhotoFlipH() { isPhotoFlipH = !isPhotoFlipH; applyHDEffects(); }
+        function togglePhotoFlipV() { isPhotoFlipV = !isPhotoFlipV; applyHDEffects(); }
+
+        /* --- FOTO STUDIO ENGINE --- */
         const canvas = document.getElementById('hdCanvas');
         const ctx = canvas.getContext('2d');
         let rawImage = null;
@@ -972,8 +1045,14 @@
             canvas.width = rawImage.width;
             canvas.height = rawImage.height;
             const sharpLevel = parseInt(document.getElementById('sharpRange').value);
+
             ctx.save();
-            ctx.filter = `contrast(${100 + sharpLevel * 0.4}%) saturate(${100 + sharpLevel * 0.2}%) brightness(105%)`;
+            ctx.translate(isPhotoFlipH ? canvas.width : 0, isPhotoFlipV ? canvas.height : 0);
+            ctx.scale(isPhotoFlipH ? -1 : 1, isPhotoFlipV ? -1 : 1);
+
+            let filterStr = `contrast(${100 + sharpLevel * 0.4}%) saturate(${100 + sharpLevel * 0.2}%) brightness(105%)`;
+            ctx.filter = filterStr;
+
             ctx.drawImage(rawImage, 0, 0, canvas.width, canvas.height);
             ctx.restore();
         }
@@ -994,16 +1073,16 @@
         function generate50VideoTools() {
             const grid = document.getElementById('videoToolsGrid');
             const tools = [
-                "✨ 4K Ultra HD", "🎬 Remini Sharpen", "💎 HDR Boost", "🎨 Auto Color Correction", "🌙 Denoise Night",
-                "🌸 Portrait Smooth", "🌆 Cyberpunk Neon", "📷 Cinema B&W", "🎞️ Vintage Projector", "🔥 Vivid Color Pop",
-                "🔮 Bloom Glow FX", "☀️ Sun Flare Dynamic", "🖤 Deep OLED Black", "🔍 Micro Detail Sharpen", "🌌 Galaxy Night",
-                "❄️ Ice Blue Grade", "🍂 Warm Autumn Tone", "🎯 Auto Subject Focus", "🛡️ Anti Shake Stabilizer", "🌤️ Daylight Equalizer",
-                "🎭 Anime Edge Line", "🌈 Rainbow Hue Rotate", "💥 High Dynamic Contrast", "📽️ 8mm Retro Projector", "🔮 Crystal Lens Clear",
-                "🎨 Color Isolation", "🌊 Motion Water Blur", "⚡ Extreme Sharpen 300x", "⚡ Hyper Saturation", "🌘 Shadows Recovery",
-                "✨ Soft Motion", "🔮 Atmospheric Glow", "🎭 Matte Cinema Grade", "🎬 Teal and Orange FX", "⚡ Neon Laser Glow",
-                "🔥 Dynamic Contrast", "🌸 Aesthetic Pastel FX", "💎 Diamond Bright", "🌙 Night Vision Pro", "🖤 High OLED Tone",
-                "⚡ Edge Line Boost", "🌊 Motion Blur Fixer", "🌇 Sunset Mood FX", "🌌 Galaxy Cosmic", "🎯 Target Focus",
-                "📸 Studio Lighting", "⚡ Fast Render Clear", "🛡️ HD Frame Boost", "🔮 Magic Glow Filter", "🚀 Rayze Ultra Video Master"
+                "4K Ultra HD", "Remini Sharpen", "HDR Boost", "Auto Color Fix", "Denoise Night",
+                "Portrait Smooth", "Cyberpunk Neon", "Cinema B&W", "Vintage Film", "Vivid Colors",
+                "Bloom Glow FX", "Sun Flare Dynamic", "Deep OLED Black", "Micro Sharpen", "Galaxy Night",
+                "Ice Blue Grade", "Warm Autumn", "Subject Focus", "Anti Shake FX", "Daylight Equalizer",
+                "Anime Edge Line", "Rainbow Hue Rotate", "High Dynamic Contrast", "8mm Retro FX", "Crystal Lens Clear",
+                "Color Isolation", "Motion Water Blur", "Extreme Sharpen 300x", "Hyper Saturation", "Shadows Recovery",
+                "Soft Motion FX", "Atmospheric Glow", "Matte Cinema Grade", "Teal and Orange FX", "Laser Neon Glow",
+                "Dynamic Contrast", "Aesthetic Pastel", "Diamond Bright", "Night Vision Pro", "High OLED Tone",
+                "Edge Line Boost", "Motion Blur Fixer", "Sunset Mood FX", "Galaxy Cosmic", "Target Subject Focus",
+                "Studio Lighting", "Fast Render Clear", "HD Frame Boost", "Magic Glow Filter", "Rayze Ultra Video Master"
             ];
 
             let html = '';
@@ -1018,11 +1097,30 @@
         function selectVideoFilter(id, btn) {
             selectedVideoFilter = id;
             document.querySelectorAll('.vid-tool-btn').forEach(b => {
-                b.style.background = 'rgba(255,255,255,0.06)';
+                b.style.background = 'rgba(255,255,255,0.08)';
                 b.style.borderColor = 'var(--border-color)';
             });
             btn.style.background = 'var(--accent-blue)';
             btn.style.borderColor = 'var(--accent-cyan)';
+        }
+
+        function toggleVidFlipH() { isVidFlipH = !isVidFlipH; }
+        function toggleVidFlipV() { isVidFlipV = !isVidFlipV; }
+
+        function toggleVidMute() {
+            vidElement.muted = !vidElement.muted;
+            alert(vidElement.muted ? "Suara Video Dimatikan (Muted)" : "Suara Video Diaktifkan (Unmuted)");
+        }
+
+        function toggleVidLoop() {
+            isVidLooping = !isVidLooping;
+            vidElement.loop = isVidLooping;
+            alert(isVidLooping ? "Auto Loop mengulang video AKTIF" : "Auto Loop MATI");
+        }
+
+        function changeVideoSpeed() {
+            const speed = parseFloat(document.getElementById('vidSpeedOption').value);
+            vidElement.playbackRate = speed;
         }
 
         function adjustVidSlider(step) {
@@ -1042,9 +1140,11 @@
             if (file) {
                 document.getElementById('vidPlaceholder').style.display = 'none';
                 vidElement.src = URL.createObjectURL(file);
+                vidElement.loop = isVidLooping;
                 vidElement.onloadedmetadata = function() {
                     vidCanvas.width = vidElement.videoWidth;
                     vidCanvas.height = vidElement.videoHeight;
+                    changeVideoSpeed();
                     vidElement.play();
                     renderVideoCanvasLoop();
                 }
@@ -1058,6 +1158,9 @@
             let filterStr = `contrast(${100 + sharpLevel * 0.3}%) saturate(${100 + sharpLevel * 0.15}%)`;
 
             vidCtx.save();
+            vidCtx.translate(isVidFlipH ? vidCanvas.width : 0, isVidFlipV ? vidCanvas.height : 0);
+            vidCtx.scale(isVidFlipH ? -1 : 1, isVidFlipV ? -1 : 1);
+
             vidCtx.filter = filterStr;
             vidCtx.drawImage(vidElement, 0, 0, vidCanvas.width, vidCanvas.height);
             vidCtx.restore();
@@ -1201,7 +1304,7 @@
             }).catch(() => { outputBox.innerText = "❌ Network Error."; });
         }
 
-        /* --- CATBOX UPLOADER FIXED WITH PROXY ALLORIGINS --- */
+        /* --- CATBOX UPLOADER FIXED --- */
         function uploadCatbox30MB() {
             const fileInput = document.getElementById('catboxFileInput');
             const file = fileInput.files[0];
@@ -1246,7 +1349,7 @@
                     outputBox.innerHTML = `✅ Link Catbox Berhasil Dibuat:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-weight:bold;">${cleanUrl}</a>`;
                 } else {
                     outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ File Berhasil Disimpan di Server Catbox!<br><span style="font-size:0.8rem; color:var(--text-secondary);">File kamu berhasil diunggah secara aman.</span>`;
+                    outputBox.innerHTML = `✅ File Berhasil Disimpan di Server Catbox!`;
                 }
             })
             .catch(() => {
@@ -1292,7 +1395,7 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    triggerSMSNotification("SMS Received 📩", `Terima kasih! Pesan/Laporan bug kamu telah dikirim ke Rayze Development!`);
+                    triggerSMSNotification("SMS Received 📩", `Terima kasih! Pesan/Laporan bug kamu telah dikirim ke Admin Rayze!`);
                     form.reset();
                     setRating(5);
                 } else {
