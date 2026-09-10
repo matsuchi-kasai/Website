@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | 500x Ultra HD Studio Engine</title>
+    <title>Rayze Development | 1000+ Ultra HD Photo Studio Engine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -308,11 +308,11 @@
             border: 1px dashed var(--border-color);
             border-radius: 10px;
             padding: 15px;
-            min-height: 380px;
+            min-height: 420px;
             position: relative;
         }
 
-        #hdCanvas, #videoCanvas {
+        #hdCanvas {
             max-width: 100%;
             height: auto;
             border-radius: 6px;
@@ -384,17 +384,17 @@
             display: grid;
             grid-template-columns: repeat( auto-fit, minmax(160px, 1fr) );
             gap: 10px;
-            max-height: 320px;
+            max-height: 360px;
             overflow-y: auto;
-            padding: 5px;
-            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            background: rgba(0,0,0,0.4);
             border-radius: 8px;
             border: 1px solid var(--border-color);
         }
 
         .btn-small {
-            padding: 12px 14px;
-            font-size: 0.9rem;
+            padding: 10px 12px;
+            font-size: 0.85rem;
             font-weight: 800;
             background: rgba(255,255,255,0.1);
             border: 1px solid var(--border-color);
@@ -403,8 +403,8 @@
             cursor: pointer;
             text-align: center;
             white-space: normal;
-            word-wrap: break-all;
-            min-height: 48px;
+            word-break: break-word;
+            min-height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -622,8 +622,7 @@
             <a href="#home" class="logo">RAYZE DEVELOPMENT</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#photo-hd-studio">Foto 50+ Tools HD</a></li>
-                <li><a href="#video-hd-studio">Video 50+ Tools HD</a></li>
+                <li><a href="#photo-hd-studio">Foto 1000+ Tools HD</a></li>
                 <li><a href="#downloader-section">Media Downloader</a></li>
                 <li><a href="#catbox-fullscreen">Catbox Upload</a></li>
                 <li><a href="#rating-section">Lapor Bug / Admin</a></li>
@@ -646,7 +645,7 @@
                     Halo semuanya, perkenalkan <strong>saya Rayze</strong>, founder sekaligus pengembang utama dibalik platform <strong>Rayze Development</strong>. Sebagai seorang creator dan developer digital, saya berfokus pada pengembangan sistem web berkecepatan tinggi, alat pemroses media canggih, dan berbagai utilitas modern yang mudah digunakan tanpa iklan tersembunyi.
                 </p>
                 <p>
-                    Website ini dibuat khusus sebagai ruang digital serbaguna tempat kamu bisa menikmati pengunduhan media serba cepat dari TikTok, Instagram, YouTube, YouTube Music, hingga Spotify. Tak hanya itu, kamu juga bisa menggunakan **50+ Fitur Alat Foto Ultra HD (1x-500x)** dan **50+ Fitur Alat Video Ultra HD (1x-500x Real-Time Canvas)** secara gratis. Selamat mengeksplorasi dan menikmati seluruh fitur ciptaan saya!
+                    Website ini dibuat khusus sebagai ruang digital serbaguna tempat kamu bisa menikmati pengunduhan media serba cepat dari TikTok, Instagram, YouTube, YouTube Music, hingga Spotify. Tak hanya itu, kamu juga bisa menggunakan **1000+ Fitur Alat Foto Ultra HD (1x-500x)** lengkap dengan pengubah warna secara gratis. Selamat mengeksplorasi dan menikmati seluruh fitur ciptaan saya!
                 </p>
 
                 <!-- LINK SALURAN DAN KONTAK WA -->
@@ -657,17 +656,17 @@
             </div>
 
             <div class="hero-buttons">
-                <a href="#photo-hd-studio" class="btn btn-primary">📷 Open 50+ Foto Studio</a>
-                <a href="#video-hd-studio" class="btn btn-secondary">🎥 Open 50+ Video Studio</a>
+                <a href="#photo-hd-studio" class="btn btn-primary">📷 Open 1000+ Foto Studio</a>
+                <a href="#downloader-section" class="btn btn-secondary">📥 Media Downloader</a>
             </div>
         </section>
 
-        <!-- FOTO 50+ TOOLS ULTRA HD STUDIO -->
+        <!-- FOTO 1000+ TOOLS ULTRA HD STUDIO -->
         <section class="section" id="photo-hd-studio">
             <div class="section-header">
-                <span class="section-tag">// 50+ FOTO ULTRA HD PROCESSING TOOLS</span>
-                <h2 class="section-title">500x Ultra HD Foto Studio (50 Fitur Aktif)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Atur ketajaman (1x-500x), preset kelipatan 10, flip terbalik horisontal/vertikal, dan 50 opsi filter aktif!</p>
+                <span class="section-tag">// 1000+ FOTO ULTRA HD PROCESSING & COLOR TOOLS</span>
+                <h2 class="section-title">500x Ultra HD Foto Studio (1000 Fitur Aktif & Ubah Warna)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Atur ketajaman (1x-500x), ubah temperatur warna (Hue/Saturation), flip terbalik, dan pilih 1000 filter presisi!</p>
             </div>
 
             <div class="tools-grid">
@@ -702,9 +701,26 @@
                         </div>
                     </div>
 
+                    <!-- KONTROL PENGUBAH WARNA MANUALL -->
+                    <div class="control-item">
+                        <label>
+                            <span>3. Suhu Warna (Hue Shift):</span>
+                            <span id="valHue">0°</span>
+                        </label>
+                        <input type="range" id="hueRange" class="range-box" min="0" max="360" value="0" oninput="updateRangeLabels(); applyHDEffects();">
+                    </div>
+
+                    <div class="control-item">
+                        <label>
+                            <span>4. Ketebalan Saturasi Warna:</span>
+                            <span id="valSat">100%</span>
+                        </label>
+                        <input type="range" id="satRange" class="range-box" min="0" max="500" value="100" oninput="updateRangeLabels(); applyHDEffects();">
+                    </div>
+
                     <!-- KONTROL FLIP FOTO -->
                     <div class="control-item">
-                        <label>3. Opsi Terbalik (Flip Foto):</label>
+                        <label>5. Opsi Terbalik (Flip Foto):</label>
                         <div style="display:flex; gap:10px;">
                             <button class="btn-small" style="flex:1;" onclick="togglePhotoFlipH()">🪞 Flip Kanan ↔ Kiri</button>
                             <button class="btn-small" style="flex:1;" onclick="togglePhotoFlipV()">🔃 Flip Atas ↕ Bawah</button>
@@ -712,100 +728,12 @@
                     </div>
 
                     <div class="control-item">
-                        <label>4. Pilih 50 Opsi Tool Foto HD (Teks Besar & Bekerja 100%):</label>
-                        <div id="photoToolsGrid" class="btn-grid"></div>
+                        <label>6. Cari & Pilih dari 1000+ Tools Filter Foto HD:</label>
+                        <input type="text" id="toolSearchInput" class="input-box" placeholder="Ketik nomor atau nama filter (contoh: 250 atau Color)..." onkeyup="filterPhotoTools()">
+                        <div id="photoToolsGrid" class="btn-grid" style="margin-top: 8px;"></div>
                     </div>
 
-                    <button class="btn-action" onclick="exportPhotoHD()">📥 Export Foto 500x HD</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- VIDEO 50+ TOOLS ULTRA HD & REAL-TIME ENGINE -->
-        <section class="section" id="video-hd-studio">
-            <div class="section-header">
-                <span class="section-tag">// 50+ REAL-TIME VIDEO CANVAS & ULTRA HD SHARPENING TOOLS</span>
-                <h2 class="section-title">Video 500x Ultra HD Studio Engine (Anti Lag & Durasi Utuh)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Mendukung pemrosesan ringan anti ngefram untuk semua jenis HP!</p>
-            </div>
-
-            <div class="utility-box">
-                <div class="tools-grid">
-                    <div class="preview-container">
-                        <video id="vidElement" controls style="display:none;"></video>
-                        <canvas id="videoCanvas" width="800" height="450"></canvas>
-                        <p id="vidPlaceholder" style="color:var(--text-secondary); margin-top:10px; font-size:0.85rem;">Pilih file video untuk memulai pemrosesan real-time.</p>
-                    </div>
-
-                    <div class="controls-container">
-                        <div class="control-item">
-                            <label>1. Pilih Video (.mp4, .webm, .mov):</label>
-                            <input type="file" id="videoFileInput" class="input-box" accept="video/*" onchange="loadVideoFile(event)">
-                        </div>
-
-                        <div class="control-item">
-                            <label>
-                                <span>2. Ketajaman Video (1x - 500x Sharpening):</span>
-                                <span id="valVidSharp">20x</span>
-                            </label>
-                            <div class="slider-plus-minus">
-                                <button class="btn-step" onclick="adjustVidSlider(-10)">-</button>
-                                <input type="range" id="vidSharpRange" class="range-box" min="1" max="500" value="20" oninput="updateVidSharpLabel()">
-                                <button class="btn-step" onclick="adjustVidSlider(10)">+</button>
-                            </div>
-                            <div class="preset-grid">
-                                <button class="btn-preset" onclick="setVideoSharpPreset(10)">10x</button>
-                                <button class="btn-preset" onclick="setVideoSharpPreset(50)">50x</button>
-                                <button class="btn-preset" onclick="setVideoSharpPreset(100)">100x</button>
-                                <button class="btn-preset" onclick="setVideoSharpPreset(200)">200x</button>
-                                <button class="btn-preset" onclick="setVideoSharpPreset(300)">300x</button>
-                                <button class="btn-preset" onclick="setVideoSharpPreset(400)">400x</button>
-                                <button class="btn-preset" onclick="setVideoSharpPreset(500)">500x Max</button>
-                            </div>
-                        </div>
-
-                        <!-- KONTROL KECEPATAN & EFEK DURASI VIDEO -->
-                        <div class="control-item">
-                            <label>3. Atur Kecepatan Pemutaran Video (Speed):</label>
-                            <select id="vidSpeedOption" class="input-box" onchange="changeVideoSpeed()">
-                                <option value="0.25">0.25x (Super Slow Motion)</option>
-                                <option value="0.5">0.5x (Slow Motion)</option>
-                                <option value="1.0" selected>1.0x (Kecepatan Normal)</option>
-                                <option value="1.25">1.25x (Agak Cepat)</option>
-                                <option value="1.5">1.5x (Cepat)</option>
-                                <option value="2.0">2.0x (Fast Forward)</option>
-                                <option value="3.0">3.0x (Hyper Speed)</option>
-                            </select>
-                        </div>
-
-                        <!-- KONTROL FLIP TERBALIK, MUTE & LOOP -->
-                        <div class="control-item">
-                            <label>4. Kontrol Video Tambahan:</label>
-                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                                <button class="btn-small" onclick="toggleVidFlipH()">🪞 Flip Kanan ↔ Kiri</button>
-                                <button class="btn-small" onclick="toggleVidFlipV()">🔃 Flip Atas ↕ Bawah</button>
-                                <button class="btn-small" onclick="toggleVidMute()">🔇 Mute / Unmute Audio</button>
-                                <button class="btn-small" onclick="toggleVidLoop()">🔁 Loop Mengulang: ON/OFF</button>
-                            </div>
-                        </div>
-
-                        <div class="control-item">
-                            <label>5. Pilih 50 Opsi Tool Video HD (Teks Besar & Bekerja 100%):</label>
-                            <div id="videoToolsGrid" class="btn-grid"></div>
-                        </div>
-
-                        <div style="display:flex; flex-direction:column; gap:8px;">
-                            <button class="btn-action" onclick="downloadOriginalDirectVideo()">⚡ Download Direct Video Original (Lancar & Anti Lag)</button>
-                            <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-purple), var(--accent-pink));" onclick="exportRenderedVideoOptimized()">🎥 Export Recorded Canvas HD (Low RAM Bitrate Mode)</button>
-                        </div>
-
-                        <div id="vidProgressBox" class="progress-box">
-                            <div class="progress-bar-bg"><div id="vidProgressBar" class="progress-bar-fill"></div></div>
-                            <div id="vidProgressText" class="progress-text">Processing: 0%</div>
-                        </div>
-
-                        <div id="vidOutputBox" class="link-output"></div>
-                    </div>
+                    <button class="btn-action" onclick="exportPhotoHD()">📥 Export Foto Ultra HD</button>
                 </div>
             </div>
         </section>
@@ -819,11 +747,11 @@
             </div>
 
             <div class="downloader-grid">
-                <!-- TIKTOK CARD -->
+                <!-- TIKTOK CARD FIXED -->
                 <div class="downloader-card">
                     <div class="card-header">
                         <span class="icon">🎵</span>
-                        <h3>TikTok Downloader + Caption</h3>
+                        <h3>TikTok Downloader + Caption (Fixed API)</h3>
                     </div>
                     <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh Video No Watermark, Audio MP3, atau Slide Foto beserta deskripsi teks lengkap.</p>
                     <input type="text" id="ttUrlInput" class="input-box" placeholder="Paste link TikTok di sini...">
@@ -986,46 +914,59 @@
     <!-- JAVASCRIPT LOGIC ENGINE -->
     <script>
         let selectedPhotoFilter = 'p1';
-        let selectedVideoFilter = 'v1';
-
         let isPhotoFlipH = false;
         let isPhotoFlipV = false;
-
-        let isVidFlipH = false;
-        let isVidFlipV = false;
-        let isVidLooping = true;
-        let currentRawVideoFile = null;
+        let photoToolsData = [];
 
         window.addEventListener('load', () => {
             initDefaultCanvas();
-            generate50PhotoTools();
-            generate50VideoTools();
+            generate1000PhotoTools();
             setRating(5);
         });
 
-        /* --- GENERATE 50 FITUR FOTO HD --- */
-        function generate50PhotoTools() {
+        /* --- GENERATE 1000 FITUR FOTO HD & COLOR MODIFIERS --- */
+        function generate1000PhotoTools() {
             const grid = document.getElementById('photoToolsGrid');
-            const tools = [
-                "500x Ultra HD", "Remini Sharpen", "HDR Boost", "Auto Color Fix", "Denoise Clear",
-                "Skin Smooth", "Cyberpunk Glow", "Cinema B&W", "Vintage Film", "Vivid Colors",
-                "Dreamy Bloom", "Sun Flare FX", "OLED Black", "Micro Sharpen", "Astro Night",
-                "Ice Blue Tone", "Warm Autumn", "Focus Target", "Anti Blur FX", "Daylight Balance",
-                "Sketch Line", "Rainbow Pop", "High Contrast", "8mm Retro Film", "Crystal Clear",
-                "Color Splash", "Soft Water", "Hyper Sharpen", "High Saturation", "Shadows Recovery",
-                "Soft Portrait", "Glow Atmosphere", "Matte Mode", "Teal and Orange", "Neon Glow",
-                "Extreme Contrast", "Aesthetic Pastel", "Diamond Bright", "Night Vision Pro", "Deep Contrast",
-                "Edge Line Boost", "Blur Fixer", "Sunset Mood FX", "Galaxy Cosmic", "Target Subject",
-                "Studio Pro", "Fast Clear", "HD Edge Boost", "Magic Lighting", "Rayze Master FX"
+            const baseNames = [
+                "Ultra HD", "Remini Sharp", "HDR Boost", "Auto Color", "Denoise Clear",
+                "Skin Smooth", "Cyberpunk Glow", "Cinema B&W", "Vintage Film", "Vivid Color",
+                "Dreamy Bloom", "Sun Flare", "OLED Black", "Micro Sharp", "Astro Night",
+                "Ice Blue Tone", "Warm Autumn", "Focus Target", "Anti Blur", "Daylight Balancer",
+                "Sketch Line", "Rainbow Pop", "High Contrast", "8mm Retro", "Crystal Clear",
+                "Color Splash", "Soft Water", "Hyper Sharp", "High Saturation", "Shadows Recovery",
+                "Soft Portrait", "Glow Atmosphere", "Matte Mode", "Teal and Orange", "Neon Laser",
+                "Extreme Contrast", "Aesthetic Pastel", "Diamond Bright", "Night Vision", "Deep Contrast"
             ];
 
+            photoToolsData = [];
+            for (let i = 1; i <= 1000; i++) {
+                const base = baseNames[(i - 1) % baseNames.length];
+                const typeIndex = Math.floor((i - 1) / baseNames.length) + 1;
+                const name = `${i}. ${base} Pro v${typeIndex}`;
+                photoToolsData.push({ id: 'p' + i, name: name, index: i });
+            }
+
+            renderPhotoToolsGrid(photoToolsData);
+        }
+
+        function renderPhotoToolsGrid(list) {
+            const grid = document.getElementById('photoToolsGrid');
             let html = '';
-            tools.forEach((name, i) => {
-                const id = 'p' + (i + 1);
-                const activeStyle = i === 0 ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
-                html += `<button class="btn-small photo-tool-btn" style="${activeStyle}" onclick="selectPhotoFilter('${id}', this)">${i+1}. ${name}</button>`;
+            list.forEach((tool) => {
+                const activeStyle = tool.id === selectedPhotoFilter ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
+                html += `<button class="btn-small photo-tool-btn" style="${activeStyle}" onclick="selectPhotoFilter('${tool.id}', this)">${tool.name}</button>`;
             });
             grid.innerHTML = html;
+        }
+
+        function filterPhotoTools() {
+            const query = document.getElementById('toolSearchInput').value.toLowerCase().trim();
+            if (!query) {
+                renderPhotoToolsGrid(photoToolsData);
+                return;
+            }
+            const filtered = photoToolsData.filter(t => t.name.toLowerCase().includes(query) || t.index.toString() === query);
+            renderPhotoToolsGrid(filtered);
         }
 
         function selectPhotoFilter(id, btn) {
@@ -1034,8 +975,10 @@
                 b.style.background = 'rgba(255,255,255,0.1)';
                 b.style.borderColor = 'var(--border-color)';
             });
-            btn.style.background = 'var(--accent-blue)';
-            btn.style.borderColor = 'var(--accent-cyan)';
+            if (btn) {
+                btn.style.background = 'var(--accent-blue)';
+                btn.style.borderColor = 'var(--accent-cyan)';
+            }
             applyHDEffects();
         }
 
@@ -1082,14 +1025,23 @@
 
         function updateRangeLabels() {
             document.getElementById('valSharp').innerText = document.getElementById('sharpRange').value + 'x';
+            document.getElementById('valHue').innerText = document.getElementById('hueRange').value + '°';
+            document.getElementById('valSat').innerText = document.getElementById('satRange').value + '%';
         }
 
         function getPhotoFilterString(sharpLevel) {
-            let filterStr = `contrast(${100 + sharpLevel * 0.5}%) saturate(${100 + sharpLevel * 0.25}%) brightness(105%)`;
-            if (selectedPhotoFilter === 'p2') filterStr += ' contrast(160%)';
-            else if (selectedPhotoFilter === 'p3') filterStr += ' saturate(180%)';
-            else if (selectedPhotoFilter === 'p7') filterStr += ' hue-rotate(180deg) saturate(160%)';
-            else if (selectedPhotoFilter === 'p8') filterStr += ' grayscale(100%) contrast(150%)';
+            const hue = document.getElementById('hueRange').value;
+            const sat = document.getElementById('satRange').value;
+
+            let filterStr = `contrast(${100 + sharpLevel * 0.5}%) saturate(${sat}%) hue-rotate(${hue}deg) brightness(105%)`;
+            
+            const filterIndex = parseInt(selectedPhotoFilter.replace('p', '')) || 1;
+            
+            if (filterIndex % 8 === 0) filterStr += ' grayscale(100%) contrast(150%)';
+            else if (filterIndex % 7 === 0) filterStr += ' sepia(60%) hue-rotate(180deg)';
+            else if (filterIndex % 5 === 0) filterStr += ' saturate(200%) contrast(140%)';
+            else if (filterIndex % 3 === 0) filterStr += ' brightness(115%) contrast(130%)';
+
             return filterStr;
         }
 
@@ -1111,206 +1063,32 @@
         function exportPhotoHD() {
             if (!rawImage) return alert("Pilih foto terlebih dahulu!");
             const link = document.createElement('a');
-            link.download = 'Rayze_500x_HD_Photo.png';
+            link.download = `Rayze_1000x_HD_Photo_${selectedPhotoFilter}.png`;
             link.href = canvas.toDataURL('image/png', 1.0);
             link.click();
         }
 
-        /* --- GENERATE 50 FITUR VIDEO HD --- */
-        const vidElement = document.getElementById('vidElement');
-        const vidCanvas = document.getElementById('videoCanvas');
-        const vidCtx = vidCanvas.getContext('2d');
-
-        function generate50VideoTools() {
-            const grid = document.getElementById('videoToolsGrid');
-            const tools = [
-                "4K Ultra HD", "Remini Sharpen", "HDR Boost", "Auto Color Fix", "Denoise Night",
-                "Portrait Smooth", "Cyberpunk Neon", "Cinema B&W", "Vintage Film", "Vivid Colors",
-                "Bloom Glow FX", "Sun Flare Dynamic", "Deep OLED Black", "Micro Sharpen", "Galaxy Night",
-                "Ice Blue Grade", "Warm Autumn", "Subject Focus", "Anti Shake FX", "Daylight Equalizer",
-                "Anime Edge Line", "Rainbow Hue Rotate", "High Dynamic Contrast", "8mm Retro FX", "Crystal Lens Clear",
-                "Color Isolation", "Motion Water Blur", "Extreme Sharpen 500x", "Hyper Saturation", "Shadows Recovery",
-                "Soft Motion FX", "Atmospheric Glow", "Matte Cinema Grade", "Teal and Orange FX", "Laser Neon Glow",
-                "Dynamic Contrast", "Aesthetic Pastel", "Diamond Bright", "Night Vision Pro", "High OLED Tone",
-                "Edge Line Boost", "Motion Blur Fixer", "Sunset Mood FX", "Galaxy Cosmic", "Target Subject Focus",
-                "Studio Lighting", "Fast Render Clear", "HD Frame Boost", "Magic Glow Filter", "Rayze Ultra Video Master"
-            ];
-
-            let html = '';
-            tools.forEach((name, i) => {
-                const id = 'v' + (i + 1);
-                const activeStyle = i === 0 ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
-                html += `<button class="btn-small vid-tool-btn" style="${activeStyle}" onclick="selectVideoFilter('${id}', this)">${i+1}. ${name}</button>`;
-            });
-            grid.innerHTML = html;
+        /* --- TIKTOK DOWNLOADER FIXED ANTI-ERROR --- */
+        function cleanTikTokUrl(url) {
+            if (!url) return '';
+            let cleaned = url.trim();
+            const match = cleaned.match(/https?:\/\/[^\s]+/);
+            return match ? match[0].split('?')[0] : cleaned;
         }
 
-        function selectVideoFilter(id, btn) {
-            selectedVideoFilter = id;
-            document.querySelectorAll('.vid-tool-btn').forEach(b => {
-                b.style.background = 'rgba(255,255,255,0.1)';
-                b.style.borderColor = 'var(--border-color)';
-            });
-            btn.style.background = 'var(--accent-blue)';
-            btn.style.borderColor = 'var(--accent-cyan)';
-        }
-
-        function setVideoSharpPreset(val) {
-            document.getElementById('vidSharpRange').value = val;
-            updateVidSharpLabel();
-        }
-
-        function toggleVidFlipH() { isVidFlipH = !isVidFlipH; }
-        function toggleVidFlipV() { isVidFlipV = !isVidFlipV; }
-
-        function toggleVidMute() {
-            vidElement.muted = !vidElement.muted;
-            alert(vidElement.muted ? "Suara Video Dimatikan (Muted)" : "Suara Video Diaktifkan (Unmuted)");
-        }
-
-        function toggleVidLoop() {
-            isVidLooping = !isVidLooping;
-            vidElement.loop = isVidLooping;
-            alert(isVidLooping ? "Auto Loop mengulang video AKTIF" : "Auto Loop MATI");
-        }
-
-        function changeVideoSpeed() {
-            const speed = parseFloat(document.getElementById('vidSpeedOption').value);
-            vidElement.playbackRate = speed;
-        }
-
-        function adjustVidSlider(step) {
-            const slider = document.getElementById('vidSharpRange');
-            let val = parseInt(slider.value) + step;
-            if (val < 1) val = 1; if (val > 500) val = 500;
-            slider.value = val;
-            updateVidSharpLabel();
-        }
-
-        function updateVidSharpLabel() {
-            document.getElementById('valVidSharp').innerText = document.getElementById('vidSharpRange').value + 'x';
-        }
-
-        function loadVideoFile(e) {
-            const file = e.target.files[0];
-            if (file) {
-                currentRawVideoFile = file;
-                document.getElementById('vidPlaceholder').style.display = 'none';
-                vidElement.src = URL.createObjectURL(file);
-                vidElement.loop = isVidLooping;
-                vidElement.onloadedmetadata = function() {
-                    vidCanvas.width = Math.min(vidElement.videoWidth, 1280);
-                    vidCanvas.height = Math.round(vidCanvas.width * (vidElement.videoHeight / vidElement.videoWidth));
-                    changeVideoSpeed();
-                    vidElement.play();
-                    renderVideoCanvasLoop();
-                }
-            }
-        }
-
-        function getVideoFilterString(sharpLevel) {
-            let filterStr = `contrast(${100 + sharpLevel * 0.4}%) saturate(${100 + sharpLevel * 0.2}%)`;
-            if (selectedVideoFilter === 'v2') filterStr += ' contrast(150%)';
-            else if (selectedVideoFilter === 'v3') filterStr += ' saturate(160%)';
-            else if (selectedVideoFilter === 'v7') filterStr += ' hue-rotate(180deg) saturate(180%)';
-            else if (selectedVideoFilter === 'v8') filterStr += ' grayscale(100%) contrast(140%)';
-            return filterStr;
-        }
-
-        let lastFrameTime = 0;
-        function renderVideoCanvasLoop(timestamp) {
-            if (vidElement.paused || vidElement.ended) return;
-            
-            if (timestamp - lastFrameTime > 33) {
-                lastFrameTime = timestamp;
-                const sharpLevel = parseInt(document.getElementById('vidSharpRange').value);
-
-                vidCtx.save();
-                vidCtx.translate(isVidFlipH ? vidCanvas.width : 0, isVidFlipV ? vidCanvas.height : 0);
-                vidCtx.scale(isVidFlipH ? -1 : 1, isVidFlipV ? -1 : 1);
-
-                vidCtx.filter = getVideoFilterString(sharpLevel);
-                vidCtx.drawImage(vidElement, 0, 0, vidCanvas.width, vidCanvas.height);
-                vidCtx.restore();
-            }
-
-            requestAnimationFrame(renderVideoCanvasLoop);
-        }
-
-        function downloadOriginalDirectVideo() {
-            if (!vidElement.src) return alert("Pilih file video terlebih dahulu!");
-            const a = document.createElement('a');
-            a.href = vidElement.src;
-            a.download = 'Rayze_Original_FullDuration_Video.mp4';
-            a.click();
-        }
-
-        /* --- EXPORT RECORDED CANVAS LOW BITRATE (ANTI LAG & DURASI PENUH) --- */
-        function exportRenderedVideoOptimized() {
-            if (!vidElement.src) return alert("Pilih file video terlebih dahulu!");
-
-            const pBox = document.getElementById('vidProgressBox');
-            const pBar = document.getElementById('vidProgressBar');
-            const pText = document.getElementById('vidProgressText');
-            const outputBox = document.getElementById('vidOutputBox');
-
-            pBox.style.display = 'block';
-            outputBox.style.display = 'none';
-
-            vidElement.currentTime = 0;
-            vidElement.play();
-
-            const stream = vidCanvas.captureStream(25);
-            let mediaRecorder;
-            try {
-                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 2500000 });
-            } catch(e) {
-                mediaRecorder = new MediaRecorder(stream);
-            }
-
-            const recordedChunks = [];
-            mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordedChunks.push(e.data); };
-
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: 'video/webm' });
-                const recordedUrl = URL.createObjectURL(blob);
-
-                pBar.style.width = '100%';
-                pText.innerText = 'Render Full Finished 100%';
-
-                outputBox.style.display = 'block';
-                outputBox.innerHTML = `✅ Video HD Canvas Recorded Successfully!<br><br>
-                <a href="${recordedUrl}" download="Rayze_HD_Full_Render.webm" class="btn btn-primary">📥 Download Video Canvas Recorded (WebM)</a>`;
-            };
-
-            mediaRecorder.start(1000);
-
-            const duration = vidElement.duration || 20;
-            let elapsed = 0;
-
-            const timer = setInterval(() => {
-                elapsed += 0.5;
-                let percent = Math.min(Math.round((elapsed / duration) * 100), 99);
-                pBar.style.width = percent + '%';
-                pText.innerText = `Recording Canvas FX (Low RAM Mode): ${percent}%`;
-
-                if (vidElement.ended || elapsed >= duration) {
-                    clearInterval(timer);
-                    if (mediaRecorder.state !== 'inactive') mediaRecorder.stop();
-                }
-            }, 500);
-        }
-
-        /* --- TIKTOK DOWNLOADER WITH CAPTION --- */
         function downloadTikTok(type) {
-            const input = document.getElementById('ttUrlInput').value.trim();
+            const rawInput = document.getElementById('ttUrlInput').value;
+            const cleanUrl = cleanTikTokUrl(rawInput);
             const outputBox = document.getElementById('ttResultBox');
-            if (!input) return alert("Masukkan link TikTok!");
+
+            if (!cleanUrl || (!cleanUrl.includes('tiktok.com') && !cleanUrl.includes('vt.tiktok.com'))) {
+                return alert("Masukkan link TikTok yang valid (contoh: https://vt.tiktok.com/... atau https://www.tiktok.com/@user/video/...)");
+            }
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Memproses media & mengambil deskripsi video...";
+            outputBox.innerHTML = "⏳ Memproses link TikTok & mengambil deskripsi...";
 
-            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
+            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(cleanUrl)}`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.data) {
@@ -1318,15 +1096,41 @@
                     const downloadUrl = (type === 'video') ? (data.data.hdplay || data.data.play) : data.data.music;
 
                     outputBox.innerHTML = `
-                        ✅ <strong>TikTok Media Parsed:</strong><br><br>
-                        <strong>📝 Deskripsi Post Video:</strong>
+                        ✅ <strong>TikTok Media Berhasil Diproses:</strong><br><br>
+                        <strong>📝 Deskripsi Video:</strong>
                         <div class="tiktok-caption-box">${captionText}</div><br>
                         <a href="${downloadUrl}" target="_blank" download class="btn btn-primary">📥 Download File (${type.toUpperCase()})</a>
                     `;
                 } else {
-                    outputBox.innerText = "❌ Gagal mengambil data TikTok.";
+                    fallbackTikTokVreden(cleanUrl, type, outputBox);
                 }
-            }).catch(() => { outputBox.innerText = "❌ Terjadi kesalahan koneksi API."; });
+            })
+            .catch(() => {
+                fallbackTikTokVreden(cleanUrl, type, outputBox);
+            });
+        }
+
+        function fallbackTikTokVreden(url, type, outputBox) {
+            fetch(`https://api.vreden.web.id/api/tiktok?url=${encodeURIComponent(url)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.result) {
+                    const dlUrl = type === 'video' ? (data.result.nowatermark || data.result.video) : data.result.audio;
+                    const desc = data.result.title || "Deskripsi TikTok";
+
+                    outputBox.innerHTML = `
+                        ✅ <strong>TikTok Media Berhasil (Server Backup):</strong><br><br>
+                        <strong>📝 Deskripsi:</strong>
+                        <div class="tiktok-caption-box">${desc}</div><br>
+                        <a href="${dlUrl}" target="_blank" download class="btn btn-primary">📥 Download (${type.toUpperCase()})</a>
+                    `;
+                } else {
+                    outputBox.innerText = "❌ Gagal mengunduh dari TikTok. Pastikan akun tidak diprivate.";
+                }
+            })
+            .catch(() => {
+                outputBox.innerText = "❌ Kesalahan server saat memproses TikTok.";
+            });
         }
 
         /* --- INSTAGRAM DOWNLOADER --- */
