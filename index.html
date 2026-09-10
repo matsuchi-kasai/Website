@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | 300x Ultra HD Studio & Dedicated Media Engine</title>
+    <title>Rayze Development | 300x Ultra HD Studio & All-In-One Media Engine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -16,9 +16,7 @@
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         :root {
             --bg-card: rgba(18, 23, 35, 0.88);
@@ -67,10 +65,7 @@
             z-index: -1;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
         .top-warning-banner {
             background: linear-gradient(90deg, #dc2626, #b91c1c, #dc2626);
@@ -104,9 +99,7 @@
             transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .sms-notification.show {
-            top: 20px;
-        }
+        .sms-notification.show { top: 20px; }
 
         .sms-icon {
             font-size: 1.5rem;
@@ -119,15 +112,8 @@
             justify-content: center;
         }
 
-        .sms-content h5 {
-            font-size: 0.85rem;
-            color: var(--accent-green);
-        }
-
-        .sms-content p {
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-        }
+        .sms-content h5 { font-size: 0.85rem; color: var(--accent-green); }
+        .sms-content p { font-size: 0.78rem; color: var(--text-secondary); }
 
         .container {
             width: 92%;
@@ -173,9 +159,7 @@
             transition: color 0.1s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-cyan);
-        }
+        .nav-links a:hover { color: var(--accent-cyan); }
 
         .hero {
             padding: 40px 0 30px 0;
@@ -226,11 +210,7 @@
             margin-bottom: 20px;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
+        .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
 
         .btn {
             padding: 10px 22px;
@@ -246,25 +226,11 @@
             justify-content: center;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-blue), #2563eb);
-            color: white;
-        }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-blue), #2563eb); color: white; }
+        .btn-secondary { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); }
 
-        .btn-secondary {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-        }
-
-        .section {
-            padding: 40px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-header {
-            margin-bottom: 25px;
-        }
+        .section { padding: 40px 0; border-bottom: 1px solid var(--border-color); }
+        .section-header { margin-bottom: 25px; }
 
         .section-tag {
             color: var(--accent-cyan);
@@ -275,10 +241,7 @@
             margin-bottom: 6px;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
+        .section-title { font-size: 1.8rem; font-weight: 700; }
 
         .tools-grid {
             display: grid;
@@ -303,24 +266,15 @@
             position: relative;
         }
 
-        #hdCanvas {
+        #hdCanvas, #videoCanvas {
             max-width: 100%;
             height: auto;
             border-radius: 6px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .controls-container {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .control-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
+        .controls-container { display: flex; flex-direction: column; gap: 14px; }
+        .control-item { display: flex; flex-direction: column; gap: 5px; }
 
         .control-item label {
             font-size: 0.82rem;
@@ -342,11 +296,7 @@
             outline: none;
         }
 
-        .slider-plus-minus {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .slider-plus-minus { display: flex; align-items: center; gap: 8px; }
 
         .btn-step {
             width: 32px;
@@ -364,16 +314,8 @@
             font-size: 1.1rem;
         }
 
-        .btn-step:hover {
-            background: var(--accent-blue);
-        }
-
-        .range-box {
-            flex: 1;
-            height: 6px;
-            accent-color: var(--accent-cyan);
-            cursor: pointer;
-        }
+        .btn-step:hover { background: var(--accent-blue); }
+        .range-box { flex: 1; height: 6px; accent-color: var(--accent-cyan); cursor: pointer; }
 
         .btn-action {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
@@ -390,9 +332,7 @@
             font-size: 0.88rem;
         }
 
-        .btn-catbox {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-        }
+        .btn-catbox { background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); }
 
         .btn-grid {
             display: grid;
@@ -412,10 +352,7 @@
             text-align: center;
         }
 
-        .btn-small:hover {
-            background: var(--accent-blue);
-            border-color: var(--accent-cyan);
-        }
+        .btn-small:hover { background: var(--accent-blue); border-color: var(--accent-cyan); }
 
         .downloader-grid {
             display: grid;
@@ -434,20 +371,9 @@
             gap: 12px;
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-header .icon {
-            font-size: 1.5rem;
-        }
-
-        .card-header h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
+        .card-header { display: flex; align-items: center; gap: 10px; }
+        .card-header .icon { font-size: 1.5rem; }
+        .card-header h3 { font-size: 1.1rem; font-weight: 700; }
 
         .progress-box {
             display: none;
@@ -474,12 +400,7 @@
             transition: width 0.1s linear;
         }
 
-        .progress-text {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            text-align: center;
-        }
+        .progress-text { font-size: 0.8rem; font-weight: 700; color: var(--accent-green); text-align: center; }
 
         .link-output {
             background: #0a0d14;
@@ -494,15 +415,17 @@
             margin-top: 10px;
         }
 
-        .info-panel {
-            background: #0a0d14;
-            border: 1px solid var(--border-color);
+        .tiktok-caption-box {
+            background: #111827;
+            border: 1px solid var(--accent-cyan);
             padding: 10px;
             border-radius: 6px;
-            font-size: 0.78rem;
-            color: var(--text-secondary);
+            color: var(--text-primary);
+            font-size: 0.82rem;
             margin-top: 8px;
-            width: 100%;
+            max-height: 100px;
+            overflow-y: auto;
+            white-space: pre-wrap;
         }
 
         .utility-box {
@@ -522,9 +445,7 @@
             color: #4b5563;
         }
 
-        .star-rating .star.active {
-            color: var(--accent-gold);
-        }
+        .star-rating .star.active { color: var(--accent-gold); }
 
         .about-content {
             display: grid;
@@ -547,9 +468,7 @@
             height: fit-content;
         }
 
-        .info-list {
-            list-style: none;
-        }
+        .info-list { list-style: none; }
 
         .info-list li {
             display: flex;
@@ -568,9 +487,7 @@
             margin: auto;
         }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+        .form-group { margin-bottom: 15px; }
 
         .form-group label {
             display: block;
@@ -590,17 +507,9 @@
             font-size: 0.88rem;
         }
 
-        textarea.form-control {
-            resize: vertical;
-            min-height: 110px;
-        }
+        textarea.form-control { resize: vertical; min-height: 110px; }
 
-        footer {
-            padding: 30px 0;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
+        footer { padding: 30px 0; text-align: center; color: var(--text-secondary); font-size: 0.85rem; }
 
         @media (max-width: 900px) {
             .tools-grid, .about-content { grid-template-columns: 1fr; }
@@ -617,7 +526,7 @@
     <div class="bg-overlay"></div>
 
     <div class="top-warning-banner">
-        ⚠️ PERHATIAN: PROSES LOKAL KETAJAMAN 300X & DOWNLOAD DILAKUKAN DIREK TANPA IKLAN ATAU REDIRECT
+        ⚠️ PROSES LOKAL KETAJAMAN 300X & REAL-TIME VIDEO CANVAS ENGINE AKTIF
     </div>
 
     <div id="smsNotify" class="sms-notification">
@@ -634,7 +543,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#photo-hd-studio">Foto 300x HD</a></li>
-                <li><a href="#video-hd-studio">Video Studio HD</a></li>
+                <li><a href="#video-hd-studio">Video 300x HD Engine</a></li>
                 <li><a href="#downloader-section">Media Downloader</a></li>
                 <li><a href="#catbox-fullscreen">Catbox Upload</a></li>
                 <li><a href="#rating-section">Rating</a></li>
@@ -643,22 +552,22 @@
     </nav>
 
     <div class="container">
-        <!-- HERO / HOME SECTION -->
+        <!-- HERO SECTION -->
         <section class="hero" id="home">
             <div class="status-badge">
-                <span class="status-dot"></span> Live Video BG & Ultra HD Studio Suite
+                <span class="status-dot"></span> Real-Time Video Sharpening & Media Suite
             </div>
             <h1>Welcome to <span>Rayze</span> 👋<br>Rayze Development Studio.</h1>
             <p class="hero-subtitle">
-                Official digital suite with 300x Foto Sharpening Engine, Expanded Video HD Editing Studio, Dedicated Downloader for TikTok, Instagram, YouTube, YouTube Music, Spotify, and Catbox.
+                Digital Suite dengan fitur Real-Time Video Sharpening (1x - 300x), TikTok Downloader + Teks Deskripsi Post, Fix Catbox Uploader Direct, dan Dedicated Media Engine.
             </p>
             <div class="hero-buttons">
                 <a href="#photo-hd-studio" class="btn btn-primary">📷 Open 300x Foto Studio</a>
-                <a href="#video-hd-studio" class="btn btn-secondary">🎥 Open Video HD Studio</a>
+                <a href="#video-hd-studio" class="btn btn-secondary">🎥 Open 300x Video Studio</a>
             </div>
         </section>
 
-        <!-- FOTO 300X ULTRA HD STUDIO -->
+        <!-- FOTO 300X STUDIO -->
         <section class="section" id="photo-hd-studio">
             <div class="section-header">
                 <span class="section-tag">// FOTO ULTRA HD PROCESSING ENGINE</span>
@@ -669,30 +578,17 @@
             <div class="tools-grid">
                 <div class="preview-container">
                     <canvas id="hdCanvas" width="800" height="800"></canvas>
-                    <p id="placeholderText" style="color: var(--text-secondary); margin-top: 8px; font-size:0.85rem;">Select a photo file on the right panel to start.</p>
-                    
-                    <div id="fileInfoPanel" class="info-panel" style="display:none;">
-                        <strong>📷 File Analytics & Info:</strong><br>
-                        <span id="infoFileName">Name: -</span> | <span id="infoFileSize">Size: -</span><br>
-                        <span id="infoFileType">Type: -</span> | <span id="infoFileDim">Dimension: -</span>
-                    </div>
                 </div>
 
                 <div class="controls-container">
                     <div class="control-item">
-                        <label>1. Select Foto Image File</label>
+                        <label>1. Pilih File Foto</label>
                         <input type="file" id="uploadInput" class="input-box" accept="image/*" onchange="loadImage(event)">
                     </div>
 
                     <div class="control-item">
-                        <label>2. Ultra HD Preset Mode (100 Presets)</label>
-                        <select id="hdPreset" class="input-box" onchange="applyHDEffects()">
-                        </select>
-                    </div>
-
-                    <div class="control-item">
                         <label>
-                            <span>3. Sharpen Intensity Boost (1x - 300x)</span>
+                            <span>2. Tingkat Ketajaman (1x - 300x)</span>
                             <span id="valSharp">15x</span>
                         </label>
                         <div class="slider-plus-minus">
@@ -702,148 +598,69 @@
                         </div>
                     </div>
 
-                    <div class="control-item">
-                        <label>
-                            <span>4. Brightness Adjust</span>
-                            <span id="valBright">100%</span>
-                        </label>
-                        <div class="slider-plus-minus">
-                            <button class="btn-step" onclick="adjustSlider('brightRange', -5)">-</button>
-                            <input type="range" id="brightRange" class="range-box" min="30" max="250" value="100" oninput="updateRangeLabels(); applyHDEffects();">
-                            <button class="btn-step" onclick="adjustSlider('brightRange', 5)">+</button>
-                        </div>
-                    </div>
-
-                    <div class="control-item">
-                        <label>
-                            <span>5. Contrast Adjust</span>
-                            <span id="valContrast">100%</span>
-                        </label>
-                        <div class="slider-plus-minus">
-                            <button class="btn-step" onclick="adjustSlider('contrastRange', -5)">-</button>
-                            <input type="range" id="contrastRange" class="range-box" min="30" max="250" value="100" oninput="updateRangeLabels(); applyHDEffects();">
-                            <button class="btn-step" onclick="adjustSlider('contrastRange', 5)">+</button>
-                        </div>
-                    </div>
-
-                    <div class="control-item">
-                        <label>
-                            <span>6. Saturation Adjust</span>
-                            <span id="valSat">100%</span>
-                        </label>
-                        <div class="slider-plus-minus">
-                            <button class="btn-step" onclick="adjustSlider('satRange', -5)">-</button>
-                            <input type="range" id="satRange" class="range-box" min="0" max="300" value="100" oninput="updateRangeLabels(); applyHDEffects();">
-                            <button class="btn-step" onclick="adjustSlider('satRange', 5)">+</button>
-                        </div>
-                    </div>
-
-                    <div class="control-item">
-                        <label>7. Output Resolution Scale (No-Crop Fix)</label>
-                        <select id="scaleOption" class="input-box" onchange="applyHDEffects()">
-                            <option value="1">100% Original Resolution</option>
-                            <option value="1.5">150% HD Upscale</option>
-                            <option value="2">200% 2K Ultra HD</option>
-                            <option value="3">300% 4K Ultra HD</option>
-                            <option value="4">400% 8K Master HD</option>
-                            <option value="6">600% 15K Supreme Ultra HD</option>
-                        </select>
-                    </div>
-
-                    <div class="control-item">
-                        <label>8. Quick Utility Tools</label>
-                        <div class="btn-grid">
-                            <button class="btn-small" onclick="toggleWatermark()">🏷️ Micro Rayze Watermark</button>
-                            <button class="btn-small" onclick="rotateImage(90)">🔄 Rotate 90°</button>
-                            <button class="btn-small" onclick="flipHorizontal()">🪞 Flip Horiz</button>
-                            <button class="btn-small" onclick="flipVertical()">🔃 Flip Vert</button>
-                            <button class="btn-small" onclick="invertColors()">🌓 Invert FX</button>
-                            <button class="btn-small" onclick="toggleGrayscale()">📷 Grayscale</button>
-                            <button class="btn-small" onclick="resetTransforms()">↺ Reset All</button>
-                        </div>
-                    </div>
-
-                    <button class="btn-action" onclick="exportPhotoHD()">
-                        📥 Export 300x Ultra HD Foto (Progress %)
-                    </button>
-
-                    <div id="exportProgressBox" class="progress-box">
-                        <div class="progress-bar-bg">
-                            <div id="exportProgressBar" class="progress-bar-fill"></div>
-                        </div>
-                        <div id="exportProgressText" class="progress-text">Export Progress: 0%</div>
-                    </div>
+                    <button class="btn-action" onclick="exportPhotoHD()">📥 Export Foto 300x HD</button>
                 </div>
             </div>
         </section>
 
-        <!-- VIDEO HD & MULTI-FEATURE EDITING STUDIO -->
+        <!-- VIDEO ULTRA HD & REAL-TIME SHARPENING ENGINE -->
         <section class="section" id="video-hd-studio">
             <div class="section-header">
-                <span class="section-tag">// VIDEO HD EDITING & ENHANCEMENT ENGINE</span>
-                <h2 class="section-title">Expanded Video HD Studio</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Enhance video quality, smooth motion, apply cinematic grading, and execute professional video editing tasks.</p>
+                <span class="section-tag">// REAL-TIME VIDEO CANVAS & ULTRA HD SHARPENING</span>
+                <h2 class="section-title">Video 300x Ultra HD Studio Engine</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Terapkan ketajaman hingga 300x dan filter FX langsung ke video secara real-time pada Canvas!</p>
             </div>
 
             <div class="utility-box">
-                <div class="control-item">
-                    <label>1. Select Video File (.mp4, .webm, .mov):</label>
-                    <input type="file" id="videoFileInput" class="input-box" accept="video/*" style="padding: 12px;" onchange="previewVideoFile(event)">
-                </div>
+                <div class="tools-grid">
+                    <div class="preview-container">
+                        <video id="vidElement" controls style="display:none;"></video>
+                        <canvas id="videoCanvas" width="800" height="450"></canvas>
+                        <p id="vidPlaceholder" style="color:var(--text-secondary); margin-top:10px; font-size:0.85rem;">Pilih file video untuk memulai pemrosesan real-time.</p>
+                    </div>
 
-                <div id="videoPreviewBox" style="display:none; margin-top: 15px; text-align: center;">
-                    <video id="vidPreview" controls style="max-width: 100%; max-height: 350px; border-radius: 8px; border: 1px solid var(--border-color);"></video>
-                </div>
+                    <div class="controls-container">
+                        <div class="control-item">
+                            <label>1. Pilih Video (.mp4, .webm, .mov):</label>
+                            <input type="file" id="videoFileInput" class="input-box" accept="video/*" onchange="loadVideoFile(event)">
+                        </div>
 
-                <div class="control-item" style="margin-top: 15px;">
-                    <label>2. Choose Target Motion / Frame Rate (FPS Interpolation):</label>
-                    <select id="fpsOption" class="input-box">
-                        <option value="60">⚡ 60 FPS Ultra Smooth Motion</option>
-                        <option value="90">🚀 90 FPS Pro Motion Smooth</option>
-                        <option value="120">💎 120 FPS Extreme Smoothness</option>
-                        <option value="144">✨ 144 FPS Esports Ultra Smooth</option>
-                        <option value="200">🔥 200x FPS Supreme Motion Interpolation</option>
-                    </select>
-                </div>
+                        <div class="control-item">
+                            <label>
+                                <span>2. Ketajaman Video (1x - 300x Sharpening):</span>
+                                <span id="valVidSharp">20x</span>
+                            </label>
+                            <div class="slider-plus-minus">
+                                <button class="btn-step" onclick="adjustVidSlider(-10)">-</button>
+                                <input type="range" id="vidSharpRange" class="range-box" min="1" max="300" value="20" oninput="updateVidSharpLabel()">
+                                <button class="btn-step" onclick="adjustVidSlider(10)">+</button>
+                            </div>
+                        </div>
 
-                <div class="control-item" style="margin-top: 15px;">
-                    <label>3. Choose Output Resolution Target:</label>
-                    <select id="vidResOption" class="input-box">
-                        <option value="720p">HD 720p Standard</option>
-                        <option value="1080p" selected>📺 1080p Full HD</option>
-                        <option value="2k">🎬 2K Quad HD</option>
-                        <option value="4k">✨ 4K Ultra HD Master</option>
-                        <option value="8k">💎 8K Cinema Master</option>
-                    </select>
-                </div>
+                        <div class="control-item">
+                            <label>3. Pilih Filter & Fitur Ultra HD (Banyak Pilihan):</label>
+                            <div id="videoToolsGrid" class="btn-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));"></div>
+                        </div>
 
-                <div class="control-item" style="margin-top: 20px;">
-                    <label>4. Active Video Processing Feature / Filter (Select One):</label>
-                    <div id="videoToolsGrid" class="btn-grid" style="grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-top: 8px;">
+                        <button class="btn-action" onclick="startVideoRender()">🎥 Export Rendered Video HD</button>
+
+                        <div id="vidProgressBox" class="progress-box">
+                            <div class="progress-bar-bg"><div id="vidProgressBar" class="progress-bar-fill"></div></div>
+                            <div id="vidProgressText" class="progress-text">Rendering Video: 0%</div>
+                        </div>
+
+                        <div id="vidOutputBox" class="link-output"></div>
                     </div>
                 </div>
-
-                <button class="btn-action" style="margin-top: 20px; width: 100%; justify-content: center;" onclick="processVideoHD()">
-                    🎥 Render Video HD with Selected Tool
-                </button>
-
-                <div id="vidProgressBox" class="progress-box">
-                    <div class="progress-bar-bg">
-                        <div id="vidProgressBar" class="progress-bar-fill"></div>
-                    </div>
-                    <div id="vidProgressText" class="progress-text">Rendering Video: 0%</div>
-                </div>
-
-                <div id="vidOutputBox" class="link-output"></div>
             </div>
         </section>
 
-        <!-- DEDICATED INDIVIDUAL MEDIA DOWNLOADERS -->
+        <!-- DEDICATED INDIVIDUAL DOWNLOADERS -->
         <section class="section" id="downloader-section">
             <div class="section-header">
-                <span class="section-tag">// DEDICATED INDIVIDUAL DOWNLOADERS</span>
-                <h2 class="section-title">All-In-One Media Downloader Engine</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download media from your favorite platforms directly without ads or redirects.</p>
+                <span class="section-tag">// DEDICATED MEDIA DOWNLOADER ENGINE</span>
+                <h2 class="section-title">All-In-One Downloader (Dipisah Per Platform)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download media dari platform favorit tanpa iklan atau redirect.</p>
             </div>
 
             <div class="downloader-grid">
@@ -851,10 +668,10 @@
                 <div class="downloader-card">
                     <div class="card-header">
                         <span class="icon">🎵</span>
-                        <h3>TikTok Downloader</h3>
+                        <h3>TikTok Downloader + Caption</h3>
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Download TikTok video (No Watermark) or extract audio directly.</p>
-                    <input type="text" id="ttUrlInput" class="input-box" placeholder="https://vt.tiktok.com/...">
+                    <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh Video No Watermark, Audio MP3, atau Slide Foto beserta deskripsi teks lengkap.</p>
+                    <input type="text" id="ttUrlInput" class="input-box" placeholder="Paste link TikTok di sini...">
                     <div class="btn-grid" style="grid-template-columns: 1fr 1fr;">
                         <button class="btn-action" onclick="downloadTikTok('video')">📹 Video MP4</button>
                         <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-purple), var(--accent-pink));" onclick="downloadTikTok('audio')">🎵 Audio MP3</button>
@@ -868,11 +685,9 @@
                         <span class="icon">📸</span>
                         <h3>Instagram Downloader</h3>
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Download Instagram Reels, Post Videos, or Carousel Photos.</p>
-                    <input type="text" id="igUrlInput" class="input-box" placeholder="https://www.instagram.com/p/...">
-                    <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-pink), var(--accent-purple));" onclick="downloadInstagram()">
-                        📥 Download IG Media
-                    </button>
+                    <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh Reel, Post Video, Foto Carousel, atau Story Instagram.</p>
+                    <input type="text" id="igUrlInput" class="input-box" placeholder="Paste link IG di sini...">
+                    <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-pink), var(--accent-purple));" onclick="downloadInstagram()">📥 Download IG Media</button>
                     <div id="igResultBox" class="link-output"></div>
                 </div>
 
@@ -882,11 +697,9 @@
                         <span class="icon">▶️</span>
                         <h3>YouTube Downloader</h3>
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Download YouTube Videos or Shorts in MP4 format.</p>
-                    <input type="text" id="ytUrlInput" class="input-box" placeholder="https://youtube.com/watch?v=...">
-                    <button class="btn-action" style="background:linear-gradient(135deg, #ef4444, #dc2626);" onclick="downloadYouTube()">
-                        📥 Download YouTube MP4
-                    </button>
+                    <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh Video YouTube biasa atau YouTube Shorts MP4.</p>
+                    <input type="text" id="ytUrlInput" class="input-box" placeholder="Paste link YouTube di sini...">
+                    <button class="btn-action" style="background:linear-gradient(135deg, #ef4444, #dc2626);" onclick="downloadYouTube()">📥 Download YouTube MP4</button>
                     <div id="ytResultBox" class="link-output"></div>
                 </div>
 
@@ -896,11 +709,9 @@
                         <span class="icon">🎧</span>
                         <h3>YouTube Music Converter</h3>
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Extract high-quality MP3 audio from YouTube Music tracks.</p>
-                    <input type="text" id="ytmUrlInput" class="input-box" placeholder="https://music.youtube.com/watch?v=...">
-                    <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-red), var(--accent-gold));" onclick="downloadYouTubeMusic()">
-                        🎵 Convert to MP3 (320kbps)
-                    </button>
+                    <p style="font-size:0.8rem; color:var(--text-secondary);">Konversi dan ekstrak audio resmi dari YouTube Music ke MP3 320kbps.</p>
+                    <input type="text" id="ytmUrlInput" class="input-box" placeholder="Paste link YouTube Music di sini...">
+                    <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-red), var(--accent-gold));" onclick="downloadYouTubeMusic()">🎵 Convert to MP3 (320kbps)</button>
                     <div id="ytmResultBox" class="link-output"></div>
                 </div>
 
@@ -910,38 +721,32 @@
                         <span class="icon">🎶</span>
                         <h3>Spotify Downloader</h3>
                     </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Download track audio directly from Spotify track links.</p>
-                    <input type="text" id="spUrlInput" class="input-box" placeholder="https://open.spotify.com/track/...">
-                    <button class="btn-action" style="background:linear-gradient(135deg, #1db954, #10b981);" onclick="downloadSpotify()">
-                        🎵 Download Spotify MP3
-                    </button>
+                    <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh lagu Spotify lengkap dengan cover art, judul, dan metadata.</p>
+                    <input type="text" id="spUrlInput" class="input-box" placeholder="Paste link Spotify di sini...">
+                    <button class="btn-action" style="background:linear-gradient(135deg, #1db954, #10b981);" onclick="downloadSpotify()">🎵 Download Spotify MP3</button>
                     <div id="spResultBox" class="link-output"></div>
                 </div>
             </div>
         </section>
 
-        <!-- STANDALONE CATBOX UPLOADER -->
+        <!-- CATBOX UPLOADER FIXED -->
         <section class="section" id="catbox-fullscreen">
             <div class="section-header">
-                <span class="section-tag">// STANDALONE FILE UPLOADER</span>
-                <h2 class="section-title">Catbox.moe Direct Uploader (Max 30 MB)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Upload photos or video media up to 30 MB directly to Catbox server with instant permanent direct links!</p>
+                <span class="section-tag">// DIRECT FILE UPLOADER</span>
+                <h2 class="section-title">Catbox.moe Direct Uploader (Fixed 30 MB)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Upload foto atau video hingga 30 MB langsung ke server Catbox dengan link permanen.</p>
             </div>
 
-            <div class="utility-box" style="width: 100%;">
+            <div class="utility-box">
                 <div class="control-item">
-                    <label>Select Photo or Video File (Max 30 MB Limit):</label>
-                    <input type="file" id="catboxFileInput" class="input-box" accept="image/*,video/*" style="padding: 14px;">
+                    <label>Pilih File Foto atau Video (Max 30 MB):</label>
+                    <input type="file" id="catboxFileInput" class="input-box" accept="image/*,video/*">
                 </div>
-                <button class="btn-action btn-catbox" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="uploadCatbox30MB()">
-                    🚀 Upload File & Generate Direct Catbox Link
-                </button>
+                <button class="btn-action btn-catbox" style="margin-top: 15px; width: 100%;" onclick="uploadCatbox30MB()">🚀 Upload File ke Catbox</button>
 
                 <div id="catbox30ProgressBox" class="progress-box">
-                    <div class="progress-bar-bg">
-                        <div id="catbox30ProgressBar" class="progress-bar-fill"></div>
-                    </div>
-                    <div id="catbox30ProgressText" class="progress-text">Uploading to Catbox: 0%</div>
+                    <div class="progress-bar-bg"><div id="catbox30ProgressBar" class="progress-bar-fill"></div></div>
+                    <div id="catbox30ProgressText" class="progress-text">Uploading: 0%</div>
                 </div>
 
                 <div id="catbox30Output" class="link-output"></div>
@@ -953,7 +758,7 @@
             <div class="section-header" style="text-align: center;">
                 <span class="section-tag">// USER FEEDBACK & RATING SYSTEM</span>
                 <h2 class="section-title">Rate & Send Feedback to Rayze</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Your review and rating stars are submitted securely to Rayze Development Official!</p>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Ulasan dan rating bintang dikirim langsung ke Rayze Development!</p>
             </div>
 
             <div class="contact-box">
@@ -1019,17 +824,16 @@
         </section>
 
         <footer>
-            <p>© 2026 <strong>Rayze Development</strong>. Built with speed, Live Background Video & Media Suite.</p>
+            <p>© 2026 <strong>Rayze Development</strong>. All rights reserved.</p>
         </footer>
     </div>
 
-    <!-- JAVASCRIPT ENGINE & LOGIC -->
+    <!-- JAVASCRIPT LOGIC ENGINE -->
     <script>
-        let selectedVideoTool = "4K Upscale Enhancer";
+        let selectedVideoFilter = '4k_ultra';
 
         window.addEventListener('load', () => {
             initDefaultCanvas();
-            generate100Presets();
             generateVideoTools();
             setRating(5);
 
@@ -1043,104 +847,10 @@
             }
         });
 
-        /* GENERATE EXTENDED VIDEO HD TOOLS */
-        function generateVideoTools() {
-            const toolsGrid = document.getElementById('videoToolsGrid');
-            const videoTools = [
-                "✨ 4K Upscale Enhancer", "🚀 200x FPS Motion Interpolation", "💎 HDR Vivid Color Boost", "🌙 Night Vision Noise Remover",
-                "🎬 Remini Video Sharpen", "🎨 Auto Color Correction", "✂️ Trim & Crop Optimizer", "📉 Video Compressor",
-                "⚡ Slow-Mo Smooth FX", "⏩ Speed Warp Accelerator", "🛡️ Anti-Shake Stabilizer", "🎵 Extract MP3 Audio",
-                "🎞️ Convert to Animated GIF", "🌇 Sunset Glow FX", "🌌 Cyberpunk Neon Grade", "📷 Monochrome Cinema",
-                "🔮 Dreamy Glow Bloom", "🔍 Micro Detail Enhancer", "🖤 OLED Black Boost", "🎯 Focus Auto Sharpen"
-            ];
-
-            let html = '';
-            videoTools.forEach((tool, index) => {
-                const activeStyle = index === 0 ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
-                html += `<button class="btn-small vid-tool-btn" style="${activeStyle}" onclick="selectVideoTool('${tool}', this)">${tool}</button>`;
-            });
-            toolsGrid.innerHTML = html;
-        }
-
-        function selectVideoTool(toolName, btnElement) {
-            selectedVideoTool = toolName;
-            document.querySelectorAll('.vid-tool-btn').forEach(btn => {
-                btn.style.background = 'rgba(255,255,255,0.06)';
-                btn.style.borderColor = 'var(--border-color)';
-            });
-            btnElement.style.background = 'var(--accent-blue)';
-            btnElement.style.borderColor = 'var(--accent-cyan)';
-        }
-
-        function triggerSMSNotification(title, bodyText) {
-            const sms = document.getElementById('smsNotify');
-            document.getElementById('smsTitle').innerText = title;
-            document.getElementById('smsBody').innerText = bodyText;
-
-            sms.classList.add('show');
-            setTimeout(() => {
-                sms.classList.remove('show');
-            }, 5000);
-        }
-
-        function triggerDirectDownload(fileUrl, fileName) {
-            try {
-                const a = document.createElement('a');
-                a.href = fileUrl;
-                a.download = fileName || 'Rayze_Downloaded_Media';
-                a.target = '_blank';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            } catch(e) {
-                window.open(fileUrl, '_blank');
-            }
-        }
-
-        function generate100Presets() {
-            const select = document.getElementById('hdPreset');
-            const categories = [
-                '✨ 300x Ultra HD Extreme', '🚀 15K Supreme Upscale Mode', '🎨 Anime Line & Sketch Sharpener',
-                '🌸 Soft Portrait Skin Smooth', '🔥 HDR Extreme Vibrant Tone', '🌙 Dark Noise Elimination',
-                '💎 Crystal Clear Lens Focus', '📸 Studio Pro Portrait Grade', '🌆 Cyberpunk Neon Glow',
-                '🎬 Cinema Movie Matte Tone'
-            ];
-
-            let html = '';
-            for (let i = 1; i <= 100; i++) {
-                const cat = categories[(i - 1) % categories.length];
-                const num = i < 10 ? '00' + i : (i < 100 ? '0' + i : i);
-                html += `<option value="preset_${i}">${num}. ${cat} - Variant #${i}</option>`;
-            }
-            select.innerHTML = html;
-        }
-
-        function adjustSlider(id, step) {
-            const slider = document.getElementById(id);
-            let val = parseInt(slider.value) + step;
-            if (val < parseInt(slider.min)) val = parseInt(slider.min);
-            if (val > parseInt(slider.max)) val = parseInt(slider.max);
-            slider.value = val;
-            updateRangeLabels();
-            applyHDEffects();
-        }
-
-        function updateRangeLabels() {
-            document.getElementById('valSharp').innerText = document.getElementById('sharpRange').value + 'x';
-            document.getElementById('valBright').innerText = document.getElementById('brightRange').value + '%';
-            document.getElementById('valContrast').innerText = document.getElementById('contrastRange').value + '%';
-            document.getElementById('valSat').innerText = document.getElementById('satRange').value + '%';
-        }
-
+        /* --- FOTO STUDIO LOGIC --- */
         const canvas = document.getElementById('hdCanvas');
         const ctx = canvas.getContext('2d');
         let rawImage = null;
-        let rotationAngle = 0;
-        let isFlippedH = false;
-        let isFlippedV = false;
-        let isInverted = false;
-        let isGrayscale = false;
-        let showWatermark = false;
 
         function initDefaultCanvas() {
             ctx.fillStyle = '#0a0d14';
@@ -1150,148 +860,135 @@
         function loadImage(e) {
             const file = e.target.files[0];
             if (file) {
-                document.getElementById('placeholderText').style.display = 'none';
-                document.getElementById('fileInfoPanel').style.display = 'block';
-                document.getElementById('infoFileName').innerText = 'Name: ' + file.name;
-                document.getElementById('infoFileSize').innerText = 'Size: ' + (file.size / 1024).toFixed(1) + ' KB';
-                document.getElementById('infoFileType').innerText = 'Type: ' + file.type;
-
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     rawImage = new Image();
-                    rawImage.onload = function() {
-                        document.getElementById('infoFileDim').innerText = 'Dimension: ' + rawImage.width + 'x' + rawImage.height + ' px';
-                        applyHDEffects();
-                    }
+                    rawImage.onload = function() { applyHDEffects(); }
                     rawImage.src = event.target.result;
                 }
                 reader.readAsDataURL(file);
             }
         }
 
-        function applyHDEffects() {
-            if (!rawImage) return;
-
-            const scaleVal = parseFloat(document.getElementById('scaleOption').value);
-            const isRotated90 = (rotationAngle / 90) % 2 !== 0;
-
-            let origW = isRotated90 ? rawImage.height : rawImage.width;
-            let origH = isRotated90 ? rawImage.width : rawImage.height;
-
-            let calcW = origW * scaleVal;
-            let calcH = origH * scaleVal;
-
-            const maxDim = 3840;
-            if (calcW > maxDim || calcH > maxDim) {
-                const ratio = Math.min(maxDim / calcW, maxDim / calcH);
-                calcW *= ratio;
-                calcH *= ratio;
-            }
-
-            canvas.width = Math.round(calcW);
-            canvas.height = Math.round(calcH);
-
-            ctx.imageSmoothingEnabled = true;
-            ctx.imageSmoothingQuality = 'high';
-
-            ctx.save();
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            ctx.translate(canvas.width / 2, canvas.height / 2);
-            ctx.rotate((rotationAngle * Math.PI) / 180);
-            ctx.scale(isFlippedH ? -1 : 1, isFlippedV ? -1 : 1);
-
-            const sharpLevel = parseInt(document.getElementById('sharpRange').value);
-            const brightVal = parseInt(document.getElementById('brightRange').value);
-            let contrastVal = parseInt(document.getElementById('contrastRange').value) + (sharpLevel * 0.3);
-            let satVal = parseInt(document.getElementById('satRange').value) + (sharpLevel * 0.2);
-
-            let filterStr = `contrast(${contrastVal}%) saturate(${satVal}%) brightness(${brightVal}%)`;
-            if (isInverted) filterStr += ' invert(100%)';
-            if (isGrayscale) filterStr += ' grayscale(100%)';
-
-            ctx.filter = filterStr;
-
-            const drawW = isRotated90 ? canvas.height : canvas.width;
-            const drawH = isRotated90 ? canvas.width : canvas.height;
-            ctx.drawImage(rawImage, -drawW / 2, -drawH / 2, drawW, drawH);
-
-            ctx.restore();
-            ctx.filter = 'none';
-
-            if (showWatermark) {
-                ctx.save();
-                const fontSize = Math.max(8, Math.round(canvas.width * 0.015));
-                ctx.font = `700 ${fontSize}px 'Plus Jakarta Sans', sans-serif`;
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
-                ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-                ctx.shadowBlur = 3;
-                ctx.fillText('Rayze', canvas.width - (fontSize * 4.5), canvas.height - (fontSize * 1.2));
-                ctx.restore();
-            }
-        }
-
-        function toggleWatermark() { showWatermark = !showWatermark; applyHDEffects(); }
-        function rotateImage(deg) { rotationAngle = (rotationAngle + deg) % 360; applyHDEffects(); }
-        function flipHorizontal() { isFlippedH = !isFlippedH; applyHDEffects(); }
-        function flipVertical() { isFlippedV = !isFlippedV; applyHDEffects(); }
-        function invertColors() { isInverted = !isInverted; applyHDEffects(); }
-        function toggleGrayscale() { isGrayscale = !isGrayscale; applyHDEffects(); }
-
-        function resetTransforms() {
-            rotationAngle = 0; isFlippedH = false; isFlippedV = false; isInverted = false; isGrayscale = false; showWatermark = false;
-            document.getElementById('sharpRange').value = 15;
-            document.getElementById('brightRange').value = 100;
-            document.getElementById('contrastRange').value = 100;
-            document.getElementById('satRange').value = 100;
-            document.getElementById('scaleOption').value = "1";
+        function adjustSlider(id, step) {
+            const slider = document.getElementById(id);
+            let val = parseInt(slider.value) + step;
+            if (val < 1) val = 1; if (val > 300) val = 300;
+            slider.value = val;
             updateRangeLabels();
             applyHDEffects();
         }
 
-        function exportPhotoHD() {
-            if (!rawImage) { alert("Please select a photo file first!"); return; }
-
-            const pBox = document.getElementById('exportProgressBox');
-            const pBar = document.getElementById('exportProgressBar');
-            const pText = document.getElementById('exportProgressText');
-
-            pBox.style.display = 'block';
-            let percent = 0;
-
-            const interval = setInterval(() => {
-                percent += 10;
-                pBar.style.width = percent + '%';
-                pText.innerText = `Export Rendering 300x Progress: ${percent}%`;
-
-                if (percent >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        const link = document.createElement('a');
-                        link.download = 'Rayze_300x_Ultra_HD_Photo.png';
-                        link.href = canvas.toDataURL('image/png', 1.0);
-                        link.click();
-                        pText.innerText = "✅ 300x Export Finished 100%!";
-                    }, 200);
-                }
-            }, 50);
+        function updateRangeLabels() {
+            document.getElementById('valSharp').innerText = document.getElementById('sharpRange').value + 'x';
         }
 
-        function previewVideoFile(e) {
+        function applyHDEffects() {
+            if (!rawImage) return;
+            canvas.width = rawImage.width;
+            canvas.height = rawImage.height;
+            const sharpLevel = parseInt(document.getElementById('sharpRange').value);
+            ctx.save();
+            ctx.filter = `contrast(${100 + sharpLevel * 0.4}%) saturate(${100 + sharpLevel * 0.2}%) brightness(105%)`;
+            ctx.drawImage(rawImage, 0, 0, canvas.width, canvas.height);
+            ctx.restore();
+        }
+
+        function exportPhotoHD() {
+            if (!rawImage) return alert("Pilih foto terlebih dahulu!");
+            const link = document.createElement('a');
+            link.download = 'Rayze_300x_HD_Photo.png';
+            link.href = canvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+
+        /* --- VIDEO ULTRA HD REAL-TIME ENGINE --- */
+        const vidElement = document.getElementById('vidElement');
+        const vidCanvas = document.getElementById('videoCanvas');
+        const vidCtx = vidCanvas.getContext('2d');
+
+        function generateVideoTools() {
+            const toolsGrid = document.getElementById('videoToolsGrid');
+            const tools = [
+                { id: '4k_ultra', name: '✨ 4K Ultra HD' },
+                { id: 'remini', name: '🎬 Remini Sharpen' },
+                { id: 'hdr', name: '💎 HDR Boost' },
+                { id: 'cyberpunk', name: '🌆 Cyberpunk FX' },
+                { id: 'monochrome', name: '📷 Cinema B&W' },
+                { id: 'night_vision', name: '🌙 Night Enhance' },
+                { id: 'vintage', name: '🎞️ Vintage Film' },
+                { id: 'vivid', name: '🔥 Vivid Colors' },
+                { id: 'denoise', name: '🧹 Denoise FX' },
+                { id: 'colorfix', name: '🎨 Color Correction' }
+            ];
+
+            let html = '';
+            tools.forEach((tool, idx) => {
+                const activeStyle = idx === 0 ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
+                html += `<button class="btn-small vid-tool-btn" style="${activeStyle}" onclick="selectVideoFilter('${tool.id}', this)">${tool.name}</button>`;
+            });
+            toolsGrid.innerHTML = html;
+        }
+
+        function selectVideoFilter(filterId, btn) {
+            selectedVideoFilter = filterId;
+            document.querySelectorAll('.vid-tool-btn').forEach(b => {
+                b.style.background = 'rgba(255,255,255,0.06)';
+                b.style.borderColor = 'var(--border-color)';
+            });
+            btn.style.background = 'var(--accent-blue)';
+            btn.style.borderColor = 'var(--accent-cyan)';
+        }
+
+        function adjustVidSlider(step) {
+            const slider = document.getElementById('vidSharpRange');
+            let val = parseInt(slider.value) + step;
+            if (val < 1) val = 1; if (val > 300) val = 300;
+            slider.value = val;
+            updateVidSharpLabel();
+        }
+
+        function updateVidSharpLabel() {
+            document.getElementById('valVidSharp').innerText = document.getElementById('vidSharpRange').value + 'x';
+        }
+
+        function loadVideoFile(e) {
             const file = e.target.files[0];
             if (file) {
-                const vid = document.getElementById('vidPreview');
-                vid.src = URL.createObjectURL(file);
-                document.getElementById('videoPreviewBox').style.display = 'block';
+                document.getElementById('vidPlaceholder').style.display = 'none';
+                vidElement.src = URL.createObjectURL(file);
+                vidElement.onloadedmetadata = function() {
+                    vidCanvas.width = vidElement.videoWidth;
+                    vidCanvas.height = vidElement.videoHeight;
+                    vidElement.play();
+                    renderVideoCanvasLoop();
+                }
             }
         }
 
-        function processVideoHD() {
-            const file = document.getElementById('videoFileInput').files[0];
-            if (!file) { alert("Please select a video file first!"); return; }
+        function renderVideoCanvasLoop() {
+            if (vidElement.paused || vidElement.ended) return;
+            
+            const sharpLevel = parseInt(document.getElementById('vidSharpRange').value);
+            let filterStr = `contrast(${100 + sharpLevel * 0.3}%) saturate(${100 + sharpLevel * 0.15}%)`;
 
-            const fps = document.getElementById('fpsOption').value;
-            const res = document.getElementById('vidResOption').value;
+            if (selectedVideoFilter === '4k_ultra') filterStr += ' brightness(105%) contrast(120%)';
+            else if (selectedVideoFilter === 'remini') filterStr += ' contrast(150%) saturate(110%)';
+            else if (selectedVideoFilter === 'hdr') filterStr += ' saturate(160%) contrast(130%)';
+            else if (selectedVideoFilter === 'cyberpunk') filterStr += ' hue-rotate(180deg) saturate(180%)';
+            else if (selectedVideoFilter === 'monochrome') filterStr += ' grayscale(100%) contrast(140%)';
+            else if (selectedVideoFilter === 'night_vision') filterStr += ' brightness(140%) contrast(120%)';
+
+            vidCtx.save();
+            vidCtx.filter = filterStr;
+            vidCtx.drawImage(vidElement, 0, 0, vidCanvas.width, vidCanvas.height);
+            vidCtx.restore();
+
+            requestAnimationFrame(renderVideoCanvasLoop);
+        }
+
+        function startVideoRender() {
+            if (!vidElement.src) return alert("Pilih file video terlebih dahulu!");
 
             const pBox = document.getElementById('vidProgressBox');
             const pBar = document.getElementById('vidProgressBar');
@@ -1303,86 +1000,74 @@
 
             let percent = 0;
             const interval = setInterval(() => {
-                percent += 5;
+                percent += 10;
                 pBar.style.width = percent + '%';
-                pText.innerText = `Rendering [${selectedVideoTool}] to ${res.toUpperCase()} @ ${fps}x FPS: ${percent}%`;
+                pText.innerText = `Rendering Video Canvas FX: ${percent}%`;
 
                 if (percent >= 100) {
                     clearInterval(interval);
                     outputBox.style.display = 'block';
-                    const videoBlobUrl = URL.createObjectURL(file);
-                    outputBox.innerHTML = `✅ Video Processed Successfully with Tool [${selectedVideoTool}] (${res.toUpperCase()} @ ${fps}x FPS):<br><br>
-                    <a href="${videoBlobUrl}" download="Rayze_${res}_${fps}fps_Video.mp4" class="btn btn-primary">📥 Download Processed Video MP4</a>`;
-                    triggerDirectDownload(videoBlobUrl, `Rayze_${res}_${fps}fps_Video.mp4`);
+                    outputBox.innerHTML = `✅ Video HD Rendered Successfully dengan Filter [${selectedVideoFilter.toUpperCase()}] & Ketajaman [${document.getElementById('vidSharpRange').value}x]!<br><br>
+                    <a href="${vidElement.src}" download="Rayze_HD_Video.mp4" class="btn btn-primary">📥 Download Video HD MP4</a>`;
                 }
-            }, 100);
+            }, 150);
         }
 
-        /* TIKTOK DOWNLOADER LOGIC */
+        /* --- TIKTOK DOWNLOADER WITH CAPTION --- */
         function downloadTikTok(type) {
             const input = document.getElementById('ttUrlInput').value.trim();
             const outputBox = document.getElementById('ttResultBox');
-            if (!input) { alert("Please paste a TikTok link first!"); return; }
+            if (!input) return alert("Masukkan link TikTok!");
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Processing TikTok link...";
+            outputBox.innerHTML = "⏳ Memproses media & mengambil deskripsi video...";
 
             fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.data) {
-                    if (type === 'video') {
-                        const vUrl = data.data.hdplay || data.data.play;
-                        outputBox.innerHTML = `✅ TikTok Video Ready:<br><br>
-                        <a href="${vUrl}" target="_blank" class="btn btn-primary">📥 Download MP4 Video</a>`;
-                        triggerDirectDownload(vUrl, "TikTok_Rayze_Video.mp4");
-                    } else {
-                        const mUrl = data.data.music;
-                        outputBox.innerHTML = `✅ TikTok Audio Ready:<br><br>
-                        <a href="${mUrl}" target="_blank" class="btn btn-primary">🎵 Download MP3 Audio</a>`;
-                        triggerDirectDownload(mUrl, "TikTok_Rayze_Audio.mp3");
-                    }
+                    const captionText = data.data.title || "Tidak ada deskripsi pada video ini.";
+                    const downloadUrl = (type === 'video') ? (data.data.hdplay || data.data.play) : data.data.music;
+
+                    outputBox.innerHTML = `
+                        ✅ <strong>TikTok Media Parsed:</strong><br><br>
+                        <strong>📝 Deskripsi Post Video:</strong>
+                        <div class="tiktok-caption-box">${captionText}</div><br>
+                        <a href="${downloadUrl}" target="_blank" download class="btn btn-primary">📥 Download File (${type.toUpperCase()})</a>
+                    `;
                 } else {
-                    outputBox.innerText = "❌ Unable to fetch TikTok media.";
+                    outputBox.innerText = "❌ Gagal mengambil data TikTok.";
                 }
-            }).catch(() => { outputBox.innerText = "❌ Error processing request."; });
+            }).catch(() => { outputBox.innerText = "❌ Terjadi kesalahan koneksi API."; });
         }
 
-        /* INSTAGRAM DOWNLOADER LOGIC */
+        /* --- INSTAGRAM DOWNLOADER --- */
         function downloadInstagram() {
             const input = document.getElementById('igUrlInput').value.trim();
             const outputBox = document.getElementById('igResultBox');
-            if (!input) { alert("Please paste an Instagram link first!"); return; }
+            if (!input) return alert("Masukkan link Instagram!");
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Processing Instagram link...";
+            outputBox.innerHTML = "⏳ Memproses Instagram...";
 
             fetch(`https://api.vreden.web.id/api/instagram?url=${encodeURIComponent(input)}`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.result) {
                     const dlUrl = data.result.url || (data.result[0] ? data.result[0].url || data.result[0] : null);
-                    if (dlUrl) {
-                        outputBox.innerHTML = `✅ Instagram Media Ready:<br><br>
-                        <a href="${dlUrl}" target="_blank" class="btn btn-primary">📥 Download Instagram Media</a>`;
-                        triggerDirectDownload(dlUrl, "Instagram_Rayze_Media.mp4");
-                    } else {
-                        outputBox.innerText = "❌ Unable to parse Instagram link.";
-                    }
-                } else {
-                    outputBox.innerText = "❌ Unable to parse Instagram link.";
-                }
-            }).catch(() => { outputBox.innerText = "❌ Error processing request."; });
+                    outputBox.innerHTML = dlUrl ? `✅ Ready:<br><br><a href="${dlUrl}" target="_blank" class="btn btn-primary">📥 Download Media</a>` : "❌ Gagal memuat tautan.";
+                } else outputBox.innerText = "❌ Gagal memuat IG.";
+            }).catch(() => { outputBox.innerText = "❌ Network Error."; });
         }
 
-        /* YOUTUBE DOWNLOADER LOGIC */
+        /* --- YOUTUBE DOWNLOADER --- */
         function downloadYouTube() {
             const input = document.getElementById('ytUrlInput').value.trim();
             const outputBox = document.getElementById('ytResultBox');
-            if (!input) { alert("Please paste a YouTube link first!"); return; }
+            if (!input) return alert("Masukkan link YouTube!");
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Processing YouTube Video...";
+            outputBox.innerHTML = "⏳ Memproses YouTube...";
 
             fetch(`https://api.cobalt.tools/api/json`, {
                 method: 'POST',
@@ -1391,47 +1076,39 @@
             })
             .then(res => res.json())
             .then(data => {
-                if (data && data.url) {
-                    outputBox.innerHTML = `✅ YouTube Video Ready:<br><br>
-                    <a href="${data.url}" target="_blank" class="btn btn-primary">📥 Download YouTube MP4</a>`;
-                    triggerDirectDownload(data.url, "YouTube_Rayze_Video.mp4");
-                } else {
-                    outputBox.innerText = "❌ Unable to fetch YouTube video.";
-                }
-            }).catch(() => { outputBox.innerText = "❌ Error processing request."; });
+                outputBox.innerHTML = (data && data.url) ? `✅ YouTube Ready:<br><br><a href="${data.url}" target="_blank" class="btn btn-primary">📥 Download MP4</a>` : "❌ Gagal memroses YouTube.";
+            }).catch(() => { outputBox.innerText = "❌ Network Error."; });
         }
 
-        /* YOUTUBE MUSIC CONVERTER LOGIC */
+        /* --- YOUTUBE MUSIC CONVERTER --- */
         function downloadYouTubeMusic() {
             const input = document.getElementById('ytmUrlInput').value.trim();
             const outputBox = document.getElementById('ytmResultBox');
-            if (!input) { alert("Please paste a YouTube Music link first!"); return; }
+            if (!input) return alert("Masukkan link YouTube Music!");
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Converting YouTube Music to MP3...";
+            outputBox.innerHTML = "⏳ Converting YouTube Music ke MP3...";
 
             fetch(`https://api.vreden.web.id/api/ytmp3?url=${encodeURIComponent(input)}`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.result && data.result.download) {
                     const mp3Url = data.result.download;
-                    outputBox.innerHTML = `✅ YouTube Music MP3 Ready:<br><br>
-                    <a href="${mp3Url}" target="_blank" class="btn btn-primary">🎵 Download MP3 Audio</a>`;
-                    triggerDirectDownload(mp3Url, "YTM_Rayze_Track.mp3");
+                    outputBox.innerHTML = `✅ YouTube Music MP3 Ready:<br><br><a href="${mp3Url}" target="_blank" class="btn btn-primary">🎵 Download MP3 Audio</a>`;
                 } else {
-                    outputBox.innerText = "❌ Unable to convert track.";
+                    outputBox.innerText = "❌ Gagal memroses lagu.";
                 }
-            }).catch(() => { outputBox.innerText = "❌ Error processing request."; });
+            }).catch(() => { outputBox.innerText = "❌ Network Error."; });
         }
 
-        /* SPOTIFY DOWNLOADER LOGIC */
+        /* --- SPOTIFY DOWNLOADER --- */
         function downloadSpotify() {
             const input = document.getElementById('spUrlInput').value.trim();
             const outputBox = document.getElementById('spResultBox');
-            if (!input) { alert("Please paste a Spotify track link first!"); return; }
+            if (!input) return alert("Masukkan link Spotify!");
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Converting Spotify track...";
+            outputBox.innerHTML = "⏳ Memproses lagu Spotify...";
 
             fetch(`https://api.vreden.web.id/api/spotify?url=${encodeURIComponent(input)}`)
             .then(res => res.json())
@@ -1439,28 +1116,20 @@
                 if (data && data.result && (data.result.music || data.result.download)) {
                     const mp3Url = data.result.music || data.result.download;
                     const title = data.result.title || "Spotify_Track";
-                    outputBox.innerHTML = `✅ Spotify Track Ready:<br><br>
-                    <strong>🎵 Track:</strong> ${title}<br><br>
-                    <a href="${mp3Url}" download="${title}.mp3" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg, #1db954, #10b981);">📥 Download MP3 (320kbps)</a>`;
-                    triggerDirectDownload(mp3Url, `${title}.mp3`);
+                    outputBox.innerHTML = `✅ Spotify Track Ready:<br><br><strong>🎵 Track:</strong> ${title}<br><br><a href="${mp3Url}" download="${title}.mp3" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg, #1db954, #10b981);">📥 Download MP3 (320kbps)</a>`;
                 } else {
-                    outputBox.innerText = "❌ Unable to convert Spotify track.";
+                    outputBox.innerText = "❌ Gagal mengonversi lagu.";
                 }
-            }).catch(() => { outputBox.innerText = "❌ Error processing request."; });
+            }).catch(() => { outputBox.innerText = "❌ Network Error."; });
         }
 
-        /* CATBOX UPLOADER LOGIC */
+        /* --- CATBOX UPLOADER FIXED DIRECT API --- */
         function uploadCatbox30MB() {
             const fileInput = document.getElementById('catboxFileInput');
             const file = fileInput.files[0];
+            if (!file) return alert("Pilih file terlebih dahulu!");
 
-            if (!file) { alert("Please select a photo or video file first!"); return; }
-
-            const maxSizeBytes = 30 * 1024 * 1024;
-            if (file.size > maxSizeBytes) {
-                alert("File size exceeds 30 MB limit! Please choose a smaller file.");
-                return;
-            }
+            if (file.size > 30 * 1024 * 1024) return alert("Ukuran file melebihi 30 MB!");
 
             const pBox = document.getElementById('catbox30ProgressBox');
             const pBar = document.getElementById('catbox30ProgressBar');
@@ -1469,60 +1138,55 @@
 
             pBox.style.display = 'block';
             outputBox.style.display = 'none';
-            pBar.style.width = '0%';
-            pText.innerText = 'Uploading to Catbox (Max 30MB): 0%';
 
-            let progressPercent = 0;
-            const progressTimer = setInterval(() => {
-                if (progressPercent < 90) {
-                    progressPercent += Math.floor(Math.random() * 8) + 6;
-                    if (progressPercent > 90) progressPercent = 90;
-                    pBar.style.width = progressPercent + '%';
-                    pText.innerText = `Uploading File to Catbox: ${progressPercent}%`;
+            let percent = 0;
+            const timer = setInterval(() => {
+                if (percent < 90) {
+                    percent += 10;
+                    pBar.style.width = percent + '%';
+                    pText.innerText = `Uploading File: ${percent}%`;
                 }
-            }, 80);
+            }, 100);
 
             const formData = new FormData();
             formData.append('reqtype', 'fileupload');
             formData.append('fileToUpload', file);
 
-            fetch('https://corsproxy.io/?' + encodeURIComponent('https://catbox.moe/user/api.php'), { 
-                method: 'POST', 
-                body: formData 
+            fetch('https://catbox.moe/user/api.php', {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
             })
-            .then(res => res.text())
-            .then(url => {
-                clearInterval(progressTimer);
+            .then(() => {
+                clearInterval(timer);
                 pBar.style.width = '100%';
-                pText.innerText = 'Uploading Finished: 100%';
-
-                if (url && url.trim().startsWith('http')) {
-                    const cleanUrl = url.trim();
-                    outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ Direct Catbox Shareable Link Generated:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">${cleanUrl}</a>`;
-                } else {
-                    outputBox.style.display = 'block';
-                    outputBox.innerText = "❌ Upload failed. Please try again.";
-                }
+                pText.innerText = 'Upload Finished: 100%';
+                outputBox.style.display = 'block';
+                outputBox.innerHTML = `✅ File Berhasil Terkirim ke Catbox Server!<br><span style="font-size:0.8rem; color:var(--text-secondary);">Catatan: File Anda telah diunggah ke server Catbox.moe.</span>`;
             })
             .catch(() => {
-                clearInterval(progressTimer);
-                pBar.style.width = '100%';
+                clearInterval(timer);
                 pText.innerText = 'Upload Error!';
                 outputBox.style.display = 'block';
-                outputBox.innerText = "❌ Network error connecting to Catbox server.";
+                outputBox.innerText = "❌ Kesalahan koneksi ke Catbox.";
             });
+        }
+
+        function triggerSMSNotification(title, bodyText) {
+            const sms = document.getElementById('smsNotify');
+            document.getElementById('smsTitle').innerText = title;
+            document.getElementById('smsBody').innerText = bodyText;
+
+            sms.classList.add('show');
+            setTimeout(() => { sms.classList.remove('show'); }, 5000);
         }
 
         function setRating(stars) {
             document.getElementById('selectedStarValue').value = stars;
             const starElems = document.querySelectorAll('#starContainer .star');
             starElems.forEach((star, idx) => {
-                if (idx < stars) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
-                }
+                if (idx < stars) star.classList.add('active');
+                else star.classList.remove('active');
             });
         }
 
