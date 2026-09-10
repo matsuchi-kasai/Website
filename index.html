@@ -42,7 +42,6 @@
             position: relative;
         }
 
-        /* BACKGROUND VIDEO TANPA SUARA/LAGU */
         #bg-video {
             position: fixed;
             top: 0;
@@ -393,7 +392,6 @@
             border: 1px solid var(--border-color);
         }
 
-        /* UKURAN HURUF TOOLS DIPERBESAR DAN TIDAK TERPOTONG */
         .btn-small {
             padding: 12px 14px;
             font-size: 0.9rem;
@@ -601,7 +599,6 @@
 </head>
 <body>
 
-    <!-- VIDEO BACKGROUND PERMANEN LOMPAT SUARA (MUTED) -->
     <video id="bg-video" autoplay loop playsinline muted preload="auto">
         <source src="https://files.catbox.moe/uhdl3i.mp4" type="video/mp4">
     </video>
@@ -728,8 +725,8 @@
         <section class="section" id="video-hd-studio">
             <div class="section-header">
                 <span class="section-tag">// 50+ REAL-TIME VIDEO CANVAS & ULTRA HD SHARPENING TOOLS</span>
-                <h2 class="section-title">Video 500x Ultra HD Studio Engine (50 Fitur Aktif & Nerap ke Export)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Semua efek filter, ketajaman 500x, flip terbalik, dan kecepatan ter-export sempurna ke file video!</p>
+                <h2 class="section-title">Video 500x Ultra HD Studio Engine (Anti Lag & Durasi Utuh)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Mendukung pemrosesan ringan anti ngefram untuk semua jenis HP!</p>
             </div>
 
             <div class="utility-box">
@@ -797,11 +794,14 @@
                             <div id="videoToolsGrid" class="btn-grid"></div>
                         </div>
 
-                        <button class="btn-action" onclick="exportRenderedVideo()">🎥 Export Rendered Video HD (Semua Efek Terpenerapkan)</button>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button class="btn-action" onclick="downloadOriginalDirectVideo()">⚡ Download Direct Video Original (Lancar & Anti Lag)</button>
+                            <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-purple), var(--accent-pink));" onclick="exportRenderedVideoOptimized()">🎥 Export Recorded Canvas HD (Low RAM Bitrate Mode)</button>
+                        </div>
 
                         <div id="vidProgressBox" class="progress-box">
                             <div class="progress-bar-bg"><div id="vidProgressBar" class="progress-bar-fill"></div></div>
-                            <div id="vidProgressText" class="progress-text">Recording Video Canvas FX: 0%</div>
+                            <div id="vidProgressText" class="progress-text">Processing: 0%</div>
                         </div>
 
                         <div id="vidOutputBox" class="link-output"></div>
@@ -994,6 +994,7 @@
         let isVidFlipH = false;
         let isVidFlipV = false;
         let isVidLooping = true;
+        let currentRawVideoFile = null;
 
         window.addEventListener('load', () => {
             initDefaultCanvas();
@@ -1193,12 +1194,13 @@
         function loadVideoFile(e) {
             const file = e.target.files[0];
             if (file) {
+                currentRawVideoFile = file;
                 document.getElementById('vidPlaceholder').style.display = 'none';
                 vidElement.src = URL.createObjectURL(file);
                 vidElement.loop = isVidLooping;
                 vidElement.onloadedmetadata = function() {
-                    vidCanvas.width = vidElement.videoWidth;
-                    vidCanvas.height = vidElement.videoHeight;
+                    vidCanvas.width = Math.min(vidElement.videoWidth, 1280);
+                    vidCanvas.height = Math.round(vidCanvas.width * (vidElement.videoHeight / vidElement.videoWidth));
                     changeVideoSpeed();
                     vidElement.play();
                     renderVideoCanvasLoop();
@@ -1215,24 +1217,36 @@
             return filterStr;
         }
 
-        function renderVideoCanvasLoop() {
+        let lastFrameTime = 0;
+        function renderVideoCanvasLoop(timestamp) {
             if (vidElement.paused || vidElement.ended) return;
             
-            const sharpLevel = parseInt(document.getElementById('vidSharpRange').value);
+            if (timestamp - lastFrameTime > 33) {
+                lastFrameTime = timestamp;
+                const sharpLevel = parseInt(document.getElementById('vidSharpRange').value);
 
-            vidCtx.save();
-            vidCtx.translate(isVidFlipH ? vidCanvas.width : 0, isVidFlipV ? vidCanvas.height : 0);
-            vidCtx.scale(isVidFlipH ? -1 : 1, isVidFlipV ? -1 : 1);
+                vidCtx.save();
+                vidCtx.translate(isVidFlipH ? vidCanvas.width : 0, isVidFlipV ? vidCanvas.height : 0);
+                vidCtx.scale(isVidFlipH ? -1 : 1, isVidFlipV ? -1 : 1);
 
-            vidCtx.filter = getVideoFilterString(sharpLevel);
-            vidCtx.drawImage(vidElement, 0, 0, vidCanvas.width, vidCanvas.height);
-            vidCtx.restore();
+                vidCtx.filter = getVideoFilterString(sharpLevel);
+                vidCtx.drawImage(vidElement, 0, 0, vidCanvas.width, vidCanvas.height);
+                vidCtx.restore();
+            }
 
             requestAnimationFrame(renderVideoCanvasLoop);
         }
 
-        /* --- EXPORT VIDEO REAL-TIME RENDER DENGAN SEMUA EFEK DITERAPKAN --- */
-        function exportRenderedVideo() {
+        function downloadOriginalDirectVideo() {
+            if (!vidElement.src) return alert("Pilih file video terlebih dahulu!");
+            const a = document.createElement('a');
+            a.href = vidElement.src;
+            a.download = 'Rayze_Original_FullDuration_Video.mp4';
+            a.click();
+        }
+
+        /* --- EXPORT RECORDED CANVAS LOW BITRATE (ANTI LAG & DURASI PENUH) --- */
+        function exportRenderedVideoOptimized() {
             if (!vidElement.src) return alert("Pilih file video terlebih dahulu!");
 
             const pBox = document.getElementById('vidProgressBox');
@@ -1246,10 +1260,10 @@
             vidElement.currentTime = 0;
             vidElement.play();
 
-            const stream = vidCanvas.captureStream(30);
+            const stream = vidCanvas.captureStream(25);
             let mediaRecorder;
             try {
-                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 2500000 });
             } catch(e) {
                 mediaRecorder = new MediaRecorder(stream);
             }
@@ -1262,27 +1276,27 @@
                 const recordedUrl = URL.createObjectURL(blob);
 
                 pBar.style.width = '100%';
-                pText.innerText = 'Render Finished 100%';
+                pText.innerText = 'Render Full Finished 100%';
 
                 outputBox.style.display = 'block';
-                outputBox.innerHTML = `✅ Video HD Berhasil Di-render Dengan Semua Efek (Ketajaman ${document.getElementById('vidSharpRange').value}x)!<br><br>
-                <a href="${recordedUrl}" download="Rayze_500x_Rendered_Video.webm" class="btn btn-primary">📥 Download Video HD Rendered (WebM/MP4)</a>`;
+                outputBox.innerHTML = `✅ Video HD Canvas Recorded Successfully!<br><br>
+                <a href="${recordedUrl}" download="Rayze_HD_Full_Render.webm" class="btn btn-primary">📥 Download Video Canvas Recorded (WebM)</a>`;
             };
 
-            mediaRecorder.start();
+            mediaRecorder.start(1000);
 
-            const duration = vidElement.duration || 10;
+            const duration = vidElement.duration || 20;
             let elapsed = 0;
 
             const timer = setInterval(() => {
                 elapsed += 0.5;
                 let percent = Math.min(Math.round((elapsed / duration) * 100), 99);
                 pBar.style.width = percent + '%';
-                pText.innerText = `Recording & Applying FX Canvas: ${percent}%`;
+                pText.innerText = `Recording Canvas FX (Low RAM Mode): ${percent}%`;
 
                 if (vidElement.ended || elapsed >= duration) {
                     clearInterval(timer);
-                    mediaRecorder.stop();
+                    if (mediaRecorder.state !== 'inactive') mediaRecorder.stop();
                 }
             }, 500);
         }
