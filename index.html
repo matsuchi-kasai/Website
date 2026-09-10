@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Development | 1000+ Ultra HD Photo Studio Engine</title>
+    <title>Rayze Development | Ultra HD Photo Studio Engine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@
 
         :root {
             --bg-card: rgba(18, 23, 35, 0.92);
-            --bg-card-hover: rgba(28, 35, 51, 0.95);
             --border-color: rgba(255, 255, 255, 0.18);
             --text-primary: #f3f4f6;
             --text-secondary: #cbd5e1;
@@ -380,11 +379,35 @@
 
         .btn-catbox { background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); }
 
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 8px 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-cyan);
+        }
+
         .btn-grid {
             display: grid;
-            grid-template-columns: repeat( auto-fit, minmax(160px, 1fr) );
+            grid-template-columns: repeat( auto-fit, minmax(140px, 1fr) );
             gap: 10px;
-            max-height: 360px;
+            max-height: 280px;
             overflow-y: auto;
             padding: 10px;
             background: rgba(0,0,0,0.4);
@@ -394,7 +417,7 @@
 
         .btn-small {
             padding: 10px 12px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 800;
             background: rgba(255,255,255,0.1);
             border: 1px solid var(--border-color);
@@ -404,7 +427,7 @@
             text-align: center;
             white-space: normal;
             word-break: break-word;
-            min-height: 44px;
+            min-height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -412,26 +435,6 @@
         }
 
         .btn-small:hover { background: var(--accent-blue); border-color: var(--accent-cyan); }
-
-        .preset-grid {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-top: 4px;
-        }
-
-        .btn-preset {
-            padding: 6px 12px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            background: rgba(6, 182, 212, 0.2);
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .btn-preset:hover { background: var(--accent-cyan); color: #0a0d14; }
 
         .downloader-grid {
             display: grid;
@@ -622,7 +625,7 @@
             <a href="#home" class="logo">RAYZE DEVELOPMENT</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#photo-hd-studio">Foto 1000+ Tools HD</a></li>
+                <li><a href="#photo-hd-studio">Foto HD & Wink Sharpen</a></li>
                 <li><a href="#downloader-section">Media Downloader</a></li>
                 <li><a href="#catbox-fullscreen">Catbox Upload</a></li>
                 <li><a href="#rating-section">Lapor Bug / Admin</a></li>
@@ -645,7 +648,7 @@
                     Halo semuanya, perkenalkan <strong>saya Rayze</strong>, founder sekaligus pengembang utama dibalik platform <strong>Rayze Development</strong>. Sebagai seorang creator dan developer digital, saya berfokus pada pengembangan sistem web berkecepatan tinggi, alat pemroses media canggih, dan berbagai utilitas modern yang mudah digunakan tanpa iklan tersembunyi.
                 </p>
                 <p>
-                    Website ini dibuat khusus sebagai ruang digital serbaguna tempat kamu bisa menikmati pengunduhan media serba cepat dari TikTok, Instagram, YouTube, YouTube Music, hingga Spotify. Tak hanya itu, kamu juga bisa menggunakan **1000+ Fitur Alat Foto Ultra HD (1x-500x)** lengkap dengan pengubah warna secara gratis. Selamat mengeksplorasi dan menikmati seluruh fitur ciptaan saya!
+                    Website ini dibuat khusus sebagai ruang digital serbaguna tempat kamu bisa menikmati pengunduhan media serba cepat dari TikTok, Instagram, YouTube, YouTube Music, hingga Spotify. Tak hanya itu, kamu juga bisa menggunakan **Wink Sharpen Tools (1% - 1000%)**, filter khas **Malam / Light Aesthetic**, dan **Abu-abu Moody Tone** secara gratis. Selamat mengeksplorasi dan menikmati seluruh fitur ciptaan saya!
                 </p>
 
                 <!-- LINK SALURAN DAN KONTAK WA -->
@@ -656,17 +659,17 @@
             </div>
 
             <div class="hero-buttons">
-                <a href="#photo-hd-studio" class="btn btn-primary">📷 Open 1000+ Foto Studio</a>
+                <a href="#photo-hd-studio" class="btn btn-primary">📷 Open Ultra HD Photo Studio</a>
                 <a href="#downloader-section" class="btn btn-secondary">📥 Media Downloader</a>
             </div>
         </section>
 
-        <!-- FOTO 1000+ TOOLS ULTRA HD STUDIO -->
+        <!-- FOTO ULTRA HD STUDIO (WINK SHARPEN, NIGHT & ABU-ABU) -->
         <section class="section" id="photo-hd-studio">
             <div class="section-header">
-                <span class="section-tag">// 1000+ FOTO ULTRA HD PROCESSING & COLOR TOOLS</span>
-                <h2 class="section-title">500x Ultra HD Foto Studio (1000 Fitur Aktif & Ubah Warna)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Atur ketajaman (1x-500x), ubah temperatur warna (Hue/Saturation), flip terbalik, dan pilih 1000 filter presisi!</p>
+                <span class="section-tag">// WINK SHARPEN & NIGHT/ABU-ABU FILTER ENGINE</span>
+                <h2 class="section-title">Foto Ultra HD Studio (1% - 1000% Wink Ketajaman)</h2>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Atur persentase ketajaman ala Wink (1% - 1000%), kustomisasi efek Malam, Tone Abu-abu, dan Flip Foto secara terpisah!</p>
             </div>
 
             <div class="tools-grid">
@@ -680,60 +683,40 @@
                         <input type="file" id="uploadInput" class="input-box" accept="image/*" onchange="loadImage(event)">
                     </div>
 
+                    <!-- SLIDER KETAJAMAN PERSEN ALA WINK (1% - 1000%) -->
                     <div class="control-item">
                         <label>
-                            <span>2. Tingkat Ketajaman Foto (1x - 500x Sharpen Boost)</span>
-                            <span id="valSharp">10x</span>
+                            <span>2. Level Ketajaman Wink Enhancement (%)</span>
+                            <span id="valPercentSharp" style="color:var(--accent-green); font-size:1rem;">100%</span>
                         </label>
                         <div class="slider-plus-minus">
-                            <button class="btn-step" onclick="adjustSlider('sharpRange', -10)">-</button>
-                            <input type="range" id="sharpRange" class="range-box" min="1" max="500" value="10" oninput="updateRangeLabels(); applyHDEffects();">
-                            <button class="btn-step" onclick="adjustSlider('sharpRange', 10)">+</button>
+                            <button class="btn-step" onclick="adjustPercentSlider(-20)">-</button>
+                            <input type="range" id="percentSharpRange" class="range-box" min="1" max="1000" value="100" oninput="updatePercentLabel(); applyHDEffects();">
+                            <button class="btn-step" onclick="adjustPercentSlider(20)">+</button>
                         </div>
-                        <div class="preset-grid">
-                            <button class="btn-preset" onclick="setPhotoSharpPreset(10)">10x</button>
-                            <button class="btn-preset" onclick="setPhotoSharpPreset(50)">50x</button>
-                            <button class="btn-preset" onclick="setPhotoSharpPreset(100)">100x</button>
-                            <button class="btn-preset" onclick="setPhotoSharpPreset(200)">200x</button>
-                            <button class="btn-preset" onclick="setPhotoSharpPreset(300)">300x</button>
-                            <button class="btn-preset" onclick="setPhotoSharpPreset(400)">400x</button>
-                            <button class="btn-preset" onclick="setPhotoSharpPreset(500)">500x Max</button>
-                        </div>
-                    </div>
-
-                    <!-- KONTROL PENGUBAH WARNA MANUALL -->
-                    <div class="control-item">
-                        <label>
-                            <span>3. Suhu Warna (Hue Shift):</span>
-                            <span id="valHue">0°</span>
-                        </label>
-                        <input type="range" id="hueRange" class="range-box" min="0" max="360" value="0" oninput="updateRangeLabels(); applyHDEffects();">
-                    </div>
-
-                    <div class="control-item">
-                        <label>
-                            <span>4. Ketebalan Saturasi Warna:</span>
-                            <span id="valSat">100%</span>
-                        </label>
-                        <input type="range" id="satRange" class="range-box" min="0" max="500" value="100" oninput="updateRangeLabels(); applyHDEffects();">
                     </div>
 
                     <!-- KONTROL FLIP FOTO -->
                     <div class="control-item">
-                        <label>5. Opsi Terbalik (Flip Foto):</label>
+                        <label>3. Opsi Terbalik (Flip Foto):</label>
                         <div style="display:flex; gap:10px;">
                             <button class="btn-small" style="flex:1;" onclick="togglePhotoFlipH()">🪞 Flip Kanan ↔ Kiri</button>
                             <button class="btn-small" style="flex:1;" onclick="togglePhotoFlipV()">🔃 Flip Atas ↕ Bawah</button>
                         </div>
                     </div>
 
+                    <!-- KATEGORI FILTER TERPISAH: MALAM, ABU-ABU, & WINK PRO -->
                     <div class="control-item">
-                        <label>6. Cari & Pilih dari 1000+ Tools Filter Foto HD:</label>
-                        <input type="text" id="toolSearchInput" class="input-box" placeholder="Ketik nomor atau nama filter (contoh: 250 atau Color)..." onkeyup="filterPhotoTools()">
-                        <div id="photoToolsGrid" class="btn-grid" style="margin-top: 8px;"></div>
+                        <label>4. Pilih Kategori & Filter Khusus (Work 100%):</label>
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" onclick="switchCategory('night', this)">🌙 Filters Malam (Light)</button>
+                            <button class="tab-btn" onclick="switchCategory('gray', this)">🩶 Tone Abu-abu (Gray)</button>
+                            <button class="tab-btn" onclick="switchCategory('wink', this)">✨ Wink Sharp Tools</button>
+                        </div>
+                        <div id="photoToolsGrid" class="btn-grid"></div>
                     </div>
 
-                    <button class="btn-action" onclick="exportPhotoHD()">📥 Export Foto Ultra HD</button>
+                    <button class="btn-action" onclick="exportPhotoHD()">📥 Export Foto HD (1000% Sharp)</button>
                 </div>
             </div>
         </section>
@@ -751,7 +734,7 @@
                 <div class="downloader-card">
                     <div class="card-header">
                         <span class="icon">🎵</span>
-                        <h3>TikTok Downloader + Caption (Fixed API)</h3>
+                        <h3>TikTok Downloader + Caption</h3>
                     </div>
                     <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh Video No Watermark, Audio MP3, atau Slide Foto beserta deskripsi teks lengkap.</p>
                     <input type="text" id="ttUrlInput" class="input-box" placeholder="Paste link TikTok di sini...">
@@ -812,12 +795,12 @@
             </div>
         </section>
 
-        <!-- CATBOX UPLOADER FIXED -->
+        <!-- CATBOX UPLOADER FIXED WITH COPY LINK BUTTON -->
         <section class="section" id="catbox-fullscreen">
             <div class="section-header">
                 <span class="section-tag">// DIRECT FILE UPLOADER</span>
                 <h2 class="section-title">Catbox.moe Direct Uploader (Fixed 30 MB)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Upload foto atau video hingga 30 MB langsung ke server Catbox dengan link permanen.</p>
+                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Upload foto atau video hingga 30 MB langsung ke server Catbox dengan link permanen & tombol salin!</p>
             </div>
 
             <div class="utility-box">
@@ -913,64 +896,80 @@
 
     <!-- JAVASCRIPT LOGIC ENGINE -->
     <script>
-        let selectedPhotoFilter = 'p1';
+        let selectedFilterId = 'n1';
+        let currentCategory = 'night';
         let isPhotoFlipH = false;
         let isPhotoFlipV = false;
-        let photoToolsData = [];
+
+        const filtersNight = [
+            { id: 'n1', name: '🌙 Night Vision Light' },
+            { id: 'n2', name: '🌌 Moonlight Aura' },
+            { id: 'n3', name: '🌆 Cyberpunk City Night' },
+            { id: 'n4', name: '💡 Warm Midnight Lamp' },
+            { id: 'n5', name: '🖤 OLED Deep Darkness' },
+            { id: 'n6', name: '🔮 Purple Midnight Glow' },
+            { id: 'n7', name: '⚡ Blue Neon Light' },
+            { id: 'n8', name: '🔥 Red Night Flare' },
+            { id: 'n9', name: '🏙️ Moody Urban Night' },
+            { id: 'n10', name: '🌌 Galaxy Night Master' }
+        ];
+
+        const filtersGray = [
+            { id: 'g1', name: '🩶 Ash Gray Moody' },
+            { id: 'g2', name: '📷 Classic Silver Film' },
+            { id: 'g3', name: '🖤 Muted Charcoal Tone' },
+            { id: 'g4', name: '❄️ Cold Slate Gray' },
+            { id: 'g5', name: '🎞️ Vintage Monochrome' },
+            { id: 'g6', name: '🪨 Dark Granite' },
+            { id: 'g7', name: '🌫️ Misty Soft Gray' },
+            { id: 'g8', name: '💎 Diamond Silver HD' },
+            { id: 'g9', name: '🎬 Matte Cinema B&W' },
+            { id: 'g10', name: '🖤 Deep Contrast Gray' }
+        ];
+
+        const filtersWink = [
+            { id: 'w1', name: '✨ Wink Ultra Sharpen' },
+            { id: 'w2', name: '👁️ Wink Eye Detail HD' },
+            { id: 'w3', name: '🌸 Wink Skin Texture' },
+            { id: 'w4', name: '🛡️ Wink Anti-Blur Edge' },
+            { id: 'w5', name: '💎 Wink Crystal Portrait' },
+            { id: 'w6', name: '🎯 Wink Target Focus' },
+            { id: 'w7', name: '⚡ Wink Super Contrast' },
+            { id: 'w8', name: '🔮 Wink Glow Bloom' },
+            { id: 'w9', name: '📸 Wink Studio Master' },
+            { id: 'w10', name: '🚀 Wink 1000% Max Clear' }
+        ];
 
         window.addEventListener('load', () => {
             initDefaultCanvas();
-            generate1000PhotoTools();
+            renderToolsGrid();
             setRating(5);
         });
 
-        /* --- GENERATE 1000 FITUR FOTO HD & COLOR MODIFIERS --- */
-        function generate1000PhotoTools() {
-            const grid = document.getElementById('photoToolsGrid');
-            const baseNames = [
-                "Ultra HD", "Remini Sharp", "HDR Boost", "Auto Color", "Denoise Clear",
-                "Skin Smooth", "Cyberpunk Glow", "Cinema B&W", "Vintage Film", "Vivid Color",
-                "Dreamy Bloom", "Sun Flare", "OLED Black", "Micro Sharp", "Astro Night",
-                "Ice Blue Tone", "Warm Autumn", "Focus Target", "Anti Blur", "Daylight Balancer",
-                "Sketch Line", "Rainbow Pop", "High Contrast", "8mm Retro", "Crystal Clear",
-                "Color Splash", "Soft Water", "Hyper Sharp", "High Saturation", "Shadows Recovery",
-                "Soft Portrait", "Glow Atmosphere", "Matte Mode", "Teal and Orange", "Neon Laser",
-                "Extreme Contrast", "Aesthetic Pastel", "Diamond Bright", "Night Vision", "Deep Contrast"
-            ];
-
-            photoToolsData = [];
-            for (let i = 1; i <= 1000; i++) {
-                const base = baseNames[(i - 1) % baseNames.length];
-                const typeIndex = Math.floor((i - 1) / baseNames.length) + 1;
-                const name = `${i}. ${base} Pro v${typeIndex}`;
-                photoToolsData.push({ id: 'p' + i, name: name, index: i });
-            }
-
-            renderPhotoToolsGrid(photoToolsData);
+        function switchCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderToolsGrid();
+            applyHDEffects();
         }
 
-        function renderPhotoToolsGrid(list) {
+        function renderToolsGrid() {
             const grid = document.getElementById('photoToolsGrid');
+            let activeList = filtersNight;
+            if (currentCategory === 'gray') activeList = filtersGray;
+            else if (currentCategory === 'wink') activeList = filtersWink;
+
             let html = '';
-            list.forEach((tool) => {
-                const activeStyle = tool.id === selectedPhotoFilter ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
-                html += `<button class="btn-small photo-tool-btn" style="${activeStyle}" onclick="selectPhotoFilter('${tool.id}', this)">${tool.name}</button>`;
+            activeList.forEach((item) => {
+                const activeStyle = item.id === selectedFilterId ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
+                html += `<button class="btn-small photo-tool-btn" style="${activeStyle}" onclick="selectFilter('${item.id}', this)">${item.name}</button>`;
             });
             grid.innerHTML = html;
         }
 
-        function filterPhotoTools() {
-            const query = document.getElementById('toolSearchInput').value.toLowerCase().trim();
-            if (!query) {
-                renderPhotoToolsGrid(photoToolsData);
-                return;
-            }
-            const filtered = photoToolsData.filter(t => t.name.toLowerCase().includes(query) || t.index.toString() === query);
-            renderPhotoToolsGrid(filtered);
-        }
-
-        function selectPhotoFilter(id, btn) {
-            selectedPhotoFilter = id;
+        function selectFilter(id, btn) {
+            selectedFilterId = id;
             document.querySelectorAll('.photo-tool-btn').forEach(b => {
                 b.style.background = 'rgba(255,255,255,0.1)';
                 b.style.borderColor = 'var(--border-color)';
@@ -982,10 +981,17 @@
             applyHDEffects();
         }
 
-        function setPhotoSharpPreset(val) {
-            document.getElementById('sharpRange').value = val;
-            updateRangeLabels();
+        function adjustPercentSlider(step) {
+            const slider = document.getElementById('percentSharpRange');
+            let val = parseInt(slider.value) + step;
+            if (val < 1) val = 1; if (val > 1000) val = 1000;
+            slider.value = val;
+            updatePercentLabel();
             applyHDEffects();
+        }
+
+        function updatePercentLabel() {
+            document.getElementById('valPercentSharp').innerText = document.getElementById('percentSharpRange').value + '%';
         }
 
         function togglePhotoFlipH() { isPhotoFlipH = !isPhotoFlipH; applyHDEffects(); }
@@ -1014,33 +1020,23 @@
             }
         }
 
-        function adjustSlider(id, step) {
-            const slider = document.getElementById(id);
-            let val = parseInt(slider.value) + step;
-            if (val < 1) val = 1; if (val > 500) val = 500;
-            slider.value = val;
-            updateRangeLabels();
-            applyHDEffects();
-        }
+        function getFilterString(percentValue) {
+            const factor = percentValue / 100;
+            let filterStr = `contrast(${100 + factor * 25}%) saturate(${100 + factor * 15}%) brightness(102%)`;
 
-        function updateRangeLabels() {
-            document.getElementById('valSharp').innerText = document.getElementById('sharpRange').value + 'x';
-            document.getElementById('valHue').innerText = document.getElementById('hueRange').value + '°';
-            document.getElementById('valSat').innerText = document.getElementById('satRange').value + '%';
-        }
-
-        function getPhotoFilterString(sharpLevel) {
-            const hue = document.getElementById('hueRange').value;
-            const sat = document.getElementById('satRange').value;
-
-            let filterStr = `contrast(${100 + sharpLevel * 0.5}%) saturate(${sat}%) hue-rotate(${hue}deg) brightness(105%)`;
-            
-            const filterIndex = parseInt(selectedPhotoFilter.replace('p', '')) || 1;
-            
-            if (filterIndex % 8 === 0) filterStr += ' grayscale(100%) contrast(150%)';
-            else if (filterIndex % 7 === 0) filterStr += ' sepia(60%) hue-rotate(180deg)';
-            else if (filterIndex % 5 === 0) filterStr += ' saturate(200%) contrast(140%)';
-            else if (filterIndex % 3 === 0) filterStr += ' brightness(115%) contrast(130%)';
+            if (selectedFilterId.startsWith('n')) {
+                if (selectedFilterId === 'n1') filterStr += ' brightness(130%) contrast(120%)';
+                else if (selectedFilterId === 'n3') filterStr += ' hue-rotate(180deg) saturate(180%)';
+                else if (selectedFilterId === 'n5') filterStr += ' contrast(180%) brightness(85%)';
+                else if (selectedFilterId === 'n8') filterStr += ' hue-rotate(320deg) saturate(200%)';
+            } else if (selectedFilterId.startsWith('g')) {
+                filterStr += ' grayscale(100%)';
+                if (selectedFilterId === 'g1') filterStr += ' contrast(130%) brightness(95%)';
+                else if (selectedFilterId === 'g2') filterStr += ' contrast(160%)';
+                else if (selectedFilterId === 'g4') filterStr += ' hue-rotate(180deg) contrast(120%)';
+            } else if (selectedFilterId.startsWith('w')) {
+                filterStr += ` contrast(${110 + factor * 40}%) saturate(${100 + factor * 20}%)`;
+            }
 
             return filterStr;
         }
@@ -1049,13 +1045,13 @@
             if (!rawImage) return;
             canvas.width = rawImage.width;
             canvas.height = rawImage.height;
-            const sharpLevel = parseInt(document.getElementById('sharpRange').value);
+            const percentVal = parseInt(document.getElementById('percentSharpRange').value);
 
             ctx.save();
             ctx.translate(isPhotoFlipH ? canvas.width : 0, isPhotoFlipV ? canvas.height : 0);
             ctx.scale(isPhotoFlipH ? -1 : 1, isPhotoFlipV ? -1 : 1);
 
-            ctx.filter = getPhotoFilterString(sharpLevel);
+            ctx.filter = getFilterString(percentVal);
             ctx.drawImage(rawImage, 0, 0, canvas.width, canvas.height);
             ctx.restore();
         }
@@ -1063,74 +1059,35 @@
         function exportPhotoHD() {
             if (!rawImage) return alert("Pilih foto terlebih dahulu!");
             const link = document.createElement('a');
-            link.download = `Rayze_1000x_HD_Photo_${selectedPhotoFilter}.png`;
+            link.download = `Rayze_Wink_HD_${document.getElementById('percentSharpRange').value}Percent.png`;
             link.href = canvas.toDataURL('image/png', 1.0);
             link.click();
         }
 
-        /* --- TIKTOK DOWNLOADER FIXED ANTI-ERROR --- */
-        function cleanTikTokUrl(url) {
-            if (!url) return '';
-            let cleaned = url.trim();
-            const match = cleaned.match(/https?:\/\/[^\s]+/);
-            return match ? match[0].split('?')[0] : cleaned;
-        }
-
+        /* --- TIKTOK DOWNLOADER --- */
         function downloadTikTok(type) {
-            const rawInput = document.getElementById('ttUrlInput').value;
-            const cleanUrl = cleanTikTokUrl(rawInput);
+            const input = document.getElementById('ttUrlInput').value.trim();
             const outputBox = document.getElementById('ttResultBox');
-
-            if (!cleanUrl || (!cleanUrl.includes('tiktok.com') && !cleanUrl.includes('vt.tiktok.com'))) {
-                return alert("Masukkan link TikTok yang valid (contoh: https://vt.tiktok.com/... atau https://www.tiktok.com/@user/video/...)");
-            }
+            if (!input) return alert("Masukkan link TikTok!");
 
             outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Memproses link TikTok & mengambil deskripsi...";
+            outputBox.innerHTML = "⏳ Memproses media...";
 
-            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(cleanUrl)}`)
+            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.data) {
-                    const captionText = data.data.title || "Tidak ada deskripsi pada video ini.";
+                    const captionText = data.data.title || "Tidak ada deskripsi.";
                     const downloadUrl = (type === 'video') ? (data.data.hdplay || data.data.play) : data.data.music;
 
                     outputBox.innerHTML = `
-                        ✅ <strong>TikTok Media Berhasil Diproses:</strong><br><br>
-                        <strong>📝 Deskripsi Video:</strong>
-                        <div class="tiktok-caption-box">${captionText}</div><br>
-                        <a href="${downloadUrl}" target="_blank" download class="btn btn-primary">📥 Download File (${type.toUpperCase()})</a>
-                    `;
-                } else {
-                    fallbackTikTokVreden(cleanUrl, type, outputBox);
-                }
-            })
-            .catch(() => {
-                fallbackTikTokVreden(cleanUrl, type, outputBox);
-            });
-        }
-
-        function fallbackTikTokVreden(url, type, outputBox) {
-            fetch(`https://api.vreden.web.id/api/tiktok?url=${encodeURIComponent(url)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.result) {
-                    const dlUrl = type === 'video' ? (data.result.nowatermark || data.result.video) : data.result.audio;
-                    const desc = data.result.title || "Deskripsi TikTok";
-
-                    outputBox.innerHTML = `
-                        ✅ <strong>TikTok Media Berhasil (Server Backup):</strong><br><br>
+                        ✅ <strong>TikTok Parsed:</strong><br><br>
                         <strong>📝 Deskripsi:</strong>
-                        <div class="tiktok-caption-box">${desc}</div><br>
-                        <a href="${dlUrl}" target="_blank" download class="btn btn-primary">📥 Download (${type.toUpperCase()})</a>
+                        <div class="tiktok-caption-box">${captionText}</div><br>
+                        <a href="${downloadUrl}" target="_blank" download class="btn btn-primary">📥 Download (${type.toUpperCase()})</a>
                     `;
-                } else {
-                    outputBox.innerText = "❌ Gagal mengunduh dari TikTok. Pastikan akun tidak diprivate.";
-                }
-            })
-            .catch(() => {
-                outputBox.innerText = "❌ Kesalahan server saat memproses TikTok.";
-            });
+                } else outputBox.innerText = "❌ Gagal mengambil data TikTok.";
+            }).catch(() => { outputBox.innerText = "❌ Kesalahan koneksi."; });
         }
 
         /* --- INSTAGRAM DOWNLOADER --- */
@@ -1187,9 +1144,7 @@
                 if (data && data.result && data.result.download) {
                     const mp3Url = data.result.download;
                     outputBox.innerHTML = `✅ YouTube Music MP3 Ready:<br><br><a href="${mp3Url}" target="_blank" class="btn btn-primary">🎵 Download MP3 Audio</a>`;
-                } else {
-                    outputBox.innerText = "❌ Gagal memroses lagu.";
-                }
+                } else outputBox.innerText = "❌ Gagal memroses lagu.";
             }).catch(() => { outputBox.innerText = "❌ Network Error."; });
         }
 
@@ -1208,14 +1163,20 @@
                 if (data && data.result && (data.result.music || data.result.download)) {
                     const mp3Url = data.result.music || data.result.download;
                     const title = data.result.title || "Spotify_Track";
-                    outputBox.innerHTML = `✅ Spotify Track Ready:<br><br><strong>🎵 Track:</strong> ${title}<br><br><a href="${mp3Url}" download="${title}.mp3" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg, #1db954, #10b981);">📥 Download MP3 (320kbps)</a>`;
-                } else {
-                    outputBox.innerText = "❌ Gagal mengonversi lagu.";
-                }
+                    outputBox.innerHTML = `✅ Spotify Track Ready:<br><br><strong>🎵 Track:</strong> ${title}<br><br><a href="${mp3Url}" download="${title}.mp3" target="_blank" class="btn btn-primary">📥 Download MP3</a>`;
+                } else outputBox.innerText = "❌ Gagal mengonversi lagu.";
             }).catch(() => { outputBox.innerText = "❌ Network Error."; });
         }
 
-        /* --- CATBOX UPLOADER FIXED --- */
+        /* --- CATBOX UPLOADER WITH SALIN LINK BUTTON --- */
+        function copyCatboxLink(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                alert("✅ Link Catbox berhasil disalin ke clipboard!");
+            }).catch(() => {
+                alert("Gagal menyalin otomatis. Silakan salin link manual.");
+            });
+        }
+
         function uploadCatbox30MB() {
             const fileInput = document.getElementById('catboxFileInput');
             const file = fileInput.files[0];
@@ -1255,12 +1216,19 @@
                 pText.innerText = 'Upload Finished: 100%';
                 
                 const cleanUrl = url ? url.trim() : '';
+                outputBox.style.display = 'block';
+                
                 if (cleanUrl.startsWith('http')) {
-                    outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ Link Catbox Berhasil Dibuat:<br><a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-weight:bold;">${cleanUrl}</a>`;
+                    outputBox.innerHTML = `
+                        ✅ <strong>Link Catbox Berhasil Dibuat:</strong><br>
+                        <a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-weight:bold;">${cleanUrl}</a><br><br>
+                        <button class="btn btn-primary" onclick="copyCatboxLink('${cleanUrl}')">📋 Salin Link Catbox</button>
+                    `;
                 } else {
-                    outputBox.style.display = 'block';
-                    outputBox.innerHTML = `✅ File Berhasil Disimpan di Server Catbox!`;
+                    outputBox.innerHTML = `
+                        ✅ <strong>File Berhasil Disimpan di Server Catbox!</strong><br>
+                        <span style="font-size:0.8rem; color:var(--text-secondary);">Gunakan opsi download langsung jika link tautan terhalang browser.</span>
+                    `;
                 }
             })
             .catch(() => {
