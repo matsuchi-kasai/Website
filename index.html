@@ -1,1263 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ｒａｙｚｅ Ｕｌｔｒａ HDR | 5000+ Photo Studio Engine</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-
+    <title>Rayze Animation AI</title>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        :root {
-            --bg-card: rgba(18, 23, 35, 0.92);
-            --border-color: rgba(255, 255, 255, 0.18);
-            --text-primary: #f3f4f6;
-            --text-secondary: #cbd5e1;
-            --accent-blue: #3b82f6;
-            --accent-cyan: #06b6d4;
-            --accent-green: #10b981;
-            --accent-purple: #a855f7;
-            --accent-pink: #ec4899;
-            --accent-gold: #f59e0b;
-            --accent-red: #ef4444;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #0a0d14;
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            position: relative;
-        }
-
-        #bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
-            filter: brightness(0.65) contrast(1.1);
-            transform: translateZ(0);
-        }
-
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(10, 13, 20, 0.55);
-            z-index: -1;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        .top-warning-banner {
-            background: linear-gradient(90deg, #dc2626, #b91c1c, #dc2626);
+            /* Background Image yang kamu request */
+            background-image: url('https://files.catbox.moe/90stkq.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             color: #ffffff;
-            font-weight: 800;
-            font-size: 0.85rem;
-            text-align: center;
-            padding: 12px 15px;
-            letter-spacing: 0.5px;
-            position: relative;
-            z-index: 10001;
-            text-transform: uppercase;
         }
 
-        .sms-notification {
-            position: fixed;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Container Efek Glassmorphism */
+        .container {
+            background: rgba(10, 10, 10, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 40px 30px;
             width: 90%;
             max-width: 420px;
-            background: rgba(18, 23, 35, 0.98);
-            border: 1px solid var(--accent-green);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            border-radius: 12px;
-            padding: 12px 16px;
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin: 30px 0;
         }
 
-        .sms-notification.show { top: 20px; }
-
-        .sms-icon {
-            font-size: 1.5rem;
-            background: rgba(16, 185, 129, 0.2);
-            width: 40px;
-            height: 40px;
+        .profile-img {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border: 3px solid #fff;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
-        .sms-content h5 { font-size: 0.85rem; color: var(--accent-green); }
-        .sms-content p { font-size: 0.78rem; color: var(--text-secondary); }
-
-        .container {
-            width: 92%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 15px 0;
-        }
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(10, 13, 20, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 5px;
             letter-spacing: 1px;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 16px;
-            list-style: none;
+        p {
+            font-size: 14px;
+            color: #d1d1d1;
+            margin-bottom: 30px;
         }
 
-        .nav-links a {
-            color: var(--text-secondary);
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: color 0.1s ease;
-        }
-
-        .nav-links a:hover { color: var(--accent-cyan); }
-
-        .hero {
-            padding: 40px 0 30px 0;
+        /* Styling Tombol Link */
+        .links-container {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            border-bottom: 1px solid var(--border-color);
+            gap: 15px;
         }
 
-        .status-badge {
-            display: inline-flex;
+        .link-btn {
+            display: flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: var(--accent-green);
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.82rem;
+            justify-content: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: white;
             font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
-        }
-
-        .hero h1 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 12px;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .intro-box {
-            background: rgba(18, 23, 35, 0.95);
-            border: 1px solid var(--accent-cyan);
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            width: 100%;
-        }
-
-        .intro-box h3 {
-            color: var(--accent-cyan);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .intro-box p {
-            color: var(--text-primary);
-            font-size: 0.92rem;
-            line-height: 1.7;
-            margin-bottom: 10px;
-        }
-
-        .contact-channel-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn-wa {
-            background: #25d366;
-            color: white;
-            font-weight: 700;
-            padding: 10px 18px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.88rem;
-        }
-
-        .btn-wa-channel {
-            background: #128c7e;
-            color: white;
-            font-weight: 700;
-            padding: 10px 18px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.88rem;
-        }
-
-        .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
-
-        .btn {
-            padding: 10px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.88rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border: none;
-            text-align: center;
-            justify-content: center;
-        }
-
-        .btn-primary { background: linear-gradient(135deg, var(--accent-blue), #2563eb); color: white; }
-        .btn-secondary { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); }
-
-        .section { padding: 40px 0; border-bottom: 1px solid var(--border-color); }
-        .section-header { margin-bottom: 25px; }
-
-        .section-tag {
-            color: var(--accent-cyan);
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        .section-title { font-size: 1.8rem; font-weight: 700; }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 22px;
-        }
-
-        .preview-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #0a0d14;
-            border: 1px dashed var(--border-color);
-            border-radius: 10px;
-            padding: 15px;
-            min-height: 420px;
+            transition: all 0.3s ease;
             position: relative;
-        }
-
-        #hdCanvas {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .controls-container { display: flex; flex-direction: column; gap: 14px; }
-        .control-item { display: flex; flex-direction: column; gap: 6px; }
-
-        .control-item label {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .input-box {
-            width: 100%;
-            padding: 10px;
-            background: #0a0d14;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 0.88rem;
-            outline: none;
-        }
-
-        .slider-plus-minus { display: flex; align-items: center; gap: 8px; }
-
-        .btn-step {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid var(--border-color);
-            color: white;
-            font-weight: 800;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            user-select: none;
-            font-size: 1.2rem;
-        }
-
-        .btn-step:hover { background: var(--accent-blue); }
-        .range-box { flex: 1; height: 8px; accent-color: var(--accent-cyan); cursor: pointer; }
-
-        .btn-action {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: white;
-            font-weight: 700;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 0.9rem;
-        }
-
-        .btn-catbox { background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); }
-
-        /* KONTROL 10 BARIS GRID DENGAN SCROLL SMOOTH */
-        .btn-grid-10-rows {
-            display: grid;
-            grid-template-columns: repeat( auto-fill, minmax(130px, 1fr) );
-            gap: 8px;
-            height: 380px; /* Kapasitas pas ~10 baris */
-            overflow-y: auto;
-            padding: 10px;
-            background: rgba(0,0,0,0.5);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-small {
-            padding: 8px 10px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            border-radius: 6px;
-            cursor: pointer;
-            text-align: center;
-            white-space: normal;
-            word-break: break-word;
-            min-height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.2;
-        }
-
-        .btn-small:hover { background: var(--accent-blue); border-color: var(--accent-cyan); }
-
-        .downloader-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .downloader-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .card-header { display: flex; align-items: center; gap: 10px; }
-        .card-header .icon { font-size: 1.5rem; }
-        .card-header h3 { font-size: 1.1rem; font-weight: 700; }
-
-        .progress-box {
-            display: none;
-            background: #0a0d14;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 10px;
-            margin-top: 4px;
-        }
-
-        .progress-bar-bg {
-            width: 100%;
-            height: 8px;
-            background: #1f2937;
-            border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 5px;
+            border: 1px solid transparent;
         }
 
-        .progress-bar-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
-            transition: width 0.1s linear;
+        .link-btn i {
+            font-size: 20px;
+            position: absolute;
+            left: 20px;
         }
 
-        .progress-text { font-size: 0.8rem; font-weight: 700; color: var(--accent-green); text-align: center; }
-
-        .link-output {
-            background: #0a0d14;
-            border: 1px solid var(--border-color);
-            padding: 14px;
-            border-radius: 8px;
-            color: var(--accent-green);
-            font-weight: 600;
-            font-size: 0.85rem;
-            word-break: break-all;
-            display: none;
-            margin-top: 10px;
+        /* Warna Custom Tiap Tombol */
+        .btn-youtube {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+        .btn-youtube:hover {
+            background-color: #ff0000;
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
         }
 
-        .tiktok-caption-box {
-            background: #111827;
-            border: 1px solid var(--accent-cyan);
-            padding: 10px;
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 0.82rem;
-            margin-top: 8px;
-            max-height: 100px;
-            overflow-y: auto;
-            white-space: pre-wrap;
+        .btn-tiktok {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .btn-tiktok:hover {
+            background-color: #000000;
+            border-color: #00f2fe;
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
         }
 
-        .utility-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 14px;
-            margin-top: 10px;
+        .btn-wachannel {
+            background-color: rgba(37, 211, 102, 0.8);
+        }
+        .btn-wachannel:hover {
+            background-color: #25D366;
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
         }
 
-        .star-rating {
-            display: flex;
-            gap: 10px;
-            margin: 10px 0;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #4b5563;
+        .btn-wacontact {
+            background: linear-gradient(45deg, #128C7E, #25D366);
+        }
+        .btn-wacontact:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
         }
 
-        .star-rating .star.active { color: var(--accent-gold); }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
+        /* Styling Spotify */
+        .spotify-wrapper {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .about-text p {
-            color: var(--text-secondary);
-            font-size: 0.98rem;
+        .spotify-wrapper h2 {
+            font-size: 16px;
             margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .side-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 22px;
-            height: fit-content;
-        }
-
-        .info-list { list-style: none; }
-
-        .info-list li {
             display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed var(--border-color);
-            font-size: 0.85rem;
-        }
-
-        .contact-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 14px;
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .form-group { margin-bottom: 15px; }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            background: #0a0d14;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 0.88rem;
-        }
-
-        textarea.form-control { resize: vertical; min-height: 110px; }
-
-        footer { padding: 30px 0; text-align: center; color: var(--text-secondary); font-size: 0.85rem; }
-
-        @media (max-width: 900px) {
-            .tools-grid, .about-content { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.1rem; }
-            .nav-links { display: none; }
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #1DB954;
         }
     </style>
 </head>
 <body>
 
-    <video id="bg-video" autoplay loop playsinline muted preload="auto">
-        <source src="https://files.catbox.moe/uhdl3i.mp4" type="video/mp4">
-    </video>
-    <div class="bg-overlay"></div>
-
-    <!-- BANNER PERINGATAN -->
-    <div class="top-warning-banner">
-        ⚠️ PERHATIAN : 𝙋𝘼𝙉𝙄𝙆𝙆 𝙆𝘼𝙐 𝘿𝙀𝙆 𝘾𝘼𝙉𝘿𝘼, 𝙆𝘼𝙇𝘼𝙐 𝘼𝘿𝘼 𝘽𝙐𝙂𝙎 𝘿𝘼𝙉 𝙀𝙍𝙍𝙊𝙍 𝙇𝘼𝙋𝙊𝙍 𝙒𝘼 https://wa.me/RayzeAnime
-    </div>
-
-    <div id="smsNotify" class="sms-notification">
-        <div class="sms-icon">💬</div>
-        <div class="sms-content">
-            <h5 id="smsTitle">Pesan Masuk (System)</h5>
-            <p id="smsBody">Rating & Review kamu berhasil dikirim!</p>
-        </div>
-    </div>
-
-    <nav>
-        <div class="container nav-container">
-            <a href="#home" class="logo">Ｒａｙｚｅ Ｕｌｔｒａ HDR</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#photo-hd-studio">5000+ Tools Ultra HD</a></li>
-                <li><a href="#downloader-section">Media Downloader</a></li>
-                <li><a href="#catbox-fullscreen">Catbox Upload</a></li>
-                <li><a href="#rating-section">Lapor Bug / Admin</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="container">
-        <!-- HERO SECTION -->
-        <section class="hero" id="home">
-            <div class="status-badge">
-                <span class="status-dot"></span> Ultra HD Studio Suite & All-In-One Engine
-            </div>
-            <h1>Welcome to <span>𝙍𝙖𝙮𝙯𝙚 𝙐𝙡𝙩𝙧𝙖 𝙃𝘿𝙍</span> 👋<br>Rayze Development Official.</h1>
+        <!-- Foto Profil (Sementara pakai inisial nama, bisa diganti dengan link foto logomu) -->
+        <img src="https://ui-avatars.com/api/?name=Rayze+Animation+AI&background=random&color=fff&size=200" alt="Profile" class="profile-img">
+        
+        <h1>Rayze Animation AI</h1>
+        <p>Welcome to my official links!</p>
 
-            <!-- INTRO PERKENALAN RAYZE -->
-            <div class="intro-box">
-                <h3>👑 Halo, Saya Rayze!</h3>
-                <p>
-                    Selamat datang di platform resmi <strong>Ｒａｙｚｅ Ｕｌｔｒａ HDR</strong>. Website ini telah dilengkapi dengan <strong>5000+ Tools Filter Foto HD Work 100%</strong>, pengatur <strong>Kecerahan Terang ↔ Gelap (Light)</strong>, preset <strong>Manga/Anime Gray Tone</strong>, serta pengatur ketajaman persentase dari **1% hingga 1000%**.
-                </p>
+        <!-- Kumpulan Link -->
+        <div class="links-container">
+            <!-- Link YouTube -->
+            <a href="https://www.youtube.com/@RayzeAnimationAI" target="_blank" class="link-btn btn-youtube">
+                <i class="fa-brands fa-youtube"></i> YouTube
+            </a>
 
-                <!-- LINK SALURAN DAN KONTAK WA -->
-                <div class="contact-channel-buttons">
-                    <a href="https://wa.me/+6283152561195" target="_blank" class="btn-wa">💬 Kontak WhatsApp Rayze</a>
-                    <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" class="btn-wa-channel">📢 Saluran Resmi WhatsApp</a>
-                </div>
-            </div>
+            <!-- Link TikTok -->
+            <a href="https://www.tiktok.com/@rayze_animation_ai" target="_blank" class="link-btn btn-tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
 
-            <div class="hero-buttons">
-                <a href="#photo-hd-studio" class="btn btn-primary">📷 Open 5000+ Tools Photo Studio</a>
-                <a href="#downloader-section" class="btn btn-secondary">📥 Media Downloader</a>
-            </div>
-        </section>
+            <!-- Link WA Channel -->
+            <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" class="link-btn btn-wachannel">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Channel
+            </a>
 
-        <!-- FOTO 5000+ TOOLS ULTRA HD STUDIO -->
-        <section class="section" id="photo-hd-studio">
-            <div class="section-header">
-                <span class="section-tag">// 5000+ ULTRA HD PHOTO ENGINE & MANGA GRAY TONE</span>
-                <h2 class="section-title">Ｒａｙｚｅ Ｕｌｔｒａ HDR Studio (5000 Tools No Error)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Atur ketajaman (1%-1000%), tingkat kecerahan Light (Terang/Gelap), Manga Gray Tone, dan geser 5000 tools di grid 10 baris!</p>
-            </div>
+            <!-- Link Chat WA Langsung -->
+            <a href="https://wa.me/6283152561195?text=Halo%20Rayze%20Animation%20AI,%20saya%20ingin%20bertanya" target="_blank" class="link-btn btn-wacontact">
+                <i class="fa-solid fa-comment-dots"></i> Chat WhatsApp (Fast Respon)
+            </a>
+        </div>
 
-            <div class="tools-grid">
-                <div class="preview-container">
-                    <canvas id="hdCanvas" width="800" height="800"></canvas>
-                </div>
-
-                <div class="controls-container">
-                    <div class="control-item">
-                        <label>1. Pilih File Foto</label>
-                        <input type="file" id="uploadInput" class="input-box" accept="image/*" onchange="loadImage(event)">
-                    </div>
-
-                    <!-- SLIDER KETAJAMAN PERSEN (1% - 1000%) -->
-                    <div class="control-item">
-                        <label>
-                            <span>2. Level Ketajaman Sharpen (%)</span>
-                            <span id="valPercentSharp" style="color:var(--accent-green); font-size:1rem;">100%</span>
-                        </label>
-                        <div class="slider-plus-minus">
-                            <button class="btn-step" onclick="adjustPercentSlider(-20)">-</button>
-                            <input type="range" id="percentSharpRange" class="range-box" min="1" max="1000" value="100" oninput="updateRangeLabels(); applyHDEffects();">
-                            <button class="btn-step" onclick="adjustPercentSlider(20)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- PENGATUR LIGHT: TERANG & GELAP (BRIGHTNESS & CONTRAST) -->
-                    <div class="control-item">
-                        <label>
-                            <span>3. Pencahayaan Light (Gelap ↔ Terang):</span>
-                            <span id="valLight">100%</span>
-                        </label>
-                        <input type="range" id="lightRange" class="range-box" min="0" max="300" value="100" oninput="updateRangeLabels(); applyHDEffects();">
-                    </div>
-
-                    <div class="control-item">
-                        <label>
-                            <span>4. Kontras Kedalaman (Contrast):</span>
-                            <span id="valContrast">100%</span>
-                        </label>
-                        <input type="range" id="contrastRange" class="range-box" min="0" max="500" value="100" oninput="updateRangeLabels(); applyHDEffects();">
-                    </div>
-
-                    <!-- KONTROL FLIP FOTO -->
-                    <div class="control-item">
-                        <label>5. Opsi Terbalik (Flip Foto):</label>
-                        <div style="display:flex; gap:10px;">
-                            <button class="btn-small" style="flex:1;" onclick="togglePhotoFlipH()">🪞 Flip Kanan ↔ Kiri</button>
-                            <button class="btn-small" style="flex:1;" onclick="togglePhotoFlipV()">🔃 Flip Atas ↕ Bawah</button>
-                        </div>
-                    </div>
-
-                    <!-- CARI DARI 5000 TOOLS & GRID 10 BARIS -->
-                    <div class="control-item">
-                        <label>6. Cari Nomor / Nama dari 5000 Tools HD (10 Baris Scrollable):</label>
-                        <input type="text" id="toolSearchInput" class="input-box" placeholder="Ketik nomor tools (contoh: 250, Manga, Night, atau Wink)..." onkeyup="filterPhotoTools()">
-                        <div id="photoToolsGrid" class="btn-grid-10-rows" style="margin-top: 8px;"></div>
-                    </div>
-
-                    <button class="btn-action" onclick="exportPhotoHD()">📥 Export Foto Ｒａｙｚｅ Ｕｌｔｒａ HDR</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- DEDICATED INDIVIDUAL DOWNLOADERS -->
-        <section class="section" id="downloader-section">
-            <div class="section-header">
-                <span class="section-tag">// DEDICATED MEDIA DOWNLOADER ENGINE</span>
-                <h2 class="section-title">All-In-One Downloader (Dipisah Per Platform)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Download media dari platform favorit tanpa iklan atau redirect.</p>
-            </div>
-
-            <div class="downloader-grid">
-                <!-- TIKTOK CARD -->
-                <div class="downloader-card">
-                    <div class="card-header">
-                        <span class="icon">🎵</span>
-                        <h3>TikTok Downloader + Caption</h3>
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh Video No Watermark, Audio MP3, atau Slide Foto beserta deskripsi teks lengkap.</p>
-                    <input type="text" id="ttUrlInput" class="input-box" placeholder="Paste link TikTok di sini...">
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                        <button class="btn-action" onclick="downloadTikTok('video')">📹 Video MP4</button>
-                        <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-purple), var(--accent-pink));" onclick="downloadTikTok('audio')">🎵 Audio MP3</button>
-                    </div>
-                    <div id="ttResultBox" class="link-output"></div>
-                </div>
-
-                <!-- INSTAGRAM CARD -->
-                <div class="downloader-card">
-                    <div class="card-header">
-                        <span class="icon">📸</span>
-                        <h3>Instagram Downloader</h3>
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh Reel, Post Video, Foto Carousel, atau Story Instagram.</p>
-                    <input type="text" id="igUrlInput" class="input-box" placeholder="Paste link IG di sini...">
-                    <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-pink), var(--accent-purple));" onclick="downloadInstagram()">📥 Download IG Media</button>
-                    <div id="igResultBox" class="link-output"></div>
-                </div>
-
-                <!-- YOUTUBE CARD -->
-                <div class="downloader-card">
-                    <div class="card-header">
-                        <span class="icon">▶️</span>
-                        <h3>YouTube Downloader</h3>
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh Video YouTube biasa atau YouTube Shorts MP4.</p>
-                    <input type="text" id="ytUrlInput" class="input-box" placeholder="Paste link YouTube di sini...">
-                    <button class="btn-action" style="background:linear-gradient(135deg, #ef4444, #dc2626);" onclick="downloadYouTube()">📥 Download YouTube MP4</button>
-                    <div id="ytResultBox" class="link-output"></div>
-                </div>
-
-                <!-- YOUTUBE MUSIC CARD -->
-                <div class="downloader-card">
-                    <div class="card-header">
-                        <span class="icon">🎧</span>
-                        <h3>YouTube Music Converter</h3>
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Konversi dan ekstrak audio resmi dari YouTube Music ke MP3 320kbps.</p>
-                    <input type="text" id="ytmUrlInput" class="input-box" placeholder="Paste link YouTube Music di sini...">
-                    <button class="btn-action" style="background:linear-gradient(135deg, var(--accent-red), var(--accent-gold));" onclick="downloadYouTubeMusic()">🎵 Convert to MP3 (320kbps)</button>
-                    <div id="ytmResultBox" class="link-output"></div>
-                </div>
-
-                <!-- SPOTIFY CARD -->
-                <div class="downloader-card">
-                    <div class="card-header">
-                        <span class="icon">🎶</span>
-                        <h3>Spotify Downloader</h3>
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">Unduh lagu Spotify lengkap dengan cover art, judul, dan metadata.</p>
-                    <input type="text" id="spUrlInput" class="input-box" placeholder="Paste link Spotify di sini...">
-                    <button class="btn-action" style="background:linear-gradient(135deg, #1db954, #10b981);" onclick="downloadSpotify()">🎵 Download Spotify MP3</button>
-                    <div id="spResultBox" class="link-output"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CATBOX UPLOADER -->
-        <section class="section" id="catbox-fullscreen">
-            <div class="section-header">
-                <span class="section-tag">// DIRECT FILE UPLOADER</span>
-                <h2 class="section-title">Catbox.moe Direct Uploader (Fixed 30 MB)</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Upload foto atau video hingga 30 MB langsung ke server Catbox dengan link permanen & tombol salin!</p>
-            </div>
-
-            <div class="utility-box">
-                <div class="control-item">
-                    <label>Pilih File Foto atau Video (Max 30 MB):</label>
-                    <input type="file" id="catboxFileInput" class="input-box" accept="image/*,video/*">
-                </div>
-                <button class="btn-action btn-catbox" style="margin-top: 15px; width: 100%;" onclick="uploadCatbox30MB()">🚀 Upload File ke Catbox</button>
-
-                <div id="catbox30ProgressBox" class="progress-box">
-                    <div class="progress-bar-bg"><div id="catbox30ProgressBar" class="progress-bar-fill"></div></div>
-                    <div id="catbox30ProgressText" class="progress-text">Uploading: 0%</div>
-                </div>
-
-                <div id="catbox30Output" class="link-output"></div>
-            </div>
-        </section>
-
-        <!-- RATING & REVIEW SECTION / LAPOR BUG -->
-        <section class="section" id="rating-section">
-            <div class="section-header" style="text-align: center;">
-                <span class="section-tag">// LAPOR BUG & USER FEEDBACK SYSTEM</span>
-                <h2 class="section-title">Kirim Pesan / Laporan Bug ke Admin Rayze</h2>
-                <p style="color: var(--text-secondary); margin-top:4px; font-size: 0.9rem;">Paling Bawah: Jika mengalami bug atau kendala apapun, kirimkan ulasan dan laporanmu langsung di sini!</p>
-            </div>
-
-            <div class="contact-box">
-                <form id="ratingForm" onsubmit="submitRatingForm(event)">
-                    <div class="form-group" style="text-align: center;">
-                        <label style="font-size: 1rem;">Select Rating Stars (1 to 5 Stars):</label>
-                        <div class="star-rating" id="starContainer" style="justify-content: center;">
-                            <span class="star" onclick="setRating(1)">★</span>
-                            <span class="star" onclick="setRating(2)">★</span>
-                            <span class="star" onclick="setRating(3)">★</span>
-                            <span class="star" onclick="setRating(4)">★</span>
-                            <span class="star" onclick="setRating(5)">★</span>
-                        </div>
-                        <input type="hidden" name="rating_stars" id="selectedStarValue" value="5">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nama Kamu</label>
-                        <input type="text" name="name" class="form-control" placeholder="Masukkan nama kamu..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Alamat Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="nama@gmail.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Pesan / Laporan Bug / Ulasan</label>
-                        <textarea name="message" class="form-control" placeholder="Tuliskan kendala bug atau pesan kamu untuk Admin Rayze..." required></textarea>
-                    </div>
-                    <button type="submit" id="btnSubmitRating" class="btn btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent-gold), #d97706);">
-                        ⭐ Kirim Pesan & Laporan Bug
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <!-- ABOUT RAYZE -->
-        <section class="section" id="about">
-            <div class="section-header">
-                <span class="section-tag">// OVERVIEW & BIOGRAPHY</span>
-                <h2 class="section-title">Who is Ｒａｙｚｅ Ｕｌｔｒａ HDR?</h2>
-            </div>
-
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        My name is <strong>Rayze</strong>, founder of <strong>Ｒａｙｚｅ Ｕｌｔｒａ HDR</strong>. I am a digital creator and developer focused on building high-speed web apps, media processors, and interactive virtual environments.
-                    </p>
-                    <p>
-                        <em>Note & Acknowledgement:</em> I am not a Roblox developer, but huge thanks and appreciation to all Roblox developers for creating such amazing and incredible games!
-                    </p>
-                </div>
-
-                <div class="side-card">
-                    <h3>⚡ Profile Overview</h3>
-                    <ul class="info-list">
-                        <li><span>Studio Name</span> <span>Ｒａｙｚｅ Ｕｌｔｒａ HDR</span></li>
-                        <li><span>Roblox User</span> <span>RayzeSayonara</span></li>
-                        <li><span>TikTok</span> <span>@xxlrayze</span></li>
-                        <li><span>Telegram</span> <span>@RayzeAnime</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2026 <strong>Ｒａｙｚｅ Ｕｌｔｒａ HDR</strong>. All rights reserved.</p>
-        </footer>
+        <!-- Tool / Widget Spotify -->
+        <div class="spotify-wrapper">
+            <h2><i class="fa-brands fa-spotify"></i> My Playlist</h2>
+            <!-- Kode Embed Spotify -->
+            <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" 
+                width="100%" 
+                height="152" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+        </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC ENGINE -->
-    <script>
-        let selectedFilterId = 'p1';
-        let isPhotoFlipH = false;
-        let isPhotoFlipV = false;
-        let photoToolsData = [];
-
-        window.addEventListener('load', () => {
-            initDefaultCanvas();
-            generate5000PhotoTools();
-            setRating(5);
-        });
-
-        /* --- GENERATE 5000 WORK TOOLS DENGAN MANGA GRAY TONE & LIGHT PRESETS --- */
-        function generate5000PhotoTools() {
-            const baseNames = [
-                "Ultra HDR", "Wink Sharpen", "Manga B&W Ink", "Anime Gray Tone", "Moonlight Light",
-                "Cyberpunk Night", "OLED Deep Darkness", "Micro Sharpen", "Crystal Clear", "Silver Film",
-                "Astro Night", "Denoise Master", "Soft Portrait", "Teal and Orange", "Extreme Contrast",
-                "Neon Light Glow", "Aesthetic Gray", "Sun Flare HDR", "Diamond Sharp", "Screen-Tone Gray"
-            ];
-
-            photoToolsData = [];
-            for (let i = 1; i <= 5000; i++) {
-                const base = baseNames[(i - 1) % baseNames.length];
-                const version = Math.floor((i - 1) / baseNames.length) + 1;
-                photoToolsData.push({ id: 'p' + i, name: `${i}. ${base} v${version}`, index: i });
-            }
-
-            renderPhotoToolsGrid(photoToolsData.slice(0, 300)); // Render 300 pertama untuk kecepatan
-        }
-
-        function renderPhotoToolsGrid(list) {
-            const grid = document.getElementById('photoToolsGrid');
-            let html = '';
-            list.forEach((item) => {
-                const activeStyle = item.id === selectedFilterId ? 'background:var(--accent-blue); border-color:var(--accent-cyan);' : '';
-                html += `<button class="btn-small photo-tool-btn" style="${activeStyle}" onclick="selectFilter('${item.id}', this)">${item.name}</button>`;
-            });
-            grid.innerHTML = html;
-        }
-
-        function filterPhotoTools() {
-            const query = document.getElementById('toolSearchInput').value.toLowerCase().trim();
-            if (!query) {
-                renderPhotoToolsGrid(photoToolsData.slice(0, 300));
-                return;
-            }
-            const filtered = photoToolsData.filter(t => t.name.toLowerCase().includes(query) || t.index.toString() === query);
-            renderPhotoToolsGrid(filtered.slice(0, 200));
-        }
-
-        function selectFilter(id, btn) {
-            selectedFilterId = id;
-            document.querySelectorAll('.photo-tool-btn').forEach(b => {
-                b.style.background = 'rgba(255,255,255,0.08)';
-                b.style.borderColor = 'var(--border-color)';
-            });
-            if (btn) {
-                btn.style.background = 'var(--accent-blue)';
-                btn.style.borderColor = 'var(--accent-cyan)';
-            }
-            applyHDEffects();
-        }
-
-        function adjustPercentSlider(step) {
-            const slider = document.getElementById('percentSharpRange');
-            let val = parseInt(slider.value) + step;
-            if (val < 1) val = 1; if (val > 1000) val = 1000;
-            slider.value = val;
-            updateRangeLabels();
-            applyHDEffects();
-        }
-
-        function updateRangeLabels() {
-            document.getElementById('valPercentSharp').innerText = document.getElementById('percentSharpRange').value + '%';
-            document.getElementById('valLight').innerText = document.getElementById('lightRange').value + '%';
-            document.getElementById('valContrast').innerText = document.getElementById('contrastRange').value + '%';
-        }
-
-        function togglePhotoFlipH() { isPhotoFlipH = !isPhotoFlipH; applyHDEffects(); }
-        function togglePhotoFlipV() { isPhotoFlipV = !isPhotoFlipV; applyHDEffects(); }
-
-        /* --- FOTO STUDIO ENGINE --- */
-        const canvas = document.getElementById('hdCanvas');
-        const ctx = canvas.getContext('2d');
-        let rawImage = null;
-
-        function initDefaultCanvas() {
-            ctx.fillStyle = '#0a0d14';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
-
-        function loadImage(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    rawImage = new Image();
-                    rawImage.onload = function() { applyHDEffects(); }
-                    rawImage.src = event.target.result;
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function getFilterString() {
-            const sharpVal = parseInt(document.getElementById('percentSharpRange').value);
-            const lightVal = parseInt(document.getElementById('lightRange').value);
-            const contrastVal = parseInt(document.getElementById('contrastRange').value);
-
-            const sharpFactor = sharpVal / 100;
-            let filterStr = `brightness(${lightVal}%) contrast(${contrastVal + (sharpFactor * 20)}%) saturate(${100 + (sharpFactor * 10)}%)`;
-
-            const filterIndex = parseInt(selectedFilterId.replace('p', '')) || 1;
-
-            // MANGA / ANIME GRAY TONE FILTER LOGIC
-            if (filterIndex % 3 === 0) {
-                filterStr += ' grayscale(100%) contrast(160%)';
-            } else if (filterIndex % 5 === 0) {
-                filterStr += ' hue-rotate(180deg) saturate(180%)';
-            } else if (filterIndex % 7 === 0) {
-                filterStr += ' sepia(40%) contrast(140%)';
-            }
-
-            return filterStr;
-        }
-
-        function applyHDEffects() {
-            if (!rawImage) return;
-            canvas.width = rawImage.width;
-            canvas.height = rawImage.height;
-
-            ctx.save();
-            ctx.translate(isPhotoFlipH ? canvas.width : 0, isPhotoFlipV ? canvas.height : 0);
-            ctx.scale(isPhotoFlipH ? -1 : 1, isPhotoFlipV ? -1 : 1);
-
-            ctx.filter = getFilterString();
-            ctx.drawImage(rawImage, 0, 0, canvas.width, canvas.height);
-            ctx.restore();
-        }
-
-        function exportPhotoHD() {
-            if (!rawImage) return alert("Pilih foto terlebih dahulu!");
-            const link = document.createElement('a');
-            link.download = `Rayze_Ultra_HDR_${selectedFilterId}.png`;
-            link.href = canvas.toDataURL('image/png', 1.0);
-            link.click();
-        }
-
-        /* --- TIKTOK DOWNLOADER --- */
-        function downloadTikTok(type) {
-            const input = document.getElementById('ttUrlInput').value.trim();
-            const outputBox = document.getElementById('ttResultBox');
-            if (!input) return alert("Masukkan link TikTok!");
-
-            outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Memproses media...";
-
-            fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(input)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.data) {
-                    const captionText = data.data.title || "Tidak ada deskripsi.";
-                    const downloadUrl = (type === 'video') ? (data.data.hdplay || data.data.play) : data.data.music;
-
-                    outputBox.innerHTML = `
-                        ✅ <strong>TikTok Parsed:</strong><br><br>
-                        <strong>📝 Deskripsi:</strong>
-                        <div class="tiktok-caption-box">${captionText}</div><br>
-                        <a href="${downloadUrl}" target="_blank" download class="btn btn-primary">📥 Download (${type.toUpperCase()})</a>
-                    `;
-                } else outputBox.innerText = "❌ Gagal mengambil data TikTok.";
-            }).catch(() => { outputBox.innerText = "❌ Kesalahan koneksi."; });
-        }
-
-        /* --- INSTAGRAM DOWNLOADER --- */
-        function downloadInstagram() {
-            const input = document.getElementById('igUrlInput').value.trim();
-            const outputBox = document.getElementById('igResultBox');
-            if (!input) return alert("Masukkan link Instagram!");
-
-            outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Memproses Instagram...";
-
-            fetch(`https://api.vreden.web.id/api/instagram?url=${encodeURIComponent(input)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.result) {
-                    const dlUrl = data.result.url || (data.result[0] ? data.result[0].url || data.result[0] : null);
-                    outputBox.innerHTML = dlUrl ? `✅ Ready:<br><br><a href="${dlUrl}" target="_blank" class="btn btn-primary">📥 Download Media</a>` : "❌ Gagal memuat tautan.";
-                } else outputBox.innerText = "❌ Gagal memuat IG.";
-            }).catch(() => { outputBox.innerText = "❌ Network Error."; });
-        }
-
-        /* --- YOUTUBE DOWNLOADER --- */
-        function downloadYouTube() {
-            const input = document.getElementById('ytUrlInput').value.trim();
-            const outputBox = document.getElementById('ytResultBox');
-            if (!input) return alert("Masukkan link YouTube!");
-
-            outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Memproses YouTube...";
-
-            fetch(`https://api.cobalt.tools/api/json`, {
-                method: 'POST',
-                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url: input })
-            })
-            .then(res => res.json())
-            .then(data => {
-                outputBox.innerHTML = (data && data.url) ? `✅ YouTube Ready:<br><br><a href="${data.url}" target="_blank" class="btn btn-primary">📥 Download MP4</a>` : "❌ Gagal memroses YouTube.";
-            }).catch(() => { outputBox.innerText = "❌ Network Error."; });
-        }
-
-        /* --- YOUTUBE MUSIC CONVERTER --- */
-        function downloadYouTubeMusic() {
-            const input = document.getElementById('ytmUrlInput').value.trim();
-            const outputBox = document.getElementById('ytmResultBox');
-            if (!input) return alert("Masukkan link YouTube Music!");
-
-            outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Converting YouTube Music ke MP3...";
-
-            fetch(`https://api.vreden.web.id/api/ytmp3?url=${encodeURIComponent(input)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.result && data.result.download) {
-                    const mp3Url = data.result.download;
-                    outputBox.innerHTML = `✅ YouTube Music MP3 Ready:<br><br><a href="${mp3Url}" target="_blank" class="btn btn-primary">🎵 Download MP3 Audio</a>`;
-                } else outputBox.innerText = "❌ Gagal memroses lagu.";
-            }).catch(() => { outputBox.innerText = "❌ Network Error."; });
-        }
-
-        /* --- SPOTIFY DOWNLOADER --- */
-        function downloadSpotify() {
-            const input = document.getElementById('spUrlInput').value.trim();
-            const outputBox = document.getElementById('spResultBox');
-            if (!input) return alert("Masukkan link Spotify!");
-
-            outputBox.style.display = 'block';
-            outputBox.innerHTML = "⏳ Memproses lagu Spotify...";
-
-            fetch(`https://api.vreden.web.id/api/spotify?url=${encodeURIComponent(input)}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.result && (data.result.music || data.result.download)) {
-                    const mp3Url = data.result.music || data.result.download;
-                    const title = data.result.title || "Spotify_Track";
-                    outputBox.innerHTML = `✅ Spotify Track Ready:<br><br><strong>🎵 Track:</strong> ${title}<br><br><a href="${mp3Url}" download="${title}.mp3" target="_blank" class="btn btn-primary">📥 Download MP3</a>`;
-                } else outputBox.innerText = "❌ Gagal mengonversi lagu.";
-            }).catch(() => { outputBox.innerText = "❌ Network Error."; });
-        }
-
-        /* --- CATBOX UPLOADER --- */
-        function copyCatboxLink(url) {
-            navigator.clipboard.writeText(url).then(() => {
-                alert("✅ Link Catbox berhasil disalin ke clipboard!");
-            }).catch(() => {
-                alert("Gagal menyalin otomatis. Silakan salin link manual.");
-            });
-        }
-
-        function uploadCatbox30MB() {
-            const fileInput = document.getElementById('catboxFileInput');
-            const file = fileInput.files[0];
-            if (!file) return alert("Pilih file terlebih dahulu!");
-
-            if (file.size > 30 * 1024 * 1024) return alert("Ukuran file melebihi 30 MB!");
-
-            const pBox = document.getElementById('catbox30ProgressBox');
-            const pBar = document.getElementById('catbox30ProgressBar');
-            const pText = document.getElementById('catbox30ProgressText');
-            const outputBox = document.getElementById('catbox30Output');
-
-            pBox.style.display = 'block';
-            outputBox.style.display = 'none';
-
-            let percent = 0;
-            const timer = setInterval(() => {
-                if (percent < 90) {
-                    percent += 10;
-                    pBar.style.width = percent + '%';
-                    pText.innerText = `Uploading File: ${percent}%`;
-                }
-            }, 120);
-
-            const formData = new FormData();
-            formData.append('reqtype', 'fileupload');
-            formData.append('fileToUpload', file);
-
-            fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://catbox.moe/user/api.php'), {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.text())
-            .then(url => {
-                clearInterval(timer);
-                pBar.style.width = '100%';
-                pText.innerText = 'Upload Finished: 100%';
-                
-                const cleanUrl = url ? url.trim() : '';
-                outputBox.style.display = 'block';
-                
-                if (cleanUrl.startsWith('http')) {
-                    outputBox.innerHTML = `
-                        ✅ <strong>Link Catbox Berhasil Dibuat:</strong><br>
-                        <a href="${cleanUrl}" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-weight:bold;">${cleanUrl}</a><br><br>
-                        <button class="btn btn-primary" onclick="copyCatboxLink('${cleanUrl}')">📋 Salin Link Catbox</button>
-                    `;
-                } else {
-                    outputBox.innerHTML = `
-                        ✅ <strong>File Berhasil Disimpan di Server Catbox!</strong><br>
-                        <span style="font-size:0.8rem; color:var(--text-secondary);">Gunakan opsi download langsung jika link tautan terhalang browser.</span>
-                    `;
-                }
-            })
-            .catch(() => {
-                clearInterval(timer);
-                pText.innerText = 'Upload Selesai';
-                outputBox.style.display = 'block';
-                outputBox.innerHTML = `✅ File Berhasil Terkirim ke Server Catbox.moe!`;
-            });
-        }
-
-        function triggerSMSNotification(title, bodyText) {
-            const sms = document.getElementById('smsNotify');
-            document.getElementById('smsTitle').innerText = title;
-            document.getElementById('smsBody').innerText = bodyText;
-
-            sms.classList.add('show');
-            setTimeout(() => { sms.classList.remove('show'); }, 5000);
-        }
-
-        function setRating(stars) {
-            document.getElementById('selectedStarValue').value = stars;
-            const starElems = document.querySelectorAll('#starContainer .star');
-            starElems.forEach((star, idx) => {
-                if (idx < stars) star.classList.add('active');
-                else star.classList.remove('active');
-            });
-        }
-
-        function submitRatingForm(event) {
-            event.preventDefault();
-            const btn = document.getElementById('btnSubmitRating');
-            const form = document.getElementById('ratingForm');
-            const stars = document.getElementById('selectedStarValue').value;
-
-            btn.innerText = "Submitting Review...";
-            btn.disabled = true;
-
-            const formData = new FormData(form);
-
-            fetch("https://formspree.io/f/mjyvapwq", {
-                method: "POST",
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    triggerSMSNotification("SMS Received 📩", `Terima kasih! Pesan/Laporan bug kamu telah dikirim ke Admin Rayze!`);
-                    form.reset();
-                    setRating(5);
-                } else {
-                    alert("Gagal mengirim pesan. Silakan coba lagi.");
-                }
-                btn.innerText = "⭐ Kirim Pesan & Laporan Bug";
-                btn.disabled = false;
-            }).catch(() => {
-                triggerSMSNotification("SMS Received 📩", `Terima kasih! Pesan/Laporan bug kamu berhasil dikirim!`);
-                form.reset();
-                setRating(5);
-                btn.innerText = "⭐ Kirim Pesan & Laporan Bug";
-                btn.disabled = false;
-            });
-        }
-    </script>
 </body>
 </html>
