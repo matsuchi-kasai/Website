@@ -36,13 +36,13 @@
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
 
         /* Container Glassmorphism Premium */
         .container {
-            background: rgba(20, 20, 25, 0.55);
+            background: rgba(20, 20, 25, 0.65);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -60,7 +60,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Profile Styling */
+        /* Profile Styling (Logo baru) */
         .profile-img {
             width: 120px;
             height: 120px;
@@ -95,32 +95,42 @@
 
         /* Spotify Section */
         .spotify-section {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.45);
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 30px;
             border: 1px solid rgba(29, 185, 84, 0.3);
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            text-align: left;
         }
 
         .spotify-title {
             color: #1DB954;
             font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 15px;
+            font-size: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            text-align: center;
+        }
+
+        .song-label {
+            font-size: 12px;
+            color: #b3b3b3;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            font-weight: 600;
         }
 
         /* Spotify Search Bar */
         .search-box {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: rgba(255,255,255,0.1);
             border-radius: 50px;
-            padding: 5px;
+            padding: 4px 6px;
             border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s;
         }
@@ -136,8 +146,8 @@
             border: none;
             outline: none;
             color: white;
-            padding: 10px 15px;
-            font-size: 14px;
+            padding: 8px 12px;
+            font-size: 13px;
         }
 
         .search-box input::placeholder {
@@ -149,9 +159,10 @@
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 0 20px;
+            padding: 0 16px;
             cursor: pointer;
             font-weight: 600;
+            font-size: 13px;
             transition: all 0.3s;
         }
 
@@ -229,7 +240,7 @@
         .btn-wacontact {
             background: linear-gradient(45deg, #128C7E, #25D366);
             border: none;
-            margin-top: 10px;
+            margin-top: 5px;
         }
         .btn-wacontact:hover {
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.7);
@@ -242,30 +253,42 @@
     <div class="overlay"></div>
 
     <div class="container">
-        <!-- Foto Profil (Ganti link gambar di bawah kalau punya logo sendiri) -->
-        <img src="https://ui-avatars.com/api/?name=Rayze+Animation+AI&background=random&color=fff&size=200" alt="Profile" class="profile-img">
+        <!-- Logo Profil Baru -->
+        <img src="https://files.catbox.moe/ru9hji.jpg" alt="Profile Logo" class="profile-img">
         
         <h1>Rayze Animation AI</h1>
         <p class="subtitle">Creator & Animator | Welcome to my space</p>
 
-        <!-- SPOTIFY SECTION BGT & SEARCH -->
+        <!-- SPOTIFY SECTION (DIPERBANYAK LAGU CHLOE PAWAPUA) -->
         <div class="spotify-section">
             <div class="spotify-title">
-                <i class="fa-brands fa-spotify"></i> Spotify Music Player
+                <i class="fa-brands fa-spotify"></i> Chloe Pawapua Playlist
             </div>
 
-            <!-- Fitur Pencarian Spotify -->
+            <!-- Fitur Pencarian Lagu Lain -->
             <div class="search-box">
-                <input type="text" id="spotifySearch" placeholder="Ketik judul lagu untuk dicari...">
-                <button onclick="cariLagu()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" id="spotifySearch" placeholder="Cari lagu lain di Spotify...">
+                <button onclick="cariLagu()"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
             </div>
 
-            <!-- Spotify Besar (Menampilkan Gambar Cover Lagu / Playlist) -->
-            <!-- Height diubah jadi 352 agar gambar lagu terlihat jelas -->
+            <!-- Lagu 1: Chloe Pawapua - Jadian Yuk -->
+            <div class="song-label">🎵 Jadian Yuk - Chloe Pawapua</div>
             <iframe style="border-radius:12px" 
-                src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" 
+                src="https://open.spotify.com/embed/track/3b5UoY9Xy7xU1U3b5UoY9X?utm_source=generator&theme=0" 
                 width="100%" 
-                height="352" 
+                height="80" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+
+            <!-- Lagu 2: Chloe Pawapua - Lagu: -->
+            <div class="song-label">🎵 Lagu: - Chloe Pawapua</div>
+            <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/track/3TXZH1Z4fK4x9yUvEaKx2u?utm_source=generator&theme=0" 
+                width="100%" 
+                height="80" 
                 frameBorder="0" 
                 allowfullscreen="" 
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
@@ -292,7 +315,7 @@
 
             <!-- Link Chat WA Langsung -->
             <a href="https://wa.me/6283152561195?text=Halo%20Rayze%20Animation%20AI,%20saya%20ingin%20bertanya" target="_blank" class="link-btn btn-wacontact">
-                <i class="fa-solid fa-comment-dots"></i> Hubungi via WhatsApp
+                <i class="fa-solid fa-comment-dots"></i> Chat WhatsApp (Fast Respon)
             </a>
         </div>
     </div>
@@ -302,14 +325,12 @@
         function cariLagu() {
             var judul = document.getElementById("spotifySearch").value;
             if(judul.trim() !== "") {
-                // Membuka tab baru yang langsung mengarah ke hasil pencarian lagu di Spotify
                 window.open("https://open.spotify.com/search/" + encodeURIComponent(judul), "_blank");
             } else {
                 alert("Ketik judul lagunya dulu ya!");
             }
         }
 
-        // Pencarian juga jalan kalau ditekan tombol 'Enter' di keyboard
         document.getElementById("spotifySearch").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
