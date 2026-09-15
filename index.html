@@ -36,7 +36,7 @@
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.55);
             z-index: -1;
         }
 
@@ -93,19 +93,19 @@
             margin-bottom: 25px;
         }
 
-        /* Spotify Section */
-        .spotify-section {
-            background: rgba(0, 0, 0, 0.45);
+        /* Music Section */
+        .music-section {
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 30px;
-            border: 1px solid rgba(29, 185, 84, 0.3);
+            border: 1px solid rgba(255, 0, 0, 0.3);
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             text-align: left;
         }
 
-        .spotify-title {
-            color: #1DB954;
+        .music-title {
+            color: #ff4757;
             font-weight: 700;
             font-size: 15px;
             margin-bottom: 12px;
@@ -116,59 +116,25 @@
             text-align: center;
         }
 
+        .song-card {
+            margin-bottom: 15px;
+        }
+
         .song-label {
             font-size: 12px;
-            color: #b3b3b3;
-            margin-bottom: 5px;
-            margin-top: 15px;
+            color: #d1d1d1;
+            margin-bottom: 6px;
             font-weight: 600;
-        }
-
-        /* Spotify Search Bar */
-        .search-box {
             display: flex;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50px;
-            padding: 4px 6px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-        
-        .search-box:focus-within {
-            border-color: #1DB954;
-            box-shadow: 0 0 15px rgba(29, 185, 84, 0.4);
+            align-items: center;
+            gap: 6px;
         }
 
-        .search-box input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: white;
-            padding: 8px 12px;
-            font-size: 13px;
-        }
-
-        .search-box input::placeholder {
-            color: #a0a0a0;
-        }
-
-        .search-box button {
-            background: #1DB954;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 0 16px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s;
-        }
-
-        .search-box button:hover {
-            background: #159441;
-            transform: scale(1.05);
+        .song-card iframe {
+            width: 100%;
+            height: 180px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Kumpulan Link / Tombol */
@@ -259,41 +225,23 @@
         <h1>Rayze Animation AI</h1>
         <p class="subtitle">Creator & Animator | Welcome to my space</p>
 
-        <!-- SPOTIFY SECTION (DIPERBANYAK LAGU CHLOE PAWAPUA) -->
-        <div class="spotify-section">
-            <div class="spotify-title">
-                <i class="fa-brands fa-spotify"></i> Chloe Pawapua Playlist
+        <!-- MUSIC SECTION: Lagu-lagu Chloe Pawapua -->
+        <div class="music-section">
+            <div class="music-title">
+                <i class="fa-solid fa-music"></i> Now Playing: Chloe Pawapua Songs
             </div>
 
-            <!-- Fitur Pencarian Lagu Lain -->
-            <div class="search-box">
-                <input type="text" id="spotifySearch" placeholder="Cari lagu lain di Spotify...">
-                <button onclick="cariLagu()"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+            <!-- Lagu 1: Chloe Pawapua - Lagu: (Original Song) -->
+            <div class="song-card">
+                <div class="song-label"><i class="fa-solid fa-compact-disc"></i> Chloe Pawapua - "Lagu:"</div>
+                <iframe src="https://www.youtube-nocookie.com/embed/9ZZORENy3fc" title="Chloe Pawapua - Lagu:" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <!-- Lagu 1: Chloe Pawapua - Jadian Yuk -->
-            <div class="song-label">🎵 Jadian Yuk - Chloe Pawapua</div>
-            <iframe style="border-radius:12px" 
-                src="https://open.spotify.com/embed/track/3b5UoY9Xy7xU1U3b5UoY9X?utm_source=generator&theme=0" 
-                width="100%" 
-                height="80" 
-                frameBorder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-            </iframe>
-
-            <!-- Lagu 2: Chloe Pawapua - Lagu: -->
-            <div class="song-label">🎵 Lagu: - Chloe Pawapua</div>
-            <iframe style="border-radius:12px" 
-                src="https://open.spotify.com/embed/track/3TXZH1Z4fK4x9yUvEaKx2u?utm_source=generator&theme=0" 
-                width="100%" 
-                height="80" 
-                frameBorder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-            </iframe>
+            <!-- Lagu 2: Kompilasi / Chill Sings Chloe Pawapua -->
+            <div class="song-card" style="margin-bottom: 0;">
+                <div class="song-label"><i class="fa-solid fa-compact-disc"></i> Chloe Pawapua - Chill Sings Mix</div>
+                <iframe src="https://www.youtube-nocookie.com/embed/n49jSch7hDM" title="Chloe Pawapua Chill Playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
 
         <!-- Kumpulan Link Media Sosial -->
@@ -319,25 +267,6 @@
             </a>
         </div>
     </div>
-
-    <!-- Script untuk menjalankan fitur pencarian Spotify -->
-    <script>
-        function cariLagu() {
-            var judul = document.getElementById("spotifySearch").value;
-            if(judul.trim() !== "") {
-                window.open("https://open.spotify.com/search/" + encodeURIComponent(judul), "_blank");
-            } else {
-                alert("Ketik judul lagunya dulu ya!");
-            }
-        }
-
-        document.getElementById("spotifySearch").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                cariLagu();
-            }
-        });
-    </script>
 
 </body>
 </html>
