@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayze Animation AI</title>
+    <title>Rayze Animation AI | Links</title>
     <!-- Font Awesome untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            /* Background Image yang kamu request */
+            /* Background Image */
             background-image: url('https://files.catbox.moe/90stkq.jpg');
             background-size: cover;
             background-position: center;
@@ -29,144 +29,255 @@
             align-items: center;
             min-height: 100vh;
             color: #ffffff;
+            padding: 40px 15px;
         }
 
-        /* Container Efek Glassmorphism */
+        /* Overlay gelap agar teks lebih terbaca */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* Container Glassmorphism Premium */
         .container {
-            background: rgba(10, 10, 10, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
+            background: rgba(20, 20, 25, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
             padding: 40px 30px;
-            width: 90%;
-            max-width: 420px;
+            width: 100%;
+            max-width: 450px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            margin: 30px 0;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1s ease-out;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Profile Styling */
         .profile-img {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 3px solid #fff;
+            border: 4px solid rgba(255, 255, 255, 0.8);
             object-fit: cover;
             margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         h1 {
-            font-size: 22px;
-            font-weight: 700;
+            font-size: 26px;
+            font-weight: 800;
             margin-bottom: 5px;
-            letter-spacing: 1px;
+            background: linear-gradient(90deg, #ffffff, #a3a3a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        p {
+        p.subtitle {
             font-size: 14px;
-            color: #d1d1d1;
+            color: #b3b3b3;
+            margin-bottom: 25px;
+        }
+
+        /* Spotify Section */
+        .spotify-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px;
             margin-bottom: 30px;
+            border: 1px solid rgba(29, 185, 84, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Styling Tombol Link */
-        .links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid transparent;
-        }
-
-        .link-btn i {
-            font-size: 20px;
-            position: absolute;
-            left: 20px;
-        }
-
-        /* Warna Custom Tiap Tombol */
-        .btn-youtube {
-            background-color: rgba(255, 0, 0, 0.8);
-        }
-        .btn-youtube:hover {
-            background-color: #ff0000;
-            transform: scale(1.03);
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
-        }
-
-        .btn-tiktok {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-        .btn-tiktok:hover {
-            background-color: #000000;
-            border-color: #00f2fe;
-            transform: scale(1.03);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
-        }
-
-        .btn-wachannel {
-            background-color: rgba(37, 211, 102, 0.8);
-        }
-        .btn-wachannel:hover {
-            background-color: #25D366;
-            transform: scale(1.03);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
-        }
-
-        .btn-wacontact {
-            background: linear-gradient(45deg, #128C7E, #25D366);
-        }
-        .btn-wacontact:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
-        }
-
-        /* Styling Spotify */
-        .spotify-wrapper {
-            margin-top: 35px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .spotify-wrapper h2 {
+        .spotify-title {
+            color: #1DB954;
+            font-weight: 700;
             font-size: 16px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            color: #1DB954;
+        }
+
+        /* Spotify Search Bar */
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            padding: 5px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+        
+        .search-box:focus-within {
+            border-color: #1DB954;
+            box-shadow: 0 0 15px rgba(29, 185, 84, 0.4);
+        }
+
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        .search-box input::placeholder {
+            color: #a0a0a0;
+        }
+
+        .search-box button {
+            background: #1DB954;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #159441;
+            transform: scale(1.05);
+        }
+
+        /* Kumpulan Link / Tombol */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .link-btn i {
+            font-size: 22px;
+            position: absolute;
+            left: 20px;
+        }
+
+        /* Hover Effect Global */
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0%; height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+            transition: all 0.4s;
+            z-index: -1;
+        }
+        .link-btn:hover::before {
+            width: 100%;
+        }
+
+        /* Warna Neon Tombol */
+        .btn-youtube:hover {
+            background: rgba(255, 0, 0, 0.8);
+            border-color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+            transform: translateY(-5px);
+        }
+        
+        .btn-tiktok:hover {
+            background: rgba(0, 0, 0, 0.8);
+            border-color: #00f2fe;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+            transform: translateY(-5px);
+        }
+
+        .btn-wachannel:hover {
+            background: rgba(37, 211, 102, 0.8);
+            border-color: #25D366;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+            transform: translateY(-5px);
+        }
+
+        /* Tombol Kontak Spesial */
+        .btn-wacontact {
+            background: linear-gradient(45deg, #128C7E, #25D366);
+            border: none;
+            margin-top: 10px;
+        }
+        .btn-wacontact:hover {
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.7);
+            transform: translateY(-5px) scale(1.02);
         }
     </style>
 </head>
 <body>
 
+    <div class="overlay"></div>
+
     <div class="container">
-        <!-- Foto Profil (Sementara pakai inisial nama, bisa diganti dengan link foto logomu) -->
+        <!-- Foto Profil (Ganti link gambar di bawah kalau punya logo sendiri) -->
         <img src="https://ui-avatars.com/api/?name=Rayze+Animation+AI&background=random&color=fff&size=200" alt="Profile" class="profile-img">
         
         <h1>Rayze Animation AI</h1>
-        <p>Welcome to my official links!</p>
+        <p class="subtitle">Creator & Animator | Welcome to my space</p>
 
-        <!-- Kumpulan Link -->
+        <!-- SPOTIFY SECTION BGT & SEARCH -->
+        <div class="spotify-section">
+            <div class="spotify-title">
+                <i class="fa-brands fa-spotify"></i> Spotify Music Player
+            </div>
+
+            <!-- Fitur Pencarian Spotify -->
+            <div class="search-box">
+                <input type="text" id="spotifySearch" placeholder="Ketik judul lagu untuk dicari...">
+                <button onclick="cariLagu()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- Spotify Besar (Menampilkan Gambar Cover Lagu / Playlist) -->
+            <!-- Height diubah jadi 352 agar gambar lagu terlihat jelas -->
+            <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" 
+                width="100%" 
+                height="352" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <!-- Kumpulan Link Media Sosial -->
         <div class="links-container">
             <!-- Link YouTube -->
             <a href="https://www.youtube.com/@RayzeAnimationAI" target="_blank" class="link-btn btn-youtube">
-                <i class="fa-brands fa-youtube"></i> YouTube
+                <i class="fa-brands fa-youtube"></i> YouTube Channel
             </a>
 
             <!-- Link TikTok -->
@@ -181,25 +292,31 @@
 
             <!-- Link Chat WA Langsung -->
             <a href="https://wa.me/6283152561195?text=Halo%20Rayze%20Animation%20AI,%20saya%20ingin%20bertanya" target="_blank" class="link-btn btn-wacontact">
-                <i class="fa-solid fa-comment-dots"></i> Chat WhatsApp (Fast Respon)
+                <i class="fa-solid fa-comment-dots"></i> Hubungi via WhatsApp
             </a>
         </div>
-
-        <!-- Tool / Widget Spotify -->
-        <div class="spotify-wrapper">
-            <h2><i class="fa-brands fa-spotify"></i> My Playlist</h2>
-            <!-- Kode Embed Spotify -->
-            <iframe style="border-radius:12px" 
-                src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" 
-                width="100%" 
-                height="152" 
-                frameBorder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-            </iframe>
-        </div>
     </div>
+
+    <!-- Script untuk menjalankan fitur pencarian Spotify -->
+    <script>
+        function cariLagu() {
+            var judul = document.getElementById("spotifySearch").value;
+            if(judul.trim() !== "") {
+                // Membuka tab baru yang langsung mengarah ke hasil pencarian lagu di Spotify
+                window.open("https://open.spotify.com/search/" + encodeURIComponent(judul), "_blank");
+            } else {
+                alert("Ketik judul lagunya dulu ya!");
+            }
+        }
+
+        // Pencarian juga jalan kalau ditekan tombol 'Enter' di keyboard
+        document.getElementById("spotifySearch").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                cariLagu();
+            }
+        });
+    </script>
 
 </body>
 </html>
