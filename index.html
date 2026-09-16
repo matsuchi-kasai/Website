@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KiraSEA7 - Mionime Studio 1st Hub</title>
+    <title>KiraSEA7 - Main Hub & Saluran Resmi</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,7 +16,8 @@
                         card: '#0f172a',
                         cardhover: '#1e293b',
                         primary: '#ec4899',
-                        accent: '#8b5cf6'
+                        accent: '#8b5cf6',
+                        wa: '#25D366'
                     }
                 }
             }
@@ -27,239 +28,109 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #06080d; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-darker text-gray-100 min-h-screen flex flex-col justify-between selection:bg-primary selection:text-white custom-scrollbar">
+<body class="bg-darker text-gray-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-primary selection:text-white">
 
-    <!-- HEADER / NAVBAR -->
-    <header class="sticky top-0 z-50 bg-darker/95 backdrop-blur-xl border-b border-gray-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer group" onclick="location.reload()">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center shadow-lg shadow-pink-500/25 group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-play text-white text-lg"></i>
-                </div>
-                <div>
-                    <span class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-white via-pink-200 to-primary bg-clip-text text-transparent">
-                        Kira<span class="text-primary">SEA7</span>
-                    </span>
-                    <span class="block text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Studio 1st Engine</span>
-                </div>
+    <!-- CONTAINER UTAMA PILIHAN SALURAN / WEB -->
+    <div class="max-w-xl w-full bg-card border border-gray-800 rounded-3xl p-8 shadow-2xl text-center relative overflow-hidden">
+        
+        <!-- Efek Cahaya Latar -->
+        <div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-accent/20 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10">
+            <!-- Logo / Judul -->
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center shadow-lg shadow-pink-500/30">
+                <i class="fa-solid fa-play text-white text-2xl"></i>
             </div>
             
-            <!-- Tombol Redirect Cepat ke Link Mionime -->
-            <div class="flex items-center space-x-3">
-                <a href="https://mionime.com/studio/studio-1st?page=2" target="_blank" class="hidden sm:flex items-center space-x-2 bg-pink-600/20 text-pink-400 hover:bg-pink-600/30 border border-pink-500/30 px-4 py-2 rounded-xl text-xs font-bold transition-all">
-                    <i class="fa-solid id-card fa-external-link-alt"></i>
-                    <span>Buka Mionime Studio 1st</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+                Selamat Datang di <span class="bg-gradient-to-r from-white via-pink-200 to-primary bg-clip-text text-transparent">KiraSEA7</span>
+            </h1>
+            
+            <!-- Timer Hitung Mundur Auto Redirect -->
+            <p class="text-gray-400 text-xs sm:text-sm mb-8">
+                Pilih link tujuanmu di bawah. Jika tidak memilih, kamu akan dialihkan otomatis dalam <span id="countdown" class="font-bold text-primary text-base">10</span> detik ke Mionime.
+            </p>
+
+            <!-- DAFTAR TOMBOL PILIHAN -->
+            <div class="space-y-3.5 mb-6">
+                <!-- 1. Nekopoi -->
+                <a href="https://nekopoi.care" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-gray-900/80 hover:bg-gray-800 border border-gray-800 hover:border-primary/50 transition-all group shadow-md">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-primary flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-bold text-sm text-gray-200 group-hover:text-primary transition-colors">Nekopoi</h3>
+                            <p class="text-[11px] text-gray-400">Portal streaming & unduh khusus anime pilihan</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-primary text-xs"></i>
                 </a>
-                <div class="flex items-center space-x-2 bg-card border border-gray-800 px-3.5 py-1.5 rounded-full shadow-md">
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=KiraSEA7" alt="User" class="w-7 h-7 rounded-full bg-primary/20">
-                    <span class="text-xs font-bold text-gray-200 hidden md:inline">VIP Member</span>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- 2. Mionime Studio 1st Page 2 -->
+                <a href="https://mionime.com/studio/studio-1st?page=2" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-gray-900/80 hover:bg-gray-800 border border-gray-800 hover:border-primary/50 transition-all group shadow-md">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-bold text-sm text-gray-200 group-hover:text-purple-400 transition-colors">Mionime Studio 1st (Page 2)</h3>
+                            <p class="text-[11px] text-gray-400">Direktori arsip anime studio 1st lengkap</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-purple-400 text-xs"></i>
+                </a>
 
-        <!-- HERO BANNER DENGAN AUTO REDIRECT INFO -->
-        <div class="relative rounded-3xl overflow-hidden mb-10 bg-gradient-to-r from-purple-950 via-gray-900 to-darker border border-gray-800 shadow-2xl">
-            <div class="absolute inset-0 opacity-30 bg-[radial-gradient(#ec4899_1px,transparent_1px)] [background-size:20px_20px]"></div>
-            <div class="relative z-10 p-8 sm:p-12 md:p-14 max-w-3xl">
-                <span class="bg-primary/20 text-primary border border-primary/30 text-xs px-3.5 py-1.5 rounded-full font-bold uppercase tracking-widest inline-block mb-4 shadow-sm">
-                    ✨ Auto-Redirect to Mionime Studio 1st
-                </span>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
-                    Streaming Anime Eksklusif di KiraSEA7
-                </h1>
-                <p class="text-gray-300 text-sm sm:text-base mb-6 leading-relaxed max-w-2xl">
-                    Sistem akan mengarahkanmu ke sumber asli Mionime atau kamu bisa langsung tonton koleksi videonya di bawah ini secara mandiri.
-                </p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="https://mionime.com/studio/studio-1st?page=2" class="bg-gradient-to-r from-primary to-pink-600 hover:from-pink-600 hover:to-primary text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-pink-500/25 transition-all text-xs flex items-center space-x-2">
-                        <i class="fa-solid fa-arrow-right"></i>
-                        <span>Ke Link Mionime Sekarang</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- PEMUTAR VIDEO INTERNAL -->
-        <section id="playerSection" class="hidden mb-12 bg-card border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl transition-all">
-            <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center space-x-3">
-                    <span class="w-3.5 h-3.5 rounded-full bg-primary animate-ping"></span>
-                    <h2 id="nowPlayingTitle" class="text-xl sm:text-2xl font-extrabold text-white">Memutar Video</h2>
-                </div>
-                <button onclick="closePlayer()" class="text-gray-400 hover:text-white bg-gray-800/80 hover:bg-gray-700 p-2.5 rounded-full transition-all">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-            
-            <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-inner border border-gray-800 flex items-center justify-center">
-                <video id="htmlPlayer" class="w-full h-full object-contain" controls autoplay playsinline>
-                    Browser Anda tidak mendukung pemutar video HTML5.
-                </video>
+                <!-- 3. Saluran WhatsApp -->
+                <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/30 transition-all group shadow-md">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-bold text-sm text-emerald-300 group-hover:text-emerald-200 transition-colors">Saluran WhatsApp Resmi</h3>
+                            <p class="text-[11px] text-emerald-400/80">Bergabung untuk update info terbaru</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-emerald-500 text-xs"></i>
+                </a>
             </div>
 
-            <div class="mt-5 flex flex-wrap items-center justify-between text-sm text-gray-400 gap-3">
-                <p id="nowPlayingDesc" class="flex items-center space-x-2">
-                    <i class="fa-solid fa-server text-primary"></i>
-                    <span>Server Player Utama - Subtitle Indonesia</span>
-                </p>
-                <div class="flex items-center space-x-2">
-                    <span class="bg-primary/10 text-primary border border-primary/20 px-3.5 py-1.5 rounded-xl text-xs font-bold">1080p HD Aktif</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- KATALOG HEADER -->
-        <div id="catalogue" class="flex items-center justify-between mb-6">
-            <h2 class="text-xl sm:text-2xl font-extrabold text-white flex items-center space-x-3">
-                <i class="fa-solid fa-fire text-primary"></i>
-                <span>Daftar Katalog Studio 1st (<span id="totalAnime">0</span> Judul)</span>
-            </h2>
+            <!-- Footer Info -->
+            <p class="text-[11px] text-gray-500">
+                &copy; 2026 <span class="font-bold text-gray-400">KiraSEA7</span>. All Rights Reserved.
+            </p>
         </div>
+    </div>
 
-        <!-- GRID ANIME -->
-        <div id="animeGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-6">
-            <!-- Data dimasukkan via Javascript -->
-        </div>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="bg-darker border-t border-gray-800/80 mt-16 py-10 text-center text-sm text-gray-500">
-        <div class="max-w-7xl mx-auto px-4 space-y-3">
-            <p>&copy; 2026 <span class="text-gray-300 font-bold">KiraSEA7</span>. Platform Web Streaming Mandiri.</p>
-        </div>
-    </footer>
-
-    <!-- SCRIPT DATA & AUTO-REDIRECT -->
+    <!-- SCRIPT TIMER AUTO REDIRECT 10 DETIK -->
     <script>
-        // Database lengkap dengan poster anime HD dan link resmi sumber
-        const animeData = [
-            { id: 1, title: "Mokkai Shiyo?", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.35", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" },
-            { id: 2, title: "Mebuki The Animation", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.09", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
-            { id: 3, title: "Maro no Kanja wa Gatenkei", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.02", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" },
-            { id: 4, title: "Majo wa Kekkyoku Sono Kyaku to... The Animation", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.88", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-            { id: 5, title: "Maid Kyouiku: Botsuraku Kizoku Rurikawa Tsubaki", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.88", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-            { id: 6, title: "Madonna: Kanjuku Body Collection", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.60", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-            { id: 7, title: "M Ogui: Last Order", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.39", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-            { id: 8, title: "Lo Re: Pako Sukusuku Mizuki-chan", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.43", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
-            { id: 9, title: "Kyonyuu Dosukebe Gakuen", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.63", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" },
-            { id: 10, title: "Kozukuri Ninkatsu Bu!", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.40", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" },
-            { id: 11, title: "Kowaremono: Risa The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.52", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
-            { id: 12, title: "Kowaremono: Risa Plus The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.70", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" },
-            { id: 13, title: "Kowaremono The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.29", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-            { id: 14, title: "Koi Maguwai", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.82", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-            { id: 15, title: "Kanojo ga Nekomimi ni Kigaetara", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.52", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-            { id: 16, title: "Kakurenbo The Animation", studio: "Studio 1st", eps: "Ongoing", rating: "7.45", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-            { id: 17, title: "Kaede to Suzu The Animation", studio: "Studio 1st", eps: "Eps 3 (OVA)", rating: "7.85", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
-            { id: 18, title: "Junjou Shoujo Et Cetera", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.64", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" },
-            { id: 19, title: "Jewelry The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.64", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" },
-            { id: 20, title: "Ikoku na Retro", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.42", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop", sourceUrl: "https://mionime.com/studio/studio-1st?page=2", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" }
-        ];
+        let timeLeft = 10;
+        const countdownEl = document.getElementById('countdown');
+        let isRedirectCancelled = false;
 
-        function renderAnime(data) {
-            const grid = document.getElementById('animeGrid');
-            document.getElementById('totalAnime').innerText = data.length;
-            grid.innerHTML = "";
+        function cancelRedirect() {
+            isRedirectCancelled = true;
+        }
 
-            if(data.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-16 text-gray-500 font-medium">Anime tidak ditemukan...</div>`;
+        const timer = setInterval(() => {
+            if (isRedirectCancelled) {
+                clearInterval(timer);
                 return;
             }
 
-            data.forEach(anime => {
-                grid.innerHTML += `
-                    <div class="group bg-card hover:bg-cardhover rounded-2xl overflow-hidden border border-gray-800 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/10 flex flex-col justify-between">
-                        <div onclick="playAnime('${anime.title}', '${anime.url}')" class="relative aspect-[3/4] overflow-hidden bg-gray-950 cursor-pointer">
-                            <img src="${anime.img}" alt="${anime.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-darker via-transparent opacity-90"></div>
-                            
-                            <span class="absolute top-3 left-3 bg-darker/90 backdrop-blur-md text-primary text-[10px] font-bold px-2.5 py-1 rounded-lg border border-gray-800 shadow">
-                                ${anime.studio}
-                            </span>
-                            
-                            <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-yellow-400 text-xs px-2.5 py-1 rounded-lg flex items-center space-x-1 font-bold shadow">
-                                <i class="fa-solid fa-star text-[10px]"></i>
-                                <span>${anime.rating}</span>
-                            </div>
+            timeLeft--;
+            countdownEl.innerText = timeLeft;
 
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 backdrop-blur-[2px]">
-                                <div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-xl shadow-pink-500/50 transform scale-75 group-hover:scale-100 transition-transform">
-                                    <i class="fa-solid fa-play ml-0.5 text-lg"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-4 flex flex-col justify-between flex-grow">
-                            <div>
-                                <h3 onclick="playAnime('${anime.title}', '${anime.url}')" class="font-bold text-sm text-gray-100 hover:text-primary transition-colors line-clamp-1 mb-1 cursor-pointer">${anime.title}</h3>
-                                <a href="${anime.sourceUrl}" target="_blank" class="text-[11px] text-pink-400 hover:underline flex items-center space-x-1 mb-3">
-                                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                                    <span>Buka di Mionime</span>
-                                </a>
-                            </div>
-                            <div class="flex items-center justify-between text-xs text-gray-400">
-                                <span class="bg-gray-800 px-2.5 py-1 rounded-md">${anime.eps}</span>
-                                <button onclick="playAnime('${anime.title}', '${anime.url}')" class="text-primary font-semibold flex items-center space-x-1 hover:underline">
-                                    <span>Tonton</span>
-                                    <i class="fa-solid fa-chevron-right text-[9px]"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function playAnime(title, url) {
-            const playerSection = document.getElementById('playerSection');
-            const htmlPlayer = document.getElementById('htmlPlayer');
-            const titleElement = document.getElementById('nowPlayingTitle');
-
-            titleElement.innerText = "Sedang Memutar: " + title;
-            
-            htmlPlayer.src = url;
-            htmlPlayer.load();
-            htmlPlayer.play().catch(err => {
-                console.log("Autoplay ditahan browser:", err);
-            });
-            
-            playerSection.classList.remove('hidden');
-            playerSection.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function closePlayer() {
-            const playerSection = document.getElementById('playerSection');
-            const htmlPlayer = document.getElementById('htmlPlayer');
-            
-            htmlPlayer.pause();
-            htmlPlayer.src = "";
-            playerSection.classList.add('hidden');
-        }
-
-        function searchAnime() {
-            const keyword = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = animeData.filter(item => 
-                item.title.toLowerCase().includes(keyword) || 
-                item.studio.toLowerCase().includes(keyword)
-            );
-            renderAnime(filtered);
-        }
-
-        renderAnime(animeData);
-
-        // FITUR OTOMATIS REDIRECT KE LINK MIONIME SETELAH 4 DETIK (Bisa disesuaikan atau dihapus kalau mau nunggu user klik manual)
-        // setTimeout(() => {
-        //     window.location.href = "https://mionime.com/studio/studio-1st?page=2";
-        // }, 5000); 
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                // Redirect otomatis ke link Mionime Studio 1st Page 2
+                window.location.href = "https://mionime.com/studio/studio-1st?page=2";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
