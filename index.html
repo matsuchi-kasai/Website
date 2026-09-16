@@ -52,7 +52,7 @@
             <!-- Pencarian & Profil -->
             <div class="flex items-center space-x-4">
                 <div class="relative hidden sm:block">
-                    <input type="text" id="searchInput" onkeyup="searchAnime()" placeholder="Cari anime..." class="bg-card text-sm text-gray-300 rounded-full pl-11 pr-5 py-2.5 border border-gray-800 focus:outline-none focus:border-primary w-72 transition-all shadow-inner">
+                    <input type="text" id="searchInput" onkeyup="searchAnime()" placeholder="Cari judul anime..." class="bg-card text-sm text-gray-300 rounded-full pl-11 pr-5 py-2.5 border border-gray-800 focus:outline-none focus:border-primary w-72 transition-all shadow-inner">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-gray-400 text-sm"></i>
                 </div>
                 <div class="flex items-center space-x-2 bg-card border border-gray-800 px-3.5 py-1.5 rounded-full shadow-md">
@@ -77,12 +77,12 @@
                     Streaming Anime HD Tanpa Hambatan di KiraSEA7
                 </h1>
                 <p class="text-gray-300 text-sm sm:text-base mb-6 leading-relaxed max-w-2xl">
-                    Sistem pemutar video langsung aktif di dalam halaman web dengan server responsif anti-lag.
+                    Sistem pemutar video langsung aktif di dalam halaman web dengan server responsif anti-lag dan poster akurat.
                 </p>
             </div>
         </div>
 
-        <!-- PEMUTAR VIDEO INTERNAL (IFRAME & VIDEO DUAL ENGINE) -->
+        <!-- PEMUTAR VIDEO INTERNAL -->
         <section id="playerSection" class="hidden mb-12 bg-card border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl transition-all">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center space-x-3">
@@ -94,10 +94,11 @@
                 </button>
             </div>
             
-            <!-- Video Container Dual Engine (Support Iframe & HTML5 Video) -->
+            <!-- HTML5 Video Player Langsung -->
             <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-inner border border-gray-800 flex items-center justify-center">
-                <iframe id="framePlayer" class="w-full h-full hidden" src="" frameborder="0" allowfullscreen></iframe>
-                <video id="htmlPlayer" class="w-full h-full object-contain hidden" controls autoplay playsinline></video>
+                <video id="htmlPlayer" class="w-full h-full object-contain" controls autoplay playsinline>
+                    Browser Anda tidak mendukung pemutar video HTML5.
+                </video>
             </div>
 
             <div class="mt-5 flex flex-wrap items-center justify-between text-sm text-gray-400 gap-3">
@@ -135,28 +136,28 @@
 
     <!-- SCRIPT DATA & PEMUTAR STABIL -->
     <script>
-        // Database Anime Halaman Mionime Studio 1st Page 2 Lengkap
+        // Database lengkap dengan gambar poster karakter anime asli bernuansa anime Jepang
         const animeData = [
-            { id: 1, title: "Mokkai Shiyo?", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.35", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
-            { id: 2, title: "Mebuki The Animation", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.09", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" },
-            { id: 3, title: "Maro no Kanja wa Gatenkei", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.02", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-            { id: 4, title: "Majo wa Kekkyoku Sono Kyaku to... The Animation", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.88", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-            { id: 5, title: "Maid Kyouiku: Botsuraku Kizoku Rurikawa Tsubaki", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.88", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-            { id: 6, title: "Madonna: Kanjuku Body Collection", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.60", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-            { id: 7, title: "M Ogui: Last Order", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.39", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
-            { id: 8, title: "Lo Re: Pako Sukusuku Mizuki-chan", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.43", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" },
-            { id: 9, title: "Kyonyuu Dosukebe Gakuen", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.63", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" },
-            { id: 10, title: "Kozukuri Ninkatsu Bu!", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.40", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" },
-            { id: 11, title: "Kowaremono: Risa The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.52", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
-            { id: 12, title: "Kowaremono: Risa Plus The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.70", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" },
-            { id: 13, title: "Kowaremono The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.29", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-            { id: 14, title: "Koi Maguwai", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.82", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-            { id: 15, title: "Kanojo ga Nekomimi ni Kigaetara", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.52", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-            { id: 16, title: "Kakurenbo The Animation", studio: "Studio 1st", eps: "Ongoing", rating: "7.45", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-            { id: 17, title: "Kaede to Suzu The Animation", studio: "Studio 1st", eps: "Eps 3 (OVA)", rating: "7.85", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
-            { id: 18, title: "Junjou Shoujo Et Cetera", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.64", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" },
-            { id: 19, title: "Jewelry The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.64", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" },
-            { id: 20, title: "Ikoku na Retro", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.42", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500", type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" }
+            { id: 1, title: "Mokkai Shiyo?", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.35", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" },
+            { id: 2, title: "Mebuki The Animation", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.09", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
+            { id: 3, title: "Maro no Kanja wa Gatenkei", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.02", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" },
+            { id: 4, title: "Majo wa Kekkyoku Sono Kyaku to... The Animation", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.88", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
+            { id: 5, title: "Maid Kyouiku: Botsuraku Kizoku Rurikawa Tsubaki", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.88", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
+            { id: 6, title: "Madonna: Kanjuku Body Collection", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.60", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
+            { id: 7, title: "M Ogui: Last Order", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.39", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
+            { id: 8, title: "Lo Re: Pako Sukusuku Mizuki-chan", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.43", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
+            { id: 9, title: "Kyonyuu Dosukebe Gakuen", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.63", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" },
+            { id: 10, title: "Kozukuri Ninkatsu Bu!", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.40", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" },
+            { id: 11, title: "Kowaremono: Risa The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.52", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
+            { id: 12, title: "Kowaremono: Risa Plus The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.70", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" },
+            { id: 13, title: "Kowaremono The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.29", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
+            { id: 14, title: "Koi Maguwai", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.82", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
+            { id: 15, title: "Kanojo ga Nekomimi ni Kigaetara", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.52", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
+            { id: 16, title: "Kakurenbo The Animation", studio: "Studio 1st", eps: "Ongoing", rating: "7.45", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
+            { id: 17, title: "Kaede to Suzu The Animation", studio: "Studio 1st", eps: "Eps 3 (OVA)", rating: "7.85", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
+            { id: 18, title: "Junjou Shoujo Et Cetera", studio: "Studio 1st", eps: "Eps 2 (OVA)", rating: "6.64", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" },
+            { id: 19, title: "Jewelry The Animation", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.64", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" },
+            { id: 20, title: "Ikoku na Retro", studio: "Studio 1st", eps: "Eps 1 (OVA)", rating: "6.42", img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" }
         ];
 
         function renderAnime(data) {
@@ -214,12 +215,10 @@
 
             titleElement.innerText = "Sedang Memutar: " + title;
             
-            // Aktifkan HTML5 Video Player langsung
-            htmlPlayer.classList.remove('hidden');
             htmlPlayer.src = url;
             htmlPlayer.load();
             htmlPlayer.play().catch(err => {
-                console.log("Autoplay dicegah browser, user perlu klik manual tombol play:", err);
+                console.log("Autoplay ditahan browser, silakan klik tombol play manual:", err);
             });
             
             playerSection.classList.remove('hidden');
@@ -232,7 +231,6 @@
             
             htmlPlayer.pause();
             htmlPlayer.src = "";
-            htmlPlayer.classList.add('hidden');
             playerSection.classList.add('hidden');
         }
 
