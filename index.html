@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KiraSEA7 - Streaming Anime Eksklusif</title>
+    <title>KiraSEA7 - Streaming Anime & Mionime Studio 1st</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -47,7 +47,7 @@
             <!-- Pencarian & Profil -->
             <div class="flex items-center space-x-4">
                 <div class="relative hidden sm:block">
-                    <input type="text" id="searchInput" onkeyup="searchAnime()" placeholder="Cari anime impianmu..." class="bg-card text-sm text-gray-300 rounded-full pl-10 pr-4 py-2 border border-gray-700 focus:outline-none focus:border-primary w-64 transition-all">
+                    <input type="text" id="searchInput" onkeyup="searchAnime()" placeholder="Cari anime Mionime/Nekopoi..." class="bg-card text-sm text-gray-300 rounded-full pl-10 pr-4 py-2 border border-gray-700 focus:outline-none focus:border-primary w-64 transition-all">
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-gray-400 text-sm"></i>
                 </div>
                 <div class="flex items-center space-x-2 bg-card border border-gray-800 px-3 py-1.5 rounded-full">
@@ -66,24 +66,24 @@
             <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#ec4899_1px,transparent_1px)] [background-size:16px_16px]"></div>
             <div class="relative z-10 p-6 sm:p-10 md:p-12 max-w-2xl">
                 <span class="bg-primary/20 text-primary border border-primary/30 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider inline-block mb-4">
-                    🔥 Trending Studio 1st & Special Collection
+                    🔥 Mionime Studio 1st & Nekopoi Archive Edition
                 </span>
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-                    Nonton Anime Tanpa Batas, Kualitas HD & Sub Indo
+                    Streaming Anime Lokal Eksklusif di KiraSEA7
                 </h1>
                 <p class="text-gray-300 text-sm sm:text-base mb-6 leading-relaxed">
-                    Nikmati koleksi anime pilihan berkualitas tinggi langsung di browser kamu tanpa iklan mengganggu dan tanpa perlu pindah ke web lain.
+                    Menampilkan koleksi lengkap halaman Studio 1st Mionime serta database khusus dengan pemutar internal web mandiri tanpa lempar ke situs lain.
                 </p>
                 <div class="flex flex-wrap gap-3">
                     <a href="#catalogue" class="bg-gradient-to-r from-primary to-pink-600 hover:from-pink-600 hover:to-primary text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-pink-500/25 transition-all text-sm flex items-center space-x-2">
                         <i class="fa-solid fa-film"></i>
-                        <span>Jelajahi Katalog</span>
+                        <span>Lihat Daftar Anime</span>
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- MODAL / AREA PEMUTAR VIDEO DI DALAM WEB (INTERNAL PLAYER) -->
+        <!-- MODAL / AREA PEMUTAR VIDEO INTERNAL (HTML5 VIDEO PLAYER - BUKAN YOUTUBE) -->
         <section id="playerSection" class="hidden mb-12 bg-card border border-gray-800 rounded-2xl p-4 sm:p-6 shadow-2xl">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center space-x-3">
@@ -95,15 +95,17 @@
                 </button>
             </div>
             
-            <!-- Video Container -->
-            <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-inner border border-gray-800">
-                <iframe id="videoPlayer" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
+            <!-- Video Container Asli (HTML5 Video) -->
+            <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-inner border border-gray-800 flex items-center justify-center">
+                <video id="internalVideoPlayer" class="w-full h-full object-contain" controls autoplay>
+                    Your browser does not support the video tag.
+                </video>
             </div>
             <div class="mt-4 flex flex-wrap items-center justify-between text-sm text-gray-400 gap-2">
-                <p id="nowPlayingDesc">Server Stabil HD - Subtitle Indonesia</p>
+                <p id="nowPlayingDesc">Pemutar Internal Web KiraSEA7 - Streaming HD Lancar</p>
                 <div class="flex items-center space-x-2">
-                    <span class="bg-gray-800 px-3 py-1 rounded-lg text-xs text-gray-300 font-medium">Resolusi: 1080p HD</span>
-                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-semibold">Server Utama</span>
+                    <span class="bg-gray-800 px-3 py-1 rounded-lg text-xs text-gray-300 font-medium">Resolusi: HD 1080p</span>
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-semibold">Direct Source</span>
                 </div>
             </div>
         </section>
@@ -111,99 +113,144 @@
         <!-- KATALOG ANIME -->
         <div id="catalogue" class="flex items-center justify-between mb-6">
             <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
-                <i class="fa-solid fa-fire text-primary"></i>
-                <span>Daftar Anime & Studio 1st</span>
+                <i class="fa-solid fa-layer-group text-primary"></i>
+                <span>Studio 1st (Page 2) & Special Nekopoi</span>
             </h2>
-            <span class="text-xs text-gray-400">Total: <span id="totalAnime">0</span> Judul Tersedia</span>
+            <span class="text-xs text-gray-400">Total: <span id="totalAnime">0</span> Judul</span>
         </div>
 
         <!-- GRID KARTU ANIME -->
         <div id="animeGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
-            <!-- Data Anime dimasukkan via Javascript di bawah -->
+            <!-- Data dimasukkan otomatis lewat JavaScript -->
         </div>
 
     </main>
 
     <!-- FOOTER -->
     <footer class="bg-darker border-t border-gray-800/80 mt-12 py-8 text-center text-sm text-gray-500">
-        <p>&copy; 2026 <span class="text-gray-300 font-bold">KiraSEA7</span>. Seluruh hak cipta dilindungi. Streaming lokal web mandiri.</p>
+        <p>&copy; 2026 <span class="text-gray-300 font-bold">KiraSEA7</span>. All Rights Reserved. Platform Streaming Lokal Mandiri.</p>
     </footer>
 
-    <!-- JAVASCRIPT DATABASE & INTERAKSI -->
+    <!-- JAVASCRIPT DATABASE & PEMUTAR VIDEO LOKAL -->
     <script>
-        // Database Anime Gabungan (Koleksi Pilihan, Katalog Studio, & Referensi Keren)
+        // Data dari Mionime Studio 1st (Page 2) + Koleksi Nekopoi
         const animeData = [
             {
                 id: 1,
-                title: "Nekopoi Special OVA Series",
-                category: "Nekopoi Collection",
-                episodes: "OVA / Movie",
-                rating: "9.8",
+                title: "Mokkai Shiyo?",
+                category: "Studio 1st (2014)",
+                episodes: "Eps 1 (OVA)",
+                rating: "6.35",
                 image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop",
-                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" // Contoh pemutar internal
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 id: 2,
-                title: "Studio 1st: Project Alpha",
-                category: "Mionime Studio 1st",
-                episodes: "Ep. 12 (Ongoing)",
-                rating: "8.9",
+                title: "Mebuki The Animation",
+                category: "Studio 1st (2024)",
+                episodes: "Eps 2 (OVA)",
+                rating: "6.09",
                 image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop",
-                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
             },
             {
                 id: 3,
-                title: "Kira Fantasy Chronicle",
-                category: "Action / Fantasy",
-                episodes: "Ep. 04 / 24",
-                rating: "9.2",
+                title: "Maro no Kanja wa Gatenkei",
+                category: "Studio 1st (2015)",
+                episodes: "Eps 2 (OVA)",
+                rating: "6.02",
                 image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop",
-                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
             },
             {
                 id: 4,
-                title: "Studio 1st: Re-Awakening",
-                category: "Mionime Studio 1st",
-                episodes: "Complete 12 Eps",
-                rating: "8.7",
+                title: "Majo wa Kekkyoku Sono Kyaku to... The Animation",
+                category: "Studio 1st (2023)",
+                episodes: "Eps 2 (OVA)",
+                rating: "6.88",
                 image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop",
-                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
             },
             {
                 id: 5,
-                title: "Nekopoi Romantic Selection",
-                category: "Nekopoi Collection",
-                episodes: "Movie HD",
-                rating: "9.5",
+                title: "Maid Kyouiku: Botsuraku Kizoku",
+                category: "Studio 1st (2023)",
+                episodes: "Eps 2 (OVA)",
+                rating: "6.88",
                 image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop",
-                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
             },
             {
                 id: 6,
-                title: "Cyberpunk Edge: Kira Edition",
-                category: "Sci-Fi / Action",
-                episodes: "Ep. 08 / 12",
-                rating: "9.4",
+                title: "Madonna: Kanjuku Body Collection",
+                category: "Studio 1st (2014)",
+                episodes: "Eps 1 (OVA)",
+                rating: "6.60",
                 image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop",
-                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
             },
             {
                 id: 7,
-                title: "Studio 1st: Secret Dimension",
-                category: "Mionime Studio 1st",
-                episodes: "Ongoing",
-                rating: "8.8",
+                title: "M Ogui: Last Order",
+                category: "Studio 1st (2013)",
+                episodes: "Eps 1 (OVA)",
+                rating: "6.39",
                 image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=500&auto=format&fit=crop",
-                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
             },
             {
                 id: 8,
-                title: "Dark Night Chronicles",
-                category: "Supernatural",
-                episodes: "Complete 24 Eps",
-                rating: "9.0",
+                title: "Lo Re: Pako Sukusuku Mizuki-chan",
+                category: "Studio 1st (2016)",
+                episodes: "Eps 1 (OVA)",
+                rating: "6.43",
                 image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=500&auto=format&fit=crop",
-                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+            },
+            {
+                id: 9,
+                title: "Kyonyuu Dosukebe Gakuen",
+                category: "Studio 1st (2018)",
+                episodes: "Eps 2 (OVA)",
+                rating: "6.63",
+                image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop",
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4"
+            },
+            {
+                id: 10,
+                title: "Kozukuri Ninkatsu Bu!",
+                category: "Studio 1st (2023)",
+                episodes: "Eps 2 (OVA)",
+                rating: "6.40",
+                image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop",
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+            },
+            {
+                id: 11,
+                title: "Kowaremono: Risa The Animation",
+                category: "Studio 1st (2016)",
+                episodes: "Eps 1 (OVA)",
+                rating: "6.52",
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop",
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                id: 12,
+                title: "Kaede to Suzu The Animation",
+                category: "Studio 1st (2022)",
+                episodes: "Eps 3 (OVA)",
+                rating: "7.85",
+                image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop",
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+            },
+            {
+                id: 13,
+                title: "Nekopoi Special Uncensored Pack",
+                category: "Nekopoi Exclusive",
+                episodes: "Movie / OVA",
+                rating: "9.9",
+                image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop",
+                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
             }
         ];
 
@@ -224,8 +271,8 @@
                             <img src="${anime.image}" alt="${anime.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-darker via-transparent opacity-80"></div>
                             
-                            <!-- Badge Kategori -->
-                            <span class="absolute top-2 left-2 bg-darker/80 backdrop-blur-md text-primary text-[10px] font-bold px-2.5 py-1 rounded-md border border-gray-800">
+                            <!-- Badge Studio -->
+                            <span class="absolute top-2 left-2 bg-darker/90 backdrop-blur-md text-primary text-[10px] font-bold px-2 py-1 rounded-md border border-gray-800">
                                 ${anime.category}
                             </span>
                             
@@ -248,7 +295,7 @@
                             <div class="flex items-center justify-between text-xs text-gray-400">
                                 <span>${anime.episodes}</span>
                                 <span class="text-primary font-medium flex items-center space-x-1">
-                                    <span>Tonton</span>
+                                    <span>Nonton</span>
                                     <i class="fa-solid fa-chevron-right text-[9px]"></i>
                                 </span>
                             </div>
@@ -258,29 +305,32 @@
             });
         }
 
-        // Fungsi Memutar Video di Halaman Sendiri
+        // Fungsi Memutar Video di Halaman Sendiri Menggunakan HTML5 Video Player
         function playAnime(title, url) {
             const playerSection = document.getElementById('playerSection');
-            const videoPlayer = document.getElementById('videoPlayer');
+            const videoPlayer = document.getElementById('internalVideoPlayer');
             const titleElement = document.getElementById('nowPlayingTitle');
 
-            titleElement.innerText = "Sedang Memutar: " + title;
+            titleElement.innerText = "Sedang Diputar: " + title;
             videoPlayer.src = url;
+            videoPlayer.load();
+            videoPlayer.play();
             
             playerSection.classList.remove('hidden');
             playerSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Fungsi Tutup Player
+        // Fungsi Tutup Player & Hentikan Video
         function closePlayer() {
             const playerSection = document.getElementById('playerSection');
-            const videoPlayer = document.getElementById('videoPlayer');
+            const videoPlayer = document.getElementById('internalVideoPlayer');
             
-            videoPlayer.src = ""; // Matikan video
+            videoPlayer.pause();
+            videoPlayer.src = ""; 
             playerSection.classList.add('hidden');
         }
 
-        // Fungsi Pencarian Interaktif
+        // Fungsi Pencarian Cepat
         function searchAnime() {
             const keyword = document.getElementById('searchInput').value.toLowerCase();
             const filtered = animeData.filter(item => 
@@ -290,7 +340,7 @@
             renderAnime(filtered);
         }
 
-        // Inisialisasi Pertama
+        // Inisialisasi Tampilan
         renderAnime(animeData);
     </script>
 </body>
