@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KiraSEA7 - Main Hub & Saluran Resmi</title>
+    <title>KiraSEA7 - Black Hole Anime Hub</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,12 +12,12 @@
             theme: {
                 extend: {
                     colors: {
-                        darker: '#06080d',
-                        card: '#0f172a',
-                        cardhover: '#1e293b',
+                        void: '#020408',
+                        deepspace: '#090d16',
+                        card: '#0d1322',
                         primary: '#ec4899',
-                        accent: '#8b5cf6',
-                        wa: '#25D366'
+                        accent: '#a855f7',
+                        cyan glow: '#06b6d4'
                     }
                 }
             }
@@ -28,82 +28,108 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Efek Gravitasi Black Hole Glow */
+        .black-hole-glow {
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.15), inset 0 0 30px rgba(236, 72, 153, 0.1);
+            background: radial-gradient(circle at center, #0f172a 0%, #020408 100%);
+        }
+        .orbit-pulse {
+            animation: pulseGlow 4s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.2); }
+            100% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.4); }
+        }
     </style>
 </head>
-<body class="bg-darker text-gray-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-primary selection:text-white">
+<body class="bg-void text-gray-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-primary selection:text-white relative overflow-hidden">
 
-    <!-- CONTAINER UTAMA PILIHAN SALURAN / WEB -->
-    <div class="max-w-xl w-full bg-card border border-gray-800 rounded-3xl p-8 shadow-2xl text-center relative overflow-hidden">
+    <!-- Latar Belakang Efek Kosmik Black Hole -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-purple-900/10 via-pink-600/10 to-transparent rounded-full blur-[120px] pointer-events-none"></div>
+
+    <!-- CONTAINER UTAMA GAYA BLACK HOLE HUB -->
+    <div class="max-w-xl w-full black-hole-glow border border-gray-800/80 rounded-3xl p-8 sm:p-10 shadow-2xl text-center relative z-10 orbit-pulse">
         
-        <!-- Efek Cahaya Latar -->
-        <div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-accent/20 rounded-full blur-3xl"></div>
-
-        <div class="relative z-10">
-            <!-- Logo / Judul -->
-            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center shadow-lg shadow-pink-500/30">
-                <i class="fa-solid fa-play text-white text-2xl"></i>
+        <!-- Lingkaran Inti Black Hole Icon -->
+        <div class="relative w-20 h-20 mx-auto mb-5 rounded-3xl bg-gradient-to-tr from-purple-900 via-gray-900 to-primary p-0.5 shadow-2xl shadow-pink-500/30 flex items-center justify-center">
+            <div class="w-full h-full bg-void rounded-[22px] flex items-center justify-center">
+                <i class="fa-solid fa-compact-disc text-primary text-3xl animate-spin" style="animation-duration: 12s;"></i>
             </div>
-            
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
-                Selamat Datang di <span class="bg-gradient-to-r from-white via-pink-200 to-primary bg-clip-text text-transparent">KiraSEA7</span>
-            </h1>
-            
-            <!-- Timer Hitung Mundur Auto Redirect -->
-            <p class="text-gray-400 text-xs sm:text-sm mb-8">
-                Pilih link tujuanmu di bawah. Jika tidak memilih, kamu akan dialihkan otomatis dalam <span id="countdown" class="font-bold text-primary text-base">10</span> detik ke Mionime.
-            </p>
-
-            <!-- DAFTAR TOMBOL PILIHAN -->
-            <div class="space-y-3.5 mb-6">
-                <!-- 1. Nekopoi -->
-                <a href="https://nekopoi.care" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-gray-900/80 hover:bg-gray-800 border border-gray-800 hover:border-primary/50 transition-all group shadow-md">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-primary flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                        <div class="text-left">
-                            <h3 class="font-bold text-sm text-gray-200 group-hover:text-primary transition-colors">Nekopoi</h3>
-                            <p class="text-[11px] text-gray-400">Portal streaming & unduh khusus anime pilihan</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-primary text-xs"></i>
-                </a>
-
-                <!-- 2. Mionime Studio 1st Page 2 -->
-                <a href="https://mionime.com/studio/studio-1st?page=2" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-gray-900/80 hover:bg-gray-800 border border-gray-800 hover:border-primary/50 transition-all group shadow-md">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-film"></i>
-                        </div>
-                        <div class="text-left">
-                            <h3 class="font-bold text-sm text-gray-200 group-hover:text-purple-400 transition-colors">Mionime Studio 1st (Page 2)</h3>
-                            <p class="text-[11px] text-gray-400">Direktori arsip anime studio 1st lengkap</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-purple-400 text-xs"></i>
-                </a>
-
-                <!-- 3. Saluran WhatsApp -->
-                <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/30 transition-all group shadow-md">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </div>
-                        <div class="text-left">
-                            <h3 class="font-bold text-sm text-emerald-300 group-hover:text-emerald-200 transition-colors">Saluran WhatsApp Resmi</h3>
-                            <p class="text-[11px] text-emerald-400/80">Bergabung untuk update info terbaru</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-emerald-500 text-xs"></i>
-                </a>
-            </div>
-
-            <!-- Footer Info -->
-            <p class="text-[11px] text-gray-500">
-                &copy; 2026 <span class="font-bold text-gray-400">KiraSEA7</span>. All Rights Reserved.
-            </p>
         </div>
+        
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-white mb-2 tracking-tight">
+            Kira<span class="bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">SEA7</span> V.Space
+        </h1>
+        
+        <p class="text-gray-400 text-xs sm:text-sm mb-6 leading-relaxed">
+            Pusat navigasi portal anime & saluran resmi. Dialihkan otomatis dalam <span id="countdown" class="font-extrabold text-primary text-base">10</span> detik ke Mionime jika tidak memilih.
+        </p>
+
+        <!-- DAFTAR TOMBOL PILIHAN PORTAL -->
+        <div class="space-y-3.5 mb-6 text-left">
+            
+            <!-- 1. Teks & Link Nonton Anime Mionime Studio 1st -->
+            <a href="https://mionime.com/studio/studio-1st?page=2" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-pink-500/50 transition-all group shadow-lg">
+                <div class="flex items-center space-x-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-pink-500/10 text-primary flex items-center justify-center font-bold text-base shadow-inner">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-gray-200 group-hover:text-primary transition-colors">Nonton Anime di Mionime</h3>
+                        <p class="text-[11px] text-gray-400">Studio 1st (Page 2) & Arsip Direktori Lengkap</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-primary text-xs"></i>
+            </a>
+
+            <!-- 2. Teks & Link Nekopoi.care -->
+            <a href="https://nekopoi.care" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-purple-500/50 transition-all group shadow-lg">
+                <div class="flex items-center space-x-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-base shadow-inner">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-gray-200 group-hover:text-purple-400 transition-colors">Nonton Anime di Nekopoi.care</h3>
+                        <p class="text-[11px] text-gray-400">Portal streaming & OVA koleksi khusus</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-purple-400 text-xs"></i>
+            </a>
+
+            <!-- 3. Link Kuramanime.com -->
+            <a href="https://kuramanime.com" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-cyan-500/50 transition-all group shadow-lg">
+                <div class="flex items-center space-x-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-base shadow-inner">
+                        <i class="fa-solid fa-tv"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-gray-200 group-hover:text-cyan-400 transition-colors">Kuramanime.com</h3>
+                        <p class="text-[11px] text-gray-400">Database & batch anime ongoing terlengkap</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-cyan-400 text-xs"></i>
+            </a>
+
+            <!-- 4. Saluran WhatsApp -->
+            <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/30 transition-all group shadow-lg">
+                <div class="flex items-center space-x-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg shadow-inner">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-emerald-300 group-hover:text-emerald-200 transition-colors">Saluran WhatsApp Resmi</h3>
+                        <p class="text-[11px] text-emerald-400/80">Bergabung untuk info update terbaru</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-emerald-500 text-xs"></i>
+            </a>
+        </div>
+
+        <!-- Footer Info -->
+        <p class="text-[11px] text-gray-500 tracking-wider">
+            &copy; 2026 <span class="font-bold text-gray-400">KiraSEA7</span>. Black Hole Protocol.
+        </p>
     </div>
 
     <!-- SCRIPT TIMER AUTO REDIRECT 10 DETIK -->
