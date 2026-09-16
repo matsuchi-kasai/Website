@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KiraSEA7 - Black Hole Anime Hub</title>
+    <title>KiraSEA7 - Black Hole Hub</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,12 +12,11 @@
             theme: {
                 extend: {
                     colors: {
-                        void: '#020408',
-                        deepspace: '#090d16',
-                        card: '#0d1322',
+                        void: '#000000',
+                        deepspace: '#0a0d14',
+                        card: '#121824',
                         primary: '#ec4899',
-                        accent: '#a855f7',
-                        cyan glow: '#06b6d4'
+                        accent: '#a855f7'
                     }
                 }
             }
@@ -27,99 +26,88 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; }
         
-        /* Efek Gravitasi Black Hole Glow */
-        .black-hole-glow {
-            box-shadow: 0 0 50px rgba(168, 85, 247, 0.15), inset 0 0 30px rgba(236, 72, 153, 0.1);
-            background: radial-gradient(circle at center, #0f172a 0%, #020408 100%);
-        }
-        .orbit-pulse {
-            animation: pulseGlow 4s infinite alternate;
-        }
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.2); }
-            100% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.4); }
+        /* Efek Black Hole Minimalis & Anti Ngelag */
+        .black-hole-card {
+            background: linear-gradient(135deg, #0d121d 0%, #05070a 100%);
+            box-shadow: 0 0 35px rgba(236, 72, 153, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
         }
     </style>
 </head>
-<body class="bg-void text-gray-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-primary selection:text-white relative overflow-hidden">
+<body class="bg-void text-gray-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-primary selection:text-white">
 
-    <!-- Latar Belakang Efek Kosmik Black Hole -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-purple-900/10 via-pink-600/10 to-transparent rounded-full blur-[120px] pointer-events-none"></div>
-
-    <!-- CONTAINER UTAMA GAYA BLACK HOLE HUB -->
-    <div class="max-w-xl w-full black-hole-glow border border-gray-800/80 rounded-3xl p-8 sm:p-10 shadow-2xl text-center relative z-10 orbit-pulse">
+    <!-- CONTAINER UTAMA -->
+    <div class="max-w-md w-full black-hole-card border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl text-center relative z-10">
         
-        <!-- Lingkaran Inti Black Hole Icon -->
-        <div class="relative w-20 h-20 mx-auto mb-5 rounded-3xl bg-gradient-to-tr from-purple-900 via-gray-900 to-primary p-0.5 shadow-2xl shadow-pink-500/30 flex items-center justify-center">
-            <div class="w-full h-full bg-void rounded-[22px] flex items-center justify-center">
-                <i class="fa-solid fa-compact-disc text-primary text-3xl animate-spin" style="animation-duration: 12s;"></i>
-            </div>
+        <!-- Logo Custom Kamu -->
+        <div class="relative w-24 h-24 mx-auto mb-4 rounded-full p-1 bg-gradient-to-tr from-primary via-accent to-purple-600 shadow-xl shadow-pink-500/20">
+            <img src="https://files.catbox.moe/ru9hji.jpg" alt="Logo KiraSEA7" class="w-full h-full object-cover rounded-full">
         </div>
         
-        <h1 class="text-2xl sm:text-4xl font-extrabold text-white mb-2 tracking-tight">
-            Kira<span class="bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">SEA7</span> V.Space
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-1 tracking-tight">
+            Kira<span class="bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">SEA7</span>
         </h1>
         
+        <!-- Timer 20 Detik -->
         <p class="text-gray-400 text-xs sm:text-sm mb-6 leading-relaxed">
-            Pusat navigasi portal anime & saluran resmi. Dialihkan otomatis dalam <span id="countdown" class="font-extrabold text-primary text-base">10</span> detik ke Mionime jika tidak memilih.
+            Pilih portal tujuanmu di bawah. Dialihkan otomatis dalam <span id="countdown" class="font-extrabold text-primary text-base">20</span> detik ke Mionime.
         </p>
 
-        <!-- DAFTAR TOMBOL PILIHAN PORTAL -->
-        <div class="space-y-3.5 mb-6 text-left">
+        <!-- TOMBOL PILIHAN PORTAL -->
+        <div class="space-y-3 mb-6 text-left">
             
-            <!-- 1. Teks & Link Nonton Anime Mionime Studio 1st -->
-            <a href="https://mionime.com/studio/studio-1st?page=2" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-pink-500/50 transition-all group shadow-lg">
-                <div class="flex items-center space-x-3.5">
-                    <div class="w-11 h-11 rounded-xl bg-pink-500/10 text-primary flex items-center justify-center font-bold text-base shadow-inner">
+            <!-- 1. Mionime -->
+            <a href="https://mionime.com/studio/studio-1st?page=2" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-pink-500/50 transition-all group shadow-md">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-primary flex items-center justify-center font-bold text-sm">
                         <i class="fa-solid fa-film"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-sm text-gray-200 group-hover:text-primary transition-colors">Nonton Anime di Mionime</h3>
-                        <p class="text-[11px] text-gray-400">Studio 1st (Page 2) & Arsip Direktori Lengkap</p>
+                        <h3 class="font-bold text-xs sm:text-sm text-gray-200 group-hover:text-primary transition-colors">Nonton Anime di Mionime</h3>
+                        <p class="text-[10px] text-gray-400">Studio 1st (Page 2)</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-primary text-xs"></i>
             </a>
 
-            <!-- 2. Teks & Link Nekopoi.care -->
-            <a href="https://nekopoi.care" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-purple-500/50 transition-all group shadow-lg">
-                <div class="flex items-center space-x-3.5">
-                    <div class="w-11 h-11 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-base shadow-inner">
+            <!-- 2. Nekopoi -->
+            <a href="https://nekopoi.care" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-purple-500/50 transition-all group shadow-md">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-sm">
                         <i class="fa-solid fa-heart-pulse"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-sm text-gray-200 group-hover:text-purple-400 transition-colors">Nonton Anime di Nekopoi.care</h3>
-                        <p class="text-[11px] text-gray-400">Portal streaming & OVA koleksi khusus</p>
+                        <h3 class="font-bold text-xs sm:text-sm text-gray-200 group-hover:text-purple-400 transition-colors">Nonton Anime di Nekopoi.care</h3>
+                        <p class="text-[10px] text-gray-400">Portal streaming & koleksi khusus</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-purple-400 text-xs"></i>
             </a>
 
-            <!-- 3. Link Kuramanime.com -->
-            <a href="https://kuramanime.com" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-cyan-500/50 transition-all group shadow-lg">
-                <div class="flex items-center space-x-3.5">
-                    <div class="w-11 h-11 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-base shadow-inner">
+            <!-- 3. Kuramanime -->
+            <a href="https://kuramanime.com" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-cyan-500/50 transition-all group shadow-md">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-sm">
                         <i class="fa-solid fa-tv"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-sm text-gray-200 group-hover:text-cyan-400 transition-colors">Kuramanime.com</h3>
-                        <p class="text-[11px] text-gray-400">Database & batch anime ongoing terlengkap</p>
+                        <h3 class="font-bold text-xs sm:text-sm text-gray-200 group-hover:text-cyan-400 transition-colors">Kuramanime.com</h3>
+                        <p class="text-[10px] text-gray-400">Database & batch anime ongoing</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-cyan-400 text-xs"></i>
             </a>
 
             <!-- 4. Saluran WhatsApp -->
-            <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/30 transition-all group shadow-lg">
-                <div class="flex items-center space-x-3.5">
-                    <div class="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg shadow-inner">
+            <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/30 transition-all group shadow-md">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-base">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-sm text-emerald-300 group-hover:text-emerald-200 transition-colors">Saluran WhatsApp Resmi</h3>
-                        <p class="text-[11px] text-emerald-400/80">Bergabung untuk info update terbaru</p>
+                        <h3 class="font-bold text-xs sm:text-sm text-emerald-300 group-hover:text-emerald-200 transition-colors">Saluran WhatsApp Resmi</h3>
+                        <p class="text-[10px] text-emerald-400/80">Gabung untuk info update terbaru</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-right text-emerald-500 text-xs"></i>
@@ -127,14 +115,14 @@
         </div>
 
         <!-- Footer Info -->
-        <p class="text-[11px] text-gray-500 tracking-wider">
+        <p class="text-[10px] text-gray-500 tracking-wider">
             &copy; 2026 <span class="font-bold text-gray-400">KiraSEA7</span>. Black Hole Protocol.
         </p>
     </div>
 
-    <!-- SCRIPT TIMER AUTO REDIRECT 10 DETIK -->
+    <!-- SCRIPT TIMER AUTO REDIRECT 20 DETIK -->
     <script>
-        let timeLeft = 10;
+        let timeLeft = 20;
         const countdownEl = document.getElementById('countdown');
         let isRedirectCancelled = false;
 
