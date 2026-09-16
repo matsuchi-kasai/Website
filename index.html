@@ -1,164 +1,809 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KiraSEA7 - Black Hole Hub</title>
-    <!-- Tailwind CSS CDN -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KiraSEA7 - AI Assistant</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
                     colors: {
-                        void: '#000000',
-                        deepspace: '#0a0d14',
-                        card: '#121824',
-                        primary: '#ec4899',
-                        accent: '#a855f7'
+                        kira: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; }
+        body { font-family: 'Nunito', sans-serif; overflow: hidden; background-color: #0f0f13; }
         
-        /* Efek Black Hole Minimalis & Anti Ngelag */
-        .black-hole-card {
-            background: linear-gradient(135deg, #0d121d 0%, #05070a 100%);
-            box-shadow: 0 0 35px rgba(236, 72, 153, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #16a34a; }
+
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        .fade-out { animation: fadeOut 0.5s ease-in-out forwards; }
+        .slide-up { animation: slideUp 0.3s ease-out forwards; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .glass-panel {
+            background: rgba(30, 30, 36, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .markdown-body pre { background-color: #1e1e24; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-top: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #333;}
+        .markdown-body code { color: #86efac; font-family: monospace; }
+        .markdown-body p { margin-bottom: 0.5rem; }
+        
+        .recording-pulse {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulse-green 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+        @keyframes pulse-green {
+            to { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
         }
     </style>
 </head>
-<body class="bg-void text-gray-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-primary selection:text-white">
+<body class="text-white h-[100dvh] w-screen flex flex-col relative antialiased">
 
-    <!-- CONTAINER UTAMA -->
-    <div class="max-w-md w-full black-hole-card border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl text-center relative z-10">
-        
-        <!-- Logo Custom Kamu -->
-        <div class="relative w-24 h-24 mx-auto mb-4 rounded-full p-1 bg-gradient-to-tr from-primary via-accent to-purple-600 shadow-xl shadow-pink-500/20">
-            <img src="https://files.catbox.moe/ru9hji.jpg" alt="Logo KiraSEA7" class="w-full h-full object-cover rounded-full">
-        </div>
-        
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-1 tracking-tight">
-            Kira<span class="bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">SEA7</span>
-        </h1>
-        
-        <!-- Timer 20 Detik -->
-        <p class="text-gray-400 text-xs sm:text-sm mb-6 leading-relaxed">
-            Pilih portal tujuanmu di bawah. Dialihkan otomatis dalam <span id="countdown" class="font-extrabold text-primary text-base">20</span> detik ke Mionime.
-        </p>
-
-        <!-- TOMBOL PILIHAN PORTAL -->
-        <div class="space-y-3 mb-6 text-left">
-            
-            <!-- 1. Mionime -->
-            <a href="https://mionime.com/studio/studio-1st?page=2" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-pink-500/50 transition-all group shadow-md">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-primary flex items-center justify-center font-bold text-sm">
-                        <i class="fa-solid fa-film"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xs sm:text-sm text-gray-200 group-hover:text-primary transition-colors">Nonton Anime di Mionime</h3>
-                        <p class="text-[10px] text-gray-400">Studio 1st (Page 2)</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-primary text-xs"></i>
-            </a>
-
-            <!-- 2. Nekopoi -->
-            <a href="https://nekopoi.care" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-purple-500/50 transition-all group shadow-md">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-sm">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xs sm:text-sm text-gray-200 group-hover:text-purple-400 transition-colors">Nonton Anime di Nekopoi.care</h3>
-                        <p class="text-[10px] text-gray-400">Portal streaming & koleksi khusus</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-purple-400 text-xs"></i>
-            </a>
-
-            <!-- 3. Bokep -->
-            <a href="https://XNXX.com" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-purple-500/50 transition-all group shadow-md">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-sm">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xs sm:text-sm text-gray-200 group-hover:text-purple-400 transition-colors">Nonton Bokep Disini Banyak Varian coklat pink</h3>
-                        <p class="text-[10px] text-gray-400">Portal streaming & koleksi khusus Banyak Bokep</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-purple-400 text-xs"></i>
-            </a>
-
-            <!-- 3. Kuramanime -->
-            <a href="https://kuramanime.com" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-deepspace hover:bg-gray-900 border border-gray-800 hover:border-cyan-500/50 transition-all group shadow-md">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-sm">
-                        <i class="fa-solid fa-tv"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xs sm:text-sm text-gray-200 group-hover:text-cyan-400 transition-colors">Kuramanime.com</h3>
-                        <p class="text-[10px] text-gray-400">Database & batch anime ongoing</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-cyan-400 text-xs"></i>
-            </a>
-
-            <!-- 4. Saluran WhatsApp -->
-            <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" onclick="cancelRedirect()" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/30 transition-all group shadow-md">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-base">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xs sm:text-sm text-emerald-300 group-hover:text-emerald-200 transition-colors">Saluran WhatsApp Resmi</h3>
-                        <p class="text-[10px] text-emerald-400/80">Gabung untuk info update terbaru,MASUK LAH KOCHAK</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-emerald-500 text-xs"></i>
-            </a>
-        </div>
-
-        <!-- Footer Info -->
-        <p class="text-[10px] text-gray-500 tracking-wider">
-            &copy; 2026 <span class="font-bold text-gray-400">KiraSEA7</span>. Kiraa Kiraa.
-        </p>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gray-900 transition-opacity duration-500">
+        <img src="https://files.catbox.moe/ru9hji.jpg" class="w-32 h-32 rounded-full shadow-2xl mb-8 border-4 border-kira-500 animate-bounce" alt="Logo">
+        <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-kira-400 to-emerald-400 mb-2">KiraSEA7</h1>
+        <p class="text-gray-400 mb-8">Ganteng, Tampan, Sedia Melayani Anda</p>
+        <button onclick="startIntro()" class="px-8 py-4 bg-kira-600 hover:bg-kira-500 text-white rounded-full font-bold text-xl shadow-[0_0_20px_rgba(34,197,94,0.5)] transition-all transform hover:scale-105">
+            <i class="fas fa-play mr-2"></i> Masuk Aplikasi
+        </button>
     </div>
 
-    <!-- SCRIPT TIMER AUTO REDIRECT 30 DETIK -->
-    <script>
-        let timeLeft = 30;
-        const countdownEl = document.getElementById('countdown');
-        let isRedirectCancelled = false;
+    <!-- Intro Video Screen -->
+    <div id="intro-screen" class="fixed inset-0 z-[90] hidden bg-black items-center justify-center">
+        <video id="intro-video" class="w-full h-full object-cover" playsinline>
+            <source src="https://files.catbox.moe/eq1g0a.mp4" type="video/mp4">
+        </video>
+        <button onclick="skipIntro()" class="absolute top-8 right-8 px-4 py-2 bg-black/50 backdrop-blur rounded-full text-white/70 hover:text-white border border-white/20 transition-colors z-[91]">
+            Skip <i class="fas fa-forward ml-1"></i>
+        </button>
+    </div>
 
-        function cancelRedirect() {
-            isRedirectCancelled = true;
+    <!-- Custom Alert Modal -->
+    <div id="alert-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity">
+        <div class="bg-gray-800 p-6 rounded-2xl max-w-sm w-full mx-4 border border-gray-700 shadow-2xl transform scale-95 transition-transform" id="alert-box">
+            <h3 class="text-xl font-bold text-kira-400 mb-2" id="alert-title">Pemberitahuan</h3>
+            <p class="text-gray-300 mb-6" id="alert-message">Pesan disini</p>
+            <button onclick="closeAlert()" class="w-full py-3 bg-kira-600 hover:bg-kira-500 rounded-xl font-semibold transition-colors">Mengerti</button>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="main-app" class="flex-1 flex flex-col h-full hidden opacity-0 transition-opacity duration-1000 bg-[url('https://files.catbox.moe/ru9hji.jpg')] bg-cover bg-center bg-no-repeat relative">
+        <div class="absolute inset-0 bg-black/85 z-0"></div>
+
+        <!-- Header -->
+        <header class="glass-panel z-10 px-4 py-3 flex items-center justify-between shadow-md">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <img src="https://files.catbox.moe/ru9hji.jpg" class="w-10 h-10 rounded-full border-2 border-kira-400 object-cover" alt="KiraSEA7">
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-gray-900"></div>
+                </div>
+                <div>
+                    <h2 class="font-bold text-base leading-tight text-white">KiraSEA7 <span class="text-xs font-normal text-kira-300">(Ganteng & Tampan)</span></h2>
+                    <p class="text-xs text-green-400">Online • Siap Melayani Anda</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="switchTab('chat')" id="tab-btn-chat" class="tab-btn active-tab p-2 text-kira-400 hover:bg-white/10 rounded-lg transition-colors" title="Chat">
+                    <i class="fas fa-comment-dots text-xl"></i>
+                </button>
+                <button onclick="switchTab('canvas')" id="tab-btn-canvas" class="tab-btn p-2 text-gray-400 hover:bg-white/10 rounded-lg transition-colors" title="Canvas Apps">
+                    <i class="fas fa-layer-group text-xl"></i>
+                </button>
+                <button onclick="switchTab('music')" id="tab-btn-music" class="tab-btn p-2 text-gray-400 hover:bg-white/10 rounded-lg transition-colors" title="Music Maker">
+                    <i class="fas fa-music text-xl"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Chat View -->
+        <main id="view-chat" class="view-section flex-1 flex flex-col overflow-hidden z-10 relative">
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-6 pb-32">
+                <!-- Welcome Message -->
+                <div class="flex gap-3 slide-up">
+                    <img src="https://files.catbox.moe/ru9hji.jpg" class="w-8 h-8 rounded-full border border-kira-400 object-cover mt-1 flex-shrink-0">
+                    <div class="flex flex-col gap-1 max-w-[85%]">
+                        <span class="text-xs text-kira-300 ml-1">KiraSEA7</span>
+                        <div class="bg-gray-800/80 border border-gray-700 p-3 rounded-2xl rounded-tl-none text-sm text-gray-100 shadow-sm backdrop-blur-md">
+                            <p>Halo Bos! Aku KiraSEA7, asisten AI yang ganteng, tampan, dan sedia melayani kamu sepenuhnya. 😎✨</p>
+                            <p class="mt-2">Aku bisa bantu buat codingan aplikasi/game, membuat gambar, analisis foto/video, kirim VN, hingga membuat musik. Ada yang bisa aku bantu hari ini?</p>
+                            
+                            <button onclick="playGreetingVoice()" class="mt-3 text-xs flex items-center gap-1 bg-kira-600/30 hover:bg-kira-600/50 text-kira-200 px-3 py-1.5 rounded-full transition-colors w-fit border border-kira-500/30">
+                                <i class="fas fa-volume-up"></i> Dengar Suara KiraSEA7
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-gray-950 via-gray-900/95 to-transparent pt-10">
+                <!-- Preview Area for Attachments -->
+                <div id="attachment-preview" class="hidden mb-2 relative inline-block">
+                    <div class="relative bg-gray-800 rounded-lg p-1 border border-gray-700 max-w-[150px]">
+                        <img id="preview-img" class="w-full h-auto rounded hidden object-cover max-h-32">
+                        <video id="preview-video" class="w-full h-auto rounded hidden max-h-32" muted></video>
+                        <div id="preview-audio" class="w-full p-2 flex items-center gap-2 hidden text-kira-400 text-sm">
+                            <i class="fas fa-microphone-lines"></i> <span id="audio-time">00:00</span>
+                        </div>
+                        <button onclick="clearAttachment()" class="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center hover:bg-red-600 shadow-md">
+                            <i class="fas fa-times text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-2 rounded-2xl flex items-end gap-2 shadow-lg">
+                    <input type="file" id="file-upload" class="hidden" accept="image/*,video/*" onchange="handleFileUpload(event)">
+                    
+                    <button onclick="document.getElementById('file-upload').click()" class="p-3 text-gray-400 hover:text-kira-400 transition-colors rounded-xl hover:bg-white/5 flex-shrink-0" title="Kirim Foto/Video">
+                        <i class="fas fa-paperclip text-lg"></i>
+                    </button>
+                    
+                    <button id="search-toggle" onclick="toggleSearch()" class="p-3 text-gray-400 hover:text-blue-400 transition-colors rounded-xl hover:bg-white/5 flex-shrink-0" title="Aktifkan Pencarian Web">
+                        <i class="fas fa-globe text-lg"></i>
+                    </button>
+
+                    <button id="mic-btn" class="p-3 text-gray-400 hover:text-red-400 transition-colors rounded-xl hover:bg-white/5 flex-shrink-0" title="Tahan untuk Voice Note">
+                        <i class="fas fa-microphone text-lg"></i>
+                    </button>
+
+                    <div class="flex-1 bg-gray-900/50 rounded-xl border border-gray-700 flex items-center overflow-hidden min-h-[44px]">
+                        <textarea id="chat-input" rows="1" class="w-full bg-transparent text-white px-4 py-3 outline-none resize-none max-h-32 text-sm placeholder-gray-500" placeholder="Ketik pesan, minta buat gambar, atau rekam VN..."></textarea>
+                    </div>
+                    
+                    <button id="send-btn" onclick="sendMessage()" class="p-3 bg-kira-600 hover:bg-kira-500 text-white rounded-xl transition-all shadow-md flex-shrink-0">
+                        <i class="fas fa-paper-plane text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Canvas View -->
+        <main id="view-canvas" class="view-section hidden flex-1 flex flex-col z-10 relative bg-white">
+            <div class="bg-gray-900 text-gray-300 text-xs px-4 py-2 border-b border-gray-800 flex justify-between items-center">
+                <span class="font-mono"><i class="fas fa-code text-kira-400 mr-2"></i>Canvas Preview</span>
+                <button onclick="switchTab('chat')" class="text-gray-400 hover:text-white"><i class="fas fa-times"></i></button>
+            </div>
+            <iframe id="canvas-frame" class="w-full flex-1 border-none bg-white" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div id="canvas-empty" class="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-gray-500">
+                <i class="fas fa-laptop-code text-6xl mb-4 text-gray-700"></i>
+                <p>Belum ada aplikasi yang di-render.</p>
+                <p class="text-sm mt-2">Minta KiraSEA7 untuk membuat kode HTML/Game!</p>
+            </div>
+        </main>
+
+        <!-- Music Maker View -->
+        <main id="view-music" class="view-section hidden flex-1 flex flex-col z-10 relative bg-black">
+            <div class="bg-gray-900 text-gray-300 text-xs px-4 py-2 border-b border-gray-800 flex justify-between items-center">
+                <span><i class="fas fa-music text-pink-400 mr-2"></i>Rayze Music Maker</span>
+                <a href="https://rayzewebsite.vercel.app/" target="_blank" class="text-kira-400 hover:text-kira-300"><i class="fas fa-external-link-alt"></i> Buka di Browser</a>
+            </div>
+            <iframe src="https://rayzewebsite.vercel.app/" class="w-full flex-1 border-none bg-black"></iframe>
+        </main>
+
+    </div>
+
+    <!-- Global Loading Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 z-[150] hidden items-center justify-center bg-black/40 backdrop-blur-sm">
+        <div class="bg-gray-900 p-4 rounded-full shadow-lg border border-gray-700 flex items-center gap-3">
+            <div class="w-5 h-5 border-2 border-kira-500 border-t-transparent rounded-full animate-spin"></div>
+            <span class="text-sm text-gray-300">KiraSEA7 sedang meracik jawaban...</span>
+        </div>
+    </div>
+
+    <!-- Audio player for TTS -->
+    <audio id="tts-player" class="hidden"></audio>
+
+    <script>
+        const API_KEY = "";
+        const chatHistory = [];
+        let currentAttachment = null; 
+        let lastUploadedImage = null; 
+        let webSearchEnabled = false; 
+        
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+        let recordingTimer;
+        let recordingSeconds = 0;
+
+        const systemPrompt = `Kamu adalah KiraSEA7, AI assistant yang ganteng, tampan, keren, dan sedia melayani pengguna dengan sangat ramah, loyal, dan profesional.
+Gaya bicaramu: Keren, cowok banget, berdamage, penuh percaya diri, namun sangat membantu, sopan, dan menggunakan bahasa Indonesia santai gaul (seperti 'Bos', 'Bro', 'Siaap', 'Gampang').
+Tugas utamamu:
+1. Menjawab pertanyaan pengguna dengan sangat baik dan membantu.
+2. Membantu membuat kode program (HTML, CSS, JS) jika diminta. Bungkus kodemu dalam blok \`\`\`html ... \`\`\`.
+3. Menganalisa gambar, video, atau rekaman suara yang dikirim pengguna.
+4. Kamu bisa membuat gambar jika diminta dengan memanggil tool 'generateImage'.
+5. Kamu bisa mengedit gambar yang diunggah dengan tool 'editImage'.`;
+
+        function showAlert(title, message) {
+            const modal = document.getElementById('alert-modal');
+            const box = document.getElementById('alert-box');
+            document.getElementById('alert-title').innerText = title;
+            document.getElementById('alert-message').innerText = message;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                box.classList.remove('scale-95');
+            }, 10);
         }
 
-        const timer = setInterval(() => {
-            if (isRedirectCancelled) {
-                clearInterval(timer);
-                return;
+        function closeAlert() {
+            const modal = document.getElementById('alert-modal');
+            const box = document.getElementById('alert-box');
+            modal.classList.add('opacity-0');
+            box.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        function toggleSearch() {
+            webSearchEnabled = !webSearchEnabled;
+            const btn = document.getElementById('search-toggle');
+            if (webSearchEnabled) {
+                btn.classList.add('text-blue-400', 'bg-blue-500/10');
+                btn.classList.remove('text-gray-400');
+                showAlert("Pencarian Web Aktif 🌐", "Sekarang aku bisa mencari informasi terbaru dari internet untukmu, Bos!");
+            } else {
+                btn.classList.remove('text-blue-400', 'bg-blue-500/10');
+                btn.classList.add('text-gray-400');
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active-tab', 'text-kira-400');
+                el.classList.add('text-gray-400');
+            });
+
+            document.getElementById(`view-${tabId}`).classList.remove('hidden');
+            const btn = document.getElementById(`tab-btn-${tabId}`);
+            btn.classList.add('active-tab', 'text-kira-400');
+            btn.classList.remove('text-gray-400');
+        }
+
+        function startIntro() {
+            document.getElementById('splash-screen').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.display = 'none';
+                const introScreen = document.getElementById('intro-screen');
+                introScreen.classList.remove('hidden');
+                introScreen.classList.add('flex');
+                
+                const video = document.getElementById('intro-video');
+                video.play().catch(e => {
+                    skipIntro();
+                });
+                
+                video.onended = () => skipIntro();
+            }, 500);
+        }
+
+        function skipIntro() {
+            const video = document.getElementById('intro-video');
+            video.pause();
+            const introScreen = document.getElementById('intro-screen');
+            introScreen.classList.add('fade-out');
+            
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+                const mainApp = document.getElementById('main-app');
+                mainApp.classList.remove('hidden');
+                setTimeout(() => mainApp.classList.remove('opacity-0'), 50);
+            }, 500);
+        }
+
+        const chatInput = document.getElementById('chat-input');
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight < 128 ? this.scrollHeight : 128) + 'px';
+        });
+
+        chatInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        async function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            try {
+                const base64 = await fileToBase64(file);
+                const base64Data = base64.split(',')[1];
+                
+                currentAttachment = {
+                    mimeType: file.type || 'image/jpeg',
+                    data: base64Data
+                };
+
+                document.getElementById('attachment-preview').classList.remove('hidden');
+                document.getElementById('preview-audio').classList.add('hidden');
+                
+                if (file.type.startsWith('image/') || file.type === '') {
+                    const img = document.getElementById('preview-img');
+                    img.src = base64;
+                    img.classList.remove('hidden');
+                    document.getElementById('preview-video').classList.add('hidden');
+                    lastUploadedImage = { mimeType: file.type || 'image/jpeg', data: base64Data };
+                } else if (file.type.startsWith('video/')) {
+                    const vid = document.getElementById('preview-video');
+                    vid.src = base64;
+                    vid.classList.remove('hidden');
+                    document.getElementById('preview-img').classList.add('hidden');
+                }
+            } catch (err) {
+                showAlert('Error', 'Gagal memproses file upload.');
+            }
+        }
+
+        function clearAttachment() {
+            currentAttachment = null;
+            document.getElementById('attachment-preview').classList.add('hidden');
+            document.getElementById('file-upload').value = '';
+            if (isRecording) stopRecording();
+            recordingSeconds = 0;
+            document.getElementById('audio-time').innerText = "00:00";
+        }
+
+        const micBtn = document.getElementById('mic-btn');
+        micBtn.addEventListener('mousedown', startRecording);
+        micBtn.addEventListener('touchstart', startRecording);
+        window.addEventListener('mouseup', () => { if(isRecording) stopRecording(); });
+        window.addEventListener('touchend', () => { if(isRecording) stopRecording(); });
+
+        async function startRecording(e) {
+            e.preventDefault();
+            if (isRecording) return;
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+                
+                mediaRecorder.ondataavailable = event => { if (event.data.size > 0) audioChunks.push(event.data); };
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    stream.getTracks().forEach(track => track.stop());
+                    
+                    if (recordingSeconds < 1) { clearAttachment(); return; }
+                    
+                    const base64 = await fileToBase64(audioBlob);
+                    currentAttachment = { mimeType: 'audio/webm', data: base64.split(',')[1] };
+                    sendMessage();
+                };
+                
+                mediaRecorder.start();
+                isRecording = true;
+                micBtn.classList.add('recording-pulse', 'text-red-500');
+                
+                document.getElementById('attachment-preview').classList.remove('hidden');
+                document.getElementById('preview-img').classList.add('hidden');
+                document.getElementById('preview-video').classList.add('hidden');
+                document.getElementById('preview-audio').classList.remove('hidden');
+                
+                recordingSeconds = 0;
+                document.getElementById('audio-time').innerText = "00:00";
+                recordingTimer = setInterval(() => {
+                    recordingSeconds++;
+                    const m = Math.floor(recordingSeconds / 60).toString().padStart(2, '0');
+                    const s = (recordingSeconds % 60).toString().padStart(2, '0');
+                    document.getElementById('audio-time').innerText = `${m}:${s}`;
+                }, 1000);
+            } catch (err) {
+                showAlert('Mic Error', 'Izinkan akses mikrofon terlebih dahulu untuk merekam VN.');
+            }
+        }
+
+        function stopRecording() {
+            if (!isRecording) return;
+            isRecording = false;
+            micBtn.classList.remove('recording-pulse', 'text-red-500');
+            clearInterval(recordingTimer);
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        async function generateImageApi(prompt) {
+            const payload = {
+                contents: [{ role: 'user', parts: [{ text: prompt }] }],
+                generationConfig: { responseModalities: ['IMAGE'], imageConfig: { aspectRatio: "1:1" } }
+            };
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent?key=${API_KEY}`;
+            const response = await fetchWithRetry(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            const result = await response.json();
+            const part = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
+            if (part && part.inlineData) return { mimeType: part.inlineData.mimeType, data: part.inlineData.data };
+            throw new Error("Gagal membuat gambar.");
+        }
+
+        async function editImageApi(prompt, attachment) {
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }, { inlineData: { mimeType: attachment.mimeType, data: attachment.data } }] }],
+                generationConfig: { responseModalities: ['IMAGE'] }
+            };
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent?key=${API_KEY}`;
+            const response = await fetchWithRetry(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            const result = await response.json();
+            const part = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
+            if (part && part.inlineData) return { mimeType: part.inlineData.mimeType, data: part.inlineData.data };
+            throw new Error("Gagal mengedit gambar.");
+        }
+
+        function appendMessage(sender, text, attachment = null, messageId = null, sourcesHtml = '') {
+            const chatBox = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = `flex gap-3 slide-up ${sender === 'user' ? 'flex-row-reverse' : ''}`;
+            
+            let avatar = sender === 'user' 
+                ? `<div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-user text-gray-400"></i></div>`
+                : `<img src="https://files.catbox.moe/ru9hji.jpg" class="w-8 h-8 rounded-full border border-kira-400 object-cover mt-1 flex-shrink-0">`;
+
+            let name = sender === 'user' ? 'Kamu' : 'KiraSEA7';
+            let nameAlign = sender === 'user' ? 'text-right mr-1' : 'ml-1';
+            let bgClass = sender === 'user' ? 'bg-kira-600 rounded-tr-none text-white' : 'bg-gray-800/80 border border-gray-700 rounded-tl-none text-gray-100 backdrop-blur-md';
+
+            let htmlContent = sender === 'user' ? escapeHTML(text) : DOMPurify.sanitize(marked.parse(text));
+            
+            let canvasButtonHtml = '';
+            if (sender === 'ai' && text.includes('```html')) {
+                const codeBlockRegex = /```html([\s\S]*?)```/g;
+                let match = codeBlockRegex.exec(text);
+                if (match && match[1]) {
+                    const rawCode = match[1].trim();
+                    window[`canvas_code_${messageId}`] = rawCode;
+                    canvasButtonHtml = `
+                        <div class="mt-3">
+                            <button onclick="runInCanvas(window['canvas_code_${messageId}'])" class="text-xs bg-green-500/20 hover:bg-green-500/40 text-green-300 border border-green-500/30 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1">
+                                <i class="fas fa-play"></i> Jalankan di Canvas
+                            </button>
+                        </div>`;
+                }
             }
 
-            timeLeft--;
-            countdownEl.innerText = timeLeft;
-
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                // Redirect otomatis ke link Mionime Studio 1st Page 2
-                window.location.href = "https://mionime.com/studio/studio-1st?page=2";
+            let ttsButtonHtml = '';
+            if (sender === 'ai' && text.trim().length > 0) {
+                const cleanText = text.replace(/```[\s\S]*?```/g, '').replace(/[#*_]/g, '').substring(0, 800);
+                window[`tts_text_${messageId}`] = cleanText;
+                ttsButtonHtml = `
+                    <button onclick="playAIVoice('${messageId}')" id="btn-voice-${messageId}" class="mt-2 text-xs flex items-center gap-1 bg-kira-600/30 hover:bg-kira-600/50 text-kira-200 px-3 py-1 rounded-full transition-colors w-fit border border-kira-500/30">
+                        <i class="fas fa-volume-up"></i> Putar Suara Cowok Keren
+                    </button>
+                `;
             }
-        }, 1000);
+
+            let attachmentHtml = '';
+            if (attachment) {
+                if (attachment.mimeType.startsWith('image/')) {
+                    attachmentHtml = `<img src="data:${attachment.mimeType};base64,${attachment.data}" class="rounded-lg max-w-[200px] mb-2 border border-gray-600">`;
+                } else if (attachment.mimeType.startsWith('video/')) {
+                    attachmentHtml = `<video src="data:${attachment.mimeType};base64,${attachment.data}" controls class="rounded-lg max-w-[200px] mb-2 border border-gray-600"></video>`;
+                } else if (attachment.mimeType.startsWith('audio/')) {
+                    attachmentHtml = `
+                        <div class="flex items-center gap-2 bg-gray-900 p-2 rounded-lg mb-2">
+                            <i class="fas fa-microphone-lines text-kira-400"></i>
+                            <span class="text-xs text-gray-300">Voice Note</span>
+                            <audio src="data:${attachment.mimeType};base64,${attachment.data}" controls class="h-6 w-32"></audio>
+                        </div>`;
+                }
+            }
+
+            div.innerHTML = `
+                ${avatar}
+                <div class="flex flex-col gap-1 max-w-[85%]">
+                    <span class="text-xs text-gray-400 ${nameAlign}">${name}</span>
+                    <div class="${bgClass} p-3 rounded-2xl shadow-sm markdown-body text-sm overflow-x-auto">
+                        ${attachmentHtml}
+                        <div>${htmlContent}</div>
+                        ${sourcesHtml}
+                        ${canvasButtonHtml}
+                        ${ttsButtonHtml}
+                    </div>
+                </div>
+            `;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const text = chatInput.value.trim();
+            const attachment = currentAttachment;
+            
+            if (!text && !attachment) return;
+
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+            clearAttachment();
+
+            appendMessage('user', text, attachment);
+            
+            const parts = [];
+            if (text) parts.push({ text: text });
+            if (attachment) {
+                parts.push({ inlineData: { mimeType: attachment.mimeType, data: attachment.data } });
+            }
+
+            chatHistory.push({ role: 'user', parts: parts });
+
+            const tools = [{
+                functionDeclarations: [
+                    {
+                        name: "generateImage",
+                        description: "Gunakan tool ini HANYA jika pengguna meminta untuk membuat atau menggambar gambar dari nol.",
+                        parameters: { type: "OBJECT", properties: { prompt: { type: "STRING", description: "Deskripsi detail dalam bahasa Inggris." } }, required: ["prompt"] }
+                    },
+                    {
+                        name: "editImage",
+                        description: "Gunakan tool ini jika pengguna meminta untuk mengedit gambar.",
+                        parameters: { type: "OBJECT", properties: { prompt: { type: "STRING", description: "Instruksi pengeditan dalam bahasa Inggris." } }, required: ["prompt"] }
+                    }
+                ]
+            }];
+
+            if (webSearchEnabled) tools.push({ "google_search": {} });
+
+            const payload = {
+                contents: chatHistory,
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                tools: tools
+            };
+
+            document.getElementById('loading-overlay').classList.remove('hidden');
+            document.getElementById('loading-overlay').classList.add('flex');
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${API_KEY}`;
+                let response = await fetchWithRetry(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates[0].content) {
+                    const aiParts = result.candidates[0].content.parts;
+                    const functionCallPart = aiParts.find(p => p.functionCall);
+                    
+                    if (functionCallPart) {
+                        const call = functionCallPart.functionCall;
+                        if (call.name === "generateImage") {
+                            const imgPrompt = call.args.prompt;
+                            const msgId = Date.now().toString();
+                            appendMessage('ai', `*Siap Bos, sedang merender gambar...* 🎨\n(Prompt: ${imgPrompt})`, null, msgId);
+                            
+                            try {
+                                const imgData = await generateImageApi(imgPrompt);
+                                chatHistory.push({ role: 'model', parts: [{ functionCall: call }] });
+                                chatHistory.push({ role: 'user', parts: [{ functionResponse: { name: "generateImage", response: { content: { status: "success" } } } }] });
+                                appendMessage('ai', "Nih Bos hasilnya, mantap kan? 😎✨", imgData, Date.now().toString());
+                            } catch (imgErr) {
+                                appendMessage('ai', "Waduh, gagal render gambarnya Bos. Coba lagi ya!", null, Date.now().toString());
+                            }
+                            return;
+                        } else if (call.name === "editImage") {
+                            const imgPrompt = call.args.prompt;
+                            const msgId = Date.now().toString();
+                            
+                            if (!lastUploadedImage) {
+                                appendMessage('ai', "Kirim dulu fotonya ke sini Bos baru aku edit!", null, msgId);
+                                return;
+                            }
+
+                            appendMessage('ai', `*Siap, sedang mengedit gambar sesuai instruksi...* ✨`, null, msgId);
+                            try {
+                                const imgData = await editImageApi(imgPrompt, lastUploadedImage);
+                                chatHistory.push({ role: 'model', parts: [{ functionCall: call }] });
+                                chatHistory.push({ role: 'user', parts: [{ functionResponse: { name: "editImage", response: { content: { status: "success" } } } }] });
+                                appendMessage('ai', "Selesai Bos! Hasil editannya udah jadi nih.", imgData, Date.now().toString());
+                            } catch (imgErr) {
+                                appendMessage('ai', "Gagal mengedit gambar Bos.", null, Date.now().toString());
+                            }
+                            return;
+                        }
+                    }
+
+                    let aiText = aiParts.map(p => p.text).filter(t => t).join('\n');
+                    if (aiText) {
+                        let sourcesHtml = '';
+                        const groundingMetadata = result.candidates[0].groundingMetadata;
+                        if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                            const sources = groundingMetadata.groundingAttributions.map(attr => ({ uri: attr.web?.uri, title: attr.web?.title })).filter(src => src.uri && src.title);
+                            if (sources.length > 0) {
+                                sourcesHtml = `<div class="mt-3 pt-2 border-t border-gray-600/50"><span class="text-xs text-gray-400 font-semibold mb-1 block"><i class="fas fa-globe text-blue-400 mr-1"></i>Referensi:</span><ul class="text-xs space-y-1">`;
+                                const uniqueSources = Array.from(new Set(sources.map(s => s.uri))).map(uri => sources.find(s => s.uri === uri));
+                                uniqueSources.slice(0, 3).forEach(src => {
+                                    sourcesHtml += `<li><a href="${src.uri}" target="_blank" class="text-blue-400 hover:text-blue-300 hover:underline truncate block max-w-full"><i class="fas fa-external-link-alt text-[10px] mr-1"></i>${src.title}</a></li>`;
+                                });
+                                sourcesHtml += `</ul></div>`;
+                            }
+                        }
+
+                        chatHistory.push({ role: 'model', parts: [{ text: aiText }] });
+                        const msgId = Date.now().toString();
+                        appendMessage('ai', aiText, null, msgId, sourcesHtml);
+
+                        if (attachment && attachment.mimeType.startsWith('audio/')) {
+                            setTimeout(() => playAIVoice(msgId), 1000);
+                        }
+                    }
+                } else {
+                    throw new Error("Format respons tidak valid");
+                }
+            } catch (error) {
+                appendMessage('ai', "Aduh Bos, ada kendala koneksi nih. Coba kirim ulang ya! 🚀");
+                chatHistory.pop();
+            } finally {
+                document.getElementById('loading-overlay').classList.add('hidden');
+                document.getElementById('loading-overlay').classList.remove('flex');
+            }
+        }
+
+        async function fetchWithRetry(url, options, retries = 3) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const res = await fetch(url, options);
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    return res;
+                } catch (err) {
+                    if (i === retries - 1) throw err;
+                    await new Promise(r => setTimeout(r, 1000 * Math.pow(2, i)));
+                }
+            }
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
+        }
+
+        // Voice TTS dengan Suara Cowok Berdamage (Fenrir)
+        async function generateTTS(text) {
+            const prompt = `Katakan dengan suara cowok yang keren, ngebas, berdamage, tegas, dan berwibawa: ${text}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Fenrir" } } }
+                },
+                model: "gemini-2.5-flash-preview-tts"
+            };
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${API_KEY}`;
+            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            if (!response.ok) throw new Error("TTS API Error");
+            
+            const result = await response.json();
+            const part = result?.candidates?.[0]?.content?.parts?.[0];
+            if (part && part.inlineData) {
+                const pcmBuffer = base64ToArrayBuffer(part.inlineData.data);
+                return URL.createObjectURL(pcmToWav(new Int16Array(pcmBuffer), 24000));
+            }
+            throw new Error("Tidak ada data audio");
+        }
+
+        async function playAIVoice(msgId) {
+            const text = window[`tts_text_${msgId}`];
+            const btn = document.getElementById(`btn-voice-${msgId}`);
+            if (!text) return;
+
+            try {
+                btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Menyiapkan Suara...`;
+                btn.classList.add('opacity-75');
+                btn.disabled = true;
+
+                const audioUrl = await generateTTS(text);
+                const player = document.getElementById('tts-player');
+                player.src = audioUrl;
+                
+                player.onplay = () => {
+                    btn.innerHTML = `<i class="fas fa-volume-up"></i> Sedang Bicara...`;
+                    btn.classList.add('animate-pulse', 'bg-kira-500');
+                };
+                player.onended = () => {
+                    btn.innerHTML = `<i class="fas fa-volume-up"></i> Putar Ulang`;
+                    btn.classList.remove('animate-pulse', 'bg-kira-500', 'opacity-75');
+                    btn.disabled = false;
+                };
+                player.play();
+            } catch (err) {
+                showAlert("Gagal", "Gagal memutar audio suara.");
+                btn.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Gagal`;
+                btn.classList.remove('opacity-75');
+                btn.disabled = false;
+            }
+        }
+
+        function playGreetingVoice() {
+            window[`tts_text_greeting`] = "Halo Bos! Aku KiraSEA7, asisten AI yang ganteng, tampan, dan sedia melayani kamu sepenuhnya.";
+            const btn = document.querySelector('button[onclick="playGreetingVoice()"]');
+            btn.id = "btn-voice-greeting";
+            playAIVoice('greeting');
+        }
+
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) bytes[i] = binaryString.charCodeAt(i);
+            return bytes.buffer;
+        }
+
+        function pcmToWav(pcmData, sampleRate) {
+            const buffer = new ArrayBuffer(44 + pcmData.length * 2);
+            const view = new DataView(buffer);
+            const writeString = (v, o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+
+            writeString(view, 0, 'RIFF');
+            view.setUint32(4, 36 + pcmData.length * 2, true);
+            writeString(view, 8, 'WAVE');
+            writeString(view, 12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, 1, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * 2, true);
+            view.setUint16(32, 2, true);
+            view.setUint16(34, 16, true);
+            writeString(view, 36, 'data');
+            view.setUint32(40, pcmData.length * 2, true);
+
+            let offset = 44;
+            for (let i = 0; i < pcmData.length; i++, offset += 2) view.setInt16(offset, pcmData[i], true);
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+        function runInCanvas(htmlCode) {
+            if (!htmlCode) return;
+            switchTab('canvas');
+            document.getElementById('canvas-empty').classList.add('hidden');
+            const iframe = document.getElementById('canvas-frame');
+            iframe.classList.remove('hidden');
+            iframe.srcdoc = htmlCode;
+        }
     </script>
 </body>
 </html>
