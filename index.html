@@ -23,18 +23,32 @@
             box-shadow: 0 0 35px rgba(236, 72, 153, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
         }
 
-        /* Ensure input area stays at bottom */
+        /* Ensure input area stays at bottom and layout is rock solid */
         .chat-layout {
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: absolute;
+            inset: 0;
         }
         .chat-messages-area {
             flex-grow: 1;
             overflow-y: auto;
+            padding-bottom: 20px;
         }
         .chat-input-area {
             flex-shrink: 0;
+            background-color: #111827;
+            border-top: 1px solid #1f2937;
+            padding-bottom: env(safe-area-inset-bottom); /* Dukungan notch iPhone/Android */
+        }
+        
+        /* Cegah flex merusak area text */
+        .input-wrapper {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+            padding: 0.75rem;
         }
     </style>
 </head>
@@ -100,7 +114,7 @@
         <div class="flex-1 relative overflow-hidden flex flex-col">
 
             <!-- 1. CHAT SECTION -->
-            <section id="chatSection" class="absolute inset-0 chat-layout bg-[#0b0f19]">
+            <section id="chatSection" class="chat-layout bg-[#0b0f19]">
                 <!-- Chat Messages Container -->
                 <div id="chatMessages" class="chat-messages-area p-4 space-y-4 custom-scrollbar">
                     <!-- Welcome Message -->
@@ -114,7 +128,7 @@
                 </div>
 
                 <!-- Chat Input Area (Fixed at bottom of chat section) -->
-                <div class="chat-input-area bg-[#111827] border-t border-gray-800 flex flex-col">
+                <div class="chat-input-area flex flex-col">
                     
                     <!-- Input File Preview Badge -->
                     <div id="mediaPreviewContainer" class="hidden px-4 py-2 bg-[#161f30] border-b border-gray-800 flex items-center justify-between">
@@ -135,10 +149,10 @@
                     </div>
 
                     <!-- Actual Input Bar -->
-                    <div class="p-3 flex items-end gap-2 pb-4 sm:pb-6">
+                    <div class="input-wrapper">
                         <input type="file" id="mediaInput" class="hidden" accept="image/*,video/*" onchange="handleFileSelect(event)">
                         
-                        <button onclick="document.getElementById('mediaInput').click()" class="p-3 sm:p-3.5 bg-[#1f2937] text-gray-400 hover:text-cyan-400 rounded-full hover:bg-gray-700 transition flex-shrink-0" title="Kirim Foto/Video">
+                        <button onclick="document.getElementById('mediaInput').click()" class="p-3 bg-[#1f2937] text-gray-400 hover:text-cyan-400 rounded-full hover:bg-gray-700 transition flex-shrink-0" title="Kirim Foto/Video">
                             <i data-lucide="paperclip" class="w-5 h-5"></i>
                         </button>
                         
@@ -146,11 +160,11 @@
                             <textarea id="userInput" rows="1" placeholder="Ketik pesan..." class="w-full bg-transparent text-sm focus:outline-none resize-none max-h-24 custom-scrollbar text-white placeholder-gray-400 py-2" oninput="autoResizeTextarea(this)" onkeydown="handleKeyDown(event)"></textarea>
                         </div>
 
-                        <button id="recordBtn" onclick="toggleRecordVoice()" class="p-3 sm:p-3.5 bg-[#1f2937] text-gray-400 hover:text-red-400 rounded-full hover:bg-gray-700 transition flex-shrink-0" title="Rekam Voice Note">
+                        <button id="recordBtn" onclick="toggleRecordVoice()" class="p-3 bg-[#1f2937] text-gray-400 hover:text-red-400 rounded-full hover:bg-gray-700 transition flex-shrink-0" title="Rekam Voice Note">
                             <i data-lucide="mic" class="w-5 h-5"></i>
                         </button>
 
-                        <button onclick="sendMessage()" class="p-3 sm:p-3.5 bg-cyan-600 text-white rounded-full hover:bg-cyan-500 active:scale-95 transition shadow-lg shadow-cyan-600/30 flex items-center justify-center flex-shrink-0">
+                        <button onclick="sendMessage()" class="p-3 bg-cyan-600 text-white rounded-full hover:bg-cyan-500 active:scale-95 transition shadow-lg shadow-cyan-600/30 flex items-center justify-center flex-shrink-0">
                             <i data-lucide="send" class="w-5 h-5"></i>
                         </button>
                     </div>
@@ -158,7 +172,7 @@
             </section>
 
             <!-- 2. CANVAS SECTION (HTML/App Runner) -->
-            <section id="canvasSection" class="absolute inset-0 hidden flex flex-col bg-[#0b0f19]">
+            <section id="canvasSection" class="absolute inset-0 hidden chat-layout bg-[#0b0f19]">
                 <div class="p-3 bg-[#111827] border-b border-gray-800 flex items-center justify-between">
                     <div class="flex items-center gap-2">
                         <i data-lucide="layout" class="w-5 h-5 text-cyan-400"></i>
@@ -389,15 +403,17 @@
             currentTab = tab;
             ['chat', 'canvas', 'tools', 'portal'].forEach(t => {
                 document.getElementById(t + 'Section').classList.add('hidden');
+                // Khusus chat section, pastikan class chat-layout dihapus agar benar-benar tersembunyi
+                if(t === 'chat') document.getElementById('chatSection').classList.remove('chat-layout');
                 document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1) + 'Btn').className = "p-2 rounded-lg text-gray-400 hover:text-white transition-all";
             });
             
             const targetSection = document.getElementById(tab + 'Section');
             targetSection.classList.remove('hidden');
             
-            // Re-apply display flex if it's the chat section to keep layout
+            // Kembalikan class chat-layout jika tab chat aktif agar UI input tidak hancur
             if(tab === 'chat') {
-                targetSection.style.display = 'flex';
+                targetSection.classList.add('chat-layout');
             }
 
             document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1) + 'Btn').className = "p-2 rounded-lg bg-cyan-600 text-white transition-all shadow-sm";
